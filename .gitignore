@@ -1,0 +1,19 @@
+# Java class files
+*.class
+
+# Eclipse project files
+ .classpath
+ .project
+ .settings/
+
+# OS X files
+.DS_Store
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Gradle
+build/
+.gradle

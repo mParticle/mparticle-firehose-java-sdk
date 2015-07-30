@@ -1,0 +1,3 @@
+include 'mparticle-sdk-java'
+include 'mparticle-sdk-java-samples'
+
