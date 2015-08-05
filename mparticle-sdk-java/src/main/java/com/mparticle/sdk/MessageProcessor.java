@@ -2,9 +2,11 @@ package com.mparticle.sdk;
 
 import com.mparticle.sdk.model.*;
 import com.mparticle.sdk.model.eventprocessing.*;
-import com.mparticle.sdk.model.eventprocessing.RequestContext;
+import com.mparticle.sdk.model.eventprocessing.EventProcessingContext;
 import com.mparticle.sdk.model.registration.RegistrationRequest;
 import com.mparticle.sdk.model.registration.RegistrationResponse;
+
+import java.util.ArrayList;
 
 public abstract class MessageProcessor {
 
@@ -13,27 +15,27 @@ public abstract class MessageProcessor {
         switch (request.type) {
 
             case REGISTRATION_REQUEST: {
-                RegistrationResponse response = new RegistrationResponse();
-                processRegistrationRequest((RegistrationRequest) request, response);
-                return response;
+                return processRegistrationRequest((RegistrationRequest) request);
             }
 
             case EVENT_PROCESSING_REQUEST: {
-                EventProcessingResponse response = new EventProcessingResponse();
-                processEventStreamRequest((EventProcessingRequest) request, response);
-                return response;
+                return processEventStreamRequest((EventProcessingRequest) request);
             }
 
         }
 
+        // TODO: Return message NotSupported response?
         return null;
     }
 
-    public abstract void processRegistrationRequest(RegistrationRequest request,RegistrationResponse result);
+    public abstract RegistrationResponse processRegistrationRequest(RegistrationRequest request);
 
-    private void processEventStreamRequest(EventProcessingRequest request, EventProcessingResponse response) {
+    private EventProcessingResponse processEventStreamRequest(EventProcessingRequest request) {
 
-        RequestContext context = new RequestContext();
+        EventProcessingResponse response = new EventProcessingResponse();
+        response.processingResults = new ArrayList<>();
+
+        EventProcessingContext context = new EventProcessingContext();
         context.app = request.app;
         context.device = request.device;
         context.user = request.user;
@@ -41,26 +43,42 @@ public abstract class MessageProcessor {
 
         for (Event e : request.events) {
 
+            EventProcessingResult result = null;
+
             switch (e.type) {
 
                 case APP_EVENT:
-                    processAppEvent((AppEvent)e, context);
+                    result = processAppEvent((AppEvent)e, context);
                     break;
 
                 case SESSION_START_EVENT:
-                    processSessionStartEvent((SessionStartEvent) e, context);
+                    result = processSessionStartEvent((SessionStartEvent) e, context);
+                    break;
+
+                case SESSION_END_EVENT:
+                    result = processSessionEndEvent((SessionEndEvent) e, context);
                     break;
             }
 
-            response.stats.add(e);
+            if (result == null) {
+                result = new EventProcessingResult(e.id, EventProcessingResult.Action.DISCARDED);
+            }
+
+            response.processingResults.add(result);
         }
+
+        return response;
     }
 
-    public void processAppEvent(AppEvent event, RequestContext context) {
-
+    public EventProcessingResult processSessionStartEvent(SessionStartEvent event, EventProcessingContext context) {
+        return null;
     }
 
-    public void processSessionStartEvent(SessionStartEvent event, RequestContext context) {
+    public EventProcessingResult processSessionEndEvent(SessionEndEvent event, EventProcessingContext context) {
+        return null;
+    }
 
+    public EventProcessingResult processAppEvent(AppEvent event, EventProcessingContext context) {
+        return null;
     }
 }

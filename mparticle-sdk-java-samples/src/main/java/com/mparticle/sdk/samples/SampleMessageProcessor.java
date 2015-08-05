@@ -3,7 +3,7 @@ package com.mparticle.sdk.samples;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.MessageProcessor;
 import com.mparticle.sdk.model.eventprocessing.Device;
-import com.mparticle.sdk.model.eventprocessing.RequestContext;
+import com.mparticle.sdk.model.eventprocessing.EventProcessingContext;
 import com.mparticle.sdk.model.registration.RegistrationRequest;
 import com.mparticle.sdk.model.registration.RegistrationResponse;
 import com.mparticle.sdk.model.registration.Setting;
@@ -14,7 +14,9 @@ import java.util.Arrays;
 public class SampleMessageProcessor extends MessageProcessor {
 
     @Override
-    public void processRegistrationRequest(RegistrationRequest request, RegistrationResponse response) {
+    public RegistrationResponse processRegistrationRequest(RegistrationRequest request) {
+
+        RegistrationResponse response = new RegistrationResponse();
 
         response.name="GoogleAnalytics";
         response.description="Google Analytics Event Forwarder";
@@ -29,13 +31,16 @@ public class SampleMessageProcessor extends MessageProcessor {
         response.requiredIdentities = Arrays.asList(UserIdentity.Type.ANDROID_DEVICE_ID, UserIdentity.Type.IOS_IDFV);
 
         response.maxDataAgeHours = 24;
+
+        return response;
     }
 
     @Override
-    public void processAppEvent(AppEvent event, RequestContext context) {
-        String apiKey = context.subscription.getStringSetting("apiKey", true, null);
-        Device.DeviceType deviceType = context.device.deviceType;
-        //event.setHandled(true);
-    }
+    public EventProcessingResult processAppEvent(AppEvent event, EventProcessingContext context) {
 
+//        String apiKey = context.subscription.getStringSetting("apiKey", true, null);
+//        Device.DeviceType deviceType = context.device.deviceType;
+
+        return new EventProcessingResult(event.id, EventProcessingResult.Action.PROCESSED);
+    }
 }

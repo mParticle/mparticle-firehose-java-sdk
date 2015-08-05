@@ -1,5 +1,6 @@
 package com.mparticle.sdk.model.registration;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.model.eventprocessing.Event;
@@ -25,6 +26,7 @@ public class RegistrationResponse extends Message {
     public List<UserIdentity.Type> requiredIdentities;
 
     @JsonProperty("max_data_age_hours")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     public int maxDataAgeHours;
 
     public RegistrationResponse() {

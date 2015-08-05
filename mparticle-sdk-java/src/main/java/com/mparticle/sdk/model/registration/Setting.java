@@ -1,5 +1,6 @@
 package com.mparticle.sdk.model.registration;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Setting {
@@ -20,10 +21,10 @@ public class Setting {
     public String description;
 
     @JsonProperty("is_required")
-    public Boolean isRequired;
+    public boolean isRequired;
 
     @JsonProperty("is_confidential")
-    public Boolean isConfidential;
+    public boolean isConfidential;
 
     private Setting() {
         // required by serializer
