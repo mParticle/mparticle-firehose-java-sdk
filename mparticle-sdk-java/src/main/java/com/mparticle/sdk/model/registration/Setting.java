@@ -4,16 +4,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(name="text", value=TextSetting.class),
-        //@JsonSubTypes.Type(name="integer", value=SessionStartEvent.class),
-        //@JsonSubTypes.Type(name="float", value=SessionEndEvent.class),
+        @JsonSubTypes.Type(name="integer", value=IntegerSetting.class),
+        @JsonSubTypes.Type(name="float", value=FloatSetting.class),
         @JsonSubTypes.Type(name="boolean", value=BooleanSetting.class)
 })
 public abstract class Setting {
 
-    @JsonProperty(value="type", required=true)
     private final Type type;
 
     @JsonProperty(value="id", required=true)
