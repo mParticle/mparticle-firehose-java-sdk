@@ -3,6 +3,7 @@ package com.mparticle.sdk.model.registration;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.mparticle.sdk.model.Utils;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
@@ -33,7 +34,7 @@ public abstract class Setting {
     }
 
     public void setId(String id) {
-        if (id.isEmpty()) throw new IllegalArgumentException();
+        if (Utils.isNullOrEmpty(id)) throw new IllegalArgumentException();
         this.id = id;
     }
 
@@ -42,7 +43,7 @@ public abstract class Setting {
     }
 
     public void setName(String name) {
-        if (id.isEmpty()) throw new IllegalArgumentException();
+        if (Utils.isNullOrEmpty(name)) throw new IllegalArgumentException();
         this.name = name;
     }
 
