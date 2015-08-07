@@ -11,7 +11,24 @@ import java.util.List;
 
 public class TestMain {
     public static void main(String[] args) {
-        testEventProcessing();
+        testRegister();
+    }
+
+    private static void testRegister() {
+        MessageSerializer m = new MessageSerializer();
+        SampleMessageProcessor processor = new SampleMessageProcessor();
+
+        try {
+
+            RegistrationRequest request = new RegistrationRequest();
+            String data = m.serialize(request);
+            Message response = processor.processMessage(request);
+            data = m.serialize(response);
+            System.out.println(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private static void testEventProcessing() {

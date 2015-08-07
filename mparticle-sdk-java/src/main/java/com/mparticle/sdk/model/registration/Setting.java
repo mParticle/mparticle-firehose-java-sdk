@@ -1,49 +1,72 @@
 package com.mparticle.sdk.model.registration;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-public class Setting {
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(name="text", value=TextSetting.class),
+        //@JsonSubTypes.Type(name="integer", value=SessionStartEvent.class),
+        //@JsonSubTypes.Type(name="float", value=SessionEndEvent.class),
+        @JsonSubTypes.Type(name="boolean", value=BooleanSetting.class)
+})
+public abstract class Setting {
+
+    @JsonProperty(value="type", required=true)
+    private final Type type;
+
+    @JsonProperty(value="id", required=true)
+    private String id;
 
     @JsonProperty(value="name", required=true)
-    public String name;
-
-    @JsonProperty(value="data_type", required=true)
-    public DataType dataType;
-
-    @JsonProperty(value="display_name", required=true)
-    public String displayName;
-
-    @JsonProperty("default_value")
-    public String defaultValue;
+    private String name;
 
     @JsonProperty("description")
-    public String description;
+    private String description;
 
-    @JsonProperty("is_required")
-    public boolean isRequired;
-
-    @JsonProperty("is_confidential")
-    public boolean isConfidential;
-
-    private Setting() {
-        // required by serializer
+    public Type getType() {
+        return type;
     }
 
-    public Setting(String name, DataType dataType, String displayName) {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        if (id.isEmpty()) throw new IllegalArgumentException();
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (id.isEmpty()) throw new IllegalArgumentException();
         this.name = name;
-        this.displayName = displayName;
-        this.dataType = dataType;
     }
 
-    public enum DataType {
-        STRING, INT, FLOAT, BOOL;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Setting(Type type, String id, String name) {
+        this.type = type;
+        setId(id);
+        setName(name);
+    }
+
+    public enum Type {
+        TEXT, INTEGER, FLOAT, BOOLEAN;
 
         @Override
         public String toString() {
             return this.name().toLowerCase();
         }
     }
-
-
 }

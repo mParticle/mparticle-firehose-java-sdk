@@ -2,35 +2,50 @@ package com.mparticle.sdk.samples;
 
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.MessageProcessor;
-import com.mparticle.sdk.model.eventprocessing.Device;
 import com.mparticle.sdk.model.eventprocessing.EventProcessingContext;
-import com.mparticle.sdk.model.registration.RegistrationRequest;
-import com.mparticle.sdk.model.registration.RegistrationResponse;
-import com.mparticle.sdk.model.registration.Setting;
+import com.mparticle.sdk.model.registration.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class SampleMessageProcessor extends MessageProcessor {
 
     @Override
     public RegistrationResponse processRegistrationRequest(RegistrationRequest request) {
 
-        RegistrationResponse response = new RegistrationResponse();
+        RegistrationResponse response = new RegistrationResponse("GoogleAnalytics");
 
-        response.name="GoogleAnalytics";
-        response.description="Google Analytics Event Forwarder";
+        response.setDescription("Google Analytics Event Forwarder");
 
-        response.settings = new ArrayList<>();
-        response.settings.add(new Setting("apiKey", Setting.DataType.STRING, "API Key"));
-        response.settings.add(new Setting("timezoneUtcOffset", Setting.DataType.INT, "UTC Offset"));
-        response.settings.add(new Setting("enableEnhancedCommerce", Setting.DataType.BOOL, "Enable Enhanced Commerce"));
+        List<Setting> settings = new ArrayList<>();
 
-        response.supportedEvents = Arrays.asList(Event.Type.APP_EVENT);
+        TextSetting apiKey = new TextSetting("apiKey", "API Key");
+        apiKey.setIsRequired(true);
+        settings.add(apiKey);
 
-        response.requiredIdentities = Arrays.asList(UserIdentity.Type.ANDROID_DEVICE_ID, UserIdentity.Type.IOS_IDFV);
+        IntegerSetting timezoneUtcOffset = new IntegerSetting("timezoneUtcOffset", "GMT Offset");
+        timezoneUtcOffset.setIsRequired(true);
+        timezoneUtcOffset.setDefaultValue(-5);
+        timezoneUtcOffset.setMinValue(-12);
+        timezoneUtcOffset.setMaxValue(14);
+        settings.add(timezoneUtcOffset);
 
-        response.maxDataAgeHours = 24;
+        BooleanSetting enableEnhancedCommerce = new BooleanSetting("enableEnhancedCommerce", "Enable Enhanced Commerce");
+        enableEnhancedCommerce.setCheckedValue("yes");
+        enableEnhancedCommerce.setUncheckedValue(null);
+        settings.add(enableEnhancedCommerce);
+
+        FloatSetting samplingPct = new FloatSetting("samplingPct", "Sampling %");
+        samplingPct.setDefaultValue(100.0);
+        samplingPct.setMinValue(0.0);
+        samplingPct.setMaxValue(100.0);
+        settings.add(samplingPct);
+
+        response.setSettings(settings);
+        response.setMaxDataAgeHours(24);
+
+        //response.requiredIdentities = Arrays.asList(UserIdentity.Type.ANDROID_DEVICE_ID, UserIdentity.Type.IOS_IDFV);
 
         return response;
     }
