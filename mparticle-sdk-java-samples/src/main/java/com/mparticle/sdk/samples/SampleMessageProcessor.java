@@ -43,4 +43,9 @@ public class SampleMessageProcessor extends MessageProcessor {
 
         return new EventProcessingResult(event.id, EventProcessingResult.Action.PROCESSED);
     }
+
+    @Override
+    public EventProcessingResult processSessionStartEvent(SessionStartEvent event, EventProcessingContext context) {
+        return new EventProcessingResult(event.id, EventProcessingResult.Action.DISCARDED, 911, "IDFA is missing");
+    }
 }
