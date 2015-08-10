@@ -44,6 +44,7 @@ public class SampleMessageProcessor extends MessageProcessor {
         response.setSettings(settings);
 
         List<Permission> permissions = new ArrayList<>();
+        permissions.add(new LocationPermission());
         permissions.add(new UserIdentityPermission(UserIdentity.Type.IOS_IDFA, UserIdentity.Format.RAW));
         permissions.add(new UserIdentityPermission(UserIdentity.Type.ANDROID_DEVICE_ID, UserIdentity.Format.SHA256));
 

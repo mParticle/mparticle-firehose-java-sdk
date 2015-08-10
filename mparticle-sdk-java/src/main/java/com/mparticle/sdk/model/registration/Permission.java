@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(name="user_identity", value=UserIdentityPermission.class)
+        @JsonSubTypes.Type(name="user_identity", value=UserIdentityPermission.class),
+        @JsonSubTypes.Type(name="location", value=LocationPermission.class)
 })
 public abstract class Permission {
     private final Type type;
@@ -19,7 +20,7 @@ public abstract class Permission {
     }
 
     public enum Type {
-        USER_IDENTITY;
+        USER_IDENTITY, LOCATION;
 
         @Override
         public String toString() {
