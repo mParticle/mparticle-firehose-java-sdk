@@ -3,7 +3,7 @@ package com.mparticle.sdk.tmp;
 import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.model.MessageSerializer;
 import com.mparticle.sdk.model.eventprocessing.*;
-import com.mparticle.sdk.model.registration.RegistrationRequest;
+import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.samples.SampleMessageProcessor;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class TestMain {
 
         try {
 
-            RegistrationRequest request = new RegistrationRequest();
+            ModuleRegistrationRequest request = new ModuleRegistrationRequest();
             String data = m.serialize(request);
             Message response = processor.processMessage(request);
             data = m.serialize(response);
@@ -67,7 +67,7 @@ public class TestMain {
         /*
         SampleMessageProcessor processor = new SampleMessageProcessor();
 
-        RegistrationRequest request = new RegistrationRequest();
+        ModuleRegistrationRequest request = new ModuleRegistrationRequest();
 
         Message response = processor.processMessage(request);
 

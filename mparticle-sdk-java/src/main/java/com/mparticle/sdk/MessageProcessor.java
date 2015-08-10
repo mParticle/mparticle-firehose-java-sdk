@@ -3,8 +3,8 @@ package com.mparticle.sdk;
 import com.mparticle.sdk.model.*;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.model.eventprocessing.EventProcessingContext;
-import com.mparticle.sdk.model.registration.RegistrationRequest;
-import com.mparticle.sdk.model.registration.RegistrationResponse;
+import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
+import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
 
 import java.util.ArrayList;
 
@@ -14,8 +14,8 @@ public abstract class MessageProcessor {
 
         switch (request.type) {
 
-            case REGISTRATION_REQUEST: {
-                return processRegistrationRequest((RegistrationRequest) request);
+            case MODULE_REGISTRATION_REQUEST: {
+                return processRegistrationRequest((ModuleRegistrationRequest) request);
             }
 
             case EVENT_PROCESSING_REQUEST: {
@@ -28,7 +28,7 @@ public abstract class MessageProcessor {
         return null;
     }
 
-    public abstract RegistrationResponse processRegistrationRequest(RegistrationRequest request);
+    public abstract ModuleRegistrationResponse processRegistrationRequest(ModuleRegistrationRequest request);
 
     private EventProcessingResponse processEventStreamRequest(EventProcessingRequest request) {
 
