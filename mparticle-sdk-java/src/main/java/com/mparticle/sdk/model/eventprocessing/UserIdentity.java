@@ -1,7 +1,7 @@
 package com.mparticle.sdk.model.eventprocessing;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.mparticle.sdk.model.Utils;
+import com.mparticle.sdk.Utils;
 
 public class UserIdentity {
 

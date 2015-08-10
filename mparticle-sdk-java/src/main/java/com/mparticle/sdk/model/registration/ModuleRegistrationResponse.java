@@ -3,7 +3,7 @@ package com.mparticle.sdk.model.registration;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.Message;
-import com.mparticle.sdk.model.Utils;
+import com.mparticle.sdk.Utils;
 
 import java.util.List;
 
