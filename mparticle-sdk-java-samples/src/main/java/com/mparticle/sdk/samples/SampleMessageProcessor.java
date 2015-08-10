@@ -6,15 +6,14 @@ import com.mparticle.sdk.model.eventprocessing.EventProcessingContext;
 import com.mparticle.sdk.model.registration.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SampleMessageProcessor extends MessageProcessor {
 
     @Override
-    public RegistrationResponse processRegistrationRequest(RegistrationRequest request) {
+    public ModuleRegistrationResponse processRegistrationRequest(ModuleRegistrationRequest request) {
 
-        RegistrationResponse response = new RegistrationResponse("GoogleAnalytics");
+        ModuleRegistrationResponse response = new ModuleRegistrationResponse("GoogleAnalytics", "1.0");
 
         response.setDescription("Google Analytics Event Forwarder");
 
@@ -43,9 +42,14 @@ public class SampleMessageProcessor extends MessageProcessor {
         settings.add(samplingPct);
 
         response.setSettings(settings);
-        response.setMaxDataAgeHours(24);
 
-        //response.requiredIdentities = Arrays.asList(UserIdentity.Type.ANDROID_DEVICE_ID, UserIdentity.Type.IOS_IDFV);
+        List<Permission> permissions = new ArrayList<>();
+        permissions.add(new UserIdentityPermission(UserIdentity.Type.IOS_IDFA, UserIdentity.Format.RAW));
+        permissions.add(new UserIdentityPermission(UserIdentity.Type.ANDROID_DEVICE_ID, UserIdentity.Format.SHA256));
+
+        response.setPermissions(permissions);
+
+        response.setMaxDataAgeHours(24);
 
         return response;
     }
