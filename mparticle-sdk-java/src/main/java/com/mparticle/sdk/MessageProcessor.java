@@ -2,7 +2,6 @@ package com.mparticle.sdk;
 
 import com.mparticle.sdk.model.*;
 import com.mparticle.sdk.model.eventprocessing.*;
-import com.mparticle.sdk.model.eventprocessing.EventProcessingContext;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
 
@@ -12,7 +11,7 @@ public abstract class MessageProcessor {
 
     public final Message processMessage(Message request) {
 
-        switch (request.type) {
+        switch (request.getType()) {
 
             case MODULE_REGISTRATION_REQUEST: {
                 return processRegistrationRequest((ModuleRegistrationRequest) request);
@@ -35,33 +34,30 @@ public abstract class MessageProcessor {
         EventProcessingResponse response = new EventProcessingResponse();
         response.processingResults = new ArrayList<>();
 
-        EventProcessingContext context = new EventProcessingContext();
-        context.app = request.app;
-        context.device = request.device;
-        context.user = request.user;
-        context.subscription = request.subscription;
+        Event.Context context = new Event.Context(request);
 
-        for (Event e : request.events) {
+        for (Event e : request.getEvents()) {
 
+            e.setContext(context);
             EventProcessingResult result = null;
 
-            switch (e.type) {
+            switch (e.getType()) {
 
-                case APP_EVENT:
-                    result = processAppEvent((AppEvent)e, context);
+                case CUSTOM_EVENT:
+                    result = processCustomEvent((CustomEvent) e);
                     break;
 
                 case SESSION_START_EVENT:
-                    result = processSessionStartEvent((SessionStartEvent) e, context);
+                    result = processSessionStartEvent((SessionStartEvent) e);
                     break;
 
                 case SESSION_END_EVENT:
-                    result = processSessionEndEvent((SessionEndEvent) e, context);
+                    result = processSessionEndEvent((SessionEndEvent) e);
                     break;
             }
 
             if (result == null) {
-                result = new EventProcessingResult(e.id, EventProcessingResult.Action.DISCARDED);
+                result = new EventProcessingResult(e.getId(), EventProcessingResult.Action.DISCARDED);
             }
 
             response.processingResults.add(result);
@@ -70,15 +66,15 @@ public abstract class MessageProcessor {
         return response;
     }
 
-    public EventProcessingResult processSessionStartEvent(SessionStartEvent event, EventProcessingContext context) {
+    public EventProcessingResult processSessionStartEvent(SessionStartEvent event) {
         return null;
     }
 
-    public EventProcessingResult processSessionEndEvent(SessionEndEvent event, EventProcessingContext context) {
+    public EventProcessingResult processSessionEndEvent(SessionEndEvent event) {
         return null;
     }
 
-    public EventProcessingResult processAppEvent(AppEvent event, EventProcessingContext context) {
+    public EventProcessingResult processCustomEvent(CustomEvent event) {
         return null;
     }
 }

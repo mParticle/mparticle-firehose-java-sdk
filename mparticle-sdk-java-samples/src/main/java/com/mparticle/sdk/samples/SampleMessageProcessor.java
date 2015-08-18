@@ -2,7 +2,6 @@ package com.mparticle.sdk.samples;
 
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.MessageProcessor;
-import com.mparticle.sdk.model.eventprocessing.EventProcessingContext;
 import com.mparticle.sdk.model.registration.*;
 
 import java.util.ArrayList;
@@ -70,16 +69,33 @@ public class SampleMessageProcessor extends MessageProcessor {
     }
 
     @Override
-    public EventProcessingResult processAppEvent(AppEvent event, EventProcessingContext context) {
+    public EventProcessingResult processCustomEvent(CustomEvent event) {
 
-//        String apiKey = context.subscription.getStringSetting("apiKey", true, null);
-//        Device.DeviceType deviceType = context.device.deviceType;
+        Subscription sub = event.getContext().getSubscription();
 
-        return new EventProcessingResult(event.id, EventProcessingResult.Action.PROCESSED);
+        if (sub != null) {
+            String apiKey = sub.getStringSetting("apiKey", true, null);
+        }
+
+        RuntimeEnvironment env = event.getContext().getRuntimeEnvironment();
+
+        if (env != null) {
+
+            if (env.isDebug()) {
+                return  new EventProcessingResult(event.getId(), EventProcessingResult.Action.DISCARDED, 0, "Debugging events are ignored");
+            }
+
+            if (env.getType() == RuntimeEnvironment.Type.ANDROID) {
+                AndroidRuntimeEnvironment androidEnv = (AndroidRuntimeEnvironment)env;
+                int androidSdkLevel = androidEnv.getAndroidSdkLevel();
+            }
+        }
+
+        return new EventProcessingResult(event.getId(), EventProcessingResult.Action.PROCESSED);
     }
 
     @Override
-    public EventProcessingResult processSessionStartEvent(SessionStartEvent event, EventProcessingContext context) {
-        return new EventProcessingResult(event.id, EventProcessingResult.Action.DISCARDED, 911, "IDFA is missing");
+    public EventProcessingResult processSessionStartEvent(SessionStartEvent event) {
+        return new EventProcessingResult(event.getId(), EventProcessingResult.Action.DISCARDED, 911, "IDFA is missing");
     }
 }

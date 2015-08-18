@@ -6,12 +6,12 @@ import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.samples.SampleMessageProcessor;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TestMain {
     public static void main(String[] args) {
-        testRegister();
+        testEventProcessing();
     }
 
     private static void testRegister() {
@@ -36,11 +36,13 @@ public class TestMain {
         MessageSerializer m = new MessageSerializer();
 
         EventProcessingRequest batch = new EventProcessingRequest();
-        List<Event> events = new ArrayList<>();
-        events.add(new SessionStartEvent());
-        events.add(new AppEvent());
-        events.add(new SessionEndEvent());
-        batch.events = events;
+
+        List<Event> events = Arrays.asList(
+            new SessionStartEvent(),
+            new CustomEvent(),
+            new SessionEndEvent());
+
+        batch.setEvents(events);
 
         try {
             String data = m.serialize(batch);
@@ -81,10 +83,13 @@ public class TestMain {
         // TODO: create serializer unit tests
 
         EventProcessingRequest batch = new EventProcessingRequest();
-        List<Event> events = new ArrayList<>();
-        events.add(new SessionStartEvent());
-        events.add(new AppEvent());
-        batch.events = events;
+
+        List<Event> events = Arrays.asList(
+                new SessionStartEvent(),
+                new CustomEvent(),
+                new SessionEndEvent());
+
+        batch.setEvents(events);
 
         try {
             String s = m.serialize(batch);
@@ -92,10 +97,10 @@ public class TestMain {
 
             EventProcessingRequest batch2 = m.deserialize(s, EventProcessingRequest.class);
 
-            for (Event ev : batch2.events) {
+            for (Event ev : batch2.getEvents()) {
                 System.out.println();
-                System.out.println(ev.type);
-                System.out.println(ev.id);
+                System.out.println(ev.getType());
+                System.out.println(ev.getId());
             }
 
         } catch (IOException e) {
