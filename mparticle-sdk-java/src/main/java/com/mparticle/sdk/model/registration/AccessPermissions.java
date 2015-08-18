@@ -1,5 +1,6 @@
 package com.mparticle.sdk.model.registration;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public final class AccessPermissions {
     private List<UserIdentityAccessPermission> userIdentityAccessList;
 
     @JsonProperty("allow_access_location")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowAccessLocation;
 
     public List<DeviceIdentityAccessPermission> getDeviceIdentityAccessList() {
