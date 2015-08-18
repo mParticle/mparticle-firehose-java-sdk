@@ -19,13 +19,29 @@ import java.util.UUID;
 })
 public abstract class Message {
 
+    private final Type type;
+
     @JsonProperty(value="id", required=true)
-    public final UUID id;
+    private final UUID id;
 
     @JsonProperty(value="timestamp_ms", required=true)
-    public final long timestamp;
+    private long timestamp;
 
-    public final Type type;
+    public Type getType() {
+        return type;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public Message(Type type) {
         this.type = type;
