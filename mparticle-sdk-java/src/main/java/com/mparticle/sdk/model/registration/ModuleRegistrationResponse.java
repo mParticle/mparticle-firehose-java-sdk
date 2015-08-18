@@ -21,8 +21,8 @@ public class ModuleRegistrationResponse extends Message {
     @JsonProperty("settings")
     private List<Setting> settings;
 
-    @JsonProperty("permissions")
-    private List<Permission> permissions;
+    @JsonProperty("access_permissions")
+    private AccessPermissions accessPermissions;
 
     @JsonProperty("max_data_age_hours")
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
@@ -54,12 +54,12 @@ public class ModuleRegistrationResponse extends Message {
         this.settings = settings;
     }
 
-    public List<Permission> getPermissions() {
-        return permissions;
+    public AccessPermissions getAccessPermissions() {
+        return accessPermissions;
     }
 
-    public void setPermissions(List<Permission> permissions) {
-        this.permissions = permissions;
+    public void setAccessPermissions(AccessPermissions accessPermissions) {
+        this.accessPermissions = accessPermissions;
     }
 
     public String getDescription() {

@@ -6,6 +6,7 @@ import com.mparticle.sdk.model.eventprocessing.EventProcessingContext;
 import com.mparticle.sdk.model.registration.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SampleMessageProcessor extends MessageProcessor {
@@ -43,12 +44,25 @@ public class SampleMessageProcessor extends MessageProcessor {
 
         response.setSettings(settings);
 
-        List<Permission> permissions = new ArrayList<>();
-        permissions.add(new LocationPermission());
-        permissions.add(new UserIdentityPermission(UserIdentity.Type.IOS_IDFA, UserIdentity.Format.RAW));
-        permissions.add(new UserIdentityPermission(UserIdentity.Type.ANDROID_DEVICE_ID, UserIdentity.Format.SHA256));
+        AccessPermissions permissions = new AccessPermissions();
 
-        response.setPermissions(permissions);
+        List<DeviceIdentityAccessPermission> deviceIds = Arrays.asList(
+                new DeviceIdentityAccessPermission(DeviceIdentity.Type.GOOGLE_ADVERTISING_ID, Identity.Encoding.MD5),
+                new DeviceIdentityAccessPermission(DeviceIdentity.Type.IOS_ADVERTISING_ID, Identity.Encoding.MD5)
+        );
+
+        permissions.setDeviceIdentityAccessList(deviceIds);
+
+        List<UserIdentityAccessPermission> userIds = Arrays.asList(
+                new UserIdentityAccessPermission(UserIdentity.Type.MPARTICLE, Identity.Encoding.RAW),
+                new UserIdentityAccessPermission(UserIdentity.Type.FACEBOOK, Identity.Encoding.RAW)
+        );
+
+        permissions.setUserIdentityAccessList(userIds);
+
+        permissions.setAllowAccessLocation(true);
+
+        response.setAccessPermissions(permissions);
 
         response.setMaxDataAgeHours(24);
 

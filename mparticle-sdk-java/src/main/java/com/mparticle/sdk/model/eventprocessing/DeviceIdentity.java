@@ -3,7 +3,7 @@ package com.mparticle.sdk.model.eventprocessing;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public final class UserIdentity extends Identity {
+public final class DeviceIdentity extends Identity {
 
     @JsonProperty(value="type", required=true)
     private final Type type;
@@ -13,7 +13,7 @@ public final class UserIdentity extends Identity {
     }
 
     @JsonCreator
-    public UserIdentity(
+    public DeviceIdentity(
 
             @JsonProperty(value="type", required=true) Type type,
             @JsonProperty(value="encoding", required=true) Identity.Encoding encoding,
@@ -24,16 +24,12 @@ public final class UserIdentity extends Identity {
         this.type = type;
     }
 
+
     public enum Type {
-        OTHER,
-        CUSTOMER,
-        MPARTICLE,
-        FACEBOOK,
-        TWITTER,
-        GOOGLE,
-        MICROSOFT,
-        YAHOO,
-        EMAIL;
+        ANDROID_ID,
+        GOOGLE_ADVERTISING_ID,
+        IOS_ADVERTISING_ID,
+        IOS_VENDOR_ID;
 
         @Override
         public String toString() {

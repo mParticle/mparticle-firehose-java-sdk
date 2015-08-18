@@ -62,7 +62,10 @@ public abstract class Setting {
     }
 
     public enum Type {
-        TEXT, INTEGER, FLOAT, BOOLEAN;
+        TEXT,
+        INTEGER,
+        FLOAT,
+        BOOLEAN;
 
         @Override
         public String toString() {
