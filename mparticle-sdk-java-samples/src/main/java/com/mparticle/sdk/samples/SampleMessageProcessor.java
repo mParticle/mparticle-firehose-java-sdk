@@ -15,25 +15,25 @@ public class SampleMessageProcessor extends MessageProcessor {
 
         ModuleRegistrationResponse response = new ModuleRegistrationResponse("GoogleAnalytics", "1.0");
 
-        AccessPermissions permissions = new AccessPermissions();
+        Permissions permissions = new Permissions();
 
-        List<DeviceIdentityAccessPermission> deviceIds = Arrays.asList(
-                new DeviceIdentityAccessPermission(DeviceIdentity.Type.GOOGLE_ADVERTISING_ID, Identity.Encoding.MD5),
-                new DeviceIdentityAccessPermission(DeviceIdentity.Type.IOS_ADVERTISING_ID, Identity.Encoding.MD5)
+        List<DeviceIdentityPermission> deviceIds = Arrays.asList(
+                new DeviceIdentityPermission(DeviceIdentity.Type.GOOGLE_ADVERTISING_ID, Identity.Encoding.MD5),
+                new DeviceIdentityPermission(DeviceIdentity.Type.IOS_ADVERTISING_ID, Identity.Encoding.MD5)
         );
 
-        permissions.setDeviceIdentityAccessList(deviceIds);
+        permissions.setDeviceIdentities(deviceIds);
 
-        List<UserIdentityAccessPermission> userIds = Arrays.asList(
-                new UserIdentityAccessPermission(UserIdentity.Type.MPARTICLE, Identity.Encoding.RAW),
-                new UserIdentityAccessPermission(UserIdentity.Type.FACEBOOK, Identity.Encoding.RAW)
+        List<UserIdentityPermission> userIds = Arrays.asList(
+                new UserIdentityPermission(UserIdentity.Type.MPARTICLE, Identity.Encoding.RAW),
+                new UserIdentityPermission(UserIdentity.Type.FACEBOOK, Identity.Encoding.RAW)
         );
 
-        permissions.setUserIdentityAccessList(userIds);
+        permissions.setUserIdentities(userIds);
 
         permissions.setAllowAccessLocation(true);
 
-        response.setAccessPermissions(permissions);
+        response.setPermissions(permissions);
 
         EventProcessingRegistration eventProcessingRegistration = new EventProcessingRegistration();
 

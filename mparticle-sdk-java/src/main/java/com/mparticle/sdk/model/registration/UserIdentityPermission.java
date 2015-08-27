@@ -6,7 +6,7 @@ import com.mparticle.sdk.model.eventprocessing.Identity;
 import com.mparticle.sdk.model.eventprocessing.UserIdentity;
 
 
-public class UserIdentityAccessPermission {
+public class UserIdentityPermission {
 
     @JsonProperty(value="type", required=true)
     private final UserIdentity.Type type;
@@ -23,9 +23,9 @@ public class UserIdentityAccessPermission {
     }
 
     @JsonCreator
-    public UserIdentityAccessPermission(
-            @JsonProperty(value="type", required=true) UserIdentity.Type type,
-            @JsonProperty(value="encoding", required=true) Identity.Encoding encoding) {
+    public UserIdentityPermission(
+            @JsonProperty(value = "type", required = true) UserIdentity.Type type,
+            @JsonProperty(value = "encoding", required = true) Identity.Encoding encoding) {
         this.type = type;
         this.encoding = encoding;
     }

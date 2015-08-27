@@ -12,8 +12,8 @@ public class ModuleRegistrationResponse extends Message {
     @JsonProperty(value="version", required=true)
     private String version;
 
-    @JsonProperty("access_permissions")
-    private AccessPermissions accessPermissions;
+    @JsonProperty("permissions")
+    private Permissions permissions;
 
     @JsonProperty("event_processing_registration")
     private EventProcessingRegistration eventProcessingRegistration;
@@ -36,12 +36,12 @@ public class ModuleRegistrationResponse extends Message {
         this.version = version;
     }
 
-    public AccessPermissions getAccessPermissions() {
-        return accessPermissions;
+    public Permissions getPermissions() {
+        return permissions;
     }
 
-    public void setAccessPermissions(AccessPermissions accessPermissions) {
-        this.accessPermissions = accessPermissions;
+    public void setPermissions(Permissions permissions) {
+        this.permissions = permissions;
     }
 
     private ModuleRegistrationResponse() {

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.eventprocessing.DeviceIdentity;
 import com.mparticle.sdk.model.eventprocessing.Identity;
 
-public class DeviceIdentityAccessPermission {
+public class DeviceIdentityPermission {
 
     @JsonProperty(value="type", required=true)
     private final DeviceIdentity.Type type;
@@ -22,9 +22,9 @@ public class DeviceIdentityAccessPermission {
     }
 
     @JsonCreator
-    public DeviceIdentityAccessPermission(
-            @JsonProperty(value="type", required=true) DeviceIdentity.Type type,
-            @JsonProperty(value="encoding", required=true) Identity.Encoding encoding) {
+    public DeviceIdentityPermission(
+            @JsonProperty(value = "type", required = true) DeviceIdentity.Type type,
+            @JsonProperty(value = "encoding", required = true) Identity.Encoding encoding) {
         this.type = type;
         this.encoding = encoding;
     }
