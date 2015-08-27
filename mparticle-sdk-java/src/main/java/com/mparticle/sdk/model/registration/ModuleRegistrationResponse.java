@@ -1,11 +1,8 @@
 package com.mparticle.sdk.model.registration;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.Utils;
-
-import java.util.List;
 
 public class ModuleRegistrationResponse extends Message {
 
@@ -15,18 +12,11 @@ public class ModuleRegistrationResponse extends Message {
     @JsonProperty(value="version", required=true)
     private String version;
 
-    @JsonProperty("description")
-    private String description;
-
-    @JsonProperty("settings")
-    private List<Setting> settings;
-
     @JsonProperty("access_permissions")
     private AccessPermissions accessPermissions;
 
-    @JsonProperty("max_data_age_hours")
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-    private int maxDataAgeHours;
+    @JsonProperty("event_processing_registration")
+    private EventProcessingRegistration eventProcessingRegistration;
 
     public String getName() {
         return name;
@@ -46,14 +36,6 @@ public class ModuleRegistrationResponse extends Message {
         this.version = version;
     }
 
-    public List<Setting> getSettings() {
-        return settings;
-    }
-
-    public void setSettings(List<Setting> settings) {
-        this.settings = settings;
-    }
-
     public AccessPermissions getAccessPermissions() {
         return accessPermissions;
     }
@@ -61,23 +43,6 @@ public class ModuleRegistrationResponse extends Message {
     public void setAccessPermissions(AccessPermissions accessPermissions) {
         this.accessPermissions = accessPermissions;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getMaxDataAgeHours() {
-        return maxDataAgeHours;
-    }
-
-    public void setMaxDataAgeHours(int maxDataAgeHours) {
-        this.maxDataAgeHours = maxDataAgeHours;
-    }
-
 
     private ModuleRegistrationResponse() {
         super(Message.Type.MODULE_REGISTRATION_RESPONSE);
@@ -87,5 +52,13 @@ public class ModuleRegistrationResponse extends Message {
         this();
         setName(name);
         setVersion(version);
+    }
+
+    public EventProcessingRegistration getEventProcessingRegistration() {
+        return eventProcessingRegistration;
+    }
+
+    public void setEventProcessingRegistration(EventProcessingRegistration eventProcessingRegistration) {
+        this.eventProcessingRegistration = eventProcessingRegistration;
     }
 }

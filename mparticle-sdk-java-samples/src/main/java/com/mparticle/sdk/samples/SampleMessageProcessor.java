@@ -15,34 +15,6 @@ public class SampleMessageProcessor extends MessageProcessor {
 
         ModuleRegistrationResponse response = new ModuleRegistrationResponse("GoogleAnalytics", "1.0");
 
-        response.setDescription("Google Analytics Event Forwarder");
-
-        List<Setting> settings = new ArrayList<>();
-
-        TextSetting apiKey = new TextSetting("apiKey", "API Key");
-        apiKey.setIsRequired(true);
-        settings.add(apiKey);
-
-        IntegerSetting timezoneUtcOffset = new IntegerSetting("timezoneUtcOffset", "GMT Offset");
-        timezoneUtcOffset.setIsRequired(true);
-        timezoneUtcOffset.setDefaultValue(-5);
-        timezoneUtcOffset.setMinValue(-12);
-        timezoneUtcOffset.setMaxValue(14);
-        settings.add(timezoneUtcOffset);
-
-        BooleanSetting enableEnhancedCommerce = new BooleanSetting("enableEnhancedCommerce", "Enable Enhanced Commerce");
-        enableEnhancedCommerce.setCheckedValue("yes");
-        enableEnhancedCommerce.setUncheckedValue(null);
-        settings.add(enableEnhancedCommerce);
-
-        FloatSetting samplingPct = new FloatSetting("samplingPct", "Sampling %");
-        samplingPct.setDefaultValue(100.0);
-        samplingPct.setMinValue(0.0);
-        samplingPct.setMaxValue(100.0);
-        settings.add(samplingPct);
-
-        response.setSettings(settings);
-
         AccessPermissions permissions = new AccessPermissions();
 
         List<DeviceIdentityAccessPermission> deviceIds = Arrays.asList(
@@ -63,7 +35,37 @@ public class SampleMessageProcessor extends MessageProcessor {
 
         response.setAccessPermissions(permissions);
 
-        response.setMaxDataAgeHours(24);
+        EventProcessingRegistration eventProcessingRegistration = new EventProcessingRegistration();
+
+        eventProcessingRegistration.setDescription("Google Analytics Event Forwarder");
+
+        List<Setting> settings = new ArrayList<>();
+
+        TextSetting apiKey = new TextSetting("apiKey", "API Key");
+        apiKey.setIsRequired(true);
+        settings.add(apiKey);
+
+        IntegerSetting timezoneUtcOffset = new IntegerSetting("timezoneUtcOffset", "GMT Offset");
+        timezoneUtcOffset.setIsRequired(true);
+        timezoneUtcOffset.setDefaultValue(-5);
+        timezoneUtcOffset.setMinValue(-12);
+        timezoneUtcOffset.setMaxValue(14);
+        settings.add(timezoneUtcOffset);
+
+        BooleanSetting enableEnhancedCommerce = new BooleanSetting("enableEnhancedCommerce", "Enable Enhanced Commerce");
+        settings.add(enableEnhancedCommerce);
+
+        FloatSetting samplingPct = new FloatSetting("samplingPct", "Sampling %");
+        samplingPct.setDefaultValue(100.0);
+        samplingPct.setMinValue(0.0);
+        samplingPct.setMaxValue(100.0);
+        settings.add(samplingPct);
+
+        eventProcessingRegistration.setSettings(settings);
+
+        eventProcessingRegistration.setMaxDataAgeHours(24);
+
+        response.setEventProcessingRegistration(eventProcessingRegistration);
 
         return response;
     }
