@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SessionEndEvent extends Event {
 
     @JsonProperty("session_length_ms")
-    public long sessionLength;
+    private long sessionLength;
 
     public long getSessionLength() {
         return sessionLength;
