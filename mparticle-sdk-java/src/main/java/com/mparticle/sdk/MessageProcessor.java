@@ -43,16 +43,24 @@ public abstract class MessageProcessor {
 
             switch (e.getType()) {
 
+                case SESSION_START:
+                    result = processSessionStartEvent((SessionStartEvent) e);
+                    break;
+
+                case SESSION_END:
+                    result = processSessionEndEvent((SessionEndEvent) e);
+                    break;
+
                 case CUSTOM_EVENT:
                     result = processCustomEvent((CustomEvent) e);
                     break;
 
-                case SESSION_START_EVENT:
-                    result = processSessionStartEvent((SessionStartEvent) e);
+                case SCREEN_VIEW:
+                    result = processScreenViewEvent((ScreenViewEvent) e);
                     break;
 
-                case SESSION_END_EVENT:
-                    result = processSessionEndEvent((SessionEndEvent) e);
+                case ERROR:
+                    result = processErrorEvent((ErrorEvent) e);
                     break;
             }
 
@@ -75,6 +83,15 @@ public abstract class MessageProcessor {
     }
 
     public EventProcessingResult processCustomEvent(CustomEvent event) {
+        return null;
+    }
+
+
+    private EventProcessingResult processErrorEvent(ErrorEvent event) {
+        return null;
+    }
+
+    public EventProcessingResult processScreenViewEvent(ScreenViewEvent event) {
         return null;
     }
 }

@@ -16,7 +16,7 @@ public class SessionEndEvent extends Event {
     }
 
     public SessionEndEvent() {
-        super(Type.SESSION_END_EVENT);
+        super(Type.SESSION_END);
     }
 }
 

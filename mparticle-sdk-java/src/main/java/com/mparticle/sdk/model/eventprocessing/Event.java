@@ -10,9 +10,11 @@ import java.util.UUID;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
+        @JsonSubTypes.Type(name="session_start", value=SessionStartEvent.class),
+        @JsonSubTypes.Type(name="session_end", value=SessionEndEvent.class),
         @JsonSubTypes.Type(name="custom_event", value=CustomEvent.class),
-        @JsonSubTypes.Type(name="session_start_event", value=SessionStartEvent.class),
-        @JsonSubTypes.Type(name="session_end_event", value=SessionEndEvent.class),
+        @JsonSubTypes.Type(name="screen_view", value=ScreenViewEvent.class),
+        @JsonSubTypes.Type(name="error", value=ErrorEvent.class),
 })
 public abstract class Event {
 
@@ -90,9 +92,11 @@ public abstract class Event {
     }
 
     public enum Type {
+        SESSION_START,
+        SESSION_END,
         CUSTOM_EVENT,
-        SESSION_START_EVENT,
-        SESSION_END_EVENT;
+        SCREEN_VIEW,
+        ERROR;
 
         @Override
         public String toString() {
