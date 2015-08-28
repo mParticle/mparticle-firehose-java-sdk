@@ -15,6 +15,7 @@ import java.util.UUID;
         @JsonSubTypes.Type(name="custom_event", value=CustomEvent.class),
         @JsonSubTypes.Type(name="screen_view", value=ScreenViewEvent.class),
         @JsonSubTypes.Type(name="error", value=ErrorEvent.class),
+        @JsonSubTypes.Type(name="privacy_setting_change", value=PrivacySettingChangeEvent.class),
 })
 public abstract class Event {
 
@@ -96,7 +97,8 @@ public abstract class Event {
         SESSION_END,
         CUSTOM_EVENT,
         SCREEN_VIEW,
-        ERROR;
+        ERROR,
+        PRIVACY_SETTING_CHANGE;
 
         @Override
         public String toString() {

@@ -62,6 +62,10 @@ public abstract class MessageProcessor {
                 case ERROR:
                     result = processErrorEvent((ErrorEvent) e);
                     break;
+
+                case PRIVACY_SETTING_CHANGE:
+                    result = processPrivacySettingChangeEvent((PrivacySettingChangeEvent) e);
+                    break;
             }
 
             if (result == null) {
@@ -92,6 +96,10 @@ public abstract class MessageProcessor {
     }
 
     public EventProcessingResult processScreenViewEvent(ScreenViewEvent event) {
+        return null;
+    }
+
+    private EventProcessingResult processPrivacySettingChangeEvent(PrivacySettingChangeEvent event) {
         return null;
     }
 }
