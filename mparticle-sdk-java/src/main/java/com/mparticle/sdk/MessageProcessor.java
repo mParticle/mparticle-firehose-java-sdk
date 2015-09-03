@@ -66,6 +66,22 @@ public abstract class MessageProcessor {
                 case PRIVACY_SETTING_CHANGE:
                     result = processPrivacySettingChangeEvent((PrivacySettingChangeEvent) e);
                     break;
+
+                case USER_ATTRIBUTE_CHANGE:
+                    result = processUserAttributeChangeEvent((UserAttributeChangeEvent) e);
+                    break;
+
+                case USER_IDENTITY_CHANGE:
+                    result = processUserIdentityChangeEvent((UserIdentityChangeEvent) e);
+                    break;
+
+                case PUSH_SUBSCRIPTION:
+                    result = processPushSubscriptionEvent((PushSubscriptionEvent) e);
+                    break;
+
+                case APPLICATION_STATE_TRANSITION:
+                    result = processApplicationStateTransitionEvent((ApplicationStateTransitionEvent) e);
+                    break;
             }
 
             if (result == null) {
@@ -76,6 +92,22 @@ public abstract class MessageProcessor {
         }
 
         return response;
+    }
+
+    private EventProcessingResult processApplicationStateTransitionEvent(ApplicationStateTransitionEvent event) {
+        return null;
+    }
+
+    private EventProcessingResult processPushSubscriptionEvent(PushSubscriptionEvent event) {
+        return null;
+    }
+
+    public EventProcessingResult processUserIdentityChangeEvent(UserIdentityChangeEvent event) {
+        return null;
+    }
+
+    public EventProcessingResult processUserAttributeChangeEvent(UserAttributeChangeEvent event) {
+        return null;
     }
 
     public EventProcessingResult processSessionStartEvent(SessionStartEvent event) {
@@ -89,7 +121,6 @@ public abstract class MessageProcessor {
     public EventProcessingResult processCustomEvent(CustomEvent event) {
         return null;
     }
-
 
     private EventProcessingResult processErrorEvent(ErrorEvent event) {
         return null;

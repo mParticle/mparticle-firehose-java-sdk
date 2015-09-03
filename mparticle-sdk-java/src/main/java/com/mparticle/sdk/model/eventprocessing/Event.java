@@ -16,6 +16,10 @@ import java.util.UUID;
         @JsonSubTypes.Type(name="screen_view", value=ScreenViewEvent.class),
         @JsonSubTypes.Type(name="error", value=ErrorEvent.class),
         @JsonSubTypes.Type(name="privacy_setting_change", value=PrivacySettingChangeEvent.class),
+        @JsonSubTypes.Type(name="user_attribute_change", value=UserAttributeChangeEvent.class),
+        @JsonSubTypes.Type(name="user_identity_change", value=UserIdentityChangeEvent.class),
+        @JsonSubTypes.Type(name="push_subscription", value=PushSubscriptionEvent.class),
+        @JsonSubTypes.Type(name="application_state_transition", value=ApplicationStateTransitionEvent.class),
 })
 public abstract class Event {
 
@@ -98,7 +102,11 @@ public abstract class Event {
         CUSTOM_EVENT,
         SCREEN_VIEW,
         ERROR,
-        PRIVACY_SETTING_CHANGE;
+        PRIVACY_SETTING_CHANGE,
+        USER_ATTRIBUTE_CHANGE,
+        USER_IDENTITY_CHANGE,
+        PUSH_SUBSCRIPTION,
+        APPLICATION_STATE_TRANSITION;
 
         @Override
         public String toString() {
