@@ -63,6 +63,10 @@ public class SampleMessageProcessor extends MessageProcessor {
 
         eventProcessingRegistration.setSettings(settings);
 
+        List<Event.Type> supportedEventTypes = Arrays.asList(Event.Type.CUSTOM_EVENT, Event.Type.SESSION_START);
+
+        eventProcessingRegistration.setSupportedEventTypes(supportedEventTypes);
+
         eventProcessingRegistration.setMaxDataAgeHours(24);
 
         response.setEventProcessingRegistration(eventProcessingRegistration);

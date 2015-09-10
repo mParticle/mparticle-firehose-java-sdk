@@ -1,10 +1,14 @@
 package com.mparticle.sdk.model.registration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mparticle.sdk.model.Consts;
 import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.Utils;
 
 public class ModuleRegistrationResponse extends Message {
+
+    @JsonProperty("sdk_version")
+    private final String sdkVersion = Consts.SDK_VERSION;
 
     @JsonProperty(value="name", required=true)
     private String name;
