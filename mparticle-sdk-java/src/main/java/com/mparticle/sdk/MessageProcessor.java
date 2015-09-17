@@ -5,11 +5,12 @@ import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class MessageProcessor {
 
-    public final Message processMessage(Message request) {
+    public final Message processMessage(Message request)  throws IOException {
 
         switch (request.getType()) {
 
@@ -18,18 +19,17 @@ public abstract class MessageProcessor {
             }
 
             case EVENT_PROCESSING_REQUEST: {
-                return processEventStreamRequest((EventProcessingRequest) request);
+                return processEventProcessingRequest((EventProcessingRequest) request);
             }
 
+            default:
+                throw new UnsupportedOperationException("The message type \"" + request.getType() + "\" is not supported.");
         }
-
-        // TODO: Return message NotSupported response?
-        return null;
     }
 
     public abstract ModuleRegistrationResponse processRegistrationRequest(ModuleRegistrationRequest request);
 
-    private EventProcessingResponse processEventStreamRequest(EventProcessingRequest request) {
+    public EventProcessingResponse processEventProcessingRequest(EventProcessingRequest request)  throws IOException {
 
         EventProcessingResponse response = new EventProcessingResponse();
         response.processingResults = new ArrayList<>();
@@ -94,43 +94,43 @@ public abstract class MessageProcessor {
         return response;
     }
 
-    private EventProcessingResult processApplicationStateTransitionEvent(ApplicationStateTransitionEvent event) {
+    public EventProcessingResult processApplicationStateTransitionEvent(ApplicationStateTransitionEvent event)  throws IOException {
         return null;
     }
 
-    private EventProcessingResult processPushSubscriptionEvent(PushSubscriptionEvent event) {
+    public EventProcessingResult processPushSubscriptionEvent(PushSubscriptionEvent event)  throws IOException {
         return null;
     }
 
-    public EventProcessingResult processUserIdentityChangeEvent(UserIdentityChangeEvent event) {
+    public EventProcessingResult processUserIdentityChangeEvent(UserIdentityChangeEvent event)  throws IOException {
         return null;
     }
 
-    public EventProcessingResult processUserAttributeChangeEvent(UserAttributeChangeEvent event) {
+    public EventProcessingResult processUserAttributeChangeEvent(UserAttributeChangeEvent event)  throws IOException {
         return null;
     }
 
-    public EventProcessingResult processSessionStartEvent(SessionStartEvent event) {
+    public EventProcessingResult processSessionStartEvent(SessionStartEvent event)  throws IOException {
         return null;
     }
 
-    public EventProcessingResult processSessionEndEvent(SessionEndEvent event) {
+    public EventProcessingResult processSessionEndEvent(SessionEndEvent event)  throws IOException {
         return null;
     }
 
-    public EventProcessingResult processCustomEvent(CustomEvent event) {
+    public EventProcessingResult processCustomEvent(CustomEvent event)  throws IOException {
         return null;
     }
 
-    private EventProcessingResult processErrorEvent(ErrorEvent event) {
+    public EventProcessingResult processErrorEvent(ErrorEvent event)  throws IOException {
         return null;
     }
 
-    public EventProcessingResult processScreenViewEvent(ScreenViewEvent event) {
+    public EventProcessingResult processScreenViewEvent(ScreenViewEvent event)  throws IOException {
         return null;
     }
 
-    private EventProcessingResult processPrivacySettingChangeEvent(PrivacySettingChangeEvent event) {
+    public EventProcessingResult processPrivacySettingChangeEvent(PrivacySettingChangeEvent event)  throws IOException {
         return null;
     }
 }
