@@ -14,6 +14,7 @@ public class SlackMessageForwarderLambdaEndpoint implements RequestStreamHandler
     public void handleRequest(InputStream input, OutputStream output, Context context) throws IOException {
 
         SlackMessageForwarder processor = new SlackMessageForwarder();
+        processor.setLogger(new LambdaLoggerAdapter(context.getLogger()));
         MessageSerializer serializer = new MessageSerializer();
         Message request = serializer.deserialize(input, Message.class);
         Message response = processor.processMessage(request);

@@ -27,6 +27,7 @@ public abstract class MessageProcessor {
         }
     }
 
+
     public abstract ModuleRegistrationResponse processRegistrationRequest(ModuleRegistrationRequest request);
 
     public EventProcessingResponse processEventProcessingRequest(EventProcessingRequest request)  throws IOException {
@@ -133,4 +134,15 @@ public abstract class MessageProcessor {
     public EventProcessingResult processPrivacySettingChangeEvent(PrivacySettingChangeEvent event)  throws IOException {
         return null;
     }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
+
+    protected final void log(String string) {
+        if (this.logger != null)
+            logger.log(string);
+    }
+
+    private Logger logger;
 }
