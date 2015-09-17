@@ -1,6 +1,5 @@
 package com.mparticle.sdk.model.registration;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.eventprocessing.Event;
 
@@ -18,9 +17,7 @@ public final class EventProcessingRegistration {
     private List<Event.Type> supportedEventTypes;
 
     @JsonProperty("max_data_age_hours")
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-    private int maxDataAgeHours;
-
+    private int maxDataAgeHours = 24;
 
     public String getDescription() {
         return description;
