@@ -27,7 +27,6 @@ public final class UserIdentity extends Identity {
     public enum Type {
         OTHER,
         CUSTOMER,
-        MPARTICLE,
         FACEBOOK,
         TWITTER,
         GOOGLE,
