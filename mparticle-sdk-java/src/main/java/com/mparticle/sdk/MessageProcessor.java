@@ -7,6 +7,7 @@ import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class MessageProcessor {
 
@@ -33,8 +34,8 @@ public abstract class MessageProcessor {
     public EventProcessingResponse processEventProcessingRequest(EventProcessingRequest request)  throws IOException {
 
         EventProcessingResponse response = new EventProcessingResponse();
-        response.processingResults = new ArrayList<>();
-
+        List<EventProcessingResult> processingResults = new ArrayList<>();
+        response.setProcessingResults(processingResults);
         Event.Context context = new Event.Context(request);
 
         for (Event e : request.getEvents()) {
@@ -89,7 +90,7 @@ public abstract class MessageProcessor {
                 result = new EventProcessingResult(e.getId(), EventProcessingResult.Action.DISCARDED);
             }
 
-            response.processingResults.add(result);
+            processingResults.add(result);
         }
 
         return response;

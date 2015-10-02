@@ -76,14 +76,15 @@ public final class SlackMessageForwarder extends MessageProcessor {
     public EventProcessingResponse processEventProcessingRequest(EventProcessingRequest request) throws IOException {
 
         EventProcessingResponse response = new EventProcessingResponse();
-        response.processingResults = new ArrayList<>();
+        List<EventProcessingResult> processingResults = new ArrayList<>();
+        response.setProcessingResults(processingResults);
 
         List<Event> events = request.getEvents();
 
         if (events != null) {
             for (Event e : events) {
                 EventProcessingResult result = new EventProcessingResult(e.getId(), EventProcessingResult.Action.PROCESSED);
-                response.processingResults.add(result);
+                processingResults.add(result);
             }
         }
 
