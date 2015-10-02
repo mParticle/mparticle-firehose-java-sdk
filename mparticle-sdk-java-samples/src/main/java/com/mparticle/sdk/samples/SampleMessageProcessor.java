@@ -76,7 +76,7 @@ public class SampleMessageProcessor extends MessageProcessor {
     @Override
     public EventProcessingResult processCustomEvent(CustomEvent event) {
 
-        Subscription sub = event.getContext().getSubscription();
+        ModuleSubscription sub = event.getContext().getSubscription();
 
         if (sub != null) {
             String apiKey = sub.getStringSetting("apiKey", true, null);

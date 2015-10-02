@@ -102,7 +102,7 @@ public final class SlackMessageForwarder extends MessageProcessor {
         public String icon_url;
     }
 
-    private void postMessage(Subscription subscription, String messageText) throws IOException {
+    private void postMessage(ModuleSubscription subscription, String messageText) throws IOException {
 
         String endpointUrl = subscription.getStringSetting("endpointUrl", true, null);
         String channelName = subscription.getStringSetting("channelName", true, null);

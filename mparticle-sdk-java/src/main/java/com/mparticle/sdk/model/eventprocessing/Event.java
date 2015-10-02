@@ -116,12 +116,12 @@ public abstract class Event {
 
     public static final class Context {
 
-        private final Subscription subscription;
+        private final ModuleSubscription subscription;
         private final List<UserIdentity> userIdentities;
         private final Map<String, String> userAttributes;
         private final RuntimeEnvironment runtimeEnvironment;
 
-        public Subscription getSubscription() {
+        public ModuleSubscription getSubscription() {
             return subscription;
         }
 

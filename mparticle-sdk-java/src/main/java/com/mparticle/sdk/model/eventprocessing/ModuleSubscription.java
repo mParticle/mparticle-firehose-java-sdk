@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
-public class Subscription {
+public class ModuleSubscription {
 
     @JsonProperty(value="id", required=true)
     private int Id;
