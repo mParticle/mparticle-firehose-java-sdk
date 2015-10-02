@@ -25,7 +25,6 @@ public class SampleMessageProcessor extends MessageProcessor {
         permissions.setDeviceIdentities(deviceIds);
 
         List<UserIdentityPermission> userIds = Arrays.asList(
-                new UserIdentityPermission(UserIdentity.Type.MPARTICLE, Identity.Encoding.RAW),
                 new UserIdentityPermission(UserIdentity.Type.FACEBOOK, Identity.Encoding.RAW)
         );
 
