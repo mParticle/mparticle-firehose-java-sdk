@@ -87,7 +87,7 @@ public class SampleMessageProcessor extends MessageProcessor {
         if (env != null) {
 
             if (env.isDebug()) {
-                return  new EventProcessingResult(event.getId(), EventProcessingResult.Action.DISCARDED, 0, "Debugging events are ignored");
+                return  new EventProcessingResult(event.getId(), EventProcessingResult.Action.DISCARDED);
             }
 
             if (env.getType() == RuntimeEnvironment.Type.ANDROID) {
@@ -101,6 +101,6 @@ public class SampleMessageProcessor extends MessageProcessor {
 
     @Override
     public EventProcessingResult processSessionStartEvent(SessionStartEvent event) {
-        return new EventProcessingResult(event.getId(), EventProcessingResult.Action.DISCARDED, 911, "IDFA is missing");
+        return new EventProcessingResult(event.getId(), EventProcessingResult.Action.DISCARDED);
     }
 }
