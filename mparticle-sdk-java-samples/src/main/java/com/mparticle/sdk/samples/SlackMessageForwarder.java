@@ -49,17 +49,17 @@ public final class SlackMessageForwarder extends MessageProcessor {
 
         eventProcessingRegistration.setDescription("Slack Event Forwarder");
 
-        List<Setting> settings = new ArrayList<>();
+        List<Setting> accountSettings = new ArrayList<>();
 
         TextSetting endpointUrl = new TextSetting("endpointUrl", "Endpoint Url");
         endpointUrl.setIsRequired(true);
-        settings.add(endpointUrl);
+        accountSettings.add(endpointUrl);
 
         TextSetting channelName = new TextSetting("channelName", "Channel Name");
         channelName.setIsRequired(true);
-        settings.add(channelName);
+        accountSettings.add(channelName);
 
-        eventProcessingRegistration.setSettings(settings);
+        eventProcessingRegistration.setAccountSettings(accountSettings);
 
         List<Event.Type> supportedEventTypes = Arrays.asList(Event.Type.values());
 
@@ -75,7 +75,7 @@ public final class SlackMessageForwarder extends MessageProcessor {
     @Override
     public EventProcessingResponse processEventProcessingRequest(EventProcessingRequest request) throws IOException {
         EventProcessingResponse response = new EventProcessingResponse();
-        postMessage(request.getSubscription(), serializer.serialize(request));
+        postMessage(request.getAccount(), serializer.serialize(request));
         return response;
     }
 
@@ -89,10 +89,10 @@ public final class SlackMessageForwarder extends MessageProcessor {
         public String icon_url;
     }
 
-    private void postMessage(ModuleSubscription subscription, String messageText) throws IOException {
+    private void postMessage(Account account, String messageText) throws IOException {
 
-        String endpointUrl = subscription.getStringSetting("endpointUrl", true, null);
-        String channelName = subscription.getStringSetting("channelName", true, null);
+        String endpointUrl = account.getStringSetting("endpointUrl", true, null);
+        String channelName = account.getStringSetting("channelName", true, null);
 
         SlackPayload payload = new SlackPayload();
         payload.channel = channelName;

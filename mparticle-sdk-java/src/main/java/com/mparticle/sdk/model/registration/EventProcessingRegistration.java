@@ -10,8 +10,8 @@ public final class EventProcessingRegistration {
     @JsonProperty("description")
     private String description;
 
-    @JsonProperty("settings")
-    private List<Setting> settings;
+    @JsonProperty("account_settings")
+    private List<Setting> accountSettings;
 
     @JsonProperty("supported_event_types")
     private List<Event.Type> supportedEventTypes;
@@ -27,12 +27,12 @@ public final class EventProcessingRegistration {
         this.description = description;
     }
 
-    public List<Setting> getSettings() {
-        return settings;
+    public List<Setting> getAccountSettings() {
+        return accountSettings;
     }
 
-    public void setSettings(List<Setting> settings) {
-        this.settings = settings;
+    public void setAccountSettings(List<Setting> accountSettings) {
+        this.accountSettings = accountSettings;
     }
 
     public List<Event.Type> getSupportedEventTypes() {

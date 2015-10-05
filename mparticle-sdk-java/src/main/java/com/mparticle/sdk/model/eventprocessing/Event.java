@@ -3,6 +3,7 @@ package com.mparticle.sdk.model.eventprocessing;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.mparticle.sdk.model.registration.Account;
 
 import java.util.List;
 import java.util.Map;
@@ -116,13 +117,13 @@ public abstract class Event {
 
     public static final class Context {
 
-        private final ModuleSubscription subscription;
+        private final Account account;
         private final List<UserIdentity> userIdentities;
         private final Map<String, String> userAttributes;
         private final RuntimeEnvironment runtimeEnvironment;
 
-        public ModuleSubscription getSubscription() {
-            return subscription;
+        public Account getAccount() {
+            return account;
         }
 
         public List<UserIdentity> getUserIdentities() {
@@ -138,7 +139,7 @@ public abstract class Event {
         }
 
         public Context(EventProcessingRequest request) {
-            this.subscription = request.getSubscription();
+            this.account = request.getAccount();
             this.userIdentities = request.getUserIdentities();
             this.userAttributes = request.getUserAttributes();
             this.runtimeEnvironment = request.getRuntimeEnvironment();

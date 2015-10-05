@@ -38,29 +38,29 @@ public class SampleMessageProcessor extends MessageProcessor {
 
         eventProcessingRegistration.setDescription("Google Analytics Event Forwarder");
 
-        List<Setting> settings = new ArrayList<>();
+        List<Setting> accountSettings = new ArrayList<>();
 
         TextSetting apiKey = new TextSetting("apiKey", "API Key");
         apiKey.setIsRequired(true);
-        settings.add(apiKey);
+        accountSettings.add(apiKey);
 
         IntegerSetting timezoneUtcOffset = new IntegerSetting("timezoneUtcOffset", "GMT Offset");
         timezoneUtcOffset.setIsRequired(true);
         timezoneUtcOffset.setDefaultValue(-5);
         timezoneUtcOffset.setMinValue(-12);
         timezoneUtcOffset.setMaxValue(14);
-        settings.add(timezoneUtcOffset);
+        accountSettings.add(timezoneUtcOffset);
 
         BooleanSetting enableEnhancedCommerce = new BooleanSetting("enableEnhancedCommerce", "Enable Enhanced Commerce");
-        settings.add(enableEnhancedCommerce);
+        accountSettings.add(enableEnhancedCommerce);
 
         FloatSetting samplingPct = new FloatSetting("samplingPct", "Sampling %");
         samplingPct.setDefaultValue(100.0);
         samplingPct.setMinValue(0.0);
         samplingPct.setMaxValue(100.0);
-        settings.add(samplingPct);
+        accountSettings.add(samplingPct);
 
-        eventProcessingRegistration.setSettings(settings);
+        eventProcessingRegistration.setAccountSettings(accountSettings);
 
         List<Event.Type> supportedEventTypes = Arrays.asList(Event.Type.CUSTOM_EVENT, Event.Type.SESSION_START);
 
@@ -76,10 +76,10 @@ public class SampleMessageProcessor extends MessageProcessor {
     @Override
     public void processCustomEvent(CustomEvent event) {
 
-        ModuleSubscription sub = event.getContext().getSubscription();
+        Account account = event.getContext().getAccount();
 
-        if (sub != null) {
-            String apiKey = sub.getStringSetting("apiKey", true, null);
+        if (account != null) {
+            String apiKey = account.getStringSetting("apiKey", true, null);
         }
 
         RuntimeEnvironment env = event.getContext().getRuntimeEnvironment();

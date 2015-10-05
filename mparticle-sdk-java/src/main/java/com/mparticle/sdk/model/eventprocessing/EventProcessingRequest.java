@@ -2,6 +2,7 @@ package com.mparticle.sdk.model.eventprocessing;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.Message;
+import com.mparticle.sdk.model.registration.Account;
 
 import java.util.List;
 import java.util.Map;
@@ -16,8 +17,8 @@ public class EventProcessingRequest extends Message {
     @JsonProperty("source_id")
     private String sourceId;
 
-    @JsonProperty("subscription")
-    private ModuleSubscription subscription;
+    @JsonProperty("account")
+    private Account account;
 
     @JsonProperty("user_identities")
     private List<UserIdentity> userIdentities;
@@ -39,12 +40,12 @@ public class EventProcessingRequest extends Message {
         this.sourceId = sourceId;
     }
 
-    public ModuleSubscription getSubscription() {
-        return subscription;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setSubscription(ModuleSubscription subscription) {
-        this.subscription = subscription;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public List<UserIdentity> getUserIdentities() {

@@ -1,36 +1,35 @@
-package com.mparticle.sdk.model.eventprocessing;
+package com.mparticle.sdk.model.registration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
-public class ModuleSubscription {
+public class Account {
 
-    @JsonProperty(value="id", required=true)
-    private int Id;
+    @JsonProperty(value="account_id", required=true)
+    private String accountId;
 
-    @JsonProperty("settings")
-    private Map<String, String> settings;
+    @JsonProperty("account_settings")
+    private Map<String, String> accountSettings;
 
-
-    public int getId() {
-        return Id;
+    public String getAccountId() {
+        return accountId;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
-    public Map<String, String> getSettings() {
-        return settings;
+    public Map<String, String> getAccountSettings() {
+        return accountSettings;
     }
 
-    public void setSettings(Map<String, String> settings) {
-        this.settings = settings;
+    public void setAccountSettings(Map<String, String> accountSettings) {
+        this.accountSettings = accountSettings;
     }
 
     public String getStringSetting(String name, Boolean required, String defaultValue) {
-        String stringValue = settings.get(name);
+        String stringValue = accountSettings.get(name);
 
         if (stringValue == null) {
             if (required) {
@@ -43,7 +42,7 @@ public class ModuleSubscription {
     }
 
     public Integer getIntegerSetting(String name, Boolean required, Integer defaultValue) {
-        String stringValue = settings.get(name);
+        String stringValue = accountSettings.get(name);
 
         if (stringValue == null) {
             if (required) {
@@ -56,7 +55,7 @@ public class ModuleSubscription {
     }
 
     public Double getFloatSetting(String name, Boolean required, Double defaultValue) {
-        String stringValue = settings.get(name);
+        String stringValue = accountSettings.get(name);
 
         if (stringValue == null) {
             if (required) {
@@ -69,7 +68,7 @@ public class ModuleSubscription {
     }
 
     public Boolean getBooleanSetting(String name, Boolean required, Boolean defaultValue) {
-        String stringValue = settings.get(name);
+        String stringValue = accountSettings.get(name);
 
         if (stringValue == null) {
             if (required) {
