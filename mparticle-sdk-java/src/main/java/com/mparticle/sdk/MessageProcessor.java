@@ -6,8 +6,6 @@ import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class MessageProcessor {
 
@@ -34,106 +32,97 @@ public abstract class MessageProcessor {
     public EventProcessingResponse processEventProcessingRequest(EventProcessingRequest request)  throws IOException {
 
         EventProcessingResponse response = new EventProcessingResponse();
-        List<EventProcessingResult> processingResults = new ArrayList<>();
-        response.setProcessingResults(processingResults);
         Event.Context context = new Event.Context(request);
 
         for (Event e : request.getEvents()) {
 
             e.setContext(context);
-            EventProcessingResult result = null;
 
             switch (e.getType()) {
 
                 case SESSION_START:
-                    result = processSessionStartEvent((SessionStartEvent) e);
+                    processSessionStartEvent((SessionStartEvent) e);
                     break;
 
                 case SESSION_END:
-                    result = processSessionEndEvent((SessionEndEvent) e);
+                    processSessionEndEvent((SessionEndEvent) e);
                     break;
 
                 case CUSTOM_EVENT:
-                    result = processCustomEvent((CustomEvent) e);
+                    processCustomEvent((CustomEvent) e);
                     break;
 
                 case SCREEN_VIEW:
-                    result = processScreenViewEvent((ScreenViewEvent) e);
+                    processScreenViewEvent((ScreenViewEvent) e);
                     break;
 
                 case ERROR:
-                    result = processErrorEvent((ErrorEvent) e);
+                    processErrorEvent((ErrorEvent) e);
                     break;
 
                 case PRIVACY_SETTING_CHANGE:
-                    result = processPrivacySettingChangeEvent((PrivacySettingChangeEvent) e);
+                    processPrivacySettingChangeEvent((PrivacySettingChangeEvent) e);
                     break;
 
                 case USER_ATTRIBUTE_CHANGE:
-                    result = processUserAttributeChangeEvent((UserAttributeChangeEvent) e);
+                    processUserAttributeChangeEvent((UserAttributeChangeEvent) e);
                     break;
 
                 case USER_IDENTITY_CHANGE:
-                    result = processUserIdentityChangeEvent((UserIdentityChangeEvent) e);
+                    processUserIdentityChangeEvent((UserIdentityChangeEvent) e);
                     break;
 
                 case PUSH_SUBSCRIPTION:
-                    result = processPushSubscriptionEvent((PushSubscriptionEvent) e);
+                    processPushSubscriptionEvent((PushSubscriptionEvent) e);
                     break;
 
                 case APPLICATION_STATE_TRANSITION:
-                    result = processApplicationStateTransitionEvent((ApplicationStateTransitionEvent) e);
+                    processApplicationStateTransitionEvent((ApplicationStateTransitionEvent) e);
                     break;
             }
-
-            if (result == null) {
-                result = new EventProcessingResult(e.getId(), EventProcessingResult.Action.DISCARDED);
-            }
-
-            processingResults.add(result);
         }
 
         return response;
     }
 
-    public EventProcessingResult processApplicationStateTransitionEvent(ApplicationStateTransitionEvent event)  throws IOException {
-        return null;
+    public void processApplicationStateTransitionEvent(ApplicationStateTransitionEvent event) throws IOException {
+
     }
 
-    public EventProcessingResult processPushSubscriptionEvent(PushSubscriptionEvent event)  throws IOException {
-        return null;
+    public void processPushSubscriptionEvent(PushSubscriptionEvent event)  throws IOException {
+
     }
 
-    public EventProcessingResult processUserIdentityChangeEvent(UserIdentityChangeEvent event)  throws IOException {
-        return null;
+    public void processUserIdentityChangeEvent(UserIdentityChangeEvent event)  throws IOException {
+
     }
 
-    public EventProcessingResult processUserAttributeChangeEvent(UserAttributeChangeEvent event)  throws IOException {
-        return null;
+    public void processUserAttributeChangeEvent(UserAttributeChangeEvent event)  throws IOException {
+
     }
 
-    public EventProcessingResult processSessionStartEvent(SessionStartEvent event)  throws IOException {
-        return null;
+    public void processSessionStartEvent(SessionStartEvent event)  throws IOException {
+
     }
 
-    public EventProcessingResult processSessionEndEvent(SessionEndEvent event)  throws IOException {
-        return null;
+    public void processSessionEndEvent(SessionEndEvent event)  throws IOException {
+
     }
 
-    public EventProcessingResult processCustomEvent(CustomEvent event)  throws IOException {
-        return null;
+    public void processCustomEvent(CustomEvent event)  throws IOException {
+
     }
 
-    public EventProcessingResult processErrorEvent(ErrorEvent event)  throws IOException {
-        return null;
+    public void processErrorEvent(ErrorEvent event)  throws IOException {
+
     }
 
-    public EventProcessingResult processScreenViewEvent(ScreenViewEvent event)  throws IOException {
-        return null;
+    public void processScreenViewEvent(ScreenViewEvent event)  throws IOException {
+
     }
 
-    public EventProcessingResult processPrivacySettingChangeEvent(PrivacySettingChangeEvent event)  throws IOException {
-        return null;
+    public void processPrivacySettingChangeEvent(PrivacySettingChangeEvent event)  throws IOException {
+
     }
 
     public void setLogger(Logger logger) {

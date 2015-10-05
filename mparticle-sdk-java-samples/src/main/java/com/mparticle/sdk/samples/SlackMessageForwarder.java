@@ -74,22 +74,8 @@ public final class SlackMessageForwarder extends MessageProcessor {
 
     @Override
     public EventProcessingResponse processEventProcessingRequest(EventProcessingRequest request) throws IOException {
-
         EventProcessingResponse response = new EventProcessingResponse();
-        List<EventProcessingResult> processingResults = new ArrayList<>();
-        response.setProcessingResults(processingResults);
-
-        List<Event> events = request.getEvents();
-
-        if (events != null) {
-            for (Event e : events) {
-                EventProcessingResult result = new EventProcessingResult(e.getId(), EventProcessingResult.Action.PROCESSED);
-                processingResults.add(result);
-            }
-        }
-
         postMessage(request.getSubscription(), serializer.serialize(request));
-
         return response;
     }
 

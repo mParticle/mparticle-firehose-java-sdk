@@ -74,7 +74,7 @@ public class SampleMessageProcessor extends MessageProcessor {
     }
 
     @Override
-    public EventProcessingResult processCustomEvent(CustomEvent event) {
+    public void processCustomEvent(CustomEvent event) {
 
         ModuleSubscription sub = event.getContext().getSubscription();
 
@@ -87,7 +87,7 @@ public class SampleMessageProcessor extends MessageProcessor {
         if (env != null) {
 
             if (env.isDebug()) {
-                return  new EventProcessingResult(event.getId(), EventProcessingResult.Action.DISCARDED);
+                return;
             }
 
             if (env.getType() == RuntimeEnvironment.Type.ANDROID) {
@@ -95,12 +95,5 @@ public class SampleMessageProcessor extends MessageProcessor {
                 int androidSdkLevel = androidEnv.getAndroidSdkLevel();
             }
         }
-
-        return new EventProcessingResult(event.getId(), EventProcessingResult.Action.PROCESSED);
-    }
-
-    @Override
-    public EventProcessingResult processSessionStartEvent(SessionStartEvent event) {
-        return new EventProcessingResult(event.getId(), EventProcessingResult.Action.DISCARDED);
     }
 }
