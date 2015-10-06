@@ -7,16 +7,16 @@ import java.util.Map;
 public class Account {
 
     @JsonProperty(value="account_id", required=true)
-    private String accountId;
+    private int accountId;
 
     @JsonProperty("account_settings")
     private Map<String, String> accountSettings;
 
-    public String getAccountId() {
+    public int getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(String accountId) {
+    public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
 
