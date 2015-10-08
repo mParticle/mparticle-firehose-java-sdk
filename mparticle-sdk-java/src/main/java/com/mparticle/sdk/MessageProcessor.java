@@ -26,7 +26,6 @@ public abstract class MessageProcessor {
         }
     }
 
-
     public abstract ModuleRegistrationResponse processRegistrationRequest(ModuleRegistrationRequest request);
 
     public EventProcessingResponse processEventProcessingRequest(EventProcessingRequest request)  throws IOException {

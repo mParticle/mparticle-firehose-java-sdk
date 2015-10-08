@@ -4,7 +4,8 @@ import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.model.MessageSerializer;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
-import com.mparticle.sdk.samples.SampleMessageProcessor;
+import com.mparticle.sdk.samples.SampleExtension;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +18,7 @@ public class TestMain {
 
     private static void testRegister() {
         MessageSerializer m = new MessageSerializer();
-        SampleMessageProcessor processor = new SampleMessageProcessor();
+        SampleExtension processor = new SampleExtension();
 
         try {
 
@@ -50,7 +51,7 @@ public class TestMain {
             System.out.println(data);
             Message request = m.deserialize(data, Message.class);
 
-            SampleMessageProcessor processor = new SampleMessageProcessor();
+            SampleExtension processor = new SampleExtension();
             Message response = processor.processMessage(request);
 
             data = m.serialize(response);
@@ -68,7 +69,7 @@ public class TestMain {
         MessageSerializer m = new MessageSerializer();
 
         /*
-        SampleMessageProcessor processor = new SampleMessageProcessor();
+        SampleExtension processor = new SampleExtension();
 
         ModuleRegistrationRequest request = new ModuleRegistrationRequest();
 
