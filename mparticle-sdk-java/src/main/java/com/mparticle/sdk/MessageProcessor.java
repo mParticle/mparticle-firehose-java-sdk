@@ -1,6 +1,10 @@
 package com.mparticle.sdk;
 
 import com.mparticle.sdk.model.*;
+import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeRequest;
+import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeResponse;
+import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionRequest;
+import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionResponse;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
@@ -13,13 +17,17 @@ public abstract class MessageProcessor {
 
         switch (request.getType()) {
 
-            case MODULE_REGISTRATION_REQUEST: {
+            case MODULE_REGISTRATION_REQUEST:
                 return processRegistrationRequest((ModuleRegistrationRequest) request);
-            }
 
-            case EVENT_PROCESSING_REQUEST: {
+            case EVENT_PROCESSING_REQUEST:
                 return processEventProcessingRequest((EventProcessingRequest) request);
-            }
+
+            case AUDIENCE_SUBSCRIPTION_REQUEST:
+                return processAudienceSubscriptionRequest((AudienceSubscriptionRequest) request);
+
+            case AUDIENCE_MEMBERSHIP_CHANGE_REQUEST:
+                return processAudienceMembershipChangeRequest((AudienceMembershipChangeRequest) request);
 
             default:
                 throw new UnsupportedOperationException("The message type \"" + request.getType() + "\" is not supported.");
@@ -122,6 +130,14 @@ public abstract class MessageProcessor {
 
     public void processPrivacySettingChangeEvent(PrivacySettingChangeEvent event)  throws IOException {
 
+    }
+
+    public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) {
+        return new AudienceMembershipChangeResponse();
+    }
+
+    public AudienceSubscriptionResponse processAudienceSubscriptionRequest(AudienceSubscriptionRequest request) {
+        return new AudienceSubscriptionResponse();
     }
 
     public void setLogger(Logger logger) {
