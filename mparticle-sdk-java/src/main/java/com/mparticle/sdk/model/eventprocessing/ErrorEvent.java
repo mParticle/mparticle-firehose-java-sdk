@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import java.util.Map;
 
-public class ErrorEvent extends Event {
+public final class ErrorEvent extends Event {
 
     @JsonProperty("message")
     private String message;

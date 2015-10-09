@@ -2,7 +2,7 @@ package com.mparticle.sdk.model.registration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class FloatSetting extends Setting {
+public final class FloatSetting extends Setting {
 
     @JsonProperty("default_value")
     private Double defaultValue;

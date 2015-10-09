@@ -3,12 +3,15 @@ package com.mparticle.sdk.tmp;
 import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.model.MessageSerializer;
 import com.mparticle.sdk.model.eventprocessing.*;
+import com.mparticle.sdk.model.registration.Account;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.samples.SampleExtension;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestMain {
     public static void main(String[] args) {
@@ -38,6 +41,12 @@ public class TestMain {
         MessageSerializer m = new MessageSerializer();
 
         EventProcessingRequest batch = new EventProcessingRequest();
+        Account account = new Account();
+        Map<String,String> settings = new HashMap<>();
+        settings.put("apiKey", "xyz");
+        account.setAccountSettings(settings);
+        batch.setAccount(account);
+        batch.setRuntimeEnvironment(new UnknownRuntimeEnvironment());
 
         List<Event> events = Arrays.asList(
             new SessionStartEvent(),

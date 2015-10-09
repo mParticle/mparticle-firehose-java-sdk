@@ -2,7 +2,7 @@ package com.mparticle.sdk.model.registration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class BooleanSetting extends Setting {
+public final class BooleanSetting extends Setting {
 
     @JsonProperty("checked")
     private boolean isChecked;

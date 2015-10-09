@@ -2,7 +2,7 @@ package com.mparticle.sdk.model.registration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class IntegerSetting extends Setting {
+public final class IntegerSetting extends Setting {
 
     @JsonProperty("default_value")
     private Long defaultValue;

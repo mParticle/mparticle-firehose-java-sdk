@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
-public class Account {
+public final class Account {
 
     @JsonProperty(value="account_id", required=true)
     private int accountId;

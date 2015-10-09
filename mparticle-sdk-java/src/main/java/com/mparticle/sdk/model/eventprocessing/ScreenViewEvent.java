@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
-public class ScreenViewEvent extends Event {
+public final class ScreenViewEvent extends Event {
 
     @JsonProperty(value="screen_name", required=true)
     private String screenName;

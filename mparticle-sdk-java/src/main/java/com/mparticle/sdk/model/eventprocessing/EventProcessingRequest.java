@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class EventProcessingRequest extends Message {
+public final class EventProcessingRequest extends Message {
 
     public EventProcessingRequest() {
         super(Type.EVENT_PROCESSING_REQUEST);
@@ -17,7 +17,7 @@ public class EventProcessingRequest extends Message {
     @JsonProperty("source_id")
     private String sourceId;
 
-    @JsonProperty("account")
+    @JsonProperty(value="account", required=true)
     private Account account;
 
     @JsonProperty("user_identities")

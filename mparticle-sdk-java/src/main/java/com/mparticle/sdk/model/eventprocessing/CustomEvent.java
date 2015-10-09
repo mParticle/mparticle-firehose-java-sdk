@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
-public class CustomEvent extends Event {
+public final class CustomEvent extends Event {
 
     @JsonProperty(value="name", required=true)
     private String name;

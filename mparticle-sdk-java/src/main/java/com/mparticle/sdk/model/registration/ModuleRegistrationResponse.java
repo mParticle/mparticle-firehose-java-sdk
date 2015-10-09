@@ -5,7 +5,7 @@ import com.mparticle.sdk.model.Consts;
 import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.Utils;
 
-public class ModuleRegistrationResponse extends Message {
+public final class ModuleRegistrationResponse extends Message {
 
     @JsonProperty("sdk_version")
     private final String sdkVersion = Consts.SDK_VERSION;
@@ -21,6 +21,9 @@ public class ModuleRegistrationResponse extends Message {
 
     @JsonProperty("event_processing_registration")
     private EventProcessingRegistration eventProcessingRegistration;
+
+    @JsonProperty("audience_processing_registration")
+    private AudienceProcessingRegistration audienceProcessingRegistration;
 
     public String getName() {
         return name;
@@ -48,6 +51,22 @@ public class ModuleRegistrationResponse extends Message {
         this.permissions = permissions;
     }
 
+    public EventProcessingRegistration getEventProcessingRegistration() {
+        return eventProcessingRegistration;
+    }
+
+    public void setEventProcessingRegistration(EventProcessingRegistration eventProcessingRegistration) {
+        this.eventProcessingRegistration = eventProcessingRegistration;
+    }
+
+    public AudienceProcessingRegistration getAudienceProcessingRegistration() {
+        return audienceProcessingRegistration;
+    }
+
+    public void setAudienceProcessingRegistration(AudienceProcessingRegistration audienceProcessingRegistration) {
+        this.audienceProcessingRegistration = audienceProcessingRegistration;
+    }
+
     private ModuleRegistrationResponse() {
         super(Message.Type.MODULE_REGISTRATION_RESPONSE);
     }
@@ -56,13 +75,5 @@ public class ModuleRegistrationResponse extends Message {
         this();
         setName(name);
         setVersion(version);
-    }
-
-    public EventProcessingRegistration getEventProcessingRegistration() {
-        return eventProcessingRegistration;
-    }
-
-    public void setEventProcessingRegistration(EventProcessingRegistration eventProcessingRegistration) {
-        this.eventProcessingRegistration = eventProcessingRegistration;
     }
 }

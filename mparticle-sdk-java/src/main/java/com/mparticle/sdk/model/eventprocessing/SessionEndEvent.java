@@ -2,7 +2,7 @@ package com.mparticle.sdk.model.eventprocessing;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SessionEndEvent extends Event {
+public final class SessionEndEvent extends Event {
 
     @JsonProperty("session_length_ms")
     private long sessionLength;

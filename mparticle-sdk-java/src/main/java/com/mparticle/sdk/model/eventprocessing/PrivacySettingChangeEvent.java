@@ -2,7 +2,7 @@ package com.mparticle.sdk.model.eventprocessing;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class PrivacySettingChangeEvent extends Event {
+public final class PrivacySettingChangeEvent extends Event {
 
     @JsonProperty(value="setting", required=true)
     private PrivacySetting setting;

@@ -6,7 +6,7 @@ import com.mparticle.sdk.model.eventprocessing.Identity;
 import com.mparticle.sdk.model.eventprocessing.UserIdentity;
 
 
-public class UserIdentityPermission {
+public final class UserIdentityPermission {
 
     @JsonProperty(value="type", required=true)
     private final UserIdentity.Type type;
