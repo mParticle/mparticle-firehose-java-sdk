@@ -86,10 +86,18 @@ public abstract class MessageProcessor {
                 case APPLICATION_STATE_TRANSITION:
                     processApplicationStateTransitionEvent((ApplicationStateTransitionEvent) e);
                     break;
+
+                case PUSH_MESSAGE_RECEIPT:
+                    processPushMessageReceiptEvent((PushMessageReceiptEvent) e);
+                    break;
             }
         }
 
         return response;
+    }
+
+    public void processPushMessageReceiptEvent(PushMessageReceiptEvent event) throws IOException {
+
     }
 
     public void processApplicationStateTransitionEvent(ApplicationStateTransitionEvent event) throws IOException {
