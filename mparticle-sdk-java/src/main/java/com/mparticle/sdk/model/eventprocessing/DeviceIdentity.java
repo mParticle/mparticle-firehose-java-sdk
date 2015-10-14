@@ -29,7 +29,9 @@ public final class DeviceIdentity extends Identity {
         ANDROID_ID,
         GOOGLE_ADVERTISING_ID,
         IOS_ADVERTISING_ID,
-        IOS_VENDOR_ID;
+        IOS_VENDOR_ID,
+        GOOGLE_CLOUD_MESSAGING_TOKEN,
+        APPLE_PUSH_NOTIFICATION_TOKEN;
 
         @Override
         public String toString() {
