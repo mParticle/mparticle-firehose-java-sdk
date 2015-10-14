@@ -81,6 +81,9 @@ public final class IosRuntimeEnvironment extends RuntimeEnvironment {
     @JsonProperty("application_package")
     private String applicationPackage;
 
+    @JsonProperty("is_sandboxed")
+    private Boolean isSandboxed;
+
     public List<DeviceIdentity> getIdentities() {
         return Identities;
     }
@@ -279,6 +282,14 @@ public final class IosRuntimeEnvironment extends RuntimeEnvironment {
 
     public void setApplicationPackage(String applicationPackage) {
         this.applicationPackage = applicationPackage;
+    }
+
+    public Boolean getIsSandboxed() {
+        return isSandboxed;
+    }
+
+    public void setIsSandboxed(Boolean isSandboxed) {
+        this.isSandboxed = isSandboxed;
     }
 
     public IosRuntimeEnvironment() {
