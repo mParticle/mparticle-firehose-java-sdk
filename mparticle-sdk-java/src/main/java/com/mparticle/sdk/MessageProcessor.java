@@ -140,11 +140,11 @@ public abstract class MessageProcessor {
 
     }
 
-    public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) {
+    public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) throws IOException {
         return new AudienceMembershipChangeResponse();
     }
 
-    public AudienceSubscriptionResponse processAudienceSubscriptionRequest(AudienceSubscriptionRequest request) {
+    public AudienceSubscriptionResponse processAudienceSubscriptionRequest(AudienceSubscriptionRequest request) throws IOException {
         return new AudienceSubscriptionResponse();
     }
 
