@@ -11,8 +11,8 @@ public final class AudienceMembershipChangeRequest extends Message {
     @JsonProperty(value="account", required=true)
     private Account account;
 
-    @JsonProperty("changes")
-    private List<AudienceMembershipChange> membershipChanges;
+    @JsonProperty("user_profiles")
+    private List<UserProfile> userProfiles;
 
     public Account getAccount() {
         return account;
@@ -22,12 +22,12 @@ public final class AudienceMembershipChangeRequest extends Message {
         this.account = account;
     }
 
-    public List<AudienceMembershipChange> getMembershipChanges() {
-        return membershipChanges;
+    public List<UserProfile> getUserProfiles() {
+        return userProfiles;
     }
 
-    public void setMembershipChanges(List<AudienceMembershipChange> membershipChanges) {
-        this.membershipChanges = membershipChanges;
+    public void setUserProfiles(List<UserProfile> userProfiles) {
+        this.userProfiles = userProfiles;
     }
 
     public AudienceMembershipChangeRequest() {
