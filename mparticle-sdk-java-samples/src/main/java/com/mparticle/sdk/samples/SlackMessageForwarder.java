@@ -3,6 +3,10 @@ package com.mparticle.sdk.samples;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mparticle.sdk.MessageProcessor;
 import com.mparticle.sdk.model.MessageSerializer;
+import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeRequest;
+import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeResponse;
+import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionRequest;
+import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionResponse;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.model.registration.*;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -72,6 +76,12 @@ public final class SlackMessageForwarder extends MessageProcessor {
 
         response.setEventProcessingRegistration(eventProcessingRegistration);
 
+        AudienceProcessingRegistration audienceProcessingRegistration = new AudienceProcessingRegistration();
+        audienceProcessingRegistration.setDescription("Slack Audience Forwarder");
+        audienceProcessingRegistration.setAccountSettings(accountSettings);
+
+        response.setAudienceProcessingRegistration(audienceProcessingRegistration);
+
         return response;
     }
 
@@ -80,6 +90,18 @@ public final class SlackMessageForwarder extends MessageProcessor {
         EventProcessingResponse response = new EventProcessingResponse();
         postMessage(request.getAccount(), serializer.serialize(request));
         return response;
+    }
+
+    @Override
+    public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) throws IOException {
+        postMessage(request.getAccount(), serializer.serialize(request));
+        return super.processAudienceMembershipChangeRequest(request);
+    }
+
+    @Override
+    public AudienceSubscriptionResponse processAudienceSubscriptionRequest(AudienceSubscriptionRequest request) throws IOException {
+        postMessage(request.getAccount(), serializer.serialize(request));
+        return super.processAudienceSubscriptionRequest(request);
     }
 
     private MessageSerializer serializer = new MessageSerializer();
