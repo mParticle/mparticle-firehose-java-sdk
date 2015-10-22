@@ -44,6 +44,13 @@ public class SampleExtension extends MessageProcessor {
 
         eventProcessingRegistration.setDescription("Sample Event Processor");
 
+        // Declare supported environments
+        List<RuntimeEnvironment.Type> runtimeEnvironments = Arrays.asList(
+                RuntimeEnvironment.Type.ANDROID,
+                RuntimeEnvironment.Type.IOS);
+
+        eventProcessingRegistration.setSupportedRuntimeEnvironments(runtimeEnvironments);
+
         // Add account settings that should be provided by the subscribers
         List<Setting> accountSettings = new ArrayList<>();
 

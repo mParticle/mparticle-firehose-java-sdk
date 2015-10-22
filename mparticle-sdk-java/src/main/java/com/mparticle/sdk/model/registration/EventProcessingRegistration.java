@@ -2,6 +2,7 @@ package com.mparticle.sdk.model.registration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.eventprocessing.Event;
+import com.mparticle.sdk.model.eventprocessing.RuntimeEnvironment;
 
 import java.util.List;
 
@@ -15,6 +16,9 @@ public final class EventProcessingRegistration {
 
     @JsonProperty("supported_event_types")
     private List<Event.Type> supportedEventTypes;
+
+    @JsonProperty("supported_runtime_environments")
+    private List<RuntimeEnvironment.Type> supportedRuntimeEnvironments;
 
     @JsonProperty("max_data_age_hours")
     private int maxDataAgeHours = 24;
@@ -49,5 +53,13 @@ public final class EventProcessingRegistration {
 
     public void setMaxDataAgeHours(int maxDataAgeHours) {
         this.maxDataAgeHours = maxDataAgeHours;
+    }
+
+    public List<RuntimeEnvironment.Type> getSupportedRuntimeEnvironments() {
+        return supportedRuntimeEnvironments;
+    }
+
+    public void setSupportedRuntimeEnvironments(List<RuntimeEnvironment.Type> supportedRuntimeEnvironments) {
+        this.supportedRuntimeEnvironments = supportedRuntimeEnvironments;
     }
 }

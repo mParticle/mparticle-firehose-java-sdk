@@ -49,6 +49,9 @@ public final class SlackMessageForwarder extends MessageProcessor {
 
         eventProcessingRegistration.setDescription("Slack Event Forwarder");
 
+        List<RuntimeEnvironment.Type> runtimeEnvironments = Arrays.asList(RuntimeEnvironment.Type.values());
+        eventProcessingRegistration.setSupportedRuntimeEnvironments(runtimeEnvironments);
+
         List<Setting> accountSettings = new ArrayList<>();
 
         TextSetting endpointUrl = new TextSetting("endpointUrl", "Endpoint Url");
