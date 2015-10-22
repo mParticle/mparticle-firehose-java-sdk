@@ -29,42 +29,47 @@ public final class ModuleRegistrationResponse extends Message {
         return name;
     }
 
-    public void setName(String name) {
+    public ModuleRegistrationResponse setName(String name) {
         if (Utils.isNullOrEmpty(name)) throw new IllegalArgumentException();
         this.name = name;
+        return this;
     }
 
     public String getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public ModuleRegistrationResponse setVersion(String version) {
         if (Utils.isNullOrEmpty(version)) throw new IllegalArgumentException();
         this.version = version;
+        return this;
     }
 
     public Permissions getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(Permissions permissions) {
+    public ModuleRegistrationResponse setPermissions(Permissions permissions) {
         this.permissions = permissions;
+        return this;
     }
 
     public EventProcessingRegistration getEventProcessingRegistration() {
         return eventProcessingRegistration;
     }
 
-    public void setEventProcessingRegistration(EventProcessingRegistration eventProcessingRegistration) {
+    public ModuleRegistrationResponse setEventProcessingRegistration(EventProcessingRegistration eventProcessingRegistration) {
         this.eventProcessingRegistration = eventProcessingRegistration;
+        return this;
     }
 
     public AudienceProcessingRegistration getAudienceProcessingRegistration() {
         return audienceProcessingRegistration;
     }
 
-    public void setAudienceProcessingRegistration(AudienceProcessingRegistration audienceProcessingRegistration) {
+    public ModuleRegistrationResponse setAudienceProcessingRegistration(AudienceProcessingRegistration audienceProcessingRegistration) {
         this.audienceProcessingRegistration = audienceProcessingRegistration;
+        return this;
     }
 
     private ModuleRegistrationResponse() {

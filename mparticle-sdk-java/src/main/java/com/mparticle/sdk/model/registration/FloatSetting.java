@@ -20,32 +20,36 @@ public final class FloatSetting extends Setting {
         return defaultValue;
     }
 
-    public void setDefaultValue(Double defaultValue) {
+    public FloatSetting setDefaultValue(Double defaultValue) {
         this.defaultValue = defaultValue;
+        return this;
     }
 
     public Double getMinValue() {
         return minValue;
     }
 
-    public void setMinValue(Double minValue) {
+    public FloatSetting setMinValue(Double minValue) {
         this.minValue = minValue;
+        return this;
     }
 
     public Double getMaxValue() {
         return maxValue;
     }
 
-    public void setMaxValue(Double maxValue) {
+    public FloatSetting setMaxValue(Double maxValue) {
         this.maxValue = maxValue;
+        return this;
     }
 
     public boolean isRequired() {
         return isRequired;
     }
 
-    public void setIsRequired(boolean isRequired) {
+    public FloatSetting setIsRequired(boolean isRequired) {
         this.isRequired = isRequired;
+        return this;
     }
 
     public FloatSetting(String id, String name) {

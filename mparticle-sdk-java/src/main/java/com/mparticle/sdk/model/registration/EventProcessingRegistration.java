@@ -27,39 +27,44 @@ public final class EventProcessingRegistration {
         return description;
     }
 
-    public void setDescription(String description) {
+    public EventProcessingRegistration setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public List<Setting> getAccountSettings() {
         return accountSettings;
     }
 
-    public void setAccountSettings(List<Setting> accountSettings) {
+    public EventProcessingRegistration setAccountSettings(List<Setting> accountSettings) {
         this.accountSettings = accountSettings;
+        return this;
     }
 
     public List<Event.Type> getSupportedEventTypes() {
         return supportedEventTypes;
     }
 
-    public void setSupportedEventTypes(List<Event.Type> supportedEventTypes) {
+    public EventProcessingRegistration setSupportedEventTypes(List<Event.Type> supportedEventTypes) {
         this.supportedEventTypes = supportedEventTypes;
+        return this;
     }
 
     public int getMaxDataAgeHours() {
         return maxDataAgeHours;
     }
 
-    public void setMaxDataAgeHours(int maxDataAgeHours) {
+    public EventProcessingRegistration setMaxDataAgeHours(int maxDataAgeHours) {
         this.maxDataAgeHours = maxDataAgeHours;
+        return this;
     }
 
     public List<RuntimeEnvironment.Type> getSupportedRuntimeEnvironments() {
         return supportedRuntimeEnvironments;
     }
 
-    public void setSupportedRuntimeEnvironments(List<RuntimeEnvironment.Type> supportedRuntimeEnvironments) {
+    public EventProcessingRegistration setSupportedRuntimeEnvironments(List<RuntimeEnvironment.Type> supportedRuntimeEnvironments) {
         this.supportedRuntimeEnvironments = supportedRuntimeEnvironments;
+        return this;
     }
 }

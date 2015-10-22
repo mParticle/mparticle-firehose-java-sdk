@@ -20,23 +20,26 @@ public final class Permissions {
         return deviceIdentities;
     }
 
-    public void setDeviceIdentities(List<DeviceIdentityPermission> deviceIdentities) {
+    public Permissions setDeviceIdentities(List<DeviceIdentityPermission> deviceIdentities) {
         this.deviceIdentities = deviceIdentities;
+        return this;
     }
 
     public List<UserIdentityPermission> getUserIdentities() {
         return userIdentities;
     }
 
-    public void setUserIdentities(List<UserIdentityPermission> userIdentities) {
+    public Permissions setUserIdentities(List<UserIdentityPermission> userIdentities) {
         this.userIdentities = userIdentities;
+        return this;
     }
 
     public boolean isAllowAccessLocation() {
         return allowAccessLocation;
     }
 
-    public void setAllowAccessLocation(boolean allowAccessLocation) {
+    public Permissions setAllowAccessLocation(boolean allowAccessLocation) {
         this.allowAccessLocation = allowAccessLocation;
+        return this;
     }
 }

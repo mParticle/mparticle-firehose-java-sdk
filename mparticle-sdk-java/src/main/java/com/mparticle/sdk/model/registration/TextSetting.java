@@ -17,24 +17,27 @@ public final class TextSetting extends Setting {
         return defaultValue;
     }
 
-    public void setDefaultValue(String defaultValue) {
+    public TextSetting setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
+        return this;
     }
 
     public boolean isRequired() {
         return isRequired;
     }
 
-    public void setIsRequired(boolean isRequired) {
+    public TextSetting setIsRequired(boolean isRequired) {
         this.isRequired = isRequired;
+        return this;
     }
 
     public boolean isConfidential() {
         return isConfidential;
     }
 
-    public void setIsConfidential(boolean isConfidential) {
+    public TextSetting setIsConfidential(boolean isConfidential) {
         this.isConfidential = isConfidential;
+        return this;
     }
 
     public TextSetting(String id, String name) {

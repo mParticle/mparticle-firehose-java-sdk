@@ -19,23 +19,26 @@ public final class AudienceProcessingRegistration {
         return description;
     }
 
-    public void setDescription(String description) {
+    public AudienceProcessingRegistration setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public List<Setting> getAccountSettings() {
         return accountSettings;
     }
 
-    public void setAccountSettings(List<Setting> accountSettings) {
+    public AudienceProcessingRegistration setAccountSettings(List<Setting> accountSettings) {
         this.accountSettings = accountSettings;
+        return this;
     }
 
     public List<Setting> getAudienceSubscriptionSettings() {
         return audienceSubscriptionSettings;
     }
 
-    public void setAudienceSubscriptionSettings(List<Setting> audienceSubscriptionSettings) {
+    public AudienceProcessingRegistration setAudienceSubscriptionSettings(List<Setting> audienceSubscriptionSettings) {
         this.audienceSubscriptionSettings = audienceSubscriptionSettings;
+        return this;
     }
 }

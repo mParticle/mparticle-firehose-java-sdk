@@ -33,26 +33,29 @@ public abstract class Setting {
         return id;
     }
 
-    public void setId(String id) {
+    public Setting setId(String id) {
         if (Utils.isNullOrEmpty(id)) throw new IllegalArgumentException();
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Setting setName(String name) {
         if (Utils.isNullOrEmpty(name)) throw new IllegalArgumentException();
         this.name = name;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Setting setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public Setting(Type type, String id, String name) {

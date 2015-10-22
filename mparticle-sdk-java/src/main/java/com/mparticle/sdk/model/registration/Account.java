@@ -16,16 +16,18 @@ public final class Account {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
+    public Account setAccountId(int accountId) {
         this.accountId = accountId;
+        return this;
     }
 
     public Map<String, String> getAccountSettings() {
         return accountSettings;
     }
 
-    public void setAccountSettings(Map<String, String> accountSettings) {
+    public Account setAccountSettings(Map<String, String> accountSettings) {
         this.accountSettings = accountSettings;
+        return this;
     }
 
     public String getStringSetting(String name, Boolean required, String defaultValue) {

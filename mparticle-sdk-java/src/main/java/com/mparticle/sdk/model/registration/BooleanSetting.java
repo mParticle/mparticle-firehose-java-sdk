@@ -11,8 +11,9 @@ public final class BooleanSetting extends Setting {
         return isChecked;
     }
 
-    public void setIsChecked(boolean checked) {
+    public BooleanSetting setIsChecked(boolean checked) {
         this.isChecked = checked;
+        return this;
     }
 
     public BooleanSetting(String id, String name) {

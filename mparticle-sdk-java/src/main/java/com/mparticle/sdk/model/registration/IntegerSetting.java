@@ -20,44 +20,51 @@ public final class IntegerSetting extends Setting {
         return defaultValue;
     }
 
-    public void setDefaultValue(Long defaultValue) {
+    public IntegerSetting setDefaultValue(Long defaultValue) {
         this.defaultValue = defaultValue;
+        return this;
     }
 
-    public void setDefaultValue(Integer defaultValue) {
+    public IntegerSetting setDefaultValue(Integer defaultValue) {
         this.defaultValue = Long.valueOf(defaultValue);
+        return this;
     }
 
     public Long getMinValue() {
         return minValue;
     }
 
-    public void setMinValue(Long minValue) {
+    public IntegerSetting setMinValue(Long minValue) {
         this.minValue = minValue;
+        return this;
     }
 
-    public void setMinValue(Integer minValue) {
+    public IntegerSetting setMinValue(Integer minValue) {
         this.minValue = Long.valueOf(minValue);
+        return this;
     }
 
     public Long getMaxValue() {
         return maxValue;
     }
 
-    public void setMaxValue(Long maxValue) {
+    public IntegerSetting setMaxValue(Long maxValue) {
         this.maxValue = maxValue;
+        return this;
     }
 
-    public void setMaxValue(Integer maxValue) {
+    public IntegerSetting setMaxValue(Integer maxValue) {
         this.maxValue = Long.valueOf(maxValue);
+        return this;
     }
 
     public boolean isRequired() {
         return isRequired;
     }
 
-    public void setIsRequired(boolean isRequired) {
+    public IntegerSetting setIsRequired(boolean isRequired) {
         this.isRequired = isRequired;
+        return this;
     }
 
     public IntegerSetting(String id, String name) {
