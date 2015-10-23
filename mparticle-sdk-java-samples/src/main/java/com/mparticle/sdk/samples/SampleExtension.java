@@ -1,13 +1,18 @@
 package com.mparticle.sdk.samples;
 
+import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeRequest;
+import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeResponse;
+import com.mparticle.sdk.model.audienceprocessing.UserProfile;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.MessageProcessor;
 import com.mparticle.sdk.model.registration.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class SampleExtension extends MessageProcessor {
 
@@ -66,6 +71,12 @@ public class SampleExtension extends MessageProcessor {
 
         response.setEventProcessingRegistration(eventProcessingRegistration);
 
+        // Register audience stream listener
+        AudienceProcessingRegistration audienceProcessingRegistration = new AudienceProcessingRegistration();
+        audienceProcessingRegistration.setDescription("Sample Audience Processor");
+        audienceProcessingRegistration.setAccountSettings(accountSettings);
+        response.setAudienceProcessingRegistration(audienceProcessingRegistration);
+
         return response;
     }
 
@@ -102,4 +113,33 @@ public class SampleExtension extends MessageProcessor {
             }
         }
     }
+
+    @Override
+    public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) throws IOException {
+
+        for (UserProfile profile : request.getUserProfiles()) {
+
+            // extract emails from the user profile
+            List<String> emails = profile.getUserIdentities().stream()
+                    .filter(id -> id.getType() == UserIdentity.Type.EMAIL && id.getEncoding() == Identity.Encoding.RAW)
+                    .map(Identity::getValue)
+                    .collect(Collectors.toList());
+
+            // get a list of added audiences
+            List<String> added = profile.getAddedAudiences().stream()
+                    .map(a -> a.getAudienceName())
+                    .collect(Collectors.toList());
+
+            // get a list of removed audiences
+            List<String> removed = profile.getAddedAudiences().stream()
+                    .map(a -> a.getAudienceName())
+                    .collect(Collectors.toList());
+
+            // update online user profile store
+            // ...
+        }
+
+        return new AudienceMembershipChangeResponse();
+    }
+
 }

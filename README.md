@@ -68,6 +68,11 @@ public class SampleExtension extends MessageProcessor {
 
         eventProcessingRegistration.setDescription("Sample Event Processor");
 
+        // Declare supported environments
+        List<RuntimeEnvironment.Type> runtimeEnvironments = Arrays.asList(
+                RuntimeEnvironment.Type.ANDROID,
+                RuntimeEnvironment.Type.IOS);
+
         // Add account settings that should be provided by the subscribers
         List<Setting> accountSettings = new ArrayList<>();
 
@@ -82,6 +87,12 @@ public class SampleExtension extends MessageProcessor {
         eventProcessingRegistration.setSupportedEventTypes(supportedEventTypes);
 
         response.setEventProcessingRegistration(eventProcessingRegistration);
+
+        // Register audience stream listener
+        AudienceProcessingRegistration audienceProcessingRegistration = new AudienceProcessingRegistration();
+        audienceProcessingRegistration.setDescription("Sample Audience Processor");
+        audienceProcessingRegistration.setAccountSettings(accountSettings);
+        response.setAudienceProcessingRegistration(audienceProcessingRegistration);
 
         return response;
     }
@@ -120,6 +131,35 @@ public class SampleExtension extends MessageProcessor {
         }
     }
 }
+
+    @Override
+    public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) throws IOException {
+
+        for (UserProfile profile : request.getUserProfiles()) {
+            
+            // extract emails from the user profile
+            List<String> emails = profile.getUserIdentities().stream()
+                    .filter(id -> id.getType() == UserIdentity.Type.EMAIL && id.getEncoding() == Identity.Encoding.RAW)
+                    .map(Identity::getValue)
+                    .collect(Collectors.toList());
+
+            // get a list of added audiences 
+            List<String> added = profile.getAddedAudiences().stream()
+                    .map(a -> a.getAudienceName())
+                    .collect(Collectors.toList());
+
+            // get a list of removed audiences 
+            List<String> removed = profile.getAddedAudiences().stream()
+                    .map(a -> a.getAudienceName())
+                    .collect(Collectors.toList());
+            
+            // update online user profile store
+            // ...
+        }
+
+        return new AudienceMembershipChangeResponse();
+    }
+
 
 ```
 
