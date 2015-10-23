@@ -22,6 +22,7 @@ import java.util.UUID;
         @JsonSubTypes.Type(name="push_subscription", value=PushSubscriptionEvent.class),
         @JsonSubTypes.Type(name="application_state_transition", value=ApplicationStateTransitionEvent.class),
         @JsonSubTypes.Type(name="push_message_receipt", value=PushMessageReceiptEvent.class),
+        @JsonSubTypes.Type(name="product_action", value=ProductActionEvent.class),
 })
 public abstract class Event {
 
@@ -109,7 +110,8 @@ public abstract class Event {
         USER_IDENTITY_CHANGE,
         PUSH_SUBSCRIPTION,
         APPLICATION_STATE_TRANSITION,
-        PUSH_MESSAGE_RECEIPT;
+        PUSH_MESSAGE_RECEIPT,
+        PRODUCT_ACTION;
 
         @Override
         public String toString() {

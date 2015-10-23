@@ -90,10 +90,18 @@ public abstract class MessageProcessor {
                 case PUSH_MESSAGE_RECEIPT:
                     processPushMessageReceiptEvent((PushMessageReceiptEvent) e);
                     break;
+
+                case PRODUCT_ACTION:
+                    processProductActionEvent((ProductActionEvent) e);
+                    break;
             }
         }
 
         return response;
+    }
+
+    private void processProductActionEvent(ProductActionEvent event) throws IOException {
+
     }
 
     public void processPushMessageReceiptEvent(PushMessageReceiptEvent event) throws IOException {

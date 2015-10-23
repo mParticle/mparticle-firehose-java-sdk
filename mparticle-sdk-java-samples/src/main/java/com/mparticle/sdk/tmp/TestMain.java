@@ -8,6 +8,7 @@ import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.samples.SampleExtension;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +16,9 @@ import java.util.Map;
 
 public class TestMain {
     public static void main(String[] args) {
-        testRegister();
-        testEventProcessing();
+        testSerializer();
+        //testRegister();
+        //testEventProcessing();
     }
 
     private static void testRegister() {
@@ -77,28 +79,27 @@ public class TestMain {
 
         MessageSerializer m = new MessageSerializer();
 
-        /*
-        SampleExtension processor = new SampleExtension();
-
-        ModuleRegistrationRequest request = new ModuleRegistrationRequest();
-
-        Message response = processor.processMessage(request);
-
-        try {
-            String s = m.serialize(response);
-            System.out.println(s);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-        // TODO: create serializer unit tests
-
         EventProcessingRequest batch = new EventProcessingRequest();
+
+        ProductActionEvent pa = new ProductActionEvent()
+                .setAction(ProductActionEvent.Action.PURCHASE)
+                .setTaxAmount(new BigDecimal("0.1"))
+                .setTotalAmount(new BigDecimal("100.34"))
+                        .setShippingAmount(new BigDecimal("23.33"))
+                                .setProducts(Arrays.asList(
+                                        new Product()
+                                                .setId("111")
+                                                .setName("Boots")
+                                                .setPrice(new BigDecimal("70.00"))
+                                                .setQuantity(BigDecimal.valueOf(1))
+                                                .setTotalAmount(new BigDecimal("70.00"))
+                                                ));
 
         List<Event> events = Arrays.asList(
                 new SessionStartEvent(),
                 new CustomEvent(),
-                new SessionEndEvent());
+                new SessionEndEvent(),
+                pa);
 
         batch.setEvents(events);
 
