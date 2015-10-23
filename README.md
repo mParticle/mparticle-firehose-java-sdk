@@ -130,7 +130,6 @@ public class SampleExtension extends MessageProcessor {
             }
         }
     }
-}
 
     @Override
     public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) throws IOException {
@@ -159,6 +158,7 @@ public class SampleExtension extends MessageProcessor {
 
         return new AudienceMembershipChangeResponse();
     }
+}
 
 
 ```

@@ -1,5 +1,6 @@
 package com.mparticle.sdk.samples;
 
+import com.mparticle.sdk.model.audienceprocessing.Audience;
 import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeRequest;
 import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeResponse;
 import com.mparticle.sdk.model.audienceprocessing.UserProfile;
@@ -125,14 +126,14 @@ public class SampleExtension extends MessageProcessor {
                     .map(Identity::getValue)
                     .collect(Collectors.toList());
 
-            // get a list of added audiences
+            // get a list of added audience names
             List<String> added = profile.getAddedAudiences().stream()
-                    .map(a -> a.getAudienceName())
+                    .map(Audience::getAudienceName)
                     .collect(Collectors.toList());
 
-            // get a list of removed audiences
-            List<String> removed = profile.getAddedAudiences().stream()
-                    .map(a -> a.getAudienceName())
+            // get a list of removed audience names
+            List<String> removed = profile.getRemovedAudiences().stream()
+                    .map(Audience::getAudienceName)
                     .collect(Collectors.toList());
 
             // update online user profile store
