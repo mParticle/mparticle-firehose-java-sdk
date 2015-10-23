@@ -135,23 +135,23 @@ public class SampleExtension extends MessageProcessor {
     public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) throws IOException {
 
         for (UserProfile profile : request.getUserProfiles()) {
-            
+
             // extract emails from the user profile
             List<String> emails = profile.getUserIdentities().stream()
                     .filter(id -> id.getType() == UserIdentity.Type.EMAIL && id.getEncoding() == Identity.Encoding.RAW)
                     .map(Identity::getValue)
                     .collect(Collectors.toList());
 
-            // get a list of added audiences 
+            // get a list of added audience names
             List<String> added = profile.getAddedAudiences().stream()
-                    .map(a -> a.getAudienceName())
+                    .map(Audience::getAudienceName)
                     .collect(Collectors.toList());
 
-            // get a list of removed audiences 
-            List<String> removed = profile.getAddedAudiences().stream()
-                    .map(a -> a.getAudienceName())
+            // get a list of removed audience names
+            List<String> removed = profile.getRemovedAudiences().stream()
+                    .map(Audience::getAudienceName)
                     .collect(Collectors.toList());
-            
+
             // update online user profile store
             // ...
         }
