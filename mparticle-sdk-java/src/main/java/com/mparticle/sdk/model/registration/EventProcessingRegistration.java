@@ -8,9 +8,6 @@ import java.util.List;
 
 public final class EventProcessingRegistration {
 
-    @JsonProperty("description")
-    private String description;
-
     @JsonProperty("account_settings")
     private List<Setting> accountSettings;
 
@@ -22,15 +19,6 @@ public final class EventProcessingRegistration {
 
     @JsonProperty("max_data_age_hours")
     private int maxDataAgeHours = 24;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public EventProcessingRegistration setDescription(String description) {
-        this.description = description;
-        return this;
-    }
 
     public List<Setting> getAccountSettings() {
         return accountSettings;

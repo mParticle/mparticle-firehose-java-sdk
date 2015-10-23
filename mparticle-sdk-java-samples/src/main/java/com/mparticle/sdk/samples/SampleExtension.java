@@ -24,6 +24,8 @@ public class SampleExtension extends MessageProcessor {
         // Describe your extension
         ModuleRegistrationResponse response = new ModuleRegistrationResponse("SampleExtension", "1.0");
 
+        response.setDescription("Sample Message Processor");
+
         // Request access to specific user and device id's
         Permissions permissions = new Permissions();
 
@@ -47,8 +49,6 @@ public class SampleExtension extends MessageProcessor {
 
         // Register a mobile event stream listener
         EventProcessingRegistration eventProcessingRegistration = new EventProcessingRegistration();
-
-        eventProcessingRegistration.setDescription("Sample Event Processor");
 
         // Declare supported environments
         List<RuntimeEnvironment.Type> runtimeEnvironments = Arrays.asList(
@@ -74,7 +74,6 @@ public class SampleExtension extends MessageProcessor {
 
         // Register audience stream listener
         AudienceProcessingRegistration audienceProcessingRegistration = new AudienceProcessingRegistration();
-        audienceProcessingRegistration.setDescription("Sample Audience Processor");
         audienceProcessingRegistration.setAccountSettings(accountSettings);
         response.setAudienceProcessingRegistration(audienceProcessingRegistration);
 

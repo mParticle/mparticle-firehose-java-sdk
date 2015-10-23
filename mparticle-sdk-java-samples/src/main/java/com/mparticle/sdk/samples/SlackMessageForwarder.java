@@ -27,6 +27,7 @@ public final class SlackMessageForwarder extends MessageProcessor {
     public ModuleRegistrationResponse processRegistrationRequest(ModuleRegistrationRequest request) {
 
         ModuleRegistrationResponse response = new ModuleRegistrationResponse("SlackMessageForwarder", "1.0");
+        response.setDescription("Slack Forwarder");
 
         Permissions permissions = new Permissions();
 
@@ -50,8 +51,6 @@ public final class SlackMessageForwarder extends MessageProcessor {
         response.setPermissions(permissions);
 
         EventProcessingRegistration eventProcessingRegistration = new EventProcessingRegistration();
-
-        eventProcessingRegistration.setDescription("Slack Event Forwarder");
 
         List<RuntimeEnvironment.Type> runtimeEnvironments = Arrays.asList(RuntimeEnvironment.Type.values());
         eventProcessingRegistration.setSupportedRuntimeEnvironments(runtimeEnvironments);
@@ -77,7 +76,6 @@ public final class SlackMessageForwarder extends MessageProcessor {
         response.setEventProcessingRegistration(eventProcessingRegistration);
 
         AudienceProcessingRegistration audienceProcessingRegistration = new AudienceProcessingRegistration();
-        audienceProcessingRegistration.setDescription("Slack Audience Forwarder");
         audienceProcessingRegistration.setAccountSettings(accountSettings);
 
         response.setAudienceProcessingRegistration(audienceProcessingRegistration);

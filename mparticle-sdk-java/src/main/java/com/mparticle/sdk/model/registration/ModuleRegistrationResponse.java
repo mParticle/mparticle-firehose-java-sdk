@@ -13,8 +13,12 @@ public final class ModuleRegistrationResponse extends Message {
     @JsonProperty(value="name", required=true)
     private String name;
 
+    @JsonProperty("description")
+    private String description;
+
     @JsonProperty(value="version", required=true)
     private String version;
+
 
     @JsonProperty("permissions")
     private Permissions permissions;
@@ -32,6 +36,15 @@ public final class ModuleRegistrationResponse extends Message {
     public ModuleRegistrationResponse setName(String name) {
         if (Utils.isNullOrEmpty(name)) throw new IllegalArgumentException();
         this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ModuleRegistrationResponse setDescription(String description) {
+        this.description = description;
         return this;
     }
 
