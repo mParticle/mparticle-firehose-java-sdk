@@ -1,177 +1,26 @@
-# mparticle-sdk-java
+# mParticle Java SDK
 
-A Java library for building and deploying third-party extensions for the [mParticle Data Automation Platform](https://www.mparticle.com).
+A Java library for building and deploying third-party extensions for [mParticle](https://www.mparticle.com) over Amazon's [Lambda platform](https://aws.amazon.com/lambda/).
+
+This library will translate data from mParticle into easy-to-use objects so that you can send that data to your platform of choice. The library also provides the necessary APIs to register your extension with mParticle.
+
+## AWS Lambda
+
+The mParticle Extension API is designed to be deployed to AWS's Lambda platform. Check out [AWS Lambda](https://aws.amazon.com/lambda/) for an overview. You'll also need an AWS account once you're ready to start testing and deploying.
 
 ## Extension Development
 
-### 1. Create AWS Lambda project. 
+Extensions are composed of a *lambda method* that will be called by AWS.
 
-The [AWS Developer Guide](http://docs.aws.amazon.com/lambda/latest/dg/java-gs.html) provides step-by-step instructions for creating  and deploying Lambda functions. 
+#### `RequestStreamHandler`
 
-### 2. Link mParticle SDK.
+This class will typically serve as the entry-point to your code. Create a subclass of `RequestStreamHandler` and override `handleRequest`. You can then specify the fully-qualified class name of your subclass in your AWS Lambda project. From within `handleRequest`, you'll receive batches of events, data, and more from mParticle which you can use this Java SDK to process. For example: 
 
-Releases of mParticle SDK are available in the Maven central repository.
-
-*For Maven:*
-
-```xml
-<dependency>
-  <groupId>com.mparticle</groupId>
-  <artifactId>java-sdk</artifactId>
-  <version>LATEST</version>
-</dependency>
-```
-
-*For Gradle:*
-
-```gradle
-compile 'com.mparticle:java-sdk:+'
-```
-
-### 3. Create Extension. 
-
-A typical extension would inherit from the ```MessageProcessor``` and implement custom event processing logic by overriding one or more callback methods. 
 
 ```java
-public class SampleExtension extends MessageProcessor {
-
-    // This method is called by mParticle servers during publishing process
-    @Override
-    public ModuleRegistrationResponse processRegistrationRequest(ModuleRegistrationRequest request) {
-
-        // Describe your extension
-        ModuleRegistrationResponse response = new ModuleRegistrationResponse("SampleExtension", "1.0");
-
-        // Request access to specific user and device id's
-        Permissions permissions = new Permissions();
-
-        List<DeviceIdentityPermission> deviceIds = Arrays.asList(
-                new DeviceIdentityPermission(DeviceIdentity.Type.GOOGLE_ADVERTISING_ID, Identity.Encoding.MD5),
-                new DeviceIdentityPermission(DeviceIdentity.Type.IOS_ADVERTISING_ID, Identity.Encoding.MD5)
-        );
-
-        permissions.setDeviceIdentities(deviceIds);
-
-        List<UserIdentityPermission> userIds = Arrays.asList(
-                new UserIdentityPermission(UserIdentity.Type.EMAIL, Identity.Encoding.RAW)
-        );
-
-        permissions.setUserIdentities(userIds);
-
-        // Request access to GPS data
-        permissions.setAllowAccessLocation(true);
-
-        response.setPermissions(permissions);
-
-        // Register a mobile event stream listener
-        EventProcessingRegistration eventProcessingRegistration = new EventProcessingRegistration();
-
-        eventProcessingRegistration.setDescription("Sample Event Processor");
-
-        // Declare supported environments
-        List<RuntimeEnvironment.Type> runtimeEnvironments = Arrays.asList(
-                RuntimeEnvironment.Type.ANDROID,
-                RuntimeEnvironment.Type.IOS);
-
-        // Add account settings that should be provided by the subscribers
-        List<Setting> accountSettings = new ArrayList<>();
-
-        TextSetting apiKey = new TextSetting("apiKey", "API Key");
-        apiKey.setIsRequired(true);
-        accountSettings.add(apiKey);
-
-        eventProcessingRegistration.setAccountSettings(accountSettings);
-
-        // Specify supported event types
-        List<Event.Type> supportedEventTypes = Arrays.asList(Event.Type.CUSTOM_EVENT);
-        eventProcessingRegistration.setSupportedEventTypes(supportedEventTypes);
-
-        response.setEventProcessingRegistration(eventProcessingRegistration);
-
-        // Register audience stream listener
-        AudienceProcessingRegistration audienceProcessingRegistration = new AudienceProcessingRegistration();
-        audienceProcessingRegistration.setDescription("Sample Audience Processor");
-        audienceProcessingRegistration.setAccountSettings(accountSettings);
-        response.setAudienceProcessingRegistration(audienceProcessingRegistration);
-
-        return response;
-    }
-
-    @Override
-    public void processCustomEvent(CustomEvent event) {
-
-        // Read account settings
-        Account account = event.getContext().getAccount();
-        String apiKey = account.getStringSetting("apiKey", true, null);
-
-        // Access mobile device information
-        RuntimeEnvironment environment = event.getContext().getRuntimeEnvironment();
-
-        if (environment.getType() == RuntimeEnvironment.Type.IOS) {
-            IosRuntimeEnvironment ios = (IosRuntimeEnvironment)environment;
-            String cpuArchitecture = ios.getCpuArchitecture();
-        }
-
-        // Access device GPS data
-        Location location = event.getLocation();
-
-        if (location != null) {
-            double longitude = location.getLongitude();
-            double latitude = location.getLatitude();
-        }
-
-        // Iterate over custom event attributes
-        Map<String, String> userAttributes = event.getAttributes();
-
-        if (userAttributes != null) {
-            for (Map.Entry<String, String> entry : userAttributes.entrySet()) {
-                String attributeKey = entry.getKey();
-                String attributeValue = entry.getValue();
-            }
-        }
-    }
-
-    @Override
-    public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) throws IOException {
-
-        for (UserProfile profile : request.getUserProfiles()) {
-
-            // extract emails from the user profile
-            List<String> emails = profile.getUserIdentities().stream()
-                    .filter(id -> id.getType() == UserIdentity.Type.EMAIL && id.getEncoding() == Identity.Encoding.RAW)
-                    .map(Identity::getValue)
-                    .collect(Collectors.toList());
-
-            // get a list of added audience names
-            List<String> added = profile.getAddedAudiences().stream()
-                    .map(Audience::getAudienceName)
-                    .collect(Collectors.toList());
-
-            // get a list of removed audience names
-            List<String> removed = profile.getRemovedAudiences().stream()
-                    .map(Audience::getAudienceName)
-                    .collect(Collectors.toList());
-
-            // update online user profile store
-            // ...
-        }
-
-        return new AudienceMembershipChangeResponse();
-    }
-}
-
-
-```
-
-### 4. Add Lambda Function
-
-Below is an example of a typical Lambda function.  
-
-```java
-public class AwsLambdaEndpoint implements RequestStreamHandler {
+public class SampleLambdaEndpoint implements RequestStreamHandler {
     @Override
     public void handleRequest(InputStream input, OutputStream output, Context context) throws IOException {
-
         SampleExtension processor = new SampleExtension();
         MessageSerializer serializer = new MessageSerializer();
         Message request = serializer.deserialize(input, Message.class);
@@ -181,55 +30,77 @@ public class AwsLambdaEndpoint implements RequestStreamHandler {
 }
 ```
 
-Please refer to the [AWS Developer Guide]((http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model.html)) for more details.
+#### `MessageSerializer` and `MessageProcessor`
 
-### 5. Publish Lambda Function
+The snippet above uses the mParticle `MessageSerializer` class to translate incoming data into more usable objects to be processed. It then uses a custom `SampleExtension` class, a subclass of `MessageProcessor`, to actually interpret the data and process in the correct sequence.
 
-The [AWS Developer Guide](http://docs.aws.amazon.com/lambda/latest/dg/java-gs.html) provides step-by-step instructions.
+## Starter Project
 
-The snippet below can be used for running a quick test from the AWS Management Console.
+To really get started with development we recommend [cloning our starter project](https://github.com/mParticle/lambda-extension-sample) and making it your own!
 
-```javascript
-{
-  "type": "module_registration_request",
-  "id": "2126a6ee-a4dc-421d-8b5f-fef1d3a3217c",
-  "timestamp_ms": 1444249312974
+## Including this Library
+
+### Maven/Gradle
+
+The sample extension linked above includes this library via Maven in a Gradle-based build. mParticle makes the binary of this library available via our Maven server which can be added to a Gradle-based build by adding the following custom repository:
+
+```groovy
+repositories {
+    mavenCentral()
+    //for now the SDK is only available via mParticle's Maven server
+    //rather than Maven Central
+    maven { url "http://maven.mparticle.com/" }
 }
 ```
 
-### 6. Publish Extension
+You can then reference the `com.mparticle:java-sdk` artifact:
 
-1. Go to https://www.mparticle.com and log into your account.
-2. Click ```Publish Extension```. 
-3. When prompted enter function ARN and click ```Next```. 
-4. Grant permissions to the provided AWS account to let us call your Lambda function.
-5. Click ```Verify```. If everything goes well you will be presented with the confirmation screen.
-6. Click ```Publish``` to complete the process.   
-
-## Building
-
-```bash
-$ git clone https://github.com/mParticle/mparticle-sdk-java.git
-$ cd mparticle-sdk-java/
-$ gradlew build
+```groovy
+dependencies {
+    compile (
+            'com.amazonaws:aws-lambda-java-core:1.1.0',
+            'com.amazonaws:aws-lambda-java-events:1.1.0',
+            'com.mparticle:java-sdk:1.0.0'
+    )
+}
 ```
+
+#### Publish to a local Maven repo
+
+Rather than using mParticle's Maven server, you can also publish the library to your local Maven server by cloning this repo and invoking the following:
+
+
+    ./gradlew publishToMavenLocal
+
+### Building
+
+You can clone this project and build the jar manually to include in your project's classpath:
+
+    ./gradlew assemble
+    
+We also make the latest jar binaries available in the releases section of this repo.
+
+## More Resources
+
+### Samples
+
+- See the samples in this project
+- Real life example!: [Iterable Extension](https://github.com/mParticle/lambda-iterable)
+- [Starter Project](https://github.com/mParticle/lambda-extension-sample) 
+
+### AWS Documentation
+
+- [Creating and deploying a Lambda project](http://docs.aws.amazon.com/lambda/latest/dg/java-gs.html) 
+- [Lambda Programming Model Overview](http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model.html)
 
 ## Bugs and Feedback
 
-For bugs, questions and discussions please use the [Github Issues](https://github.com/mParticle/mparticle-sdk-java/issues).
-
+For bugs, questions, etc., please use [Github Issues](https://github.com/mParticle/mparticle-sdk-java/issues).
 
 ## Contributing
 
-We encourage contributions through pull requests from forks of this repository. 
-
-- Fork it!
-- Create your feature branch: ```git checkout -b my-new-feature```
-- Commit your changes: ```git commit -am 'Add some feature'```
-- Push to the branch: ```git push origin my-new-feature```
-- Submit a pull request
-
+Contributions welcome! Fork this repo and put up a PR - thanks!
 
 ## License
 
-Apache License, Version 2.0
+[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
