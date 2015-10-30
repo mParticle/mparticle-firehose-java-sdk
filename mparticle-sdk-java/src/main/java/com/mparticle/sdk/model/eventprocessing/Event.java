@@ -24,6 +24,9 @@ import java.util.UUID;
         @JsonSubTypes.Type(name="push_message_receipt", value=PushMessageReceiptEvent.class),
         @JsonSubTypes.Type(name="product_action", value=ProductActionEvent.class),
 })
+/**
+ * Class representing an analytics-based event originating from an mParticle-instrumented application.
+ */
 public abstract class Event {
 
     private final Type type;
@@ -151,17 +154,53 @@ public abstract class Event {
      * Event types.
      */
     public enum Type {
+        /**
+         * This represents when a *user session* starts and the app has come into the foreground.
+         */
         SESSION_START,
+        /**
+         * This represents when a *user session* ends. This will occur once the user has left the app, and the app is in the background for an amount of time. Once the session times-out, the session end event will be fired.
+         */
         SESSION_END,
+        /**
+         * This is the generic event object used throughout all of mParticle's SDKs, used to log discrete events, associate with a name, an event type, and a map of keys and values.
+         */
         CUSTOM_EVENT,
+        /**
+         * This represents when a user views a particular screen or page of an application.
+         */
         SCREEN_VIEW,
+        /**
+         * This type of data represents an error that has occurred in an application, such as an exception, regardless of if it led to an app crash (unhandled) or not (handled).
+         */
         ERROR,
+        /**
+         * This represents when a user has chosen to opt-out or opt-in to a service.
+         */
         PRIVACY_SETTING_CHANGE,
+        /**
+         * The mParticle mobile and Javascript SDKs provide APIs to associate user attributes with the current user. This event represents when a user changes, either by adding, removing, or updated an attribute associated with profile.
+         */
         USER_ATTRIBUTE_CHANGE,
+        /**
+         * Similar to user attributes, users can have 1 or more associated IDs, such as email. This event will fire when a user adds, removed, or updates an identity.
+         */
         USER_IDENTITY_CHANGE,
+        /**
+         * This event represents when a user subscribes to push notifications with Apple's push notification service, or Google's Cloud Messaging service, and will typically contain the associated push token or ID.
+         */
         PUSH_SUBSCRIPTION,
+        /**
+         * When a user cold-starts, resumes, leaves, or force-closes an app, an AST event will be generated. Note that a user may leave and return to an app several times during a single session.
+         */
         APPLICATION_STATE_TRANSITION,
+        /**
+         * This event represents when the device receives a push notification.
+         */
         PUSH_MESSAGE_RECEIPT,
+        /**
+         * This is the event used for all eCommerce-related events. There are several types of product actions, such as purchase and refund.
+         */
         PRODUCT_ACTION;
 
         @Override
