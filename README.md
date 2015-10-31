@@ -10,39 +10,13 @@ The mParticle Extension API is designed to be deployed to AWS's Lambda platform.
 
 ## Extension Development
 
-Extensions are composed of a *lambda method* that will be called by AWS.
-
-#### `RequestStreamHandler`
-
-This class will typically serve as the entry-point to your code. Create a subclass of `RequestStreamHandler` and override `handleRequest`. You can then specify the fully-qualified class name of your subclass in your AWS Lambda project. From within `handleRequest`, you'll receive batches of events, data, and more from mParticle which you can use this Java SDK to process. For example: 
-
-
-```java
-public class SampleLambdaEndpoint implements RequestStreamHandler {
-    @Override
-    public void handleRequest(InputStream input, OutputStream output, Context context) throws IOException {
-        SampleExtension processor = new SampleExtension();
-        MessageSerializer serializer = new MessageSerializer();
-        Message request = serializer.deserialize(input, Message.class);
-        Message response = processor.processMessage(request);
-        serializer.serialize(output, response);
-    }
-}
-```
-
-#### `MessageSerializer` and `MessageProcessor`
-
-The snippet above uses the mParticle `MessageSerializer` class to translate incoming data into more usable objects to be processed. It then uses a custom `SampleExtension` class, a subclass of `MessageProcessor`, to actually interpret the data and process in the correct sequence.
-
-## Starter Project
-
-To really get started with development we recommend [cloning our starter project](https://github.com/mParticle/lambda-extension-sample) and making it your own!
+[See the Wiki of this repo for a tutorial](https://github.com/mParticle/mparticle-sdk-java/wiki).
 
 ## Including this Library
 
 ### Maven/Gradle
 
-The sample extension linked above includes this library via Maven in a Gradle-based build. mParticle makes the binary of this library available via our Maven server which can be added to a Gradle-based build by adding the following custom repository:
+mParticle makes the binary jar of this library available via our Maven server which can be added to a Gradle-based build by adding the following custom repository:
 
 ```groovy
 repositories {
@@ -69,7 +43,6 @@ dependencies {
 
 Rather than using mParticle's Maven server, you can also publish the library to your local Maven server by cloning this repo and invoking the following:
 
-
     ./gradlew publishToMavenLocal
 
 ### Building
@@ -82,11 +55,13 @@ We also make the latest jar binaries available in the releases section of this r
 
 ## More Resources
 
+- [See the wiki](https://github.com/mParticle/mparticle-sdk-java/wiki)
+
 ### Samples
 
-- See the samples in this project
-- Real life example!: [Iterable Extension](https://github.com/mParticle/lambda-iterable)
 - [Starter Project](https://github.com/mParticle/lambda-extension-sample) 
+- See the samples in this project
+- [Real life example](https://github.com/mParticle/lambda-iterable)
 
 ### AWS Documentation
 
