@@ -1,0 +1,13 @@
+{  
+   "type":"audience_subscription_request",
+   "id":"5a5f1cd3-cc7f-4928-a967-44c84a801cac",
+   "timestamp_ms":1446250952589,
+   "account":{  
+      "account_id":123456,
+      "account_settings":{  
+         "Sample Account Setting key":"sample account setting value"
+      }
+   },
+   "audience_id":0,
+   "action":"add"
+}
