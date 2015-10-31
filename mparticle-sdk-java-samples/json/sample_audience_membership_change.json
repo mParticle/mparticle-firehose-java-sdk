@@ -1,1 +1,40 @@
-{"type":"audience_membership_change_request","id":"dc83857d-8d56-4a89-8aeb-8c3356a55ac1","timestamp_ms":1446250539419,"user_profiles":[{"user_identities":[{"type":"email","encoding":"raw","value":"example@example.com"}],"added_audiences":[{"audience_id":12345,"audience_name":"Sample Audience Name","audience_subscription_settings":{"Sample Setting Key":"Sample Setting Value"}}],"removed_audiences":[{"audience_id":123345,"audience_name":"Sample Removed Audience Name","audience_subscription_settings":{"Sample Setting Key":"Sample Setting Value"}}]}]}
+{  
+   "type":"audience_membership_change_request",
+   "id":"88a913ad-d632-4f65-886d-17219995777b",
+   "timestamp_ms":1446250711582,
+   "account":{  
+      "account_id":123456,
+      "account_settings":{  
+         "Sample Account Setting key":"sample account setting value"
+      }
+   },
+   "user_profiles":[  
+      {  
+         "user_identities":[  
+            {  
+               "type":"email",
+               "encoding":"raw",
+               "value":"example@example.com"
+            }
+         ],
+         "added_audiences":[  
+            {  
+               "audience_id":12345,
+               "audience_name":"Sample Audience Name",
+               "audience_subscription_settings":{  
+                  "Sample Setting Key":"Sample Setting Value"
+               }
+            }
+         ],
+         "removed_audiences":[  
+            {  
+               "audience_id":123345,
+               "audience_name":"Sample Removed Audience Name",
+               "audience_subscription_settings":{  
+                  "Sample Setting Key":"Sample Setting Value"
+               }
+            }
+         ]
+      }
+   ]
+}
