@@ -20,37 +20,73 @@ public final class EventProcessingRegistration {
     @JsonProperty("max_data_age_hours")
     private int maxDataAgeHours = 24;
 
+    /**
+     *
+     * @return account settings required by the module
+     */
     public List<Setting> getAccountSettings() {
         return accountSettings;
     }
 
+    /**
+     *
+     * @param accountSettings account settings required by the module
+     * @return this
+     */
     public EventProcessingRegistration setAccountSettings(List<Setting> accountSettings) {
         this.accountSettings = accountSettings;
         return this;
     }
 
+    /**
+     *
+     * @return requested event types
+     */
     public List<Event.Type> getSupportedEventTypes() {
         return supportedEventTypes;
     }
 
+    /**
+     *
+     * @param supportedEventTypes requested event types
+     * @return this
+     */
     public EventProcessingRegistration setSupportedEventTypes(List<Event.Type> supportedEventTypes) {
         this.supportedEventTypes = supportedEventTypes;
         return this;
     }
 
+    /**
+     *
+     * @return acceptable age of the incoming events
+     */
     public int getMaxDataAgeHours() {
         return maxDataAgeHours;
     }
 
+    /**
+     *
+     * @param maxDataAgeHours acceptable age of the incoming events
+     * @return this
+     */
     public EventProcessingRegistration setMaxDataAgeHours(int maxDataAgeHours) {
         this.maxDataAgeHours = maxDataAgeHours;
         return this;
     }
 
+    /**
+     *
+     * @return supported mobile platforms
+     */
     public List<RuntimeEnvironment.Type> getSupportedRuntimeEnvironments() {
         return supportedRuntimeEnvironments;
     }
 
+    /**
+     *
+     * @param supportedRuntimeEnvironments supported mobile platforms
+     * @return this
+     */
     public EventProcessingRegistration setSupportedRuntimeEnvironments(List<RuntimeEnvironment.Type> supportedRuntimeEnvironments) {
         this.supportedRuntimeEnvironments = supportedRuntimeEnvironments;
         return this;

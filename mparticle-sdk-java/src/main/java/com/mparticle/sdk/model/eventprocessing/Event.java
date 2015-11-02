@@ -45,50 +45,98 @@ public abstract class Event {
 
     private Context context;
 
+    /**
+     *
+     * @return event type
+     */
     public Type getType() {
         return type;
     }
 
+    /**
+     *
+     * @return event id
+     */
     public UUID getId() {
         return id;
     }
 
+    /**
+     *
+     * @return time in milliseconds
+     */
     public long getTimestamp() {
         return timestamp;
     }
 
+    /**
+     *
+     * @param timestamp time in milliseconds
+     */
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 
+    /**
+     *
+     * @return source event id
+     */
     public String getSourceId() {
         return sourceId;
     }
 
+    /**
+     *
+     * @param sourceId  source event id
+     */
     public void setSourceId(String sourceId) {
         this.sourceId = sourceId;
     }
 
+    /**
+     *
+     * @return session id
+     */
     public Long getSessionId() {
         return sessionId;
     }
 
+    /**
+     *
+     * @param sessionId session id
+     */
     public void setSessionId(Long sessionId) {
         this.sessionId = sessionId;
     }
 
+    /**
+     *
+     * @return Geo location
+     */
     public Location getLocation() {
         return location;
     }
 
+    /**
+     *
+     * @param location Geo location
+     */
     public void setLocation(Location location) {
         this.location = location;
     }
 
+    /**
+     *
+     * @return account, user, and device information
+     */
     public Context getContext() {
         return context;
     }
 
+    /**
+     *
+     * @param context account, user, and device information
+     */
     public void setContext(Context context) {
         this.context = context;
     }
@@ -99,6 +147,9 @@ public abstract class Event {
         this.timestamp = System.currentTimeMillis();
     }
 
+    /**
+     * Event types.
+     */
     public enum Type {
         SESSION_START,
         SESSION_END,
@@ -119,6 +170,9 @@ public abstract class Event {
         }
     }
 
+    /**
+     * Account, user, and device information.
+     */
     public static final class Context {
 
         private final Account account;

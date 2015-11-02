@@ -15,26 +15,50 @@ public final class CustomEvent extends Event {
     @JsonProperty("attributes")
     private Map<String, String> attributes;
 
+    /**
+     *
+     * @return event name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name event name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return custom event type
+     */
     public CustomType getCustomType() {
         return customType;
     }
 
+    /**
+     *
+     * @param customType  custom event type
+     */
     public void setCustomType(CustomType customType) {
         this.customType = customType;
     }
 
+    /**
+     *
+     * @return event attributes
+     */
     public Map<String, String> getAttributes() {
         return attributes;
     }
 
+    /**
+     *
+     * @param attributes  event attributes
+     */
     public void setAttributes(Map<String, String> attributes) {
         this.attributes = attributes;
     }
@@ -43,6 +67,9 @@ public final class CustomEvent extends Event {
         super(Type.CUSTOM_EVENT);
     }
 
+    /**
+     * Custom event types.
+     */
     public enum CustomType {
         UNKNOWN,
         NAVIGATION,

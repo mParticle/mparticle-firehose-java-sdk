@@ -11,8 +11,24 @@ import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
 
 import java.io.IOException;
 
+/**
+ * Provides basic structure for implementing a custom message processing module.
+ * <p>A typical module
+ * <ol>
+ *     <li>Implements processRegistrationRequest to return registration information about the module.</li>
+ *     <li>Adds custom logic to processEventProcessingRequest and/or event-specific handlers.</li>
+ *     <li>Implements processAudienceMembershipChangeRequest if the module subscribes to the audience data stream.</li>
+ *     <li>Implements processAudienceSubscriptionRequest if the module needs to handle audience subscription updates.</li>
+ * </ol></p>
+ */
 public abstract class MessageProcessor {
 
+    /**
+     * Parses the message and invokes specific handler.
+     * @param request Request message
+     * @return Response message
+     * @throws IOException
+     */
     public final Message processMessage(Message request)  throws IOException {
 
         switch (request.getType()) {
@@ -34,8 +50,26 @@ public abstract class MessageProcessor {
         }
     }
 
+    /**
+     * Handler for processing module registration request.
+     *
+     * <p>Every module is required to specify description, user settings,
+     * supported events, and request access to specific user and device identifiers.</p>
+     *
+     * @param request request
+     * @return response
+     */
     public abstract ModuleRegistrationResponse processRegistrationRequest(ModuleRegistrationRequest request);
 
+    /**
+     * Handler for processing event processing request.
+     *
+     * <p>Base implementation parses the request and calls individual event handlers.</p>
+     *
+     * @param request request
+     * @return response
+     * @throws IOException
+     */
     public EventProcessingResponse processEventProcessingRequest(EventProcessingRequest request)  throws IOException {
 
         EventProcessingResponse response = new EventProcessingResponse();
@@ -100,69 +134,163 @@ public abstract class MessageProcessor {
         return response;
     }
 
-    private void processProductActionEvent(ProductActionEvent event) throws IOException {
+    /**
+     * Handler for processing ProductActionEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
+    public void processProductActionEvent(ProductActionEvent event) throws IOException {
 
     }
 
+    /**
+     * Handler for processing PushMessageReceiptEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processPushMessageReceiptEvent(PushMessageReceiptEvent event) throws IOException {
 
     }
 
+    /**
+     * Handler for processing ApplicationStateTransitionEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processApplicationStateTransitionEvent(ApplicationStateTransitionEvent event) throws IOException {
 
     }
 
+    /**
+     * Handler for processing PushSubscriptionEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processPushSubscriptionEvent(PushSubscriptionEvent event)  throws IOException {
 
     }
 
+    /**
+     * Handler for processing UserIdentityChangeEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processUserIdentityChangeEvent(UserIdentityChangeEvent event)  throws IOException {
 
     }
 
+    /**
+     * Handler for processing UserAttributeChangeEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processUserAttributeChangeEvent(UserAttributeChangeEvent event)  throws IOException {
 
     }
 
+    /**
+     * Handler for processing SessionStartEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processSessionStartEvent(SessionStartEvent event)  throws IOException {
 
     }
 
+    /**
+     * Handler for processing SessionEndEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processSessionEndEvent(SessionEndEvent event)  throws IOException {
 
     }
 
+    /**
+     * Handler for processing CustomEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processCustomEvent(CustomEvent event)  throws IOException {
 
     }
 
+    /**
+     * Handler for processing ErrorEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processErrorEvent(ErrorEvent event)  throws IOException {
 
     }
 
+    /**
+     * Handler for processing ScreenViewEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processScreenViewEvent(ScreenViewEvent event)  throws IOException {
 
     }
 
+    /**
+     * Handler for processing PrivacySettingChangeEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
     public void processPrivacySettingChangeEvent(PrivacySettingChangeEvent event)  throws IOException {
 
     }
 
+    /**
+     * Handler for processing audience membership changes.
+     *
+     * @param request request
+     * @return response
+     * @throws IOException
+     */
     public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) throws IOException {
         return new AudienceMembershipChangeResponse();
     }
 
+    /**
+     * Handler for processing audience subscriptions.
+     *
+     * @param request request
+     * @return response
+     * @throws IOException
+     */
     public AudienceSubscriptionResponse processAudienceSubscriptionRequest(AudienceSubscriptionRequest request) throws IOException {
         return new AudienceSubscriptionResponse();
     }
 
+    /**
+     * Sets logger.
+     * @param logger logger
+     */
     public void setLogger(Logger logger) {
         this.logger = logger;
     }
 
-    protected final void log(String string) {
+    /**
+     * Logs a message.
+     * @param message
+     */
+    protected final void log(String message) {
         if (this.logger != null)
-            logger.log(string);
+            logger.log(message);
     }
 
     private Logger logger;

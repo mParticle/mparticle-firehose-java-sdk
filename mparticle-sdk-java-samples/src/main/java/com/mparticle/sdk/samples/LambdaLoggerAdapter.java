@@ -10,9 +10,9 @@ public final class LambdaLoggerAdapter implements Logger {
     }
 
     @Override
-    public void log(String string) {
+    public void log(String message) {
         if (logger != null) {
-            logger.log(string);
+            logger.log(message);
         }
     }
 

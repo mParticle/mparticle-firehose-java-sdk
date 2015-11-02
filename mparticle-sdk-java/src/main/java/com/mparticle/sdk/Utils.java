@@ -6,7 +6,7 @@ public final class Utils {
     }
 
     /**
-     * <p>Checks if a CharSequence is null or empty.</p>
+     * Checks if a CharSequence is null or empty.
      *
      * @param cs the CharSequence to check
      * @return {@code true} if the CharSequence is null or empty

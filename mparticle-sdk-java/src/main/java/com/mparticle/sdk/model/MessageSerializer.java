@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * Converts messages to JSON and back.
+ */
 public final class MessageSerializer {
 
     private final ObjectMapper mapper;
@@ -28,18 +31,46 @@ public final class MessageSerializer {
         mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
     }
 
+    /**
+     * Deserializes Java class from JSON.
+     * @param inputStream input stream
+     * @param valueType Java class
+     * @param <T> Java class type
+     * @return Java class
+     * @throws IOException
+     */
     public <T> T deserialize(InputStream inputStream, Class<T> valueType) throws IOException {
         return mapper.readValue(inputStream, valueType);
     }
+
+    /**
+     * Deserializes Java class from JSON.
+     * @param content content
+     * @param valueType Java class type to deserialize
+     * @return Java class
+     * @throws IOException
+     */
 
     public <T> T deserialize(String content, Class<T> valueType) throws IOException {
         return mapper.readValue(content, valueType);
     }
 
+    /**
+     * Serializes Java class to JSON.
+     * @param outputStream output stream
+     * @param value Java class to serialize
+     * @throws IOException
+     */
     public void serialize(OutputStream outputStream, Object value) throws IOException {
         mapper.writeValue(outputStream, value);
     }
 
+    /**
+     * Serializes Java class to JSON.
+     * @param value Java class to serialize
+     * @return JSON string
+     * @throws IOException
+     */
     public String serialize(Object value) throws IOException {
         return mapper.writeValueAsString(value);
     }

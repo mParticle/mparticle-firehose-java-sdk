@@ -22,19 +22,37 @@ public final class TextSetting extends Setting {
         return this;
     }
 
+    /**
+     *
+     * @return true if setting is required
+     */
     public boolean isRequired() {
         return isRequired;
     }
 
+    /**
+     *
+     * @param isRequired  true if setting is required
+     * @return this
+     */
     public TextSetting setIsRequired(boolean isRequired) {
         this.isRequired = isRequired;
         return this;
     }
 
+    /**
+     *
+     * @return true if setting must be masked in UI
+     */
     public boolean isConfidential() {
         return isConfidential;
     }
 
+    /**
+     *
+     * @param isConfidential true if setting must be masked in UI
+     * @return this
+     */
     public TextSetting setIsConfidential(boolean isConfidential) {
         this.isConfidential = isConfidential;
         return this;

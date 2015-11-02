@@ -3,6 +3,9 @@ package com.mparticle.sdk.model.eventprocessing;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
+/**
+ * Android device information.
+ */
 public final class AndroidRuntimeEnvironment extends RuntimeEnvironment {
 
     @JsonProperty("identities")

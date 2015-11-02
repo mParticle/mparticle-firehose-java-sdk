@@ -39,20 +39,39 @@ public abstract class Setting {
         return this;
     }
 
+    /**
+     *
+     * @return setting name
+     */
     public String getName() {
         return name;
     }
 
-    public Setting setName(String name) {
+    /**
+     *
+     * @param name setting name
+     * @return this
+     * @throws IllegalArgumentException
+     */
+    public Setting setName(String name) throws IllegalArgumentException {
         if (Utils.isNullOrEmpty(name)) throw new IllegalArgumentException();
         this.name = name;
         return this;
     }
 
+    /**
+     *
+     * @return setting description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description  setting description
+     * @return this
+     */
     public Setting setDescription(String description) {
         this.description = description;
         return this;
@@ -64,10 +83,25 @@ public abstract class Setting {
         setName(name);
     }
 
+    /**
+     * Available setting types.
+     */
     public enum Type {
+        /**
+         * Text setting
+         */
         TEXT,
+        /**
+         * Integer setting
+         */
         INTEGER,
+        /**
+         * Floating point setting
+         */
         FLOAT,
+        /**
+         * Boolean setting
+         */
         BOOLEAN;
 
         @Override

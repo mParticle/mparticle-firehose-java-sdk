@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+/**
+ * iOS device information.
+ */
 public final class IosRuntimeEnvironment extends RuntimeEnvironment {
 
     @JsonProperty("identities")

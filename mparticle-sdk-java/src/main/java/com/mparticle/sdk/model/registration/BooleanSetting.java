@@ -7,10 +7,19 @@ public final class BooleanSetting extends Setting {
     @JsonProperty("checked")
     private boolean isChecked;
 
+    /**
+     *
+     * @return true if set by default
+     */
     public boolean isChecked() {
         return isChecked;
     }
 
+    /**
+     *
+     * @param checked true if set by default
+     * @return this
+     */
     public BooleanSetting setIsChecked(boolean checked) {
         this.isChecked = checked;
         return this;

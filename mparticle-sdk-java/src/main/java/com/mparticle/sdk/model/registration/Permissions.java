@@ -16,28 +16,55 @@ public final class Permissions {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowAccessLocation;
 
+    /**
+     *
+     * @return requested device identities
+     */
     public List<DeviceIdentityPermission> getDeviceIdentities() {
         return deviceIdentities;
     }
 
+    /**
+     *
+     * @param deviceIdentities requested device identities
+     * @return this
+     */
     public Permissions setDeviceIdentities(List<DeviceIdentityPermission> deviceIdentities) {
         this.deviceIdentities = deviceIdentities;
         return this;
     }
 
+    /**
+     *
+     * @return requested user identities
+     */
     public List<UserIdentityPermission> getUserIdentities() {
         return userIdentities;
     }
 
+    /**
+     *
+     * @param userIdentities requested user identities
+     * @return
+     */
     public Permissions setUserIdentities(List<UserIdentityPermission> userIdentities) {
         this.userIdentities = userIdentities;
         return this;
     }
 
+    /**
+     *
+     * @return true if requesting access to GEO location
+     */
     public boolean isAllowAccessLocation() {
         return allowAccessLocation;
     }
 
+    /**
+     *
+     * @param allowAccessLocation
+     * @return true if requesting access to GEO location
+     */
     public Permissions setAllowAccessLocation(boolean allowAccessLocation) {
         this.allowAccessLocation = allowAccessLocation;
         return this;

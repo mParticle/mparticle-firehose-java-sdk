@@ -35,28 +35,51 @@ public abstract class Message {
     @JsonProperty(value="timestamp_ms", required=true)
     private long timestamp;
 
+    /**
+     *
+     * @return message type
+     */
     public Type getType() {
         return type;
     }
 
+    /**
+     *
+     * @return message id
+     */
     public UUID getId() {
         return id;
     }
 
+    /**
+     *
+     * @return time in milliseconds
+     */
     public long getTimestamp() {
         return timestamp;
     }
 
+    /**
+     *
+     * @param timestamp time in milliseconds
+     */
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 
+    /**
+     * Creates a new message.
+     * @param type message type
+     */
     public Message(Type type) {
         this.type = type;
         this.id = UUID.randomUUID();
         this.timestamp = System.currentTimeMillis();
     }
 
+    /**
+     * Message types.
+     */
     public enum Type {
         MODULE_REGISTRATION_REQUEST,
         MODULE_REGISTRATION_RESPONSE,
