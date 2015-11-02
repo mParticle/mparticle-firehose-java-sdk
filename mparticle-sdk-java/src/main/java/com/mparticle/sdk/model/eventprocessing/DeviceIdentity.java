@@ -8,6 +8,10 @@ public final class DeviceIdentity extends Identity {
     @JsonProperty(value="type", required=true)
     private final Type type;
 
+    /**
+     *
+     * @return device identity type
+     */
     public Type getType() {
         return type;
     }

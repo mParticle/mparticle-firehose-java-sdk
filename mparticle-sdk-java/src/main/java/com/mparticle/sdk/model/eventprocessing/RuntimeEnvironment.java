@@ -23,10 +23,18 @@ public abstract class RuntimeEnvironment {
         this.type = type;
     }
 
+    /**
+     *
+     * @return runtime environment type
+     */
     public Type getType() {
         return type;
     }
 
+    /**
+     *
+     * @return true if application is running in the debug mode
+     */
     public boolean isDebug() {
         return isDebug;
     }

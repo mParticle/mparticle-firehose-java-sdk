@@ -14,10 +14,18 @@ public final class UserIdentityPermission {
     @JsonProperty(value="encoding", required=true)
     private final Identity.Encoding encoding;
 
+    /**
+     *
+     * @return user identity type
+     */
     public UserIdentity.Type getType() {
         return type;
     }
 
+    /**
+     *
+     * @return user identity encoding
+     */
     public Identity.Encoding getEncoding() {
         return encoding;
     }

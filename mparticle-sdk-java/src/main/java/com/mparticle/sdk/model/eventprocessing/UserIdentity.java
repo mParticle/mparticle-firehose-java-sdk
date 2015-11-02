@@ -8,6 +8,10 @@ public final class UserIdentity extends Identity {
     @JsonProperty(value="type", required=true)
     private final Type type;
 
+    /**
+     *
+     * @return user identity type
+     */
     public Type getType() {
         return type;
     }

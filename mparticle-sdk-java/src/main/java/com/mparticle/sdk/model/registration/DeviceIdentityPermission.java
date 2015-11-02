@@ -13,10 +13,18 @@ public final class DeviceIdentityPermission {
     @JsonProperty(value="encoding", required=true)
     private final Identity.Encoding encoding;
 
+    /**
+     *
+     * @return device identity type
+     */
     public DeviceIdentity.Type getType() {
         return type;
     }
 
+    /**
+     *
+     * @return device identity encoding
+     */
     public Identity.Encoding getEncoding() {
         return encoding;
     }

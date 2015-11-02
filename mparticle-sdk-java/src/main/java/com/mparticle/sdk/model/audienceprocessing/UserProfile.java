@@ -24,42 +24,82 @@ public final class UserProfile {
     @JsonProperty("removed_audiences")
     private List<Audience> removedAudiences;
 
+    /**
+     *
+     * @return user identities
+     */
     public List<UserIdentity> getUserIdentities() {
         return userIdentities;
     }
 
+    /**
+     *
+     * @param userIdentities user identities
+     */
     public void setUserIdentities(List<UserIdentity> userIdentities) {
         this.userIdentities = userIdentities;
     }
 
+    /**
+     *
+     * @return device identities
+     */
     public List<DeviceIdentity> getDeviceIdentities() {
         return deviceIdentities;
     }
 
+    /**
+     *
+     * @param deviceIdentities device identities
+     */
     public void setDeviceIdentities(List<DeviceIdentity> deviceIdentities) {
         this.deviceIdentities = deviceIdentities;
     }
 
+    /**
+     *
+     * @return custom attributes
+     */
     public Map<String, String> getUserAttributes() {
         return userAttributes;
     }
 
+    /**
+     *
+     * @param userAttributes custom attributes
+     */
     public void setUserAttributes(Map<String, String> userAttributes) {
         this.userAttributes = userAttributes;
     }
 
+    /**
+     *
+     * @return audiences user was added to
+     */
     public List<Audience> getAddedAudiences() {
         return addedAudiences;
     }
 
+    /**
+     *
+     * @param addedAudiences audiences user was added to
+     */
     public void setAddedAudiences(List<Audience> addedAudiences) {
         this.addedAudiences = addedAudiences;
     }
 
+    /**
+     *
+     * @return audiences user was removed from
+     */
     public List<Audience> getRemovedAudiences() {
         return removedAudiences;
     }
 
+    /**
+     *
+     * @param removedAudiences audiences user was removed from
+     */
     public void setRemovedAudiences(List<Audience> removedAudiences) {
         this.removedAudiences = removedAudiences;
     }

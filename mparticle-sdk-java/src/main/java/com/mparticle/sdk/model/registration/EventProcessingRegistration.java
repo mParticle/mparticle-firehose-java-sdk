@@ -6,6 +6,9 @@ import com.mparticle.sdk.model.eventprocessing.RuntimeEnvironment;
 
 import java.util.List;
 
+/**
+ * Event data stream subscription settings.
+ */
 public final class EventProcessingRegistration {
 
     @JsonProperty("account_settings")

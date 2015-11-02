@@ -20,18 +20,41 @@ public abstract class Identity {
         this.value = value;
     }
 
+    /**
+     *
+     * @return identity encoding
+     */
     public Encoding getEncoding() {
         return encoding;
     }
 
+    /**
+     *
+     * @return identity value
+     */
     public String getValue() {
         return value;
     }
 
+    /**
+     * Identity value encoding formats.
+     */
     public enum Encoding {
+        /**
+         * No encoding applied
+         */
         RAW,
+        /**
+         * Trimmed, converted to lower case, and hashed by MD5
+         */
         MD5,
+        /**
+         * Trimmed, converted to lower case, and hashed by SHA-1
+         */
         SHA1,
+        /**
+         * Trimmed, converted to lower case, and hashed by SHA-256
+         */
         SHA256;
 
         @Override
