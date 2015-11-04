@@ -219,18 +219,34 @@ public abstract class Event {
         private final Map<String, String> userAttributes;
         private final RuntimeEnvironment runtimeEnvironment;
 
+        /**
+         *
+         * @return module subscription account information
+         */
         public Account getAccount() {
             return account;
         }
 
+        /**
+         *
+         * @return user identities
+         */
         public List<UserIdentity> getUserIdentities() {
             return userIdentities;
         }
 
+        /**
+         *
+         * @return user attributes
+         */
         public Map<String, String> getUserAttributes() {
             return userAttributes;
         }
 
+        /**
+         *
+         * @return application execution environment
+         */
         public RuntimeEnvironment getRuntimeEnvironment() {
             return runtimeEnvironment;
         }

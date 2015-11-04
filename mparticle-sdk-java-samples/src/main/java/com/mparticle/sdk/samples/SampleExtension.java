@@ -1,18 +1,12 @@
 package com.mparticle.sdk.samples;
 
-import com.mparticle.sdk.model.audienceprocessing.Audience;
-import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeRequest;
-import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeResponse;
-import com.mparticle.sdk.model.audienceprocessing.UserProfile;
+import com.mparticle.sdk.model.audienceprocessing.*;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.MessageProcessor;
 import com.mparticle.sdk.model.registration.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SampleExtension extends MessageProcessor {
@@ -112,6 +106,27 @@ public class SampleExtension extends MessageProcessor {
                 String attributeValue = entry.getValue();
             }
         }
+    }
+
+    @Override
+    public AudienceSubscriptionResponse processAudienceSubscriptionRequest(AudienceSubscriptionRequest request) throws IOException {
+
+        AudienceSubscriptionResponse response = new AudienceSubscriptionResponse();
+
+        if (request.getAction() == AudienceSubscriptionRequest.SubscriptionAction.ADD)
+        {
+            // process new audience subscription
+            // ...
+
+            // store subscription settings
+            Map<String, String> settings = new HashMap<>();
+            settings.put("audienceId", "xyz");
+
+            response.setAudienceSubscriptionSettings(settings);
+        }
+
+
+        return response;
     }
 
     @Override
