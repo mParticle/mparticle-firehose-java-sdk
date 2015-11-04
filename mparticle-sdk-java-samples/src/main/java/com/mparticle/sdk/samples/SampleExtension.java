@@ -111,6 +111,10 @@ public class SampleExtension extends MessageProcessor {
     @Override
     public AudienceSubscriptionResponse processAudienceSubscriptionRequest(AudienceSubscriptionRequest request) throws IOException {
 
+        // Read account settings
+        Account account = request.getAccount();
+        String apiKey = account.getStringSetting("apiKey", true, null);
+
         AudienceSubscriptionResponse response = new AudienceSubscriptionResponse();
 
         if (request.getAction() == AudienceSubscriptionRequest.SubscriptionAction.ADD)
@@ -132,26 +136,42 @@ public class SampleExtension extends MessageProcessor {
     @Override
     public AudienceMembershipChangeResponse processAudienceMembershipChangeRequest(AudienceMembershipChangeRequest request) throws IOException {
 
+        // Read account settings
+        Account account = request.getAccount();
+        String apiKey = account.getStringSetting("apiKey", true, null);
+
         for (UserProfile profile : request.getUserProfiles()) {
 
             // extract emails from the user profile
+
             List<String> emails = profile.getUserIdentities().stream()
                     .filter(id -> id.getType() == UserIdentity.Type.EMAIL && id.getEncoding() == Identity.Encoding.RAW)
                     .map(Identity::getValue)
                     .collect(Collectors.toList());
 
-            // get a list of added audience names
-            List<String> added = profile.getAddedAudiences().stream()
-                    .map(Audience::getAudienceName)
-                    .collect(Collectors.toList());
 
-            // get a list of removed audience names
-            List<String> removed = profile.getRemovedAudiences().stream()
-                    .map(Audience::getAudienceName)
-                    .collect(Collectors.toList());
+            // iterate through added and removed audiences
 
-            // update online user profile store
-            // ...
+            List<Audience> addedAudiences = profile.getAddedAudiences();
+
+            if(addedAudiences != null) {
+                for(Audience audience : addedAudiences) {
+
+                    int audienceId = audience.getAudienceId();
+                    String audienceName = audience.getAudienceName();
+
+                    // read custom audience subscription settings provided by customers or returned
+                    // by processAudienceSubscriptionRequest()
+                    Map<String, String> subscriptionSettings = audience.getAudienceSubscriptionSettings();
+                }
+            }
+
+            List<Audience> removedAudiences = profile.getRemovedAudiences();
+
+            if(removedAudiences != null) {
+                // ...
+            }
+
         }
 
         return new AudienceMembershipChangeResponse();
