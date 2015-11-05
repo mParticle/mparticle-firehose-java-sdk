@@ -102,8 +102,6 @@ public final class SlackMessageForwarder extends MessageProcessor {
         return super.processAudienceSubscriptionRequest(request);
     }
 
-    private MessageSerializer serializer = new MessageSerializer();
-
     private static class SlackPayload
     {
         public String channel;
@@ -140,4 +138,7 @@ public final class SlackMessageForwarder extends MessageProcessor {
             }
         }
     }
+
+    private final MessageSerializer serializer = new MessageSerializer();
+
 }

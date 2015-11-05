@@ -23,11 +23,11 @@ public class HttpEndpoint {
 
     public static class SdkHttpHandler extends AbstractHandler {
 
+        private final MessageSerializer serializer = new MessageSerializer();
+
         @Override
         public void handle(String target, Request baseRequest, HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws IOException, ServletException {
-
             SampleExtension processor = new SampleExtension();
-            MessageSerializer serializer = new MessageSerializer();
             Message request = serializer.deserialize(httpRequest.getInputStream(), Message.class);
             Message response = processor.processMessage(request);
             serializer.serialize(httpResponse.getOutputStream(), response);
