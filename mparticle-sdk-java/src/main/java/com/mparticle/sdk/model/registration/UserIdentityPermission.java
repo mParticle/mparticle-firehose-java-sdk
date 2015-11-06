@@ -15,7 +15,7 @@ public final class UserIdentityPermission {
     private final Identity.Encoding encoding;
 
     @JsonProperty("required")
-    private boolean isRequired;
+    private final boolean isRequired;
 
     /**
      * @return user identity type

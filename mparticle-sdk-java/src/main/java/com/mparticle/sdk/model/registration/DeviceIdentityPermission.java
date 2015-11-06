@@ -14,7 +14,7 @@ public final class DeviceIdentityPermission {
     private final Identity.Encoding encoding;
 
     @JsonProperty("required")
-    private boolean isRequired;
+    private final boolean isRequired;
 
     /**
      *

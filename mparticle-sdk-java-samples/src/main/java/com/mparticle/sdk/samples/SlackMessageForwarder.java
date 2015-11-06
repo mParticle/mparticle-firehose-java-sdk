@@ -32,8 +32,8 @@ public final class SlackMessageForwarder extends MessageProcessor {
         Permissions permissions = new Permissions();
 
         List<DeviceIdentityPermission> deviceIds = Arrays.asList(
-                new DeviceIdentityPermission(DeviceIdentity.Type.ANDROID_ID, Identity.Encoding.RAW),
-                new DeviceIdentityPermission(DeviceIdentity.Type.IOS_VENDOR_ID, Identity.Encoding.RAW)
+                new DeviceIdentityPermission(DeviceIdentity.Type.ANDROID_ID, Identity.Encoding.RAW, true),
+                new DeviceIdentityPermission(DeviceIdentity.Type.IOS_VENDOR_ID, Identity.Encoding.RAW, true)
         );
 
         permissions.setDeviceIdentities(deviceIds);
