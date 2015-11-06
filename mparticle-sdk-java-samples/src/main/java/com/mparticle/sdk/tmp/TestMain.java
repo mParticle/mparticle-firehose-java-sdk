@@ -16,8 +16,8 @@ import java.util.Map;
 
 public class TestMain {
     public static void main(String[] args) {
-        testSerializer();
-        //testRegister();
+        //testSerializer();
+        testRegister();
         //testEventProcessing();
     }
 

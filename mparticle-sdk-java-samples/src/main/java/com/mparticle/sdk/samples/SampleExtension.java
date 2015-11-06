@@ -24,14 +24,22 @@ public class SampleExtension extends MessageProcessor {
         Permissions permissions = new Permissions();
 
         List<DeviceIdentityPermission> deviceIds = Arrays.asList(
-                new DeviceIdentityPermission(DeviceIdentity.Type.GOOGLE_ADVERTISING_ID, Identity.Encoding.MD5),
-                new DeviceIdentityPermission(DeviceIdentity.Type.IOS_ADVERTISING_ID, Identity.Encoding.MD5)
+                // require at least one of advertising ids
+                new DeviceIdentityPermission(DeviceIdentity.Type.GOOGLE_ADVERTISING_ID, Identity.Encoding.MD5, true),
+                new DeviceIdentityPermission(DeviceIdentity.Type.IOS_ADVERTISING_ID, Identity.Encoding.MD5, true),
+                // optional ids
+                new DeviceIdentityPermission(DeviceIdentity.Type.ANDROID_ID, Identity.Encoding.MD5),
+                new DeviceIdentityPermission(DeviceIdentity.Type.IOS_VENDOR_ID, Identity.Encoding.MD5)
         );
 
         permissions.setDeviceIdentities(deviceIds);
 
         List<UserIdentityPermission> userIds = Arrays.asList(
-                new UserIdentityPermission(UserIdentity.Type.EMAIL, Identity.Encoding.RAW)
+                // users must have email or customer id, otherwise they should be filtered
+                new UserIdentityPermission(UserIdentity.Type.EMAIL, Identity.Encoding.RAW, true),
+                new UserIdentityPermission(UserIdentity.Type.CUSTOMER, Identity.Encoding.RAW, true),
+                // facebook id is optional
+                new UserIdentityPermission(UserIdentity.Type.FACEBOOK, Identity.Encoding.SHA1)
         );
 
         permissions.setUserIdentities(userIds);
