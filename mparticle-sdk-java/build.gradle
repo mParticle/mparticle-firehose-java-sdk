@@ -1,7 +1,5 @@
-def sdk_version = '1.0-SNAPSHOT'
-
 apply plugin: 'java'
-apply plugin: 'maven-publish'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 
@@ -9,7 +7,11 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    deployerJars
+}
 dependencies {
+    deployerJars "org.kuali.maven.wagons:maven-s3-wagon:1.2.1"
     compile 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
@@ -17,37 +19,32 @@ task sourceJar(type: Jar) {
     from sourceSets.main.allJava
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId 'com.mparticle'
-            artifactId 'java-sdk'
-            version sdk_version
+def mavenrepo = 'local'
 
-            from components.java
+uploadArchives {
+    repositories {
+        mavenDeployer {
 
-            artifact sourceJar {
-                classifier "sources"
+            if (mavenrepo == "s3") {
+                configuration = configurations.deployerJars
+                repository(url: "s3://maven.mparticle.com")
+            }else{
+                repository url: 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
             }
 
-
-            pom.withXml {
-                asNode().appendNode('description', 'Java library for creating 3rd party extensions to the mParticle platform.')
-                asNode().appendNode('url', 'https://github.com/mparticle/mparticle-sdk-android')
-                def license = new Node(
-                        new Node(asNode(), "licenses"),
-                        "license"
-                )
-                license.appendNode('name', 'The Apache Software License, Version 2.0')
-                license.appendNode('url', 'http://www.apache.org/license/LICENSE-2.0.txt')
-                def developer = new Node(
-                        new Node(asNode(), "developers"),
-                        "developer"
-                )
-                developer.appendNode('id', 'mParticle')
-                developer.appendNode('name', 'mParticle')
-                developer.appendNode('email', 'dev@mparticle.com')
-
+            pom.project {
+                version = '1.0.3'
+                artifactId = 'java-sdk'
+                groupId = 'com.mparticle'
+                description 'mParticle Java SDK'
+                url 'http://www.mparticle.com'
+                developers {
+                    developer {
+                        id 'mParticle'
+                        name 'mParticle Developers'
+                        email 'dev@mparticle.com'
+                    }
+                }
             }
         }
     }
