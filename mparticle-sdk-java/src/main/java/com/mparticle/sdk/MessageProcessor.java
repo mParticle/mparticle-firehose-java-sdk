@@ -43,7 +43,14 @@ public abstract class MessageProcessor {
                 return processAudienceSubscriptionRequest((AudienceSubscriptionRequest) request);
 
             case AUDIENCE_MEMBERSHIP_CHANGE_REQUEST:
-                return processAudienceMembershipChangeRequest((AudienceMembershipChangeRequest) request);
+                AudienceMembershipChangeRequest audienceMembershipChangeRequest = (AudienceMembershipChangeRequest)request;
+                // ignore NOOP call
+                if (audienceMembershipChangeRequest.getUserProfiles() != null) {
+                    return processAudienceMembershipChangeRequest(audienceMembershipChangeRequest);
+                } else {
+                    return new AudienceMembershipChangeResponse();
+                }
+
 
             default:
                 throw new UnsupportedOperationException("The message type \"" + request.getType() + "\" is not supported.");
