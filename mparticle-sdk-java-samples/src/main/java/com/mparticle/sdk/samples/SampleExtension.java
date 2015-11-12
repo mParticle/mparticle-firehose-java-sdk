@@ -77,6 +77,12 @@ public class SampleExtension extends MessageProcessor {
         // Register audience stream listener
         AudienceProcessingRegistration audienceProcessingRegistration = new AudienceProcessingRegistration();
         audienceProcessingRegistration.setAccountSettings(accountSettings);
+
+        // declare internal setting returned by processAudienceSubscriptionRequest
+        List<Setting> audienceSubscriptionSettings = Arrays.asList(
+                new TextSetting("audienceId", "Audience ID").setIsVisible(false)
+        );
+        audienceProcessingRegistration.setAudienceSubscriptionSettings(audienceSubscriptionSettings);
         response.setAudienceProcessingRegistration(audienceProcessingRegistration);
 
         return response;
@@ -130,7 +136,7 @@ public class SampleExtension extends MessageProcessor {
             // process new audience subscription
             // ...
 
-            // store subscription settings
+            // store internal audience id
             Map<String, String> settings = new HashMap<>();
             settings.put("audienceId", "xyz");
 
@@ -171,6 +177,7 @@ public class SampleExtension extends MessageProcessor {
                     // read custom audience subscription settings provided by customers or returned
                     // by processAudienceSubscriptionRequest()
                     Map<String, String> subscriptionSettings = audience.getAudienceSubscriptionSettings();
+                    String internalAudienceId = subscriptionSettings.get("audienceId");
                 }
             }
 
