@@ -33,7 +33,7 @@ uploadArchives {
             }
 
             pom.project {
-                version = '1.0.3'
+                version = '1.0.4'
                 artifactId = 'java-sdk'
                 groupId = 'com.mparticle'
                 description 'mParticle Java SDK'
