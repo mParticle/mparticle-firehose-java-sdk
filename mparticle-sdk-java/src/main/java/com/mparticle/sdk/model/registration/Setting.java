@@ -25,6 +25,9 @@ public abstract class Setting {
     @JsonProperty("description")
     private String description;
 
+    @JsonProperty("visible")
+    private boolean isVisible;
+
     public Type getType() {
         return type;
     }
@@ -77,10 +80,29 @@ public abstract class Setting {
         return this;
     }
 
+    /**
+     *
+     * @return true, if the setting is visible to users
+     */
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    /**
+     *
+     * @param visible true, if the setting is visible to users
+     * @return this
+     */
+    public Setting setIsVisible(boolean visible) {
+        isVisible = visible;
+        return this;
+    }
+
     public Setting(Type type, String id, String name) {
         this.type = type;
         setId(id);
         setName(name);
+        setIsVisible(true);
     }
 
     /**
