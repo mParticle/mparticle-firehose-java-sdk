@@ -13,13 +13,13 @@ import java.io.IOException;
 
 /**
  * Provides basic structure for implementing a custom message processing module.
- * <p>A typical module
+ * <p>A typical module</p>
  * <ol>
  *     <li>Implements processRegistrationRequest to return registration information about the module.</li>
  *     <li>Adds custom logic to processEventProcessingRequest and/or event-specific handlers.</li>
  *     <li>Implements processAudienceMembershipChangeRequest if the module subscribes to the audience data stream.</li>
  *     <li>Implements processAudienceSubscriptionRequest if the module needs to handle audience subscription updates.</li>
- * </ol></p>
+ * </ol>
  */
 public abstract class MessageProcessor {
 
