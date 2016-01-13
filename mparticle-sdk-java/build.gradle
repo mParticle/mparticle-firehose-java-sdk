@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'signing'
 
 sourceCompatibility = 1.8
 
@@ -10,34 +11,68 @@ repositories {
 configurations {
     deployerJars
 }
+
 dependencies {
     deployerJars "org.kuali.maven.wagons:maven-s3-wagon:1.2.1"
     compile 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
-task sourceJar(type: Jar) {
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
     from sourceSets.main.allJava
 }
 
-def mavenrepo = 'local'
+artifacts {
+    archives sourcesJar
+}
+
+def target_maven_repo = 'local'
+
+signing {
+    required { gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
 
 uploadArchives {
     repositories {
         mavenDeployer {
 
-            if (mavenrepo == "s3") {
+            if (target_maven_repo == "s3") {
                 configuration = configurations.deployerJars
                 repository(url: "s3://maven.mparticle.com")
-            }else{
+            } else if(target_maven_repo == 'sonatype') {
+                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                    authentication(userName: "", password: "")
+                }
+            } else{
                 repository url: 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
             }
 
+            beforeDeployment {
+                MavenDeployment deployment -> signing.signPom(deployment)
+            }
+
             pom.project {
-                version = '1.0.4'
+                version = '1.1.0'
                 artifactId = 'java-sdk'
                 groupId = 'com.mparticle'
-                description 'mParticle Java SDK'
-                url 'http://www.mparticle.com'
+                description 'mParticle Java SDK used to integrate with mParticle\'s Firehose API'
+                name 'mParticle Java SDK'
+                url 'https://github.com/mparticle/mparticle-sdk-java'
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/license/LICENSE-2.0.txt'
+                    }
+                }
+
+                scm {
+                    url 'http://github.com/mparticle/mparticle-android-java'
+                    connection 'scm:git:http://github.com/mparticle/mparticle-android-java'
+                    developerConnection 'scm:git:git@github.com:mparticle/mparticle-android-java.git'
+                }
                 developers {
                     developer {
                         id 'mParticle'
