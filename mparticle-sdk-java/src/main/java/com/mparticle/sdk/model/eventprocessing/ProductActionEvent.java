@@ -126,7 +126,10 @@ public final class ProductActionEvent extends Event {
         REMOVE_FROM_CART,
         CHECKOUT,
         PURCHASE,
-        REFUND;
+        REFUND,
+        CHECKOUT_OPTION,
+        CLICK,
+        VIEW_DETAIL;
 
         @Override
         public String toString() {
