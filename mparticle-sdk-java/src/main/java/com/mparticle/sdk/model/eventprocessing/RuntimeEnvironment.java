@@ -20,6 +20,9 @@ public abstract class RuntimeEnvironment {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean isDebug;
 
+    @JsonProperty("client_ip_address")
+    private String clientIpAddress;
+
     public RuntimeEnvironment(Type type) {
         this.type = type;
     }
@@ -38,6 +41,17 @@ public abstract class RuntimeEnvironment {
      */
     public boolean isDebug() {
         return isDebug;
+    }
+
+    /**
+     * Get the IP address of the original request. Requests to the mParticle API may come from
+     * a browser, and iOS/tvOS/Android device, or a server when data originates from
+     * a server-to-server integration.
+     *
+     * @return returns the IP address of the client request
+     */
+    public String getClientIpAddress() {
+        return clientIpAddress;
     }
 
     public enum Type {

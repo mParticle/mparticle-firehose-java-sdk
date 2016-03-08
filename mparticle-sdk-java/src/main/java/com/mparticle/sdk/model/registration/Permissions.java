@@ -2,6 +2,8 @@ package com.mparticle.sdk.model.registration;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mparticle.sdk.model.eventprocessing.RuntimeEnvironment;
+
 import java.util.List;
 
 public final class Permissions {
@@ -15,6 +17,10 @@ public final class Permissions {
     @JsonProperty("allow_access_location")
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowAccessLocation;
+
+    @JsonProperty("allow_access_ip_address")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowAccessIpAddress;
 
     /**
      *
@@ -67,6 +73,32 @@ public final class Permissions {
      */
     public Permissions setAllowAccessLocation(boolean allowAccessLocation) {
         this.allowAccessLocation = allowAccessLocation;
+        return this;
+    }
+
+    /**
+     *
+     * @return true if requesting access to the client IP address
+     */
+    public boolean isAllowAccessIpAddress() {
+        return allowAccessIpAddress;
+    }
+
+    /**
+     * Request access to the IP address that sent this event data.
+     *
+     * Requests to the mParticle API may come from
+     * a browser, and iOS/tvOS/Android device, or a server when data originates from
+     * a server-to-server integration.
+     *
+     * @param allowAccessIpAddress
+     * @return true if requesting access to the client IP address
+     *
+     * @see RuntimeEnvironment#getClientIpAddress()
+     *
+     */
+    public Permissions setAllowAccessIpAddress(boolean allowAccessIpAddress) {
+        this.allowAccessIpAddress = allowAccessIpAddress;
         return this;
     }
 }
