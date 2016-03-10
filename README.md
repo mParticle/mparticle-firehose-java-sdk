@@ -1,5 +1,7 @@
 # mParticle Java SDK
 
+[![Maven Central Status](https://maven-badges.herokuapp.com/maven-central/com.mparticle/java-sdk/badge.svg?style=flat-square)](https://search.maven.org/#search%7Cga%7C1%7Cmparticle)
+
 A Java library for building and deploying third-party extensions for [mParticle](https://www.mparticle.com) over Amazon's [Lambda platform](https://aws.amazon.com/lambda/).
 
 This library translates messages from the mParticle Firehose API into easy-to-use objects so that you can register and integrate your service with mParticle.
