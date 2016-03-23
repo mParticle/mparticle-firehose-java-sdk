@@ -95,6 +95,9 @@ public final class AndroidRuntimeEnvironment extends RuntimeEnvironment {
     @JsonProperty("application_package")
     private String applicationPackage;
 
+    @JsonProperty("install_referrer")
+    private String installReferrer;
+
     public AndroidRuntimeEnvironment() {
         super(Type.ANDROID);
     }
@@ -329,5 +332,13 @@ public final class AndroidRuntimeEnvironment extends RuntimeEnvironment {
 
     public void setApplicationPackage(String applicationPackage) {
         this.applicationPackage = applicationPackage;
+    }
+
+    public String getInstallReferrer() {
+        return installReferrer;
+    }
+
+    public void setInstallReferrer(String installReferrer) {
+        this.installReferrer = installReferrer;
     }
 }
