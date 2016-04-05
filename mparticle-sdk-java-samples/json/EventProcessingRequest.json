@@ -1,7 +1,7 @@
 {  
    "type":"event_processing_request",
    "id":"b917880b-c91d-47b5-b2fe-f14de2a4a38c",
-   "timestamp_ms":1445531713282,
+   "timestamp_ms":1459892017807,
    "source_id":"24a4e9b5-fa71-45e0-a358-e0530f7bdde9",
    "account":{  
       "account_id":0,
@@ -56,7 +56,7 @@
       {  
          "type":"session_start",
          "id":"fa0ece33-9b62-44f5-88d4-6278f1fd9d08",
-         "timestamp_ms":1445578513262,
+         "timestamp_ms":1459892017807,
          "source_id":"0e1b9ea5-936f-486b-981f-e13d12d61140",
          "session_id":-1096377938905861812,
          "location":{  
@@ -68,7 +68,7 @@
       {  
          "type":"session_end",
          "id":"520ffd0e-14a0-434c-a11a-8cf2a93c45e2",
-         "timestamp_ms":1445578849262,
+         "timestamp_ms":1459892017807,
          "source_id":"1b7602e1-344e-4ae8-ab31-41941eb61346",
          "session_id":-1096377938905861812,
          "location":{  
@@ -81,7 +81,7 @@
       {  
          "type":"custom_event",
          "id":"048f721a-5ec0-4b4c-9c32-aec30c1614ec",
-         "timestamp_ms":1445578834262,
+         "timestamp_ms":1459892017807,
          "source_id":"ca9899a6-c33a-4139-acea-204d4ea215a1",
          "session_id":-1096377938905861812,
          "location":{  
@@ -100,7 +100,7 @@
       {  
          "type":"error",
          "id":"d2a716d7-94b8-4d6e-8206-4920fe7961a6",
-         "timestamp_ms":1445578513262,
+         "timestamp_ms":1459892017807,
          "source_id":"f7eeb0db-8af6-42f5-bcc7-3f9dc6bd96b2",
          "session_id":-1096377938905861812,
          "message":"Error Occured 1022121",
@@ -110,7 +110,7 @@
       {  
          "type":"user_attribute_change",
          "id":"f4cbac15-e632-40bb-9e3a-49cdbebb97b0",
-         "timestamp_ms":1445578879262,
+         "timestamp_ms":1459892017807,
          "source_id":"24a4e9b5-fa71-45e0-a358-e0530f7bdde9",
          "added":{  
             "$FirstName":"Brian",
@@ -121,6 +121,67 @@
             "$City":"Boca Raton",
             "$Zip":"33431"
          }
+      },
+      {
+         "type":"promotion_action",
+         "id":"04ef9462-c963-4f47-8351-919810283eb0",
+         "timestamp_ms":1459892017807,
+         "action":"view",
+         "attributes":{
+            "sample attribute key":"xyz"
+         },
+         "promotions":[
+            {
+               "id":"promotion-1",
+               "name":"sample name 1",
+               "creative":"sample creative 1",
+               "position":"bottom"
+            },
+            {
+               "id":"promotion-2",
+               "name":"sample name 2",
+               "creative":"sample creative 2",
+               "position":"top"
+            }
+         ]
+      },
+      {
+         "type":"promotion_action",
+         "id":"87cfa74c-1876-4baa-b9f2-b8e4822df80c",
+         "timestamp_ms":1459892017807,
+         "action":"click",
+         "attributes":{
+            "sample attribute key":"xyz"
+         },
+         "promotions":[
+            {
+               "id":"promotion-2",
+               "name":"sample name 2",
+               "creative":"sample creative 2",
+               "position":"top"
+            }
+         ]
+      },
+      {
+         "type":"impression",
+         "id":"650a9e26-b347-4f7a-8dfc-84d1876f4c21",
+         "timestamp_ms":1459892017807,
+         "attributes":{
+            "sample attribute key":"xyz"
+         },
+         "impressions":[
+            {
+               "impression_list_name":"sample impression list",
+               "products":[
+                  {
+                     "id":"product-id-1",
+                     "name":"product-name-1",
+                     "position":0,
+                     "price":40
+                  }
+               ]
+            }
+         ]
       }
    ]
 }

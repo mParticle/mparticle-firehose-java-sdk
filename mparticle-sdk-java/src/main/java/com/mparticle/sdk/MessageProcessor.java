@@ -135,10 +135,38 @@ public abstract class MessageProcessor {
                 case PRODUCT_ACTION:
                     processProductActionEvent((ProductActionEvent) e);
                     break;
+
+                case PROMOTION_ACTION:
+                    processPromotionActionEvent((PromotionActionEvent) e);
+                    break;
+
+                case IMPRESSION:
+                    processImpressionEvent((ImpressionEvent) e);
+                    break;
             }
         }
 
         return response;
+    }
+
+    /**
+     * Handler for processing ImpressionEvents.
+     *
+     * @param event
+     * @throws IOException
+     */
+    public void processImpressionEvent(ImpressionEvent event) throws IOException {
+
+    }
+
+    /**
+     * Handler for processing PromotionActionEvents.
+     *
+     * @param event
+     * @throws IOException
+     */
+    public void processPromotionActionEvent(PromotionActionEvent event) throws IOException {
+
     }
 
     /**

@@ -23,6 +23,8 @@ import java.util.UUID;
         @JsonSubTypes.Type(name="application_state_transition", value=ApplicationStateTransitionEvent.class),
         @JsonSubTypes.Type(name="push_message_receipt", value=PushMessageReceiptEvent.class),
         @JsonSubTypes.Type(name="product_action", value=ProductActionEvent.class),
+        @JsonSubTypes.Type(name="promotion_action", value=PromotionActionEvent.class),
+        @JsonSubTypes.Type(name="impression", value=ImpressionEvent.class)
 })
 /**
  * Class representing an analytics-based event originating from an mParticle-instrumented application.
@@ -199,9 +201,17 @@ public abstract class Event {
          */
         PUSH_MESSAGE_RECEIPT,
         /**
-         * This is the event used for all eCommerce-related events. There are several types of product actions, such as purchase and refund.
+         * This is the event used for all Product-related eCommerce events. There are several types of product actions, such as purchase and refund.
          */
-        PRODUCT_ACTION;
+        PRODUCT_ACTION,
+        /**
+         * This is the event used for eCommerce Promotion events. There are two types of promotion events, view and click.
+         */
+        PROMOTION_ACTION,
+        /**
+         * This is the event used for eCommerce Impression events.
+         */
+        IMPRESSION;
 
         @Override
         public String toString() {
