@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 public final class ProductActionEvent extends Event {
 
@@ -33,6 +34,9 @@ public final class ProductActionEvent extends Event {
 
     @JsonProperty("products")
     private List<Product> products;
+
+    @JsonProperty("attributes")
+    private Map<String, String> attributes;
 
     public ProductActionEvent() {
         super(Type.PRODUCT_ACTION);
@@ -116,6 +120,15 @@ public final class ProductActionEvent extends Event {
 
     public ProductActionEvent setProducts(List<Product> products) {
         this.products = products;
+        return this;
+    }
+
+    public Map<String, String> getAttributes() {
+        return attributes;
+    }
+
+    public ProductActionEvent setAttributes(Map<String, String> attributes) {
+        this.attributes = attributes;
         return this;
     }
 
