@@ -50,7 +50,10 @@
       "android_sdk_level":0,
       "application_name":"App Name",
       "application_version":"1.2.001-dbg",
-      "application_package":"com.mparticle.TravelApp"
+      "application_package":"com.mparticle.TravelApp",
+      "client_ip_address":"192.168.1.15",
+      "install_referrer":"utm_source%3Dgoogle%26utm_medium%3Dcpc%26utm_term%3Drunning%252Bshoes%26utm_content%3Dlogolink%26utm_campaign%3Dspring_sale"
+
    },
    "events":[  
       {  
@@ -182,6 +185,17 @@
                ]
             }
          ]
+      },
+      {
+         "type":"application_state_transition",
+         "id":"b08889fb-8656-4e44-9c7c-28fefa26888c",
+         "timestamp_ms":1459952824358,
+         "location":{
+            "latitude":40.712784,
+            "longitude":-74.005941,
+            "accuracy":100.0
+         },
+         "application_state":"install"
       }
    ]
 }
