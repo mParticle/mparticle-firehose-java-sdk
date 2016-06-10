@@ -31,6 +31,12 @@ public final class ApplicationStateTransitionEvent extends Event {
         super(Type.APPLICATION_STATE_TRANSITION);
     }
 
+    /**
+     * This field is collected by the Android SDK at the time of an app launch. It indicates the package
+     * name of the app that launched the app.
+     *
+     * @return
+     */
     public String getSourcePackage() {
         return sourcePackage;
     }
@@ -39,6 +45,12 @@ public final class ApplicationStateTransitionEvent extends Event {
         this.sourcePackage = sourcePackage;
     }
 
+    /**
+     * This field is collected by both the iOS and Android SDKs at the time of an app launch. It will contain
+     * any options or bundle extras that were passed into the app delegate (iOS) or Activity Intent (Android).
+     *
+     * @return
+     */
     public String getLaunchParameters() {
         return launchParameters;
     }
@@ -47,6 +59,12 @@ public final class ApplicationStateTransitionEvent extends Event {
         this.launchParameters = launchParameters;
     }
 
+    /**
+     * This field is collected by the iOS SDK at the time of an app launch. It will contain the source application
+     * indicated by the iOS framework's UIApplicationOpenURLOptionsSourceApplicationKey key.
+     *
+     * @return
+     */
     public String getReferralApplication() {
         return referralApplication;
     }
@@ -55,6 +73,12 @@ public final class ApplicationStateTransitionEvent extends Event {
         this.referralApplication = referralApplication;
     }
 
+    /**
+     * This field is collected by both the iOS and Androd SDKs at the time of an app launch. It will contain
+     * the URI associated with the app launch.
+     *
+     * @return
+     */
     public String getLaunchReferral() {
         return launchReferral;
     }
