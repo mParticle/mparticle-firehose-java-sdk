@@ -54,6 +54,10 @@ public abstract class RuntimeEnvironment {
         return clientIpAddress;
     }
 
+    public void setClientIpAddress(String clientIpAddress) {
+        this.clientIpAddress = clientIpAddress;
+    }
+
     public enum Type {
         UNKNOWN,
         ANDROID,

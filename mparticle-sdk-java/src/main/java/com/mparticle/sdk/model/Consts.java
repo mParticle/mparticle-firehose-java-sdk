@@ -2,7 +2,7 @@ package com.mparticle.sdk.model;
 
 public final class Consts {
 
-    public static final String SDK_VERSION="1.1.4";
+    public static final String SDK_VERSION="1.1.5";
 
     private Consts() {
     }
