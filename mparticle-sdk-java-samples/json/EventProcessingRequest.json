@@ -186,6 +186,34 @@
             }
          ]
       },
+      {  
+         "type":"product_action",
+         "id":"c420c8f2-5b81-4236-a07e-176cec0e4327",
+         "timestamp_ms":1465574552902,
+         "source_id":"daba03c3-cc27-4395-b38f-deb9d44a0855",
+         "session_id":-310836276167998215,
+         "action":"purchase",
+         "transaction_id":"example-transaction-id",
+         "affiliation":"Example affiliation",
+         "total_amount":89.96,
+         "tax_amount":5.0,
+         "shipping_amount":5.0,
+         "coupon_code":"Example transaction coupon code",
+         "products":[  
+            {  
+               "id":"example-sku",
+               "name":"Example name",
+               "brand":"Example Brand",
+               "category":"Example Category",
+               "variant":"Example variant",
+               "position":0,
+               "price":19.99,
+               "quantity":4.0,
+               "coupon_code":"Example Product Coupon Code",
+               "total_amount":79.96
+            }
+         ]
+      },
       {
          "type":"application_state_transition",
          "id":"b08889fb-8656-4e44-9c7c-28fefa26888c",
