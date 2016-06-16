@@ -227,6 +227,7 @@ public abstract class Event {
         private final Account account;
         private final List<UserIdentity> userIdentities;
         private final Map<String, String> userAttributes;
+        private final Map<String, List<String>> userAttributeLists;
         private final RuntimeEnvironment runtimeEnvironment;
 
         /**
@@ -255,6 +256,14 @@ public abstract class Event {
 
         /**
          *
+         * @return user attribute lists
+         */
+        public Map<String, List<String>> getUserAttributeLists() {
+            return userAttributeLists;
+        }
+
+        /**
+         *
          * @return application execution environment
          */
         public RuntimeEnvironment getRuntimeEnvironment() {
@@ -265,10 +274,8 @@ public abstract class Event {
             this.account = request.getAccount();
             this.userIdentities = request.getUserIdentities();
             this.userAttributes = request.getUserAttributes();
+            this.userAttributeLists = request.getUserAttributeLists();
             this.runtimeEnvironment = request.getRuntimeEnvironment();
         }
-
     }
 }
-
-

@@ -28,6 +28,9 @@ public final class EventProcessingRequest extends Message {
     @JsonProperty("user_attributes")
     private Map<String, String> userAttributes;
 
+    @JsonProperty("user_attribute_lists")
+    private Map<String, List<String>> userAttributeLists;
+
     @JsonProperty("runtime_environment")
     private RuntimeEnvironment runtimeEnvironment;
 
@@ -120,6 +123,22 @@ public final class EventProcessingRequest extends Message {
      */
     public void setEvents(List<Event> events) {
         this.events = events;
+    }
+
+    /**
+     *
+     * @return a map of user attribute lists
+     */
+    public Map<String, List<String>> getUserAttributeLists() {
+        return userAttributeLists;
+    }
+
+    /**
+     *
+     * @param userAttributeLists
+     */
+    public void setUserAttributeLists(Map<String, List<String>> userAttributeLists) {
+        this.userAttributeLists = userAttributeLists;
     }
 }
 
