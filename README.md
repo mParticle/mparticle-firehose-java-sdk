@@ -13,7 +13,7 @@ mParticle aims to allow our customers to send their data wherever they want it t
 ## Documentation
 
 - [See the wiki for an in-depth tutorial](https://github.com/mParticle/mparticle-sdk-java/wiki)
-- [Javadocs](http://docs.mparticle.com/includes/java-sdk-javadocs/)
+- [Javadocs](http://docs.mparticle.com/includes/java-sdk-javadocs/index.html)
 
 ### Samples
 
