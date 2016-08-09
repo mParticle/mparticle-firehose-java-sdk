@@ -34,6 +34,9 @@ public final class EventProcessingRequest extends Message {
     @JsonProperty("runtime_environment")
     private RuntimeEnvironment runtimeEnvironment;
 
+    @JsonProperty("integration_attributes")
+    private  Map<String, String> integrationAttributes;
+
     @JsonProperty("events")
     private List<Event> events;
 
@@ -139,6 +142,28 @@ public final class EventProcessingRequest extends Message {
      */
     public void setUserAttributeLists(Map<String, List<String>> userAttributeLists) {
         this.userAttributeLists = userAttributeLists;
+    }
+
+    /**
+     * Integration attributes provide a way to set user/request-level attributes specific
+     * to an integration. For example, a Kit in the mobile SDK can set an ID for use
+     * by its respective server-side integration.
+     *
+     * @return
+     */
+    public Map<String, String> getIntegrationAttributes() {
+        return integrationAttributes;
+    }
+
+    /**
+     * Integration attributes provide a way to set user/request-level attributes specific
+     * to an integration. For example, a Kit in the mobile SDK can set an ID for use
+     * by its respective server-side integration.
+     *
+     * @param integrationAttributes
+     */
+    public void setIntegrationAttributes(Map<String, String> integrationAttributes) {
+        this.integrationAttributes = integrationAttributes;
     }
 }
 
