@@ -12,8 +12,10 @@ public final class AudienceProcessingRegistration {
     @JsonProperty("account_settings")
     private List<Setting> accountSettings;
 
+
+
     @JsonProperty("audience_subscription_settings")
-    private List<Setting> audienceSubscriptionSettings;
+    private List<Setting> audienceConnectionSettings;
 
     /**
      *
@@ -35,19 +37,30 @@ public final class AudienceProcessingRegistration {
 
     /**
      *
-     * @return audience subscription settings
+     * @param audienceSubscriptionSettings audience connection settings
+     * @return this
+     * @deprecated use {@link #setAudienceConnectionSettings(List)}
      */
-    public List<Setting> getAudienceSubscriptionSettings() {
-        return audienceSubscriptionSettings;
+    public AudienceProcessingRegistration setAudienceSubscriptionSettings(List<Setting> audienceSubscriptionSettings) {
+        this.audienceConnectionSettings = audienceSubscriptionSettings;
+        return this;
     }
 
     /**
      *
-     * @param audienceSubscriptionSettings audience subscription settings
+     * @param audienceConnectionSettings audience connection settings
      * @return this
      */
-    public AudienceProcessingRegistration setAudienceSubscriptionSettings(List<Setting> audienceSubscriptionSettings) {
-        this.audienceSubscriptionSettings = audienceSubscriptionSettings;
+    public AudienceProcessingRegistration setAudienceConnectionSettings(List<Setting> audienceConnectionSettings) {
+        this.audienceConnectionSettings = audienceConnectionSettings;
         return this;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<Setting> getAudienceConnectionSettings() {
+        return audienceConnectionSettings;
     }
 }

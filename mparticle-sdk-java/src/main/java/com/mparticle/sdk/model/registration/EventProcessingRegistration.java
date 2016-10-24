@@ -7,12 +7,17 @@ import com.mparticle.sdk.model.eventprocessing.RuntimeEnvironment;
 import java.util.List;
 
 /**
- * Event data stream subscription settings.
+ * The EventProcessingRegistration object should be constructed by Firehose integrations that wish to function
+ * as event-integrations within the mParticle platform. Upon receiving a {@link com.mparticle.sdk.model.registration.ModuleRegistrationRequest},
+ * it's up to the Firehose integration to response with a populated {@link ModuleRegistrationResponse}.
  */
 public final class EventProcessingRegistration {
 
     @JsonProperty("account_settings")
     private List<Setting> accountSettings;
+
+    @JsonProperty("event_connection_settings")
+    private List<Setting> connectionSettings;
 
     @JsonProperty("supported_event_types")
     private List<Event.Type> supportedEventTypes;
@@ -24,20 +29,76 @@ public final class EventProcessingRegistration {
     private int maxDataAgeHours = 24;
 
     /**
+     * Gets the account-level settings registered by this integration.
      *
-     * @return account settings required by the module
+     * mParticle integrations may be configured with two different sets of settings:
+     * - Account-level settings, meant to be reused across platforms and/or apps
+     * - Subscription-level settings, meant to change specific behaviors for each instance of an output/integration
+     *
+     * As a Firehose integration developer, it's up to *you* to define which settings should be account-level,
+     * and which should be configured on a per-integration-instance basis.
+     *
+     * @see #getConnectionSettings()  to get the integration-specific settings registered for this integration
+     * @return account settings registered by the integration
      */
     public List<Setting> getAccountSettings() {
         return accountSettings;
     }
 
     /**
+     * Register the account-level settings of this integration.
      *
-     * @param accountSettings account settings required by the module
-     * @return this
+     * mParticle integrations may be configured with two different sets of settings:
+     * - Account-level settings, meant to be reused across platforms and/or apps
+     * - Subscription-level settings, meant to change specific behaviors for each instance of an output/integration
+     *
+     * As a Firehose integration developer, it's up to *you* to define which settings should be account-level,
+     * and which should be configured on a per-integration-instance basis.
+     *
+     * @see #setConnectionSettings(List)  to register integration-specific settings for this integration
+     *
+     * @param accountSettings account-level settings to register for this integration
+     * @return returns this EventProcessingRegistration object for method chaining
      */
     public EventProcessingRegistration setAccountSettings(List<Setting> accountSettings) {
         this.accountSettings = accountSettings;
+        return this;
+    }
+
+    /**
+     * Gets the subscription-level settings registered by this integration.
+     *
+     * mParticle integrations may be configured with two different sets of settings:
+     * - Account-level settings, meant to be reused across platforms and/or apps
+     * - Subscription-level settings, meant to change specific behaviors for each instance of an output/integration
+     *
+     * As a Firehose integration developer, it's up to *you* to define which settings should be account-level,
+     * and which should be configured on a per-integration-instance basis.
+     *
+     * @see #getAccountSettings() to get the account-level settings registered for this integration
+     * @return account settings registered by the integration
+     */
+    public List<Setting> getConnectionSettings() {
+        return connectionSettings;
+    }
+
+    /**
+     * Register the specific connection-level settings of this integration.
+     *
+     * mParticle integrations may be configured with two different sets of settings:
+     * - Account-level settings, meant to be reused across platforms and/or apps
+     * - Connection-level settings, meant to change specific behaviors for each instance of an output/integration
+     *
+     * As a Firehose integration developer, it's up to *you* to define which settings should be account-level,
+     * and which should be configured on a per-integration-instance basis.
+     *
+     * @see  #setAccountSettings(List) to register account-level settings for this integration
+     *
+     * @param connectionSettings subscription-level settings to register for this integration
+     * @return returns this EventProcessingRegistration object for method chaining
+     */
+    public EventProcessingRegistration setConnectionSettings(List<Setting> connectionSettings) {
+        this.connectionSettings = connectionSettings;
         return this;
     }
 
@@ -52,7 +113,7 @@ public final class EventProcessingRegistration {
     /**
      *
      * @param supportedEventTypes requested event types
-     * @return this
+     * @return returns this EventProcessingRegistration object for method chaining
      */
     public EventProcessingRegistration setSupportedEventTypes(List<Event.Type> supportedEventTypes) {
         this.supportedEventTypes = supportedEventTypes;
@@ -70,7 +131,7 @@ public final class EventProcessingRegistration {
     /**
      *
      * @param maxDataAgeHours acceptable age of the incoming events
-     * @return this
+     * @return returns this EventProcessingRegistration object for method chaining
      */
     public EventProcessingRegistration setMaxDataAgeHours(int maxDataAgeHours) {
         this.maxDataAgeHours = maxDataAgeHours;
@@ -87,8 +148,10 @@ public final class EventProcessingRegistration {
 
     /**
      *
+     *
+     *
      * @param supportedRuntimeEnvironments supported mobile platforms
-     * @return this
+     * @return returns this EventProcessingRegistration object for method chaining
      */
     public EventProcessingRegistration setSupportedRuntimeEnvironments(List<RuntimeEnvironment.Type> supportedRuntimeEnvironments) {
         this.supportedRuntimeEnvironments = supportedRuntimeEnvironments;
