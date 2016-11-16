@@ -1,0 +1,9 @@
+{
+   "type":"audience_subscription_response",
+   "id":"70fa1ed0-79b6-466a-9e9a-6814775a8148",
+   "timestamp_ms":1479311128180,
+   "audience_subscription_settings":{
+      "sample setting":"sample setting value",
+      "sample setting 2":"sample setting value 2"
+   }
+}
