@@ -24,7 +24,8 @@ import java.util.UUID;
         @JsonSubTypes.Type(name="push_message_receipt", value=PushMessageReceiptEvent.class),
         @JsonSubTypes.Type(name="product_action", value=ProductActionEvent.class),
         @JsonSubTypes.Type(name="promotion_action", value=PromotionActionEvent.class),
-        @JsonSubTypes.Type(name="impression", value=ImpressionEvent.class)
+        @JsonSubTypes.Type(name="impression", value=ImpressionEvent.class),
+        @JsonSubTypes.Type(name="attribution", value=AttributionEvent.class)
 })
 /**
  * Class representing an analytics-based event originating from an mParticle-instrumented application.
@@ -211,7 +212,9 @@ public abstract class Event {
         /**
          * This is the event used for eCommerce Impression events.
          */
-        IMPRESSION;
+        IMPRESSION,
+
+        ATTRIBUTION;
 
         @Override
         public String toString() {
