@@ -143,10 +143,23 @@ public abstract class MessageProcessor {
                 case IMPRESSION:
                     processImpressionEvent((ImpressionEvent) e);
                     break;
+
+                case ATTRIBUTION:
+                    processAttributionEvent((AttributionEvent) e);
+                    break;
             }
         }
 
         return response;
+    }
+
+    /**
+     * 
+     * @param event
+     * @throws IOException
+     */
+    public void processAttributionEvent(AttributionEvent event) throws IOException {
+
     }
 
     /**
