@@ -8,7 +8,7 @@ import java.util.Map;
 public final class AttributionEvent extends Event {
 
     public AttributionEvent() {
-        super(Type.CUSTOM_EVENT);
+        super(Type.ATTRIBUTION);
     }
 
     @JsonProperty("partner_name")
