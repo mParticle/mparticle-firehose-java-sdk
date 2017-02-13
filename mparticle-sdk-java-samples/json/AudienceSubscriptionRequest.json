@@ -5,9 +5,10 @@
    "account":{  
       "account_id":123456,
       "account_settings":{  
-         "Sample Account Setting key":"sample account setting value"
+         "apiKey":"sample API Key"
       }
    },
-   "audience_id":0,
+   "audience_id":1234,
+   "audience_name":"New Users Low Engagement",
    "action":"add"
 }
