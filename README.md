@@ -12,13 +12,13 @@ mParticle aims to allow our customers to send their data wherever they want it t
 
 ## Documentation
 
-- [See the wiki for an in-depth tutorial](https://github.com/mParticle/mparticle-sdk-java/wiki)
+- [See the wiki for an in-depth tutorial](https://github.com/mParticle/mparticle-firehose-java-sdk/wiki)
 - [Javadocs](http://docs.mparticle.com/includes/java-sdk-javadocs/index.html)
 
 ### Samples
 
 - [Starter Project](https://github.com/mParticle/lambda-extension-sample) 
-- [See the samples in this project](https://github.com/mParticle/mparticle-sdk-java/tree/master/mparticle-sdk-java)
+- [See the samples in this project](https://github.com/mParticle/mparticle-sdk-java/tree/master/mparticle-firehose-java-sdk)
 - [Real life example](https://github.com/mParticle/lambda-iterable)
 
 ### AWS Lambda Overview
@@ -28,7 +28,7 @@ mParticle aims to allow our customers to send their data wherever they want it t
 
 ## Bugs and Feedback
 
-For bugs, questions, etc., please use [Github Issues](https://github.com/mParticle/mparticle-sdk-java/issues).
+For bugs, questions, etc., please use [Github Issues](https://github.com/mParticle/mparticle-firehose-java-sdk/issues).
 
 ## Contributing
 

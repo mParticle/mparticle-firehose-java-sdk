@@ -46,7 +46,7 @@ public final class AttributionEvent extends Event {
     public void setCampaign(String campaign) {
         this.campaign = campaign;
     }
-    
+
     public Map<String, String> getAttributes() {
         return attributes;
     }

@@ -1,3 +1,4 @@
-include ':mparticle-sdk-java'
-include ':mparticle-sdk-java-samples'
+include ':sdk'
+include ':examples:lambda'
+include ':examples:http'
 
