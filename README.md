@@ -1,4 +1,4 @@
-# mParticle Java SDK
+# mParticle Firehose SDK
 
 [![Maven Central Status](https://maven-badges.herokuapp.com/maven-central/com.mparticle/java-sdk/badge.svg?style=flat-square)](https://search.maven.org/#search%7Cga%7C1%7Cmparticle)
 
