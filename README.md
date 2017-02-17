@@ -18,7 +18,7 @@ mParticle aims to allow our customers to send their data wherever they want it t
 ### Samples
 
 - [Starter Project](https://github.com/mParticle/lambda-extension-sample) 
-- [See the samples in this project](https://github.com/mParticle/mparticle-sdk-java/tree/master/mparticle-firehose-java-sdk)
+- [See the samples in this project](https://github.com/mParticle/mparticle-firehose-java-sdk/tree/master/examples)
 - [Real life example](https://github.com/mParticle/lambda-iterable)
 
 ### AWS Lambda Overview
