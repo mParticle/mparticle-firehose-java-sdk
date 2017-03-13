@@ -68,7 +68,7 @@ uploadArchives {
             }
 
             pom.project {
-                version = '1.2.2'
+                version = '1.2.3'
                 artifactId = 'java-sdk'
                 groupId = 'com.mparticle'
                 description 'mParticle Java SDK used to integrate with mParticle\'s Firehose API'
