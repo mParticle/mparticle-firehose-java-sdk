@@ -23,6 +23,9 @@ public abstract class RuntimeEnvironment {
     @JsonProperty("client_ip_address")
     private String clientIpAddress;
 
+    @JsonProperty("sdk_version")
+    private String sdkVersion;
+
     public RuntimeEnvironment(Type type) {
         this.type = type;
     }
@@ -56,6 +59,24 @@ public abstract class RuntimeEnvironment {
 
     public void setClientIpAddress(String clientIpAddress) {
         this.clientIpAddress = clientIpAddress;
+    }
+
+    public String getSdkVersion() {
+        return sdkVersion;
+    }
+
+    /**
+     * Get the SDK version associated with this request. mParticle customers can use a variety of SDKs to send
+     * data into the mParticle platform. The Android, iOS, and Javascript client SDKs will automatically include
+     * their SDK version with each request, which will be included in the respective outgoing Firehose request.
+     *
+     * Customers who use the mParticle server-to-server SDKs, or who send data to mParticle using their own HTTP
+     * clients may not include any SDK version.
+     *
+     * @param sdkVersion SDK version, ex: "6.12.1", may be null
+     */
+    public void setSdkVersion(String sdkVersion) {
+        this.sdkVersion = sdkVersion;
     }
 
     public enum Type {

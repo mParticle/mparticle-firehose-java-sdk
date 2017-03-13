@@ -19,7 +19,8 @@
       "$City":"Boca Raton",
       "$Zip":"33431"
    },
-   "runtime_environment":{  
+   "runtime_environment":{
+      "sdk_version":"4.10.1",
       "type":"android",
       "is_debug":true,
       "identities":[  
