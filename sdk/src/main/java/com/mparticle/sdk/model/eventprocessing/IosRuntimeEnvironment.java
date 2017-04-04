@@ -3,6 +3,7 @@ package com.mparticle.sdk.model.eventprocessing;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * iOS device information.
@@ -86,6 +87,9 @@ public final class IosRuntimeEnvironment extends RuntimeEnvironment {
 
     @JsonProperty("is_sandboxed")
     private Boolean isSandboxed;
+
+    @JsonProperty("apple_search_ads_attribution")
+    private Map<String, Map<String, String>> appleSearchAdsAttribution;
 
     public List<DeviceIdentity> getIdentities() {
         return Identities;
@@ -297,6 +301,14 @@ public final class IosRuntimeEnvironment extends RuntimeEnvironment {
 
     public IosRuntimeEnvironment() {
         super(Type.IOS);
+    }
+
+    public Map<String, Map<String, String>> getAppleSearchAdsAttribution() {
+        return appleSearchAdsAttribution;
+    }
+
+    public void setAppleSearchAdsAttribution(Map<String, Map<String, String>> appleSearchAdsAttribution) {
+        this.appleSearchAdsAttribution = appleSearchAdsAttribution;
     }
 }
 
