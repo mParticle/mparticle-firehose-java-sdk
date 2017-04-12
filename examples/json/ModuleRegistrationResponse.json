@@ -1,0 +1,80 @@
+{
+  "type": "module_registration_response",
+  "id": "7d981cad-58fb-4db1-a7e7-61a4e7c5926c",
+  "timestamp_ms": 1456255204036,
+  "sdk_version": "1.1.1",
+  "name": "Your Company Name",
+  "version": "1.0",
+  "description": "A description of your <a href=''>company</a> and services. Inline HTML markup is permitted.",
+  "permissions": {
+    "device_identities": [
+      {
+        "type": "google_advertising_id",
+        "encoding": "raw",
+        "required": true
+      },
+      {
+        "type": "ios_advertising_id",
+        "encoding": "raw",
+        "required": true
+      }
+    ],
+    "user_identities": [],
+    "allow_access_location": false
+  },
+  "event_processing_registration": {
+    "account_settings": [
+      {
+        "type": "text",
+        "id": "key",
+        "name": "API Key",
+        "description": "Secret key to use the API, provided by your account manager",
+        "visible": true,
+        "required": true,
+        "confidential": false
+      },
+      {
+        "type": "text",
+        "id": "customer_id",
+        "name": "Customer ID",
+        "description": "Internal customer ID, provided by your Remerge account manage",
+        "visible": true,
+        "required": true,
+        "confidential": false
+      }
+    ],
+    "supported_event_types": [
+      "session_start",
+      "custom_event",
+      "product_action"
+    ],
+    "supported_runtime_environments": [
+      "android",
+      "ios"
+    ],
+    "max_data_age_hours": 24
+  },
+  "audience_processing_registration": {
+    "account_settings": [
+      {
+        "type": "text",
+        "id": "key",
+        "name": "API Key",
+        "description": "Secret key to use the API, provided by your account manager",
+        "visible": true,
+        "required": true,
+        "confidential": false
+      },
+      {
+        "type": "text",
+        "id": "customer_id",
+        "name": "Customer ID",
+        "description": "Internal customer ID, provided by your Remerge account manage",
+        "visible": true,
+        "required": true,
+        "confidential": false
+      }
+    ],
+    "audience_subscription_settings": []
+  }
+}
