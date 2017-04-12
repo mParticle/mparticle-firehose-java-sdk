@@ -19,7 +19,13 @@
         "required": true
       }
     ],
-    "user_identities": [],
+    "user_identities": [
+      {
+        "type": "email",
+        "encoding": "raw",
+        "required": false
+      },
+    ],
     "allow_access_location": false
   },
   "event_processing_registration": {
@@ -37,7 +43,7 @@
         "type": "text",
         "id": "customer_id",
         "name": "Customer ID",
-        "description": "Internal customer ID, provided by your Remerge account manage",
+        "description": "Internal customer ID, provided by your account manager",
         "visible": true,
         "required": true,
         "confidential": false
@@ -69,7 +75,7 @@
         "type": "text",
         "id": "customer_id",
         "name": "Customer ID",
-        "description": "Internal customer ID, provided by your Remerge account manage",
+        "description": "Internal customer ID, provided by your account manager",
         "visible": true,
         "required": true,
         "confidential": false
