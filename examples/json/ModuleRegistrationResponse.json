@@ -2,7 +2,7 @@
   "type": "module_registration_response",
   "id": "7d981cad-58fb-4db1-a7e7-61a4e7c5926c",
   "timestamp_ms": 1456255204036,
-  "sdk_version": "1.1.1",
+  "sdk_version": "1.2.4", //replace with the latest Java SDK version
   "name": "Your Company Name",
   "version": "1.0",
   "description": "A description of your <a href=''>company</a> and services. Inline HTML markup is permitted.",
