@@ -1,16 +1,43 @@
-{  
+{
    "type":"event_processing_request",
    "id":"b917880b-c91d-47b5-b2fe-f14de2a4a38c",
    "timestamp_ms":1459892017807,
    "source_id":"24a4e9b5-fa71-45e0-a358-e0530f7bdde9",
-   "account":{  
+   "account":{
       "account_id":0,
-      "account_settings":{  
+      "account_settings":{
          "endpointUrl":"",
          "channelName":"@sdozor"
       }
    },
-   "user_attributes":{  
+   "user_identities":[
+      {
+         "type":"customer",
+         "encoding":"raw",
+         "value":"123456"
+      },
+      {
+         "type":"email",
+         "encoding":"raw",
+         "value":"123456"
+      },
+      {
+         "type":"google",
+         "encoding":"raw",
+         "value":"123456"
+      },
+      {
+         "type":"other",
+         "encoding":"raw",
+         "value":"123456"
+      },
+      {
+         "type":"facebook",
+         "encoding":"raw",
+         "value":"123456"
+      }
+   ],
+   "user_attributes":{
       "$FirstName":"Brian",
       "$LastName":"O'Brian",
       "$Gender":"M",
@@ -54,7 +81,6 @@
       "application_package":"com.mparticle.TravelApp",
       "client_ip_address":"192.168.1.15",
       "install_referrer":"utm_source%3Dgoogle%26utm_medium%3Dcpc%26utm_term%3Drunning%252Bshoes%26utm_content%3Dlogolink%26utm_campaign%3Dspring_sale"
-
    },
    "runtime_environment":{
       "sdk_version":"6.12.1",
@@ -68,65 +94,65 @@
          }
       ],
       "apple_search_ads_attribution":{
-         "Version3.1": {
-            "iad-attribution": "true",
-            "iad-clickdate": "foo-date",
-            "iad-conversion-date": "foo-date",
-            "iad-org-name": "foo org name",
-            "iad-campaign-id": "123456",
-            "iad-campaign-name": "foo campaign name",
-            "iad-adgroup-id": "654321",
-            "iad-adgroup-name": "foo ad group",
-            "iad-keyword": "foo keyword"
+         "Version3.1":{
+            "iad-attribution":"true",
+            "iad-clickdate":"foo-date",
+            "iad-conversion-date":"foo-date",
+            "iad-org-name":"foo org name",
+            "iad-campaign-id":"123456",
+            "iad-campaign-name":"foo campaign name",
+            "iad-adgroup-id":"654321",
+            "iad-adgroup-name":"foo ad group",
+            "iad-keyword":"foo keyword"
          }
       }
    },
-   "events":[  
-      {  
+   "events":[
+      {
          "type":"session_start",
          "id":"fa0ece33-9b62-44f5-88d4-6278f1fd9d08",
          "timestamp_ms":1459892017807,
          "source_id":"0e1b9ea5-936f-486b-981f-e13d12d61140",
          "session_id":-1096377938905861812,
-         "location":{  
+         "location":{
             "latitude":40.7142,
             "longitude":74.0064,
             "accuracy":15.0
          }
       },
-      {  
+      {
          "type":"session_end",
          "id":"520ffd0e-14a0-434c-a11a-8cf2a93c45e2",
          "timestamp_ms":1459892017807,
          "source_id":"1b7602e1-344e-4ae8-ab31-41941eb61346",
          "session_id":-1096377938905861812,
-         "location":{  
+         "location":{
             "latitude":40.7142,
             "longitude":74.0064,
             "accuracy":15.0
          },
          "session_length_ms":336000
       },
-      {  
+      {
          "type":"custom_event",
          "id":"048f721a-5ec0-4b4c-9c32-aec30c1614ec",
          "timestamp_ms":1459892017807,
          "source_id":"ca9899a6-c33a-4139-acea-204d4ea215a1",
          "session_id":-1096377938905861812,
-         "location":{  
+         "location":{
             "latitude":40.7142,
             "longitude":74.0064,
             "accuracy":15.0
          },
          "name":"Transaction 7",
          "custom_event_type":"transaction",
-         "attributes":{  
+         "attributes":{
             "Test Event #0 Attribute A":"Test Event #0 Value A",
             "Test Event #0 Attribute B":"Test Event #0 Value B",
             "Test Event #0 Attribute C":"Test Event #0 Value C"
          }
       },
-      {  
+      {
          "type":"error",
          "id":"d2a716d7-94b8-4d6e-8206-4920fe7961a6",
          "timestamp_ms":1459892017807,
@@ -136,12 +162,12 @@
          "is_crash":true,
          "stack_trace":"java.lang.NullReferenceException: exception requested\r\nat com.mparticle.TravelApp.MainActivity$1.onClick(MainActivity.java:118)\r\nat android.view.View.performClick(View.java:2408)\r\nat android.view.View$PerformClick.run(View.java:8816)\r\nat android.os.Handler.handleCallback(Handler.java:587)\r\nat android.os.Handler.dispatchMessage(Handler.java:92)\r\nat android.os.Looper.loop(Looper.java:123)\r\nat android.app.ActivityThread.main(ActivityThread.java:4627)\r\nat java.lang.reflect.Method.invokeNative(Native Method)\r\nat java.lang.reflect.Method.invoke(Method.java:521)\r\nat com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:868)\r\nat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:626)\r\nat dalvik.system.NativeStart.main(Native Method)\r\n"
       },
-      {  
+      {
          "type":"user_attribute_change",
          "id":"f4cbac15-e632-40bb-9e3a-49cdbebb97b0",
          "timestamp_ms":1459892017807,
          "source_id":"24a4e9b5-fa71-45e0-a358-e0530f7bdde9",
-         "added":{  
+         "added":{
             "$FirstName":"Brian",
             "$LastName":"O'Brian",
             "$Gender":"M",
@@ -212,7 +238,7 @@
             }
          ]
       },
-      {  
+      {
          "type":"product_action",
          "id":"c420c8f2-5b81-4236-a07e-176cec0e4327",
          "timestamp_ms":1465574552902,
@@ -225,8 +251,8 @@
          "tax_amount":5.0,
          "shipping_amount":5.0,
          "coupon_code":"Example transaction coupon code",
-         "products":[  
-            {  
+         "products":[
+            {
                "id":"example-sku",
                "name":"Example name",
                "brand":"Example Brand",
