@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public final class BooleanSetting extends Setting {
 
+    @JsonProperty("default_value")
+    private boolean defaultValue;
+
     @JsonProperty("checked")
     private boolean isChecked;
 
@@ -27,5 +30,13 @@ public final class BooleanSetting extends Setting {
 
     public BooleanSetting(String id, String name) {
         super(Type.BOOLEAN, id, name);
+    }
+
+    public boolean isDefaultValue() {
+        return defaultValue;
+    }
+
+    public void setDefaultValue(boolean defaultValue) {
+        this.defaultValue = defaultValue;
     }
 }
