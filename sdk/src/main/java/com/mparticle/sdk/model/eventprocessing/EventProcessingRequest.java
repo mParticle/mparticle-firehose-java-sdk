@@ -44,6 +44,9 @@ public final class EventProcessingRequest extends Message {
     @JsonProperty("event_connection_settings")
     private List<Setting> connectionSettings;
 
+    @JsonProperty("source_channel")
+    private String sourceChannel;
+
     public String getSourceId() {
         return sourceId;
     }
@@ -189,6 +192,14 @@ public final class EventProcessingRequest extends Message {
 
     public void setConnectionSettings(List<Setting> connectionSettings) {
         this.connectionSettings = connectionSettings;
+    }
+
+    public String getSourceChannel() {
+        return sourceChannel;
+    }
+
+    public void setSourceChannel(String sourceChannel) {
+        this.sourceChannel = sourceChannel;
     }
 }
 
