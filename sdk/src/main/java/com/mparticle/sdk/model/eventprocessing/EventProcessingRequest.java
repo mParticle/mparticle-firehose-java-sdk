@@ -47,6 +47,9 @@ public final class EventProcessingRequest extends Message {
     @JsonProperty("source_channel")
     private String sourceChannel;
 
+    @JsonProperty("device_application_stamp")
+    private String deviceApplicationStamp;
+
     public String getSourceId() {
         return sourceId;
     }
@@ -208,6 +211,12 @@ public final class EventProcessingRequest extends Message {
     public void setSourceChannel(String sourceChannel) {
         this.sourceChannel = sourceChannel;
     }
+
+    public String getDeviceApplicationStamp() {
+        return deviceApplicationStamp;
+    }
+
+    public void setDeviceApplicationStamp(String deviceApplicationStamp) {
+        this.deviceApplicationStamp = deviceApplicationStamp;
+    }
 }
-
-

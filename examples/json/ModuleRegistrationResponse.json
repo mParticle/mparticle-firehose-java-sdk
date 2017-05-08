@@ -24,10 +24,11 @@
         "type": "email",
         "encoding": "raw",
         "required": false
-      },
+      }
     ],
     "allow_access_location": false,
-    "allow_access_ip_address": false
+    "allow_access_ip_address": false,
+    "allow_access_device_application_stamp": false
   },
   "event_processing_registration": {
     "account_settings": [
