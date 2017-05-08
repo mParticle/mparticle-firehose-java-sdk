@@ -194,6 +194,13 @@ public final class EventProcessingRequest extends Message {
         this.connectionSettings = connectionSettings;
     }
 
+    /**
+     * Gets the source channel of this request. This is the originating source of the data, such
+     * as one of mParticle's native SDKs, or server APIs.
+     *
+     * @see com.mparticle.sdk.model.Consts.ChannelSourceType
+     * @return returns the string constant representing the source
+     */
     public String getSourceChannel() {
         return sourceChannel;
     }
