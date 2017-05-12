@@ -26,7 +26,8 @@
         "required": false
       },
     ],
-    "allow_access_location": false
+    "allow_access_location": false,
+    "allow_access_ip_address": false
   },
   "event_processing_registration": {
     "account_settings": [
