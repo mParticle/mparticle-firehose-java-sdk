@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This message contains application events logged by the mobile SDK's.
+ * This message contains application events logged by the mobile SDKs.
  */
 public final class EventProcessingRequest extends Message {
 
