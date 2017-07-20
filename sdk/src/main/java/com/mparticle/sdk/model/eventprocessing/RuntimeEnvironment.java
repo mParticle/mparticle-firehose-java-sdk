@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(name="unknown", value=UnknownRuntimeEnvironment.class),
         @JsonSubTypes.Type(name="android", value=AndroidRuntimeEnvironment.class),
         @JsonSubTypes.Type(name="ios", value=IosRuntimeEnvironment.class),
-        @JsonSubTypes.Type(name="tvos", value=TVOSRuntimeEnvironment.class)
+        @JsonSubTypes.Type(name="tvos", value=TVOSRuntimeEnvironment.class),
+        @JsonSubTypes.Type(name="mobileweb", value=WebRuntimeEnvironment.class)
 })
 public abstract class RuntimeEnvironment {
 
@@ -83,7 +84,8 @@ public abstract class RuntimeEnvironment {
         UNKNOWN,
         ANDROID,
         IOS,
-        TVOS;
+        TVOS,
+        WEB;
 
         @Override
         public String toString() {
