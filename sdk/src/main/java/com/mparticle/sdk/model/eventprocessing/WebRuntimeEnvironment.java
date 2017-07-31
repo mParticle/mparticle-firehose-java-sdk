@@ -21,7 +21,7 @@ public final class WebRuntimeEnvironment extends RuntimeEnvironment {
     }
 
     public WebRuntimeEnvironment() {
-        super(Type.WEB);
+        super(Type.MOBILEWEB);
     }
 }
 

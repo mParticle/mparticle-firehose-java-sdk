@@ -85,7 +85,7 @@ public abstract class RuntimeEnvironment {
         ANDROID,
         IOS,
         TVOS,
-        WEB;
+        MOBILEWEB;
 
         @Override
         public String toString() {
