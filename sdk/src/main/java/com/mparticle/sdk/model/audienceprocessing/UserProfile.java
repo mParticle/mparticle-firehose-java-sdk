@@ -15,9 +15,6 @@ public final class UserProfile {
     @JsonProperty("device_identities")
     private List<DeviceIdentity> deviceIdentities;
 
-    @JsonProperty("user_attributes")
-    private Map<String, String> userAttributes;
-
     @JsonProperty("added_audiences")
     private List<Audience> addedAudiences;
 
@@ -54,22 +51,6 @@ public final class UserProfile {
      */
     public void setDeviceIdentities(List<DeviceIdentity> deviceIdentities) {
         this.deviceIdentities = deviceIdentities;
-    }
-
-    /**
-     *
-     * @return custom attributes
-     */
-    public Map<String, String> getUserAttributes() {
-        return userAttributes;
-    }
-
-    /**
-     *
-     * @param userAttributes custom attributes
-     */
-    public void setUserAttributes(Map<String, String> userAttributes) {
-        this.userAttributes = userAttributes;
     }
 
     /**
