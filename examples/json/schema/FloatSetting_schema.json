@@ -1,0 +1,32 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:FloatSetting",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "required" : true
+    },
+    "name" : {
+      "type" : "string",
+      "required" : true
+    },
+    "description" : {
+      "type" : "string"
+    },
+    "visible" : {
+      "type" : "boolean"
+    },
+    "default_value" : {
+      "type" : "number"
+    },
+    "min_value" : {
+      "type" : "number"
+    },
+    "max_value" : {
+      "type" : "number"
+    },
+    "required" : {
+      "type" : "boolean"
+    }
+  }
+}

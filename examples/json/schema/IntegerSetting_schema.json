@@ -1,0 +1,32 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:IntegerSetting",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "required" : true
+    },
+    "name" : {
+      "type" : "string",
+      "required" : true
+    },
+    "description" : {
+      "type" : "string"
+    },
+    "visible" : {
+      "type" : "boolean"
+    },
+    "default_value" : {
+      "type" : "integer"
+    },
+    "min_value" : {
+      "type" : "integer"
+    },
+    "max_value" : {
+      "type" : "integer"
+    },
+    "required" : {
+      "type" : "boolean"
+    }
+  }
+}

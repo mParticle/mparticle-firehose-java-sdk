@@ -1,0 +1,92 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:TVOSRuntimeEnvironment",
+  "properties" : {
+    "is_debug" : {
+      "type" : "boolean"
+    },
+    "client_ip_address" : {
+      "type" : "string"
+    },
+    "sdk_version" : {
+      "type" : "string"
+    },
+    "identities" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:DeviceIdentity",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "required" : true,
+            "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token" ]
+          },
+          "encoding" : {
+            "type" : "string",
+            "required" : true,
+            "enum" : [ "raw", "md5", "sha1", "sha256" ]
+          },
+          "value" : {
+            "type" : "string",
+            "required" : true
+          }
+        }
+      }
+    },
+    "build_id" : {
+      "type" : "string"
+    },
+    "brand" : {
+      "type" : "string"
+    },
+    "product" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "manufacturer" : {
+      "type" : "string"
+    },
+    "os_version" : {
+      "type" : "string"
+    },
+    "model" : {
+      "type" : "string"
+    },
+    "screen_height" : {
+      "type" : "integer"
+    },
+    "screen_width" : {
+      "type" : "integer"
+    },
+    "country" : {
+      "type" : "string"
+    },
+    "locale_language" : {
+      "type" : "string"
+    },
+    "locale_country" : {
+      "type" : "string"
+    },
+    "timezone_offset" : {
+      "type" : "integer"
+    },
+    "timezone_name" : {
+      "type" : "string"
+    },
+    "cpu_architecture" : {
+      "type" : "string"
+    },
+    "application_name" : {
+      "type" : "string"
+    },
+    "application_version" : {
+      "type" : "string"
+    },
+    "application_package" : {
+      "type" : "string"
+    }
+  }
+}

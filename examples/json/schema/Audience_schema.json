@@ -1,0 +1,20 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:Audience",
+  "properties" : {
+    "audience_id" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "audience_name" : {
+      "type" : "string",
+      "required" : true
+    },
+    "audience_subscription_settings" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    }
+  }
+}

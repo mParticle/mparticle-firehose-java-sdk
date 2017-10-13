@@ -1,0 +1,47 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:ScreenViewEvent",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "required" : true
+    },
+    "timestamp_ms" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "source_id" : {
+      "type" : "string"
+    },
+    "session_id" : {
+      "type" : "integer"
+    },
+    "location" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Location",
+      "properties" : {
+        "latitude" : {
+          "type" : "number",
+          "required" : true
+        },
+        "longitude" : {
+          "type" : "number",
+          "required" : true
+        },
+        "accuracy" : {
+          "type" : "number"
+        }
+      }
+    },
+    "screen_name" : {
+      "type" : "string",
+      "required" : true
+    },
+    "attributes" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    }
+  }
+}

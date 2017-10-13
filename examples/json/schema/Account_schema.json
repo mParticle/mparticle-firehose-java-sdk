@@ -1,0 +1,16 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:Account",
+  "properties" : {
+    "account_id" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "account_settings" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    }
+  }
+}

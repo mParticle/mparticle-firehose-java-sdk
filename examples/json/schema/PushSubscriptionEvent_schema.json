@@ -1,0 +1,46 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:PushSubscriptionEvent",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "required" : true
+    },
+    "timestamp_ms" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "source_id" : {
+      "type" : "string"
+    },
+    "session_id" : {
+      "type" : "integer"
+    },
+    "location" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Location",
+      "properties" : {
+        "latitude" : {
+          "type" : "number",
+          "required" : true
+        },
+        "longitude" : {
+          "type" : "number",
+          "required" : true
+        },
+        "accuracy" : {
+          "type" : "number"
+        }
+      }
+    },
+    "action" : {
+      "type" : "string",
+      "required" : true,
+      "enum" : [ "subscribe", "unsubscribe" ]
+    },
+    "token" : {
+      "type" : "string",
+      "required" : true
+    }
+  }
+}
