@@ -46,9 +46,6 @@
                "value":"a0504a8cfa15ce2c"
             }
          ],
-         "user_attributes":{
-            "Example User Attribute":"Example user attribute value"
-         },
          "added_audiences":[
             {
                "audience_id":456,
@@ -117,9 +114,6 @@
                "value":"f01024bcfa11ceec"
             }
          ],
-         "user_attributes":{
-            "Example User Attribute":"Example user attribute value 2"
-         },
          "added_audiences":[
             {
                "audience_id":432,
