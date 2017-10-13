@@ -1,0 +1,38 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:WebRuntimeEnvironment",
+  "properties" : {
+    "is_debug" : {
+      "type" : "boolean"
+    },
+    "client_ip_address" : {
+      "type" : "string"
+    },
+    "sdk_version" : {
+      "type" : "string"
+    },
+    "identities" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:DeviceIdentity",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "required" : true,
+            "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token" ]
+          },
+          "encoding" : {
+            "type" : "string",
+            "required" : true,
+            "enum" : [ "raw", "md5", "sha1", "sha256" ]
+          },
+          "value" : {
+            "type" : "string",
+            "required" : true
+          }
+        }
+      }
+    }
+  }
+}

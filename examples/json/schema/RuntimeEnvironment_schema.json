@@ -1,0 +1,15 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:RuntimeEnvironment",
+  "properties" : {
+    "is_debug" : {
+      "type" : "boolean"
+    },
+    "client_ip_address" : {
+      "type" : "string"
+    },
+    "sdk_version" : {
+      "type" : "string"
+    }
+  }
+}

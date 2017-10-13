@@ -1,0 +1,116 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:AudienceMembershipChangeRequest",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "required" : true
+    },
+    "timestamp_ms" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "account" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:Account",
+      "required" : true,
+      "properties" : {
+        "account_id" : {
+          "type" : "integer",
+          "required" : true
+        },
+        "account_settings" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "user_profiles" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:UserProfile",
+        "properties" : {
+          "user_identities" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:UserIdentity",
+              "properties" : {
+                "type" : {
+                  "type" : "string",
+                  "required" : true,
+                  "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email" ]
+                },
+                "encoding" : {
+                  "type" : "string",
+                  "required" : true,
+                  "enum" : [ "raw", "md5", "sha1", "sha256" ]
+                },
+                "value" : {
+                  "type" : "string",
+                  "required" : true
+                }
+              }
+            }
+          },
+          "device_identities" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:DeviceIdentity",
+              "properties" : {
+                "type" : {
+                  "type" : "string",
+                  "required" : true,
+                  "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token" ]
+                },
+                "encoding" : {
+                  "type" : "string",
+                  "required" : true,
+                  "enum" : [ "raw", "md5", "sha1", "sha256" ]
+                },
+                "value" : {
+                  "type" : "string",
+                  "required" : true
+                }
+              }
+            }
+          },
+          "added_audiences" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:Audience",
+              "properties" : {
+                "audience_id" : {
+                  "type" : "integer",
+                  "required" : true
+                },
+                "audience_name" : {
+                  "type" : "string",
+                  "required" : true
+                },
+                "audience_subscription_settings" : {
+                  "type" : "object",
+                  "additionalProperties" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "removed_audiences" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "$ref" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:Audience"
+            }
+          }
+        }
+      }
+    }
+  }
+}

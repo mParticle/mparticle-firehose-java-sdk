@@ -1,0 +1,42 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Product",
+  "properties" : {
+    "id" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "brand" : {
+      "type" : "string"
+    },
+    "category" : {
+      "type" : "string"
+    },
+    "variant" : {
+      "type" : "string"
+    },
+    "position" : {
+      "type" : "integer"
+    },
+    "price" : {
+      "type" : "number"
+    },
+    "quantity" : {
+      "type" : "number"
+    },
+    "coupon_code" : {
+      "type" : "string"
+    },
+    "total_amount" : {
+      "type" : "number"
+    },
+    "attributes" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    }
+  }
+}

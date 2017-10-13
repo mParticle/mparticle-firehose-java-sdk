@@ -1,0 +1,100 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:ImpressionEvent",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "required" : true
+    },
+    "timestamp_ms" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "source_id" : {
+      "type" : "string"
+    },
+    "session_id" : {
+      "type" : "integer"
+    },
+    "location" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Location",
+      "properties" : {
+        "latitude" : {
+          "type" : "number",
+          "required" : true
+        },
+        "longitude" : {
+          "type" : "number",
+          "required" : true
+        },
+        "accuracy" : {
+          "type" : "number"
+        }
+      }
+    },
+    "attributes" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    },
+    "impressions" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Impression",
+        "properties" : {
+          "impression_list_name" : {
+            "type" : "string"
+          },
+          "products" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Product",
+              "properties" : {
+                "id" : {
+                  "type" : "string"
+                },
+                "name" : {
+                  "type" : "string"
+                },
+                "brand" : {
+                  "type" : "string"
+                },
+                "category" : {
+                  "type" : "string"
+                },
+                "variant" : {
+                  "type" : "string"
+                },
+                "position" : {
+                  "type" : "integer"
+                },
+                "price" : {
+                  "type" : "number"
+                },
+                "quantity" : {
+                  "type" : "number"
+                },
+                "coupon_code" : {
+                  "type" : "string"
+                },
+                "total_amount" : {
+                  "type" : "number"
+                },
+                "attributes" : {
+                  "type" : "object",
+                  "additionalProperties" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

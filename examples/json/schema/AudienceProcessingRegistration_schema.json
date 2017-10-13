@@ -1,0 +1,36 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:AudienceProcessingRegistration",
+  "properties" : {
+    "account_settings" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:Setting",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          },
+          "name" : {
+            "type" : "string",
+            "required" : true
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "visible" : {
+            "type" : "boolean"
+          }
+        }
+      }
+    },
+    "audience_subscription_settings" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:mparticle:sdk:model:registration:Setting"
+      }
+    }
+  }
+}

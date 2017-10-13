@@ -1,0 +1,67 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:UserIdentityChangeEvent",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "required" : true
+    },
+    "timestamp_ms" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "source_id" : {
+      "type" : "string"
+    },
+    "session_id" : {
+      "type" : "integer"
+    },
+    "location" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Location",
+      "properties" : {
+        "latitude" : {
+          "type" : "number",
+          "required" : true
+        },
+        "longitude" : {
+          "type" : "number",
+          "required" : true
+        },
+        "accuracy" : {
+          "type" : "number"
+        }
+      }
+    },
+    "added" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:UserIdentity",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "required" : true,
+            "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email" ]
+          },
+          "encoding" : {
+            "type" : "string",
+            "required" : true,
+            "enum" : [ "raw", "md5", "sha1", "sha256" ]
+          },
+          "value" : {
+            "type" : "string",
+            "required" : true
+          }
+        }
+      }
+    },
+    "removed" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:UserIdentity"
+      }
+    }
+  }
+}

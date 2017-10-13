@@ -1,0 +1,160 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:ModuleRegistrationResponse",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "required" : true
+    },
+    "timestamp_ms" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "sdk_version" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string",
+      "required" : true
+    },
+    "description" : {
+      "type" : "string"
+    },
+    "version" : {
+      "type" : "string",
+      "required" : true
+    },
+    "permissions" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:Permissions",
+      "properties" : {
+        "device_identities" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:DeviceIdentityPermission",
+            "properties" : {
+              "type" : {
+                "type" : "string",
+                "required" : true,
+                "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token" ]
+              },
+              "encoding" : {
+                "type" : "string",
+                "required" : true,
+                "enum" : [ "raw", "md5", "sha1", "sha256" ]
+              },
+              "required" : {
+                "type" : "boolean"
+              }
+            }
+          }
+        },
+        "user_identities" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:UserIdentityPermission",
+            "properties" : {
+              "type" : {
+                "type" : "string",
+                "required" : true,
+                "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email" ]
+              },
+              "encoding" : {
+                "type" : "string",
+                "required" : true,
+                "enum" : [ "raw", "md5", "sha1", "sha256" ]
+              },
+              "required" : {
+                "type" : "boolean"
+              }
+            }
+          }
+        },
+        "allow_access_location" : {
+          "type" : "boolean"
+        },
+        "allow_access_ip_address" : {
+          "type" : "boolean"
+        },
+        "allow_access_device_application_stamp" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "event_processing_registration" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:EventProcessingRegistration",
+      "properties" : {
+        "account_settings" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:Setting",
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "required" : true
+              },
+              "name" : {
+                "type" : "string",
+                "required" : true
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "visible" : {
+                "type" : "boolean"
+              }
+            }
+          }
+        },
+        "event_connection_settings" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "urn:jsonschema:com:mparticle:sdk:model:registration:Setting"
+          }
+        },
+        "supported_event_types" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "enum" : [ "session_start", "session_end", "custom_event", "screen_view", "error", "privacy_setting_change", "user_attribute_change", "user_identity_change", "push_subscription", "application_state_transition", "push_message_receipt", "product_action", "promotion_action", "impression", "attribution" ]
+          }
+        },
+        "supported_runtime_environments" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb" ]
+          }
+        },
+        "max_data_age_hours" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "audience_processing_registration" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:AudienceProcessingRegistration",
+      "properties" : {
+        "account_settings" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "urn:jsonschema:com:mparticle:sdk:model:registration:Setting"
+          }
+        },
+        "audience_subscription_settings" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "$ref" : "urn:jsonschema:com:mparticle:sdk:model:registration:Setting"
+          }
+        }
+      }
+    }
+  }
+}

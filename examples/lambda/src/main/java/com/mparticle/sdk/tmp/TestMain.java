@@ -51,9 +51,9 @@ public class TestMain {
         batch.setRuntimeEnvironment(new UnknownRuntimeEnvironment());
 
         List<Event> events = Arrays.asList(
-            new SessionStartEvent(),
-            new CustomEvent(),
-            new SessionEndEvent());
+                new SessionStartEvent(),
+                new CustomEvent(),
+                new SessionEndEvent());
 
         batch.setEvents(events);
 
@@ -85,15 +85,15 @@ public class TestMain {
                 .setAction(ProductActionEvent.Action.PURCHASE)
                 .setTaxAmount(new BigDecimal("0.1"))
                 .setTotalAmount(new BigDecimal("100.34"))
-                        .setShippingAmount(new BigDecimal("23.33"))
-                                .setProducts(Arrays.asList(
-                                        new Product()
-                                                .setId("111")
-                                                .setName("Boots")
-                                                .setPrice(new BigDecimal("70.00"))
-                                                .setQuantity(BigDecimal.valueOf(1))
-                                                .setTotalAmount(new BigDecimal("70.00"))
-                                                ));
+                .setShippingAmount(new BigDecimal("23.33"))
+                .setProducts(Arrays.asList(
+                        new Product()
+                                .setId("111")
+                                .setName("Boots")
+                                .setPrice(new BigDecimal("70.00"))
+                                .setQuantity(BigDecimal.valueOf(1))
+                                .setTotalAmount(new BigDecimal("70.00"))
+                ));
 
         List<Event> events = Arrays.asList(
                 new SessionStartEvent(),

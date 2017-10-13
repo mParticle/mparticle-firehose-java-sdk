@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:AudienceMembershipChangeResponse",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "required" : true
+    },
+    "timestamp_ms" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "suspend_subscription" : {
+      "type" : "boolean"
+    }
+  }
+}

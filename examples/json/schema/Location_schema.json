@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Location",
+  "properties" : {
+    "latitude" : {
+      "type" : "number",
+      "required" : true
+    },
+    "longitude" : {
+      "type" : "number",
+      "required" : true
+    },
+    "accuracy" : {
+      "type" : "number"
+    }
+  }
+}

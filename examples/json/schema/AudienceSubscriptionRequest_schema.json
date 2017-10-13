@@ -1,0 +1,59 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:AudienceSubscriptionRequest",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "required" : true
+    },
+    "timestamp_ms" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "account" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:Account",
+      "required" : true,
+      "properties" : {
+        "account_id" : {
+          "type" : "integer",
+          "required" : true
+        },
+        "account_settings" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "audience_id" : {
+      "type" : "integer",
+      "required" : true
+    },
+    "audience_name" : {
+      "type" : "string",
+      "required" : true
+    },
+    "audience_description" : {
+      "type" : "string"
+    },
+    "audience_subscription_settings" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    },
+    "previous_audience_subscription_settings" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "string"
+      }
+    },
+    "action" : {
+      "type" : "string",
+      "required" : true,
+      "enum" : [ "add", "update", "remove" ]
+    }
+  }
+}
