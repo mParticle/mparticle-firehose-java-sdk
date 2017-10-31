@@ -25,7 +25,8 @@ import java.util.UUID;
         @JsonSubTypes.Type(name="product_action", value=ProductActionEvent.class),
         @JsonSubTypes.Type(name="promotion_action", value=PromotionActionEvent.class),
         @JsonSubTypes.Type(name="impression", value=ImpressionEvent.class),
-        @JsonSubTypes.Type(name="attribution", value=AttributionEvent.class)
+        @JsonSubTypes.Type(name="attribution", value=AttributionEvent.class),
+        @JsonSubTypes.Type(name="push_message_open", value=PushMessageOpenEvent.class)
 })
 /**
  * Class representing an analytics-based event originating from an mParticle-instrumented application.
@@ -214,7 +215,11 @@ public abstract class Event {
          */
         IMPRESSION,
 
-        ATTRIBUTION;
+        ATTRIBUTION,
+        /**
+         * This event represents when the users opens a push notification.
+         */
+        PUSH_MESSAGE_OPEN;
 
         @Override
         public String toString() {
