@@ -27,6 +27,14 @@ public final class Permissions {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowAccessDeviceApplicationStamp;
 
+    @JsonProperty("allow_device_info")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowDeviceInformation;
+
+    @JsonProperty("allow_user_attributes")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowUserAttributes;
+
     /**
      *
      * @return requested device identities
@@ -123,6 +131,39 @@ public final class Permissions {
      */
     public Permissions setAllowAccessDeviceApplicationStamp(boolean allowAccessDeviceApplicationStamp) {
         this.allowAccessDeviceApplicationStamp = allowAccessDeviceApplicationStamp;
+        return this;
+    }
+
+    public boolean isAllowDeviceInformation() {
+        return allowDeviceInformation;
+    }
+
+    /**
+     * Request access to device information
+     *
+     *
+     * @param allowDeviceInformation
+     *
+     */
+    public Permissions setAllowDeviceInformation(boolean allowDeviceInformation) {
+        this.allowDeviceInformation = allowDeviceInformation;
+        return this;
+    }
+
+    public boolean isAllowUserAttributes() {
+        return allowUserAttributes;
+    }
+
+    /**
+     * Request access to user attributes
+     *
+     * Disabling this will also disable UserAttributeChange events
+     *
+     * @param allowUserAttributes
+     *
+     */
+    public Permissions setAllowUserAttributes (boolean allowUserAttributes) {
+        this.allowUserAttributes = allowUserAttributes;
         return this;
     }
 }
