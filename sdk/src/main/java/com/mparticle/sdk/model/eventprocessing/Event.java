@@ -3,10 +3,7 @@ package com.mparticle.sdk.model.eventprocessing;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.mparticle.sdk.model.registration.Account;
 
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
@@ -50,7 +47,7 @@ public abstract class Event {
     @JsonProperty("location")
     private Location location;
 
-    private Context context;
+    private EventProcessingRequest request;
 
     /**
      *
@@ -132,26 +129,18 @@ public abstract class Event {
         this.location = location;
     }
 
-    /**
-     *
-     * @return account, user, and device information
-     */
-    public Context getContext() {
-        return context;
-    }
-
-    /**
-     *
-     * @param context account, user, and device information
-     */
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
     public Event(Type eventType) {
         this.type = eventType;
         this.id = UUID.randomUUID();
         this.timestamp = System.currentTimeMillis();
+    }
+
+    public EventProcessingRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(EventProcessingRequest request) {
+        this.request = request;
     }
 
     /**
@@ -224,66 +213,6 @@ public abstract class Event {
         @Override
         public String toString() {
             return this.name().toLowerCase();
-        }
-    }
-
-    /**
-     * Account, user, and device information.
-     */
-    public static final class Context {
-
-        private final Account account;
-        private final List<UserIdentity> userIdentities;
-        private final Map<String, String> userAttributes;
-        private final Map<String, List<String>> userAttributeLists;
-        private final RuntimeEnvironment runtimeEnvironment;
-
-        /**
-         *
-         * @return module subscription account information
-         */
-        public Account getAccount() {
-            return account;
-        }
-
-        /**
-         *
-         * @return user identities
-         */
-        public List<UserIdentity> getUserIdentities() {
-            return userIdentities;
-        }
-
-        /**
-         *
-         * @return user attributes
-         */
-        public Map<String, String> getUserAttributes() {
-            return userAttributes;
-        }
-
-        /**
-         *
-         * @return user attribute lists
-         */
-        public Map<String, List<String>> getUserAttributeLists() {
-            return userAttributeLists;
-        }
-
-        /**
-         *
-         * @return application execution environment
-         */
-        public RuntimeEnvironment getRuntimeEnvironment() {
-            return runtimeEnvironment;
-        }
-
-        public Context(EventProcessingRequest request) {
-            this.account = request.getAccount();
-            this.userIdentities = request.getUserIdentities();
-            this.userAttributes = request.getUserAttributes();
-            this.userAttributeLists = request.getUserAttributeLists();
-            this.runtimeEnvironment = request.getRuntimeEnvironment();
         }
     }
 }

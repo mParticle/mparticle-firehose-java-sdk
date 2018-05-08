@@ -28,7 +28,8 @@
     ],
     "allow_access_location": false,
     "allow_access_ip_address": false,
-    "allow_access_device_application_stamp": false
+    "allow_access_device_application_stamp": false,
+    "allow_consent_state":true
   },
   "event_processing_registration": {
     "account_settings": [
@@ -55,6 +56,9 @@
       "session_start",
       "custom_event",
       "product_action"
+    ],
+    "supported_system_notification_types":[
+      "gdpr_consent_state"
     ],
     "supported_runtime_environments": [
       "android",

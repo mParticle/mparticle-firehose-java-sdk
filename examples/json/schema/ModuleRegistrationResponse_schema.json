@@ -80,6 +80,9 @@
         },
         "allow_access_device_application_stamp" : {
           "type" : "boolean"
+        },
+        "allow_consent_state" : {
+          "type" : "boolean"
         }
       }
     },
@@ -122,6 +125,13 @@
           "items" : {
             "type" : "string",
             "enum" : [ "session_start", "session_end", "custom_event", "screen_view", "error", "privacy_setting_change", "user_attribute_change", "user_identity_change", "push_subscription", "application_state_transition", "push_message_receipt", "product_action", "promotion_action", "impression", "attribution" ]
+          }
+        },
+        "supported_system_notification_types" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "enum" : [ "gdpr_consent_state" ]
           }
         },
         "supported_runtime_environments" : {

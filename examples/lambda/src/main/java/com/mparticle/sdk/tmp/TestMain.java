@@ -3,20 +3,20 @@ package com.mparticle.sdk.tmp;
 import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.model.MessageSerializer;
 import com.mparticle.sdk.model.eventprocessing.*;
+import com.mparticle.sdk.model.eventprocessing.consent.GDPRConsent;
+import com.mparticle.sdk.model.eventprocessing.notification.GDPRConsentStateNotification;
+import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
 import com.mparticle.sdk.model.registration.Account;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.samples.SampleExtension;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TestMain {
     public static void main(String[] args) {
-        //testSerializer();
+        testSerializer();
         testRegister();
         //testEventProcessing();
     }
@@ -30,6 +30,8 @@ public class TestMain {
             ModuleRegistrationRequest request = new ModuleRegistrationRequest();
             String data = m.serialize(request);
             Message response = processor.processMessage(request);
+
+
             data = m.serialize(response);
             System.out.println(data);
         } catch (IOException e) {
@@ -101,6 +103,24 @@ public class TestMain {
                 new SessionEndEvent(),
                 pa);
 
+        GDPRConsentStateNotification notification = new GDPRConsentStateNotification();
+        notification.setPurpose("foo purpose");
+        notification.setNewConsentState(new GDPRConsent()
+                .setConsented(true)
+                .setDocument("foo document")
+                .setHardwareId("foo hardware id")
+                .setLocation("foo location")
+                .setTimestamp(123L));
+        notification.setOldConsentState(new GDPRConsent()
+                .setConsented(false)
+                .setDocument("bar document")
+                .setHardwareId("bar hardware id")
+                .setLocation("bar location")
+                .setTimestamp(456L));
+        List<SystemNotification> systemNotifications = new ArrayList<>();
+        systemNotifications.add(notification);
+
+        batch.setSystemNotifications(systemNotifications);
         batch.setEvents(events);
 
         try {

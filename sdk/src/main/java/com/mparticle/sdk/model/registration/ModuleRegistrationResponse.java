@@ -19,7 +19,6 @@ public final class ModuleRegistrationResponse extends Message {
     @JsonProperty(value="version", required=true)
     private String version;
 
-
     @JsonProperty("permissions")
     private Permissions permissions;
 

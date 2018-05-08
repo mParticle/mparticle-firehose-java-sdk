@@ -2,6 +2,8 @@ package com.mparticle.sdk.model.eventprocessing;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.Message;
+import com.mparticle.sdk.model.eventprocessing.consent.ConsentState;
+import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
 import com.mparticle.sdk.model.registration.Account;
 import com.mparticle.sdk.model.registration.Setting;
 
@@ -49,6 +51,12 @@ public final class EventProcessingRequest extends Message {
 
     @JsonProperty("device_application_stamp")
     private String deviceApplicationStamp;
+
+    @JsonProperty("consent_state")
+    private ConsentState consentState;
+
+    @JsonProperty("system_notifications")
+    private List<SystemNotification> systemNotifications;
 
     public String getSourceId() {
         return sourceId;
@@ -218,5 +226,26 @@ public final class EventProcessingRequest extends Message {
 
     public void setDeviceApplicationStamp(String deviceApplicationStamp) {
         this.deviceApplicationStamp = deviceApplicationStamp;
+    }
+
+    /**
+     * Get the Consent State of the user profile to which this request applies.
+     *
+     * @return
+     */
+    public ConsentState getConsentState() {
+        return consentState;
+    }
+
+    public void setConsentState(ConsentState consentState) {
+        this.consentState = consentState;
+    }
+
+    public List<SystemNotification> getSystemNotifications() {
+        return systemNotifications;
+    }
+
+    public void setSystemNotifications(List<SystemNotification> systemNotifications) {
+        this.systemNotifications = systemNotifications;
     }
 }

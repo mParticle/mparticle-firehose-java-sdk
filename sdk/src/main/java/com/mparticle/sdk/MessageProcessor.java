@@ -1,11 +1,13 @@
 package com.mparticle.sdk;
 
-import com.mparticle.sdk.model.*;
+import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeRequest;
 import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeResponse;
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionRequest;
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionResponse;
 import com.mparticle.sdk.model.eventprocessing.*;
+import com.mparticle.sdk.model.eventprocessing.notification.GDPRConsentStateNotification;
+import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
 
@@ -50,8 +52,6 @@ public abstract class MessageProcessor {
                 } else {
                     return new AudienceMembershipChangeResponse();
                 }
-
-
             default:
                 throw new UnsupportedOperationException("The message type \"" + request.getType() + "\" is not supported.");
         }
@@ -71,21 +71,28 @@ public abstract class MessageProcessor {
     /**
      * Handler for processing event processing request.
      *
-     * <p>Base implementation parses the request and calls individual event handlers.</p>
+     * <p>Base implementation parses the request and calls individual event and system notification handlers.</p>
      *
      * @param request request
      * @return response
      * @throws IOException
      */
     public EventProcessingResponse processEventProcessingRequest(EventProcessingRequest request)  throws IOException {
-
         EventProcessingResponse response = new EventProcessingResponse();
-        Event.Context context = new Event.Context(request);
+        if (request.getSystemNotifications() != null) {
+            for (SystemNotification notification : request.getSystemNotifications()) {
+                notification.setRequest(request);
+
+                switch (notification.getType()) {
+                    case GDPR_CONSENT_STATE:
+                        processGDPRConsentStateNotification((GDPRConsentStateNotification)notification);
+                        break;
+                }
+            }
+        }
 
         for (Event e : request.getEvents()) {
-
-            e.setContext(context);
-
+            e.setRequest(request);
             switch (e.getType()) {
 
                 case SESSION_START:
@@ -151,6 +158,16 @@ public abstract class MessageProcessor {
         }
 
         return response;
+    }
+
+    /**
+     * Handler for processing GDPR Consent State system notifications
+     *
+     * @param notification
+     * @throws IOException
+     */
+    public void processGDPRConsentStateNotification(GDPRConsentStateNotification notification) throws IOException {
+
     }
 
     /**

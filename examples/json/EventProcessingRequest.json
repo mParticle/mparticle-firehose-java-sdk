@@ -279,5 +279,25 @@
          },
          "application_state":"install"
       }
+   ],
+   "system_notifications":[
+      {
+         "type":"gdpr_consent_state",
+         "purpose":"foo purpose",
+         "old_gdpr_consent_state":{
+            "consented":false,
+            "document":"bar document",
+            "timestamp":456,
+            "location":"bar location",
+            "hardware_id":"bar hardware id"
+         },
+         "new_gdpr_consent_state":{
+            "consented":true,
+            "document":"foo document",
+            "timestamp":123,
+            "location":"foo location",
+            "hardware_id":"foo hardware id"
+         }
+      }
    ]
 }

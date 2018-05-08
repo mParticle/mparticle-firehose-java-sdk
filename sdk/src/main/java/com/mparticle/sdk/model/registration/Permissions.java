@@ -35,6 +35,10 @@ public final class Permissions {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowUserAttributes;
 
+    @JsonProperty("allow_consent_state")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowConsentState;
+
     /**
      *
      * @return requested device identities
@@ -164,6 +168,22 @@ public final class Permissions {
      */
     public Permissions setAllowUserAttributes (boolean allowUserAttributes) {
         this.allowUserAttributes = allowUserAttributes;
+        return this;
+    }
+
+    public boolean isAllowConsentState() {
+        return allowConsentState;
+    }
+
+    /**
+     * Setting this will allow a partner to receive the consent state of the mParticle user profile
+     * to which this request pertains.
+     *
+     * @param allowConsentState
+     * @return
+     */
+    public Permissions setAllowConsentState(boolean allowConsentState) {
+        this.allowConsentState = allowConsentState;
         return this;
     }
 }

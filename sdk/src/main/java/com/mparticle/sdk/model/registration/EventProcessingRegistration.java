@@ -3,6 +3,7 @@ package com.mparticle.sdk.model.registration;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.eventprocessing.Event;
 import com.mparticle.sdk.model.eventprocessing.RuntimeEnvironment;
+import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
 
 import java.util.List;
 
@@ -24,6 +25,9 @@ public final class EventProcessingRegistration {
 
     @JsonProperty("supported_runtime_environments")
     private List<RuntimeEnvironment.Type> supportedRuntimeEnvironments;
+
+    @JsonProperty("supported_system_notification_types")
+    private List<SystemNotification.Type> supportedSystemNotifications;
 
     @JsonProperty("max_data_age_hours")
     private int maxDataAgeHours = 24;
@@ -155,6 +159,15 @@ public final class EventProcessingRegistration {
      */
     public EventProcessingRegistration setSupportedRuntimeEnvironments(List<RuntimeEnvironment.Type> supportedRuntimeEnvironments) {
         this.supportedRuntimeEnvironments = supportedRuntimeEnvironments;
+        return this;
+    }
+
+    public List<SystemNotification.Type> getSupportedSystemNotifications() {
+        return supportedSystemNotifications;
+    }
+
+    public EventProcessingRegistration setSupportedSystemNotifications(List<SystemNotification.Type> supportedSystemNotifications) {
+        this.supportedSystemNotifications = supportedSystemNotifications;
         return this;
     }
 }

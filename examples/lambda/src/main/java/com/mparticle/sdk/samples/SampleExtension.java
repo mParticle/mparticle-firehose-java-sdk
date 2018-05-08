@@ -3,6 +3,7 @@ package com.mparticle.sdk.samples;
 import com.mparticle.sdk.model.audienceprocessing.*;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.MessageProcessor;
+import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
 import com.mparticle.sdk.model.registration.*;
 
 import java.io.IOException;
@@ -33,6 +34,7 @@ public class SampleExtension extends MessageProcessor {
         );
 
         permissions.setDeviceIdentities(deviceIds);
+        permissions.setAllowConsentState(true);
 
         List<UserIdentityPermission> userIds = Arrays.asList(
                 // users must have email or customer id, otherwise they should be filtered
@@ -72,6 +74,9 @@ public class SampleExtension extends MessageProcessor {
         List<Event.Type> supportedEventTypes = Arrays.asList(Event.Type.CUSTOM_EVENT);
         eventProcessingRegistration.setSupportedEventTypes(supportedEventTypes);
 
+        List supportedNotificationTypes = Arrays.asList(SystemNotification.Type.GDPR_CONSENT_STATE);
+        eventProcessingRegistration.setSupportedSystemNotifications(supportedNotificationTypes);
+
         response.setEventProcessingRegistration(eventProcessingRegistration);
 
         // Register audience stream listener
@@ -92,11 +97,11 @@ public class SampleExtension extends MessageProcessor {
     public void processCustomEvent(CustomEvent event) {
 
         // Read account settings
-        Account account = event.getContext().getAccount();
+        Account account = event.getRequest().getAccount();
         String apiKey = account.getStringSetting("apiKey", true, null);
 
         // Access mobile device information
-        RuntimeEnvironment environment = event.getContext().getRuntimeEnvironment();
+        RuntimeEnvironment environment = event.getRequest().getRuntimeEnvironment();
 
         if (environment.getType() == RuntimeEnvironment.Type.IOS) {
             IosRuntimeEnvironment ios = (IosRuntimeEnvironment)environment;
