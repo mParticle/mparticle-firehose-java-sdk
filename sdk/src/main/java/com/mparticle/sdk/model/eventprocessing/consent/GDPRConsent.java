@@ -14,7 +14,7 @@ public final class GDPRConsent {
     @JsonProperty("document")
     private String document;
 
-    @JsonProperty("timestamp")
+    @JsonProperty("timestamp_unixtime_ms")
     private Long timestamp;
 
     @JsonProperty("location")
