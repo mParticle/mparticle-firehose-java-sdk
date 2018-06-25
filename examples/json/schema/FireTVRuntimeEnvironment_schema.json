@@ -1,6 +1,6 @@
 {
   "type" : "object",
-  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:IosRuntimeEnvironment",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:FireTVRuntimeEnvironment",
   "properties" : {
     "is_debug" : {
       "type" : "boolean"
@@ -20,7 +20,7 @@
           "type" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token", "roku_advertising_id", "roku_device_id", "roku_publisher_id", "microsoft_advertising_id", "microsoft_publisher_id", "fire_advertising_id" ]
+            "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token", "fire_advertising_id" ]
           },
           "encoding" : {
             "type" : "string",
@@ -70,18 +70,6 @@
     "locale_country" : {
       "type" : "string"
     },
-    "network_country" : {
-      "type" : "string"
-    },
-    "network_carrier" : {
-      "type" : "string"
-    },
-    "network_code" : {
-      "type" : "string"
-    },
-    "network_mobile_country_code" : {
-      "type" : "string"
-    },
     "timezone_offset" : {
       "type" : "integer"
     },
@@ -89,12 +77,6 @@
       "type" : "string"
     },
     "cpu_architecture" : {
-      "type" : "string"
-    },
-    "is_tablet" : {
-      "type" : "boolean"
-    },
-    "radio_access_technology" : {
       "type" : "string"
     },
     "application_name" : {
@@ -105,18 +87,6 @@
     },
     "application_package" : {
       "type" : "string"
-    },
-    "is_sandboxed" : {
-      "type" : "boolean"
-    },
-    "apple_search_ads_attribution" : {
-      "type" : "object",
-      "additionalProperties" : {
-        "type" : "object",
-        "additionalProperties" : {
-          "type" : "string"
-        }
-      }
     }
   }
 }

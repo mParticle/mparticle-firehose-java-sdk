@@ -59,7 +59,7 @@
               "type" : {
                 "type" : "string",
                 "required" : true,
-                "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email" ]
+                "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email", "other2", "other3", "other4"  ]
               },
               "encoding" : {
                 "type" : "string",
@@ -138,7 +138,7 @@
           "type" : "array",
           "items" : {
             "type" : "string",
-            "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb" ]
+            "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb", "firetv", "xbox", "roku" ]
           }
         },
         "max_data_age_hours" : {

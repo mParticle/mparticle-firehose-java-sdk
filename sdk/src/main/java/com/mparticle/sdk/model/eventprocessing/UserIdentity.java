@@ -36,7 +36,10 @@ public final class UserIdentity extends Identity {
         GOOGLE,
         MICROSOFT,
         YAHOO,
-        EMAIL;
+        EMAIL,
+        OTHER2,
+        OTHER3,
+        OTHER4;
 
         @Override
         public String toString() {

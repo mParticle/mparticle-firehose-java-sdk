@@ -43,7 +43,7 @@
       "type" : "array",
       "items" : {
         "type" : "string",
-        "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb" ]
+        "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb", "firetv", "xbox", "roku" ]
       }
     },
     "max_data_age_hours" : {

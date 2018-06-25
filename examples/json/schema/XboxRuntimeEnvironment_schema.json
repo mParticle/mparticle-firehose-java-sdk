@@ -1,6 +1,6 @@
 {
   "type" : "object",
-  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:WebRuntimeEnvironment",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:XboxRuntimeEnvironment",
   "properties" : {
     "is_debug" : {
       "type" : "boolean"
@@ -33,6 +33,60 @@
           }
         }
       }
+    },
+    "build_id" : {
+      "type" : "string"
+    },
+    "brand" : {
+      "type" : "string"
+    },
+    "product" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "manufacturer" : {
+      "type" : "string"
+    },
+    "os_version" : {
+      "type" : "string"
+    },
+    "model" : {
+      "type" : "string"
+    },
+    "screen_height" : {
+      "type" : "integer"
+    },
+    "screen_width" : {
+      "type" : "integer"
+    },
+    "country" : {
+      "type" : "string"
+    },
+    "locale_language" : {
+      "type" : "string"
+    },
+    "locale_country" : {
+      "type" : "string"
+    },
+    "timezone_offset" : {
+      "type" : "integer"
+    },
+    "timezone_name" : {
+      "type" : "string"
+    },
+    "cpu_architecture" : {
+      "type" : "string"
+    },
+    "application_name" : {
+      "type" : "string"
+    },
+    "application_version" : {
+      "type" : "string"
+    },
+    "application_package" : {
+      "type" : "string"
     }
   }
 }

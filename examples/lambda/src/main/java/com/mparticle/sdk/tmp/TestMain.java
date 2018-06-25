@@ -50,7 +50,7 @@ public class TestMain {
         settings.put("apiKey", "xyz");
         account.setAccountSettings(settings);
         batch.setAccount(account);
-        batch.setRuntimeEnvironment(new UnknownRuntimeEnvironment());
+        batch.setRuntimeEnvironment(new GenericRuntimeEnvironment());
 
         List<Event> events = Arrays.asList(
                 new SessionStartEvent(),
