@@ -65,11 +65,6 @@ public class DtoImportTest {
             "            \"type\":\"roku_publisher_id\",\n" +
             "            \"encoding\":\"raw\",\n" +
             "            \"value\":\"bbbbc54a-7523-49b0-b4c8-2692a4a8e87d\"\n" +
-            "         },\n" +
-            "         {\n" +
-            "            \"type\":\"roku_device_id\",\n" +
-            "            \"encoding\":\"raw\",\n" +
-            "            \"value\":\"cccbc54a-7523-49b0-b4c8-2692a4a8e87d\"\n" +
             "         }\n" +
             "      ],\n" +
             "      \"build_id\":\"M4=rc20\",\n" +
@@ -302,7 +297,6 @@ public class DtoImportTest {
             for (DeviceIdentity id : env.getIdentities()) {
                 rokuAdId |= id.getType() == DeviceIdentity.Type.ROKU_ADVERTISING_ID;
                 rokuPubId |= id.getType() == DeviceIdentity.Type.ROKU_PUBLISHER_ID;
-                rokuId |= id.getType() == DeviceIdentity.Type.ROKU_DEVICE_ID;
 
                 if (id.getType() == DeviceIdentity.Type.ROKU_ADVERTISING_ID) {
                     Assert.assertEquals("aaa", id.getValue().substring(0, 3));
@@ -311,13 +305,9 @@ public class DtoImportTest {
                 if (id.getType() == DeviceIdentity.Type.ROKU_PUBLISHER_ID) {
                     Assert.assertEquals("bbb", id.getValue().substring(0, 3));
                 }
-
-                if (id.getType() == DeviceIdentity.Type.ROKU_DEVICE_ID) {
-                    Assert.assertEquals("ccc", id.getValue().substring(0, 3));
-                }
             }
 
-            Assert.assertTrue( rokuAdId && rokuPubId && rokuId);
+            Assert.assertTrue( rokuAdId && rokuPubId );
         }
         catch (IOException e) {
             Assert.fail(e.getMessage());

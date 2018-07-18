@@ -40,7 +40,6 @@ public final class DeviceIdentity extends Identity {
         MICROSOFT_ADVERTISING_ID,
         MICROSOFT_PUBLISHER_ID,
         FIRE_ADVERTISING_ID,
-        ROKU_DEVICE_ID,
         ROKU_PUBLISHER_ID;
 
         @Override

@@ -44,9 +44,9 @@ allprojects {
     ext."signing.password" = System.getenv("mavenSigningKeyPassword")
 }
 
-signing {
-    required { gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives
+signing {	
+    required { gradle.taskGraph.hasTask("uploadArchives") }	
+    sign configurations.archives	
 }
 
 def target_maven_repo
@@ -73,7 +73,7 @@ uploadArchives {
             }
 
             pom.project {
-                version = '1.10.0'
+                version = '1.10.1'
                 artifactId = 'java-sdk'
                 groupId = 'com.mparticle'
                 description 'mParticle Java SDK used to integrate with mParticle\'s Firehose API'

@@ -1,6 +1,6 @@
 {
   "type" : "object",
-  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:AndroidRuntimeEnvironment",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:RokuRuntimeEnvironment",
   "properties" : {
     "is_debug" : {
       "type" : "boolean"
@@ -55,15 +55,6 @@
     "model" : {
       "type" : "string"
     },
-    "screen_height" : {
-      "type" : "integer"
-    },
-    "screen_width" : {
-      "type" : "integer"
-    },
-    "screen_dpi" : {
-      "type" : "integer"
-    },
     "country" : {
       "type" : "string"
     },
@@ -73,41 +64,14 @@
     "locale_country" : {
       "type" : "string"
     },
-    "network_country" : {
-      "type" : "string"
-    },
-    "network_carrier" : {
-      "type" : "string"
-    },
-    "network_code" : {
-      "type" : "string"
-    },
-    "network_mobile_country_code" : {
-      "type" : "string"
-    },
     "timezone_offset" : {
       "type" : "integer"
     },
     "timezone_name" : {
       "type" : "string"
     },
-    "is_tablet" : {
-      "type" : "boolean"
-    },
-    "supports_telephony" : {
-      "type" : "boolean"
-    },
-    "has_nfc" : {
-      "type" : "boolean"
-    },
-    "bluetooth_enabled" : {
-      "type" : "boolean"
-    },
-    "bluetooth_version" : {
+    "cpu_architecture" : {
       "type" : "string"
-    },
-    "android_sdk_level" : {
-      "type" : "integer"
     },
     "application_name" : {
       "type" : "string"
@@ -116,9 +80,6 @@
       "type" : "string"
     },
     "application_package" : {
-      "type" : "string"
-    },
-    "install_referrer" : {
       "type" : "string"
     }
   }
