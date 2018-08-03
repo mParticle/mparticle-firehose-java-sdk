@@ -189,6 +189,10 @@ public abstract class Event {
         APPLICATION_STATE_TRANSITION,
         /**
          * This event represents when the device receives a push notification.
+         *
+         * NOTE: Integrations registering for PUSH_MESSAGE_RECEIPT must also set a push provider ID within the EventProcessingRegistration.
+         *
+         * @see {@link com.mparticle.sdk.model.registration.EventProcessingRegistration#setPushMessagingProviderId(String)}
          */
         PUSH_MESSAGE_RECEIPT,
         /**

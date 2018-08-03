@@ -32,6 +32,9 @@ public final class EventProcessingRegistration {
     @JsonProperty("max_data_age_hours")
     private int maxDataAgeHours = 24;
 
+    @JsonProperty("push_messaging_provider_id")
+    private String pushMessagingProviderId;
+
     /**
      * Gets the account-level settings registered by this integration.
      *
@@ -168,6 +171,34 @@ public final class EventProcessingRegistration {
 
     public EventProcessingRegistration setSupportedSystemNotifications(List<SystemNotification.Type> supportedSystemNotifications) {
         this.supportedSystemNotifications = supportedSystemNotifications;
+        return this;
+    }
+
+    /**
+     * Get the push messaging provider ID. The push messaging provider ID is required as a security measure to ensure that integrations
+     * only receive push receipts originally sent by their service. For example, the company Acme Inc., when sending a push notification
+     * to either Apple's push messaging service or Google GCM/FCM, must include a unique key, such as "acme-id", within the payload of the push message.
+     * In that case, Acme Inc., should register for a push messaging provider id of "acme-id". When forwarding push message receipts, the mParticle platform
+     * will only send push receipt messages that contain your push messaging provider id to your Firehose integration.
+     *
+     * @return
+     */
+    public String getPushMessagingProviderId() {
+        return pushMessagingProviderId;
+    }
+
+    /**
+     * Set the push messaging provider ID. The push messaging provider ID is required as a security measure to ensure that integrations
+     * only receive push receipts originally sent by their service. For example, the company Acme Inc., when sending a push notification
+     * to either Apple's push messaging service or Google GCM/FCM, must include a unique key, such as "acme-id", within the payload of the push message.
+     * In that case, Acme Inc., should register for a push messaging provider id of "acme-id". When forwarding push message receipts, the mParticle platform
+     * will only send push receipt messages that contain your push messaging provider id to your Firehose integration.
+     *
+     * @param pushMessagingProviderId
+     * @return
+     */
+    public EventProcessingRegistration setPushMessagingProviderId(String pushMessagingProviderId) {
+        this.pushMessagingProviderId = pushMessagingProviderId;
         return this;
     }
 }
