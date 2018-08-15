@@ -1,0 +1,24 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:UserAttributeAudienceEvent",
+  "properties" : {
+    "key" : {
+      "type" : "string",
+      "required" : true
+    },
+    "value" : {
+      "type" : "string"
+    },
+    "action" : {
+      "type" : "string",
+      "required" : true,
+      "enum" : [ "UPSERT", "DELETE" ]
+    },
+    "list_value" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    }
+  }
+}

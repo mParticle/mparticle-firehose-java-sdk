@@ -1,1 +1,6 @@
-{"type":"module_registration_request","id":"76e558fa-f456-437c-bb81-e658f75a7bd9","timestamp_ms":1446250094767}
+{
+  "type" : "module_registration_request",
+  "id" : "03b17102-987a-4737-9b71-503291bfc564",
+  "timestamp_ms" : 1454693235751,
+  "firehose_version" : "2.0.0"
+}

@@ -5,6 +5,7 @@ apply plugin: 'signing'
 sourceCompatibility = 1.8
 
 repositories {
+	mavenLocal()
     mavenCentral()
 }
 
@@ -39,9 +40,7 @@ artifacts {
 
 
 allprojects {
-    ext."signing.keyId" = System.getenv("mavenSigningKeyId")
-    ext."signing.secretKeyRingFile" = System.getenv("mavenSigningKeyRingFile")
-    ext."signing.password" = System.getenv("mavenSigningKeyPassword")
+
 }
 
 signing {	
@@ -73,7 +72,7 @@ uploadArchives {
             }
 
             pom.project {
-                version = '1.11.0'
+                version = '2.0.0'
                 artifactId = 'java-sdk'
                 groupId = 'com.mparticle'
                 description 'mParticle Java SDK used to integrate with mParticle\'s Firehose API'

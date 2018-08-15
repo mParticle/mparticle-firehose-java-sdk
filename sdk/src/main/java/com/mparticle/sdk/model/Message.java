@@ -35,6 +35,9 @@ public abstract class Message {
     @JsonProperty(value="timestamp_ms", required=true)
     private long timestamp;
 
+    @JsonProperty(value="firehose_version", required=true)
+    private String firehoseVersion;
+
     /**
      *
      * @return message type
@@ -68,6 +71,22 @@ public abstract class Message {
     }
 
     /**
+     *
+     * @return version of the Firehose SDK used to handle this message. Required as of version 2.0
+     */
+    public String getFirehoseVersion() {
+        return firehoseVersion;
+    }
+
+    /**
+     *
+     * @param firehoseVersion version of the Firehose SDK used to handle this message. Required as of version 2.0
+     */
+    public void setFirehoseVersion(String firehoseVersion) {
+        this.firehoseVersion = firehoseVersion;
+    }
+
+    /**
      * Creates a new message.
      * @param type message type
      */
@@ -75,6 +94,7 @@ public abstract class Message {
         this.type = type;
         this.id = UUID.randomUUID();
         this.timestamp = System.currentTimeMillis();
+        this.firehoseVersion = Consts.SDK_VERSION;
     }
 
     /**

@@ -11,12 +11,12 @@
           "type" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email", "other2", "other3", "other4"  ]
+            "enum" : [ "OTHER", "CUSTOMER", "FACEBOOK", "TWITTER", "GOOGLE", "MICROSOFT", "YAHOO", "EMAIL", "OTHER2", "OTHER3", "OTHER4" ]
           },
           "encoding" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "raw", "md5", "sha1", "sha256" ]
+            "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
           },
           "value" : {
             "type" : "string",
@@ -34,12 +34,12 @@
           "type" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token", "roku_advertising_id", "roku_publisher_id", "microsoft_advertising_id", "microsoft_publisher_id", "fire_advertising_id" ]
+            "enum" : [ "ANDROID_ID", "GOOGLE_ADVERTISING_ID", "IOS_ADVERTISING_ID", "IOS_VENDOR_ID", "GOOGLE_CLOUD_MESSAGING_TOKEN", "APPLE_PUSH_NOTIFICATION_TOKEN", "ROKU_ADVERTISING_ID", "MICROSOFT_ADVERTISING_ID", "MICROSOFT_PUBLISHER_ID", "FIRE_ADVERTISING_ID", "ROKU_PUBLISHER_ID" ]
           },
           "encoding" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "raw", "md5", "sha1", "sha256" ]
+            "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
           },
           "value" : {
             "type" : "string",
@@ -48,12 +48,16 @@
         }
       }
     },
-    "added_audiences" : {
+    "audiences" : {
       "type" : "array",
       "items" : {
         "type" : "object",
         "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:Audience",
         "properties" : {
+          "audienceAction" : {
+            "type" : "string",
+            "enum" : [ "ADD", "DELETE", "ATTRIBUTE_UPDATE" ]
+          },
           "audience_id" : {
             "type" : "integer",
             "required" : true
@@ -67,15 +71,40 @@
             "additionalProperties" : {
               "type" : "string"
             }
+          },
+          "action" : {
+            "type" : "string",
+            "required" : true,
+            "enum" : [ "ADD", "DELETE", "ATTRIBUTE_UPDATE" ]
+          },
+          "user_attributes" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:UserAttributeAudienceEvent",
+              "properties" : {
+                "key" : {
+                  "type" : "string",
+                  "required" : true
+                },
+                "value" : {
+                  "type" : "string"
+                },
+                "action" : {
+                  "type" : "string",
+                  "required" : true,
+                  "enum" : [ "UPSERT", "DELETE" ]
+                },
+                "list_value" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
           }
         }
-      }
-    },
-    "removed_audiences" : {
-      "type" : "array",
-      "items" : {
-        "type" : "object",
-        "$ref" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:Audience"
       }
     }
   }

@@ -1,151 +1,72 @@
 {
-   "type":"audience_membership_change_request",
-   "id":"8e88afe4-e5fc-42c8-aa61-cb2a170293cd",
-   "timestamp_ms":1454693235751,
-   "account":{
-      "account_id":123456,
-      "account_settings":{
-         "Example String Setting":"Example Setting Value",
-         "Example Boolean Setting":"false",
-         "Example Integer Setting":"123"
-      }
-   },
-   "user_profiles":[
-      {
-         "user_identities":[
-            {
-               "type":"email",
-               "encoding":"md5",
-               "value":"e179e95c00e7718ab4a23840f992ea63"
-            },
-            {
-               "type":"customer",
-               "encoding":"raw",
-               "value":"4739c5c11d833bb199c16ff95a92b267"
-            }
-         ],
-         "device_identities":[
-            {
-               "type":"ios_advertising_id",
-               "encoding":"raw",
-               "value":"66b728c2-f9a4-4d87-82ef-ce07414fe3f7"
-            },
-            {
-               "type":"ios_vendor_id",
-               "encoding":"raw",
-               "value":"97b826c2-ab80-4876-a184-db36cc39b1ee"
-            },
-            {
-               "type":"google_advertising_id",
-               "encoding":"raw",
-               "value":"31a22ef0-f119-48d4-b009-a217a26a862a"
-            },
-            {
-               "type":"android_id",
-               "encoding":"raw",
-               "value":"a0504a8cfa15ce2c"
-            }
-         ],
-         "added_audiences":[
-            {
-               "audience_id":456,
-               "audience_name":"Example Audience Name",
-               "audience_subscription_settings":{
-                  "Example Audience-specific setting":"Example value"
-               }
-            },
-            {
-               "audience_id":789,
-               "audience_name":"Example Audience Name 2",
-               "audience_subscription_settings":{
-                  "Example Audience-specific setting":"Example value 2"
-               }
-            }
-         ],
-         "removed_audiences":[
-            {
-               "audience_id":432,
-               "audience_name":"Example Audience Name 3",
-               "audience_subscription_settings":{
-                  "Example Audience-specific setting":"Example value 3"
-               }
-            },
-            {
-               "audience_id":654,
-               "audience_name":"Example Audience Name 4",
-               "audience_subscription_settings":{
-                  "Example Audience-specific setting":"Example value 4"
-               }
-            }
-         ]
+  "type" : "audience_membership_change_request",
+  "id" : "b42be391-c0de-442f-806d-a4d29952e3e2",
+  "timestamp_ms" : 1454693235751,
+  "firehose_version" : "2.0.0",
+  "account" : {
+    "account_id" : 123456,
+    "account_settings" : {
+      "Example String Setting" : "Example Setting Value",
+      "Example Boolean Setting" : "false",
+      "Example Integer Setting" : "123"
+    }
+  },
+  "user_profiles" : [ {
+    "user_identities" : [ {
+      "type" : "email",
+      "encoding" : "md5",
+      "value" : "e179e95c00e7718ab4a23840f992ea63"
+    }, {
+      "type" : "customer",
+      "encoding" : "md5",
+      "value" : "4739c5c11d833bb199c16ff95a92b267"
+    } ],
+    "device_identities" : [ {
+      "type" : "ios_advertising_id",
+      "encoding" : "raw",
+      "value" : "66b728c2-f9a4-4d87-82ef-ce07414fe3f7"
+    }, {
+      "type" : "ios_vendor_id",
+      "encoding" : "raw",
+      "value" : "97b826c2-ab80-4876-a184-db36cc39b1ee"
+    }, {
+      "type" : "google_advertising_id",
+      "encoding" : "raw",
+      "value" : "31a22ef0-f119-48d4-b009-a217a26a862a"
+    }, {
+      "type" : "android_id",
+      "encoding" : "raw",
+      "value" : "a0504a8cfa15ce2c"
+    } ],
+    "audiences" : [ {
+      "audience_id" : 456,
+      "audience_name" : "Example Audience Name",
+      "audience_subscription_settings" : {
+        "Example Audience-specific setting" : "Example Value"
       },
-      {
-         "user_identities":[
-            {
-               "type":"email",
-               "encoding":"md5",
-               "value":"e179e95c00e7718ab4a23840f992ea63"
-            },
-            {
-               "type":"customer",
-               "encoding":"raw",
-               "value":"4739c5c11d833bb199c16ff95a92b267"
-            }
-         ],
-         "device_identities":[
-            {
-               "type":"ios_advertising_id",
-               "encoding":"raw",
-               "value":"0ce428e9-9fd1-43ca-a864-92488a7413b0"
-            },
-            {
-               "type":"ios_vendor_id",
-               "encoding":"raw",
-               "value":"ab4144b0-f0e3-40ae-895c-2b5512aea36a"
-            },
-            {
-               "type":"google_advertising_id",
-               "encoding":"raw",
-               "value":"54cd786b-8a8a-4ad5-876d-1bd040a742bd"
-            },
-            {
-               "type":"android_id",
-               "encoding":"raw",
-               "value":"f01024bcfa11ceec"
-            }
-         ],
-         "added_audiences":[
-            {
-               "audience_id":432,
-               "audience_name":"Example Audience Name 3",
-               "audience_subscription_settings":{
-                  "Example Audience-specific setting":"Example value 3"
-               }
-            },
-            {
-               "audience_id":654,
-               "audience_name":"Example Audience Name 4",
-               "audience_subscription_settings":{
-                  "Example Audience-specific setting":"Example value 4"
-               }
-            }
-         ],
-         "removed_audiences":[
-            {
-               "audience_id":456,
-               "audience_name":"Example Audience Name",
-               "audience_subscription_settings":{
-                  "Example Audience-specific setting":"Example value"
-               }
-            },
-            {
-               "audience_id":789,
-               "audience_name":"Example Audience Name 2",
-               "audience_subscription_settings":{
-                  "Example Audience-specific setting":"Example value 2"
-               }
-            }
-         ]
-      }
-   ]
+      "action" : "add"
+    }, {
+      "audience_id" : 789,
+      "audience_name" : "Example Audience Name 2",
+      "audience_subscription_settings" : {
+        "Example Audience-specific setting" : "Example Value 2"
+      },
+      "action" : "attribute_update",
+      "user_attributes" : [ {
+        "key" : "Some Key",
+        "value" : "9999999",
+        "action" : "upsert"
+      }, {
+        "key" : "Churned",
+        "action" : "delete"
+      }, { } ]
+    }, {
+      "audience_id" : 654,
+      "audience_name" : "Example Audience Name 4",
+      "audience_subscription_settings" : {
+        "Example Audience-specific setting" : "Example Value 4"
+      },
+      "action" : "delete"
+    } ]
+  } ]
 }

@@ -2,6 +2,16 @@
   "type" : "object",
   "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:BooleanSetting",
   "properties" : {
+    "type" : {
+      "type" : "string",
+      "enum" : [ "TEXT", "INTEGER", "FLOAT", "BOOLEAN" ]
+    },
+    "checked" : {
+      "type" : "boolean"
+    },
+    "visible" : {
+      "type" : "boolean"
+    },
     "id" : {
       "type" : "string",
       "required" : true
@@ -13,13 +23,7 @@
     "description" : {
       "type" : "string"
     },
-    "visible" : {
-      "type" : "boolean"
-    },
     "default_value" : {
-      "type" : "boolean"
-    },
-    "checked" : {
       "type" : "boolean"
     }
   }

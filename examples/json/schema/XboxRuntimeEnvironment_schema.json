@@ -2,6 +2,13 @@
   "type" : "object",
   "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:XboxRuntimeEnvironment",
   "properties" : {
+    "type" : {
+      "type" : "string",
+      "enum" : [ "UNKNOWN", "ANDROID", "IOS", "TVOS", "MOBILEWEB", "ROKU", "XBOX", "FIRETV", "ALEXA", "SMARTTV" ]
+    },
+    "debug" : {
+      "type" : "boolean"
+    },
     "is_debug" : {
       "type" : "boolean"
     },
@@ -20,12 +27,12 @@
           "type" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token", "roku_advertising_id", "roku_publisher_id", "microsoft_advertising_id", "microsoft_publisher_id", "fire_advertising_id" ]
+            "enum" : [ "ANDROID_ID", "GOOGLE_ADVERTISING_ID", "IOS_ADVERTISING_ID", "IOS_VENDOR_ID", "GOOGLE_CLOUD_MESSAGING_TOKEN", "APPLE_PUSH_NOTIFICATION_TOKEN", "ROKU_ADVERTISING_ID", "MICROSOFT_ADVERTISING_ID", "MICROSOFT_PUBLISHER_ID", "FIRE_ADVERTISING_ID", "ROKU_PUBLISHER_ID" ]
           },
           "encoding" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "raw", "md5", "sha1", "sha256" ]
+            "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
           },
           "value" : {
             "type" : "string",

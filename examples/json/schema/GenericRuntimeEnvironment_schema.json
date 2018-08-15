@@ -1,0 +1,114 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:GenericRuntimeEnvironment",
+  "properties" : {
+    "type" : {
+      "type" : "string",
+      "enum" : [ "UNKNOWN", "ANDROID", "IOS", "TVOS", "MOBILEWEB", "ROKU", "XBOX", "FIRETV", "ALEXA", "SMARTTV" ]
+    },
+    "debug" : {
+      "type" : "boolean"
+    },
+    "is_debug" : {
+      "type" : "boolean"
+    },
+    "client_ip_address" : {
+      "type" : "string"
+    },
+    "sdk_version" : {
+      "type" : "string"
+    },
+    "identities" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:DeviceIdentity",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "required" : true,
+            "enum" : [ "ANDROID_ID", "GOOGLE_ADVERTISING_ID", "IOS_ADVERTISING_ID", "IOS_VENDOR_ID", "GOOGLE_CLOUD_MESSAGING_TOKEN", "APPLE_PUSH_NOTIFICATION_TOKEN", "ROKU_ADVERTISING_ID", "MICROSOFT_ADVERTISING_ID", "MICROSOFT_PUBLISHER_ID", "FIRE_ADVERTISING_ID", "ROKU_PUBLISHER_ID" ]
+          },
+          "encoding" : {
+            "type" : "string",
+            "required" : true,
+            "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
+          },
+          "value" : {
+            "type" : "string",
+            "required" : true
+          }
+        }
+      }
+    },
+    "build_id" : {
+      "type" : "string"
+    },
+    "brand" : {
+      "type" : "string"
+    },
+    "product" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "manufacturer" : {
+      "type" : "string"
+    },
+    "os_version" : {
+      "type" : "string"
+    },
+    "model" : {
+      "type" : "string"
+    },
+    "screen_height" : {
+      "type" : "integer"
+    },
+    "screen_width" : {
+      "type" : "integer"
+    },
+    "screen_dpi" : {
+      "type" : "integer"
+    },
+    "country" : {
+      "type" : "string"
+    },
+    "locale_language" : {
+      "type" : "string"
+    },
+    "locale_country" : {
+      "type" : "string"
+    },
+    "timezone_offset" : {
+      "type" : "integer"
+    },
+    "timezone_name" : {
+      "type" : "string"
+    },
+    "is_tablet" : {
+      "type" : "boolean"
+    },
+    "supports_telephony" : {
+      "type" : "boolean"
+    },
+    "has_nfc" : {
+      "type" : "boolean"
+    },
+    "bluetooth_enabled" : {
+      "type" : "boolean"
+    },
+    "bluetooth_version" : {
+      "type" : "string"
+    },
+    "application_name" : {
+      "type" : "string"
+    },
+    "application_version" : {
+      "type" : "string"
+    },
+    "application_package" : {
+      "type" : "string"
+    }
+  }
+}

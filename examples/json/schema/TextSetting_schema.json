@@ -2,6 +2,19 @@
   "type" : "object",
   "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:TextSetting",
   "properties" : {
+    "type" : {
+      "type" : "string",
+      "enum" : [ "TEXT", "INTEGER", "FLOAT", "BOOLEAN" ]
+    },
+    "required" : {
+      "type" : "boolean"
+    },
+    "confidential" : {
+      "type" : "boolean"
+    },
+    "visible" : {
+      "type" : "boolean"
+    },
     "id" : {
       "type" : "string",
       "required" : true
@@ -13,17 +26,8 @@
     "description" : {
       "type" : "string"
     },
-    "visible" : {
-      "type" : "boolean"
-    },
     "default_value" : {
       "type" : "string"
-    },
-    "required" : {
-      "type" : "boolean"
-    },
-    "confidential" : {
-      "type" : "boolean"
     }
   }
 }

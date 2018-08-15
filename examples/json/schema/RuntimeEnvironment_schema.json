@@ -2,6 +2,13 @@
   "type" : "object",
   "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:RuntimeEnvironment",
   "properties" : {
+    "type" : {
+      "type" : "string",
+      "enum" : [ "UNKNOWN", "ANDROID", "IOS", "TVOS", "MOBILEWEB", "ROKU", "XBOX", "FIRETV", "ALEXA", "SMARTTV" ]
+    },
+    "debug" : {
+      "type" : "boolean"
+    },
     "is_debug" : {
       "type" : "boolean"
     },

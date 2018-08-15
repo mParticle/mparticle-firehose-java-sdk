@@ -5,7 +5,6 @@ import com.mparticle.sdk.model.eventprocessing.DeviceIdentity;
 import com.mparticle.sdk.model.eventprocessing.UserIdentity;
 
 import java.util.List;
-import java.util.Map;
 
 public final class UserProfile {
 
@@ -15,11 +14,8 @@ public final class UserProfile {
     @JsonProperty("device_identities")
     private List<DeviceIdentity> deviceIdentities;
 
-    @JsonProperty("added_audiences")
-    private List<Audience> addedAudiences;
-
-    @JsonProperty("removed_audiences")
-    private List<Audience> removedAudiences;
+    @JsonProperty("audiences")
+    private List<Audience> audiences;
 
     /**
      *
@@ -55,33 +51,18 @@ public final class UserProfile {
 
     /**
      *
-     * @return audiences user was added to
+     * @return audiences user was either added to, removed from, or contained updates within
      */
-    public List<Audience> getAddedAudiences() {
-        return addedAudiences;
+    public List<Audience> getAudiences() {
+        return audiences;
     }
 
     /**
      *
-     * @param addedAudiences audiences user was added to
+     * @param audiences audiences that contained some change for this user
      */
-    public void setAddedAudiences(List<Audience> addedAudiences) {
-        this.addedAudiences = addedAudiences;
+    public void setAudiences(List<Audience> audiences) {
+        this.audiences = audiences;
     }
 
-    /**
-     *
-     * @return audiences user was removed from
-     */
-    public List<Audience> getRemovedAudiences() {
-        return removedAudiences;
-    }
-
-    /**
-     *
-     * @param removedAudiences audiences user was removed from
-     */
-    public void setRemovedAudiences(List<Audience> removedAudiences) {
-        this.removedAudiences = removedAudiences;
-    }
 }

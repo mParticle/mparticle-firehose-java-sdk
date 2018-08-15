@@ -1,5 +1,6 @@
 {
-   "type":"audience_membership_change_response",
-   "id":"1eac383c-22e3-422b-9b4b-19c7ff38b584",
-   "timestamp_ms":1479311339722
+  "type" : "audience_membership_change_response",
+  "id" : "81c85ad7-fd18-4541-9413-8d428a8d3660",
+  "timestamp_ms" : 1454693235751,
+  "firehose_version" : "2.0.0"
 }

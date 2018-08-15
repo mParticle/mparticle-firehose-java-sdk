@@ -11,12 +11,12 @@
           "type" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token", "roku_advertising_id", "roku_publisher_id", "microsoft_advertising_id", "microsoft_publisher_id", "fire_advertising_id" ]
+            "enum" : [ "ANDROID_ID", "GOOGLE_ADVERTISING_ID", "IOS_ADVERTISING_ID", "IOS_VENDOR_ID", "GOOGLE_CLOUD_MESSAGING_TOKEN", "APPLE_PUSH_NOTIFICATION_TOKEN", "ROKU_ADVERTISING_ID", "MICROSOFT_ADVERTISING_ID", "MICROSOFT_PUBLISHER_ID", "FIRE_ADVERTISING_ID", "ROKU_PUBLISHER_ID" ]
           },
           "encoding" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "raw", "md5", "sha1", "sha256" ]
+            "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
           },
           "required" : {
             "type" : "boolean"
@@ -33,12 +33,12 @@
           "type" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email", "other2", "other3", "other4"  ]
+            "enum" : [ "OTHER", "CUSTOMER", "FACEBOOK", "TWITTER", "GOOGLE", "MICROSOFT", "YAHOO", "EMAIL", "OTHER2", "OTHER3", "OTHER4" ]
           },
           "encoding" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "raw", "md5", "sha1", "sha256" ]
+            "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
           },
           "required" : {
             "type" : "boolean"
@@ -53,6 +53,18 @@
       "type" : "boolean"
     },
     "allow_access_device_application_stamp" : {
+      "type" : "boolean"
+    },
+    "allow_device_info" : {
+      "type" : "boolean"
+    },
+    "allow_user_attributes" : {
+      "type" : "boolean"
+    },
+    "allow_consent_state" : {
+      "type" : "boolean"
+    },
+    "allow_audience_user_attributes" : {
       "type" : "boolean"
     }
   }

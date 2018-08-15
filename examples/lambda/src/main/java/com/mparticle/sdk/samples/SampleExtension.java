@@ -171,14 +171,22 @@ public class SampleExtension extends MessageProcessor {
 
             // iterate through added and removed audiences
 
-            List<Audience> addedAudiences = profile.getAddedAudiences();
+            List<Audience> addedAudiences = new ArrayList<Audience>();
+            List<Audience> removedAudiences = new ArrayList<Audience>();
+            List<Audience> updatedAudiences = new ArrayList<Audience>();
 
-            if(addedAudiences != null) {
-                for(Audience audience : addedAudiences) {
-
+            if(profile.getAudiences() != null) {
+                for(Audience audience : profile.getAudiences()) {
                     int audienceId = audience.getAudienceId();
                     String audienceName = audience.getAudienceName();
 
+                    if (audience.getAudienceAction() == Audience.AudienceAction.ADD) {
+                        addedAudiences.add(audience);
+                    } else if (audience.getAudienceAction() == Audience.AudienceAction.DELETE) {
+                        removedAudiences.add(audience);
+                    } else {
+                        updatedAudiences.add(audience);
+                    }
                     // read custom audience subscription settings provided by customers or returned
                     // by processAudienceSubscriptionRequest()
                     Map<String, String> subscriptionSettings = audience.getAudienceSubscriptionSettings();
@@ -186,9 +194,7 @@ public class SampleExtension extends MessageProcessor {
                 }
             }
 
-            List<Audience> removedAudiences = profile.getRemovedAudiences();
-
-            if(removedAudiences != null) {
+            if(removedAudiences.size() > 0) {
                 // ...
             }
 

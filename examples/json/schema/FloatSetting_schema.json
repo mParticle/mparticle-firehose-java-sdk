@@ -2,6 +2,16 @@
   "type" : "object",
   "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:FloatSetting",
   "properties" : {
+    "type" : {
+      "type" : "string",
+      "enum" : [ "TEXT", "INTEGER", "FLOAT", "BOOLEAN" ]
+    },
+    "required" : {
+      "type" : "boolean"
+    },
+    "visible" : {
+      "type" : "boolean"
+    },
     "id" : {
       "type" : "string",
       "required" : true
@@ -13,9 +23,6 @@
     "description" : {
       "type" : "string"
     },
-    "visible" : {
-      "type" : "boolean"
-    },
     "default_value" : {
       "type" : "number"
     },
@@ -24,9 +31,6 @@
     },
     "max_value" : {
       "type" : "number"
-    },
-    "required" : {
-      "type" : "boolean"
     }
   }
 }

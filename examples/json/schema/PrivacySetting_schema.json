@@ -1,0 +1,4 @@
+{
+  "type" : "string",
+  "enum" : [ "APP_DATA_COLLECTION" ]
+}

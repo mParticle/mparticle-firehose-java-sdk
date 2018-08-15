@@ -39,6 +39,10 @@ public final class Permissions {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowConsentState;
 
+    @JsonProperty("allow_audience_user_attributes")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowAudienceUserAttributeSharing;
+
     /**
      *
      * @return requested device identities
@@ -184,6 +188,21 @@ public final class Permissions {
      */
     public Permissions setAllowConsentState(boolean allowConsentState) {
         this.allowConsentState = allowConsentState;
+        return this;
+    }
+
+    public boolean isAllowAudienceUserAttributeSharing() {
+        return allowAudienceUserAttributeSharing;
+    }
+
+    /**
+     * Setting this will allow a partner to receive audience user attribute updates.
+     *
+     * @param allowAudienceUserAttributeSharing
+     * @return
+     */
+    public Permissions setAllowAudienceUserAttributeSharing(boolean allowAudienceUserAttributeSharing) {
+        this.allowAudienceUserAttributeSharing = allowAudienceUserAttributeSharing;
         return this;
     }
 }

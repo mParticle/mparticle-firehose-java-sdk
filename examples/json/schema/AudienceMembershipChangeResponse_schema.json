@@ -2,12 +2,20 @@
   "type" : "object",
   "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:AudienceMembershipChangeResponse",
   "properties" : {
+    "type" : {
+      "type" : "string",
+      "enum" : [ "MODULE_REGISTRATION_REQUEST", "MODULE_REGISTRATION_RESPONSE", "EVENT_PROCESSING_REQUEST", "EVENT_PROCESSING_RESPONSE", "AUDIENCE_SUBSCRIPTION_REQUEST", "AUDIENCE_SUBSCRIPTION_RESPONSE", "AUDIENCE_MEMBERSHIP_CHANGE_REQUEST", "AUDIENCE_MEMBERSHIP_CHANGE_RESPONSE" ]
+    },
     "id" : {
       "type" : "string",
       "required" : true
     },
     "timestamp_ms" : {
       "type" : "integer",
+      "required" : true
+    },
+    "firehose_version" : {
+      "type" : "string",
       "required" : true
     },
     "suspend_subscription" : {

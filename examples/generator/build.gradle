@@ -1,0 +1,22 @@
+group 'com.mparticle.sdk.generator.java'
+version '1.0'
+
+apply plugin: 'application'
+mainClassName = "com.mparticle.sdk.generator.JsonSchemaGenerator"
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile (
+            project(':sdk'),
+	    'com.fasterxml.jackson.core:jackson-databind:2.5.3',
+            'com.fasterxml.jackson.module:jackson-module-jsonSchema:2.9.0',
+    )
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+

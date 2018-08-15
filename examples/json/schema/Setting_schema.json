@@ -2,6 +2,13 @@
   "type" : "object",
   "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:Setting",
   "properties" : {
+    "type" : {
+      "type" : "string",
+      "enum" : [ "TEXT", "INTEGER", "FLOAT", "BOOLEAN" ]
+    },
+    "visible" : {
+      "type" : "boolean"
+    },
     "id" : {
       "type" : "string",
       "required" : true
@@ -12,9 +19,6 @@
     },
     "description" : {
       "type" : "string"
-    },
-    "visible" : {
-      "type" : "boolean"
     }
   }
 }

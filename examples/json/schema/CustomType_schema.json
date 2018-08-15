@@ -1,0 +1,4 @@
+{
+  "type" : "string",
+  "enum" : [ "UNKNOWN", "NAVIGATION", "LOCATION", "SEARCH", "TRANSACTION", "USER_CONTENT", "USER_PREFERENCE", "SOCIAL", "OTHER", "MEDIA" ]
+}

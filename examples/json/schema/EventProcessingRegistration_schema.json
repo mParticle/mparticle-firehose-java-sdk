@@ -8,6 +8,13 @@
         "type" : "object",
         "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:Setting",
         "properties" : {
+          "type" : {
+            "type" : "string",
+            "enum" : [ "TEXT", "INTEGER", "FLOAT", "BOOLEAN" ]
+          },
+          "visible" : {
+            "type" : "boolean"
+          },
           "id" : {
             "type" : "string",
             "required" : true
@@ -18,9 +25,6 @@
           },
           "description" : {
             "type" : "string"
-          },
-          "visible" : {
-            "type" : "boolean"
           }
         }
       }
@@ -36,14 +40,21 @@
       "type" : "array",
       "items" : {
         "type" : "string",
-        "enum" : [ "session_start", "session_end", "custom_event", "screen_view", "error", "privacy_setting_change", "user_attribute_change", "user_identity_change", "push_subscription", "application_state_transition", "push_message_receipt", "product_action", "promotion_action", "impression", "attribution" ]
+        "enum" : [ "SESSION_START", "SESSION_END", "CUSTOM_EVENT", "SCREEN_VIEW", "ERROR", "PRIVACY_SETTING_CHANGE", "USER_ATTRIBUTE_CHANGE", "USER_IDENTITY_CHANGE", "PUSH_SUBSCRIPTION", "APPLICATION_STATE_TRANSITION", "PUSH_MESSAGE_RECEIPT", "PRODUCT_ACTION", "PROMOTION_ACTION", "IMPRESSION", "ATTRIBUTION", "PUSH_MESSAGE_OPEN" ]
       }
     },
     "supported_runtime_environments" : {
       "type" : "array",
       "items" : {
         "type" : "string",
-        "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb", "firetv", "xbox", "roku" ]
+        "enum" : [ "UNKNOWN", "ANDROID", "IOS", "TVOS", "MOBILEWEB", "ROKU", "XBOX", "FIRETV", "ALEXA", "SMARTTV" ]
+      }
+    },
+    "supported_system_notification_types" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string",
+        "enum" : [ "GDPR_CONSENT_STATE" ]
       }
     },
     "max_data_age_hours" : {

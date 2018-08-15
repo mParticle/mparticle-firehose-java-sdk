@@ -37,7 +37,7 @@ public final class MessageSerializer {
      * @param valueType Java class
      * @param <T> Java class type
      * @return Java class
-     * @throws IOException
+     * @throws IOException if read fails
      */
     public <T> T deserialize(InputStream inputStream, Class<T> valueType) throws IOException {
         return mapper.readValue(inputStream, valueType);
@@ -47,8 +47,9 @@ public final class MessageSerializer {
      * Deserializes Java class from JSON.
      * @param content content
      * @param valueType Java class type to deserialize
+     * @param <T> Java class type
      * @return Java class
-     * @throws IOException
+     * @throws IOException if read fails
      */
 
     public <T> T deserialize(String content, Class<T> valueType) throws IOException {
@@ -59,7 +60,7 @@ public final class MessageSerializer {
      * Serializes Java class to JSON.
      * @param outputStream output stream
      * @param value Java class to serialize
-     * @throws IOException
+     * @throws IOException if write fails
      */
     public void serialize(OutputStream outputStream, Object value) throws IOException {
         mapper.writeValue(outputStream, value);
@@ -68,8 +69,18 @@ public final class MessageSerializer {
     /**
      * Serializes Java class to JSON.
      * @param value Java class to serialize
+     * @param outputStream output stream
+     * @throws IOException if write fails
+     */
+    public void serializePretty(OutputStream outputStream, Object value) throws IOException {
+        mapper.writerWithDefaultPrettyPrinter().writeValue(outputStream, value);
+    }
+
+    /**
+     * Serializes Java class to JSON.
+     * @param value Java class to serialize
      * @return JSON string
-     * @throws IOException
+     * @throws IOException if write fails
      */
     public String serialize(Object value) throws IOException {
         return mapper.writeValueAsString(value);

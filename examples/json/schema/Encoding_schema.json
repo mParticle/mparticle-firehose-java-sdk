@@ -1,0 +1,4 @@
+{
+  "type" : "string",
+  "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
+}
