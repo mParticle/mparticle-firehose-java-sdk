@@ -1,4 +1,4 @@
 {
   "type" : "string",
-  "enum" : [ "INSTALL", "UPGRADE", "INITIALIZE", "EXIT", "BACKGROUND", "FOREGROUND" ]
+  "enum" : [ "install", "upgrade", "initialize", "exit", "background", "foreground" ]
 }

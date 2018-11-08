@@ -1,4 +1,4 @@
 {
   "type" : "string",
-  "enum" : [ "UPSERT", "DELETE" ]
+  "enum" : [ "upsert", "delete" ]
 }

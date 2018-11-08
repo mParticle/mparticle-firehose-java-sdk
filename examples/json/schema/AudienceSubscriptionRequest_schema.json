@@ -4,7 +4,7 @@
   "properties" : {
     "type" : {
       "type" : "string",
-      "enum" : [ "MODULE_REGISTRATION_REQUEST", "MODULE_REGISTRATION_RESPONSE", "EVENT_PROCESSING_REQUEST", "EVENT_PROCESSING_RESPONSE", "AUDIENCE_SUBSCRIPTION_REQUEST", "AUDIENCE_SUBSCRIPTION_RESPONSE", "AUDIENCE_MEMBERSHIP_CHANGE_REQUEST", "AUDIENCE_MEMBERSHIP_CHANGE_RESPONSE" ]
+      "enum" : [ "module_registration_request", "module_registration_response", "event_processing_request", "event_processing_response", "audience_subscription_request", "audience_subscription_response", "audience_membership_change_request", "audience_membership_change_response" ]
     },
     "id" : {
       "type" : "string",
@@ -17,6 +17,9 @@
     "firehose_version" : {
       "type" : "string",
       "required" : true
+    },
+    "mpid" : {
+      "type" : "string"
     },
     "account" : {
       "type" : "object",
@@ -61,7 +64,7 @@
     "action" : {
       "type" : "string",
       "required" : true,
-      "enum" : [ "ADD", "UPDATE", "REMOVE" ]
+      "enum" : [ "add", "update", "remove" ]
     }
   }
 }

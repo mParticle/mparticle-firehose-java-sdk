@@ -4,7 +4,7 @@
   "properties" : {
     "type" : {
       "type" : "string",
-      "enum" : [ "MODULE_REGISTRATION_REQUEST", "MODULE_REGISTRATION_RESPONSE", "EVENT_PROCESSING_REQUEST", "EVENT_PROCESSING_RESPONSE", "AUDIENCE_SUBSCRIPTION_REQUEST", "AUDIENCE_SUBSCRIPTION_RESPONSE", "AUDIENCE_MEMBERSHIP_CHANGE_REQUEST", "AUDIENCE_MEMBERSHIP_CHANGE_RESPONSE" ]
+      "enum" : [ "module_registration_request", "module_registration_response", "event_processing_request", "event_processing_response", "audience_subscription_request", "audience_subscription_response", "audience_membership_change_request", "audience_membership_change_response" ]
     },
     "id" : {
       "type" : "string",
@@ -17,6 +17,9 @@
     "firehose_version" : {
       "type" : "string",
       "required" : true
+    },
+    "mpid" : {
+      "type" : "string"
     },
     "sdk_version" : {
       "type" : "string"
@@ -45,12 +48,12 @@
               "type" : {
                 "type" : "string",
                 "required" : true,
-                "enum" : [ "ANDROID_ID", "GOOGLE_ADVERTISING_ID", "IOS_ADVERTISING_ID", "IOS_VENDOR_ID", "GOOGLE_CLOUD_MESSAGING_TOKEN", "APPLE_PUSH_NOTIFICATION_TOKEN", "ROKU_ADVERTISING_ID", "MICROSOFT_ADVERTISING_ID", "MICROSOFT_PUBLISHER_ID", "FIRE_ADVERTISING_ID", "ROKU_PUBLISHER_ID" ]
+                "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token", "roku_advertising_id", "microsoft_advertising_id", "microsoft_publisher_id", "fire_advertising_id", "roku_publisher_id" ]
               },
               "encoding" : {
                 "type" : "string",
                 "required" : true,
-                "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
+                "enum" : [ "raw", "md5", "sha1", "sha256" ]
               },
               "required" : {
                 "type" : "boolean"
@@ -67,12 +70,12 @@
               "type" : {
                 "type" : "string",
                 "required" : true,
-                "enum" : [ "OTHER", "CUSTOMER", "FACEBOOK", "TWITTER", "GOOGLE", "MICROSOFT", "YAHOO", "EMAIL", "OTHER2", "OTHER3", "OTHER4" ]
+                "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email", "other2", "other3", "other4" ]
               },
               "encoding" : {
                 "type" : "string",
                 "required" : true,
-                "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
+                "enum" : [ "raw", "md5", "sha1", "sha256" ]
               },
               "required" : {
                 "type" : "boolean"
@@ -115,7 +118,7 @@
             "properties" : {
               "type" : {
                 "type" : "string",
-                "enum" : [ "TEXT", "INTEGER", "FLOAT", "BOOLEAN" ]
+                "enum" : [ "text", "integer", "float", "boolean" ]
               },
               "visible" : {
                 "type" : "boolean"
@@ -145,25 +148,28 @@
           "type" : "array",
           "items" : {
             "type" : "string",
-            "enum" : [ "SESSION_START", "SESSION_END", "CUSTOM_EVENT", "SCREEN_VIEW", "ERROR", "PRIVACY_SETTING_CHANGE", "USER_ATTRIBUTE_CHANGE", "USER_IDENTITY_CHANGE", "PUSH_SUBSCRIPTION", "APPLICATION_STATE_TRANSITION", "PUSH_MESSAGE_RECEIPT", "PRODUCT_ACTION", "PROMOTION_ACTION", "IMPRESSION", "ATTRIBUTION", "PUSH_MESSAGE_OPEN" ]
+            "enum" : [ "session_start", "session_end", "custom_event", "screen_view", "error", "privacy_setting_change", "user_attribute_change", "user_identity_change", "push_subscription", "application_state_transition", "push_message_receipt", "product_action", "promotion_action", "impression", "attribution", "push_message_open" ]
           }
         },
         "supported_runtime_environments" : {
           "type" : "array",
           "items" : {
             "type" : "string",
-            "enum" : [ "UNKNOWN", "ANDROID", "IOS", "TVOS", "MOBILEWEB", "ROKU", "XBOX", "FIRETV", "ALEXA", "SMARTTV" ]
+            "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb", "roku", "xbox", "firetv", "alexa", "smarttv" ]
           }
         },
         "supported_system_notification_types" : {
           "type" : "array",
           "items" : {
             "type" : "string",
-            "enum" : [ "GDPR_CONSENT_STATE" ]
+            "enum" : [ "gdpr_consent_state" ]
           }
         },
         "max_data_age_hours" : {
           "type" : "integer"
+        },
+        "push_messaging_provider_id" : {
+          "type" : "string"
         }
       }
     },

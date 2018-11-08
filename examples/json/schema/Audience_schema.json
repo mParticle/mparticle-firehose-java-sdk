@@ -4,7 +4,7 @@
   "properties" : {
     "audienceAction" : {
       "type" : "string",
-      "enum" : [ "ADD", "DELETE", "ATTRIBUTE_UPDATE" ]
+      "enum" : [ "add", "delete", "attribute_update" ]
     },
     "audience_id" : {
       "type" : "integer",
@@ -23,7 +23,7 @@
     "action" : {
       "type" : "string",
       "required" : true,
-      "enum" : [ "ADD", "DELETE", "ATTRIBUTE_UPDATE" ]
+      "enum" : [ "add", "delete", "attribute_update" ]
     },
     "user_attributes" : {
       "type" : "array",
@@ -41,7 +41,7 @@
           "action" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "UPSERT", "DELETE" ]
+            "enum" : [ "upsert", "delete" ]
           },
           "list_value" : {
             "type" : "array",

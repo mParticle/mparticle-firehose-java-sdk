@@ -12,7 +12,7 @@
     "action" : {
       "type" : "string",
       "required" : true,
-      "enum" : [ "UPSERT", "DELETE" ]
+      "enum" : [ "upsert", "delete" ]
     },
     "list_value" : {
       "type" : "array",

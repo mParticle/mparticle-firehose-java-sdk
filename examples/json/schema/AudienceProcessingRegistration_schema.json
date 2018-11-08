@@ -10,7 +10,7 @@
         "properties" : {
           "type" : {
             "type" : "string",
-            "enum" : [ "TEXT", "INTEGER", "FLOAT", "BOOLEAN" ]
+            "enum" : [ "text", "integer", "float", "boolean" ]
           },
           "visible" : {
             "type" : "boolean"

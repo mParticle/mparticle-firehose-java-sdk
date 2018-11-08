@@ -2,7 +2,7 @@ group 'com.mparticle.sdk.generator.java'
 version '1.0'
 
 apply plugin: 'application'
-mainClassName = "com.mparticle.sdk.generator.JsonSchemaGenerator"
+mainClassName = "com.mparticle.sdk.generator.MpJsonSchemaGenerator"
 sourceCompatibility = 1.8
 
 repositories {

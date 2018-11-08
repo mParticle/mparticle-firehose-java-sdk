@@ -12,6 +12,7 @@ public class AudienceSubscriptionResponseSample {
 
         req.setFirehoseVersion(Consts.SDK_VERSION);
         req.setTimestamp(1454693235751L);
+        req.setMpId("12345");
 
         req.setAudienceSubscriptionSettings(new HashMap<String, String>());
         req.getAudienceSubscriptionSettings().put("sample setting", "sample setting value");

@@ -5,12 +5,12 @@
     "type" : {
       "type" : "string",
       "required" : true,
-      "enum" : [ "OTHER", "CUSTOMER", "FACEBOOK", "TWITTER", "GOOGLE", "MICROSOFT", "YAHOO", "EMAIL", "OTHER2", "OTHER3", "OTHER4" ]
+      "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email", "other2", "other3", "other4" ]
     },
     "encoding" : {
       "type" : "string",
       "required" : true,
-      "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
+      "enum" : [ "raw", "md5", "sha1", "sha256" ]
     },
     "value" : {
       "type" : "string",

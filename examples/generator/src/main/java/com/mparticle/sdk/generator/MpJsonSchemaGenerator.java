@@ -1,8 +1,10 @@
 package com.mparticle.sdk.generator;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
+import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 import com.fasterxml.jackson.module.jsonSchema.factories.SchemaFactoryWrapper;
 import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.model.MessageSerializer;
@@ -18,7 +20,7 @@ import java.util.stream.StreamSupport;
 
 import static javax.tools.StandardLocation.CLASS_PATH;
 
-public class JsonSchemaGenerator {
+public class MpJsonSchemaGenerator {
     public static void main(String[] args) throws RuntimeException, IOException
     {
         File dir = new File("output//schema");
@@ -81,8 +83,11 @@ public class JsonSchemaGenerator {
         SchemaFactoryWrapper foo = new SchemaFactoryWrapper();
         mapper.acceptJsonFormatVisitor(schemaClass, foo);
         mapper.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true);
-        JsonSchema schema = foo.finalSchema();
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(schema);
+        mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
+        mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+        JsonSchemaGenerator generator = new JsonSchemaGenerator(mapper);
+        JsonSchema schema = generator.generateSchema(schemaClass);
+        return mapper.writeValueAsString(schema);
     }
 
     private static Collection<Class> getClasses(final String pack) throws RuntimeException, IOException {

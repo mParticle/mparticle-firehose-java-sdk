@@ -11,12 +11,12 @@
           "type" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "OTHER", "CUSTOMER", "FACEBOOK", "TWITTER", "GOOGLE", "MICROSOFT", "YAHOO", "EMAIL", "OTHER2", "OTHER3", "OTHER4" ]
+            "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email", "other2", "other3", "other4" ]
           },
           "encoding" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
+            "enum" : [ "raw", "md5", "sha1", "sha256" ]
           },
           "value" : {
             "type" : "string",
@@ -34,12 +34,12 @@
           "type" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "ANDROID_ID", "GOOGLE_ADVERTISING_ID", "IOS_ADVERTISING_ID", "IOS_VENDOR_ID", "GOOGLE_CLOUD_MESSAGING_TOKEN", "APPLE_PUSH_NOTIFICATION_TOKEN", "ROKU_ADVERTISING_ID", "MICROSOFT_ADVERTISING_ID", "MICROSOFT_PUBLISHER_ID", "FIRE_ADVERTISING_ID", "ROKU_PUBLISHER_ID" ]
+            "enum" : [ "android_id", "google_advertising_id", "ios_advertising_id", "ios_vendor_id", "google_cloud_messaging_token", "apple_push_notification_token", "roku_advertising_id", "microsoft_advertising_id", "microsoft_publisher_id", "fire_advertising_id", "roku_publisher_id" ]
           },
           "encoding" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "RAW", "MD5", "SHA1", "SHA256" ]
+            "enum" : [ "raw", "md5", "sha1", "sha256" ]
           },
           "value" : {
             "type" : "string",
@@ -56,7 +56,7 @@
         "properties" : {
           "audienceAction" : {
             "type" : "string",
-            "enum" : [ "ADD", "DELETE", "ATTRIBUTE_UPDATE" ]
+            "enum" : [ "add", "delete", "attribute_update" ]
           },
           "audience_id" : {
             "type" : "integer",
@@ -75,7 +75,7 @@
           "action" : {
             "type" : "string",
             "required" : true,
-            "enum" : [ "ADD", "DELETE", "ATTRIBUTE_UPDATE" ]
+            "enum" : [ "add", "delete", "attribute_update" ]
           },
           "user_attributes" : {
             "type" : "array",
@@ -93,7 +93,7 @@
                 "action" : {
                   "type" : "string",
                   "required" : true,
-                  "enum" : [ "UPSERT", "DELETE" ]
+                  "enum" : [ "upsert", "delete" ]
                 },
                 "list_value" : {
                   "type" : "array",

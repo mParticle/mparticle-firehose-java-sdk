@@ -4,7 +4,7 @@
   "properties" : {
     "type" : {
       "type" : "string",
-      "enum" : [ "UNKNOWN", "ANDROID", "IOS", "TVOS", "MOBILEWEB", "ROKU", "XBOX", "FIRETV", "ALEXA", "SMARTTV" ]
+      "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb", "roku", "xbox", "firetv", "alexa", "smarttv" ]
     },
     "debug" : {
       "type" : "boolean"
@@ -16,6 +16,9 @@
       "type" : "string"
     },
     "sdk_version" : {
+      "type" : "string"
+    },
+    "http_header_user_agent" : {
       "type" : "string"
     }
   }

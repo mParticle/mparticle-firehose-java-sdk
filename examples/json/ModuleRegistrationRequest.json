@@ -1,6 +1,7 @@
 {
   "type" : "module_registration_request",
-  "id" : "03b17102-987a-4737-9b71-503291bfc564",
+  "id" : "678e3692-6342-4b04-82e4-38cc6b2449b4",
   "timestamp_ms" : 1454693235751,
-  "firehose_version" : "2.0.0"
+  "firehose_version" : "2.0.0",
+  "mpid" : "12345"
 }

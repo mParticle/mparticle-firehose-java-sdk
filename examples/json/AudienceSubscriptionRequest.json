@@ -1,14 +1,19 @@
-{  
-   "type":"audience_subscription_request",
-   "id":"5a5f1cd3-cc7f-4928-a967-44c84a801cac",
-   "timestamp_ms":1446250952589,
-   "account":{  
-      "account_id":123456,
-      "account_settings":{  
-         "apiKey":"sample API Key"
-      }
-   },
-   "audience_id":1234,
-   "audience_name":"New Users Low Engagement",
-   "action":"add"
+{
+  "type" : "audience_subscription_request",
+  "id" : "5395076c-fa0f-4b68-9f57-311159f7142c",
+  "timestamp_ms" : 1454693235751,
+  "firehose_version" : "2.0.0",
+  "mpid" : "12345",
+  "account" : {
+    "account_id" : 123456,
+    "account_settings" : {
+      "Example String Setting" : "Example Setting Value",
+      "Example Boolean Setting" : "false",
+      "Example Integer Setting" : "123",
+      "apiKey" : "sample API Key"
+    }
+  },
+  "audience_id" : 1234,
+  "audience_name" : "New Users Low Engagement",
+  "action" : "add"
 }

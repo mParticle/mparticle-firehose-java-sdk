@@ -1,4 +1,4 @@
 {
   "type" : "string",
-  "enum" : [ "SUBSCRIBE", "UNSUBSCRIBE" ]
+  "enum" : [ "subscribe", "unsubscribe" ]
 }

@@ -1,4 +1,4 @@
 {
   "type" : "string",
-  "enum" : [ "ADD", "DELETE", "ATTRIBUTE_UPDATE" ]
+  "enum" : [ "add", "delete", "attribute_update" ]
 }

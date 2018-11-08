@@ -10,6 +10,7 @@ public class AudienceSubscriptionRequestSample {
 
         req.setFirehoseVersion(Consts.SDK_VERSION);
         req.setTimestamp(1454693235751L);
+        req.setMpId("12345");
 
         req.setAccount(Sample.generateAccount());
         req.getAccount().getAccountSettings().put("apiKey", "sample API Key");

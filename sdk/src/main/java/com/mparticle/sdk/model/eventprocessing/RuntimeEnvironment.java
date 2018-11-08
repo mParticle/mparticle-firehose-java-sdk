@@ -32,6 +32,9 @@ public abstract class RuntimeEnvironment {
     @JsonProperty("sdk_version")
     private String sdkVersion;
 
+    @JsonProperty("http_header_user_agent")
+    private String userAgent;
+
     public RuntimeEnvironment(Type type) {
         this.type = type;
     }
@@ -84,6 +87,19 @@ public abstract class RuntimeEnvironment {
     public void setSdkVersion(String sdkVersion) {
         this.sdkVersion = sdkVersion;
     }
+
+    /**
+     *
+     * @return the user agent HTTP header sent by this runtime environment
+     */
+    public String getUserAgent() { return userAgent; }
+
+    /**
+     * Get the user agent HTTP header that is sent by this runtime environment
+     * @param userAgent value
+     */
+    public void setUserAgent(String userAgent) { this.userAgent = userAgent; }
+
 
     public enum Type {
         UNKNOWN,
