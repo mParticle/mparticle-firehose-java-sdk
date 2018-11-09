@@ -192,7 +192,7 @@ public abstract class Event {
          *
          * NOTE: Integrations registering for PUSH_MESSAGE_RECEIPT must also set a push provider ID within the EventProcessingRegistration.
          *
-         * @see {@link com.mparticle.sdk.model.registration.EventProcessingRegistration#setPushMessagingProviderId(String)}
+         * See {@link com.mparticle.sdk.model.registration.EventProcessingRegistration#setPushMessagingProviderId(String)}
          */
         PUSH_MESSAGE_RECEIPT,
         /**
