@@ -43,6 +43,14 @@ public final class Permissions {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowAudienceUserAttributeSharing;
 
+    @JsonProperty("allow_access_http_user_agent")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowAccessHttpUserAgent;
+
+    @JsonProperty("allow_access_mpid")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowAccessMpid;
+
     /**
      *
      * @return requested device identities
@@ -203,6 +211,46 @@ public final class Permissions {
      */
     public Permissions setAllowAudienceUserAttributeSharing(boolean allowAudienceUserAttributeSharing) {
         this.allowAudienceUserAttributeSharing = allowAudienceUserAttributeSharing;
+        return this;
+    }
+
+    /**
+     * Setting for allowing for an MPID to be forwarded as a part of the user profile.
+     *
+     * @return
+     */
+    public boolean isAllowAccessMpid() {
+        return allowAccessMpid;
+    }
+
+    /**
+     * Setting this will allow a partner to get an MPID as a part of the user profile.
+     *
+     * @param allowAccessMpid
+     * @return
+     */
+    public Permissions setAllowAccessMpid(boolean allowAccessMpid) {
+        this.allowAccessMpid = allowAccessMpid;
+        return this;
+    }
+
+    /**
+     * Setting this will allow a partner to receive the HTTP user agent as a part of a runtime environment.
+     *
+     * @return
+     */
+    public boolean isAllowAccessHttpUserAgent() {
+        return allowAccessHttpUserAgent;
+    }
+
+    /**
+     * Setting this will allow a partner to receive the HTTP user agent as a part of a runtime environment.
+     *
+     * @param allowAccessHttpUserAgent
+     * @return
+     */
+    public Permissions setAllowAccessHttpUserAgent(boolean allowAccessHttpUserAgent) {
+        this.allowAccessHttpUserAgent = allowAccessHttpUserAgent;
         return this;
     }
 }

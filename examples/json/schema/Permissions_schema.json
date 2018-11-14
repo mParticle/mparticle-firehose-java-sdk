@@ -66,6 +66,12 @@
     },
     "allow_audience_user_attributes" : {
       "type" : "boolean"
+    },
+    "allow_access_http_user_agent" : {
+      "type" : "boolean"
+    },
+    "allow_access_mpid" : {
+      "type" : "boolean"
     }
   }
 }
