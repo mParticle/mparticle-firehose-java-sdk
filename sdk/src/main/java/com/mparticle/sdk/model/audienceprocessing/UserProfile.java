@@ -17,6 +17,9 @@ public final class UserProfile {
     @JsonProperty("audiences")
     private List<Audience> audiences;
 
+    @JsonProperty(value="mpid", required=false)
+    private String mpId;
+
     /**
      *
      * @return user identities
@@ -63,6 +66,22 @@ public final class UserProfile {
      */
     public void setAudiences(List<Audience> audiences) {
         this.audiences = audiences;
+    }
+
+    /**
+     *
+     * @return The MP ID for this user
+     */
+    public String getMpId() {
+        return mpId;
+    }
+
+    /**
+     *
+     * @param mpid The MP ID for this user.
+     */
+    public void setMpId(String mpid) {
+        this.mpId = mpid;
     }
 
 }

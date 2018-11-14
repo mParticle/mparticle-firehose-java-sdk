@@ -18,9 +18,6 @@
       "type" : "string",
       "required" : true
     },
-    "mpid" : {
-      "type" : "string"
-    },
     "sdk_version" : {
       "type" : "string"
     },

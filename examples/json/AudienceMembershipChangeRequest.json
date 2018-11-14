@@ -1,9 +1,8 @@
 {
   "type" : "audience_membership_change_request",
-  "id" : "f157603d-fde9-440b-8ce3-9379855ef123",
+  "id" : "5ff29805-c8ea-4ff2-97ac-3b2521a9bc96",
   "timestamp_ms" : 1454693235751,
-  "firehose_version" : "2.0.0",
-  "mpid" : "12345",
+  "firehose_version" : "2.1.0",
   "account" : {
     "account_id" : 123456,
     "account_settings" : {
@@ -68,6 +67,7 @@
         "Example Audience-specific setting" : "Example Value 4"
       },
       "action" : "delete"
-    } ]
+    } ],
+    "mpid" : "12345"
   } ]
 }

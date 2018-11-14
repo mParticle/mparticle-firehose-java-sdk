@@ -13,7 +13,6 @@ public class AudienceMembershipChangeRequestSample {
 
         req.setFirehoseVersion(Consts.SDK_VERSION);
         req.setTimestamp(1454693235751L);
-        req.setMpId("12345");
 
         req.setAccount(Sample.generateAccount());
         req.setUserProfiles(Arrays.asList(Sample.generateUserProfiles()));

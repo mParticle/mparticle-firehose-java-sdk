@@ -38,8 +38,6 @@ public abstract class Message {
     @JsonProperty(value="firehose_version", required=true)
     private String firehoseVersion;
 
-    @JsonProperty(value="mpid", required=false)
-    private String mpId;
 
     /**
      *
@@ -90,22 +88,6 @@ public abstract class Message {
     }
 
     /**
-     *
-     * @return the MP ID of the user, defaults to 0 if not set
-     */
-    public String getMpId() {
-        return mpId;
-    }
-
-    /**
-     *
-     * @param mpId the MP ID of the user, defaults to 0 if not set
-     */
-    public void setMpId(String mpId) {
-        this.mpId = mpId;
-    }
-
-    /**
      * Creates a new message.
      * @param type message type
      */
@@ -114,7 +96,6 @@ public abstract class Message {
         this.id = UUID.randomUUID();
         this.timestamp = System.currentTimeMillis();
         this.firehoseVersion = Consts.SDK_VERSION;
-        this.mpId = null;
     }
 
     /**

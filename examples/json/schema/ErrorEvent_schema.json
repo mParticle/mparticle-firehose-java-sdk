@@ -26,9 +26,6 @@
           "type" : "string",
           "required" : true
         },
-        "mpid" : {
-          "type" : "string"
-        },
         "source_id" : {
           "type" : "string"
         },
@@ -253,6 +250,9 @@
               }
             }
           }
+        },
+        "mpid" : {
+          "type" : "string"
         }
       }
     },

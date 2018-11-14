@@ -17,9 +17,6 @@
     "firehose_version" : {
       "type" : "string",
       "required" : true
-    },
-    "mpid" : {
-      "type" : "string"
     }
   }
 }

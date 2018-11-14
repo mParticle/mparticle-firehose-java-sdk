@@ -43,6 +43,8 @@ public class Sample {
                 generateDeleteAudience()
         ));
 
+        profile.setMpId("12345");
+
         return profile;
     }
 

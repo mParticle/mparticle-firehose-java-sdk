@@ -18,9 +18,6 @@
       "type" : "string",
       "required" : true
     },
-    "mpid" : {
-      "type" : "string"
-    },
     "audience_subscription_settings" : {
       "type" : "object",
       "additionalProperties" : {

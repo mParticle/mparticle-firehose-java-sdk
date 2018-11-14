@@ -18,9 +18,6 @@
       "type" : "string",
       "required" : true
     },
-    "mpid" : {
-      "type" : "string"
-    },
     "account" : {
       "type" : "object",
       "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:Account",
@@ -148,6 +145,9 @@
                 }
               }
             }
+          },
+          "mpid" : {
+            "type" : "string"
           }
         }
       }

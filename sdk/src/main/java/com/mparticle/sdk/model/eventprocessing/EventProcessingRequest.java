@@ -58,6 +58,9 @@ public final class EventProcessingRequest extends Message {
     @JsonProperty("system_notifications")
     private List<SystemNotification> systemNotifications;
 
+    @JsonProperty("mpid")
+    private String mpId;
+
     public String getSourceId() {
         return sourceId;
     }
@@ -248,4 +251,16 @@ public final class EventProcessingRequest extends Message {
     public void setSystemNotifications(List<SystemNotification> systemNotifications) {
         this.systemNotifications = systemNotifications;
     }
+
+    /**
+     * Gets the MP ID for this user.
+     *
+     * @return mpid
+     */
+    public String getMpId() { return mpId; }
+
+    /**
+     * Sets the MP ID for this user.
+     */
+    public void setMpId(String mpid) { this.mpId = mpid; }
 }

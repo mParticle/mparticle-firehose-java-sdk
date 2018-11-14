@@ -9,7 +9,6 @@ public class ModuleRegistrationRequestSample {
 
         req.setFirehoseVersion(Consts.SDK_VERSION);
         req.setTimestamp(1454693235751L);
-        req.setMpId("12345");
 
         return req;
     }
