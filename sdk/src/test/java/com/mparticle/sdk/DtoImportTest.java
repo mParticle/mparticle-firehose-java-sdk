@@ -2,8 +2,9 @@ package com.mparticle.sdk;
 
 import com.mparticle.sdk.model.MessageSerializer;
 import com.mparticle.sdk.model.eventprocessing.*;
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 
@@ -278,9 +279,9 @@ public class DtoImportTest {
         MessageSerializer ser = new MessageSerializer();
         try {
             EventProcessingRequest req = ser.deserialize(rokuJson, EventProcessingRequest.class);
-            Assert.assertNotNull(req);
+            assertNotNull(req);
 
-            Assert.assertEquals(RuntimeEnvironment.Type.ROKU, req.getRuntimeEnvironment().getType());
+            assertEquals(RuntimeEnvironment.Type.ROKU, req.getRuntimeEnvironment().getType());
 
             Boolean other2 = false, other3 = false, other4 = false;
             for(UserIdentity id : req.getUserIdentities()) {
@@ -289,7 +290,7 @@ public class DtoImportTest {
                 other4 |= id.getType() == UserIdentity.Type.OTHER4;
             }
 
-            Assert.assertTrue( other2 && other3 && other4);
+            assertTrue( other2 && other3 && other4);
 
             RokuRuntimeEnvironment env =  (RokuRuntimeEnvironment)req.getRuntimeEnvironment();
 
@@ -299,18 +300,18 @@ public class DtoImportTest {
                 rokuPubId |= id.getType() == DeviceIdentity.Type.ROKU_PUBLISHER_ID;
 
                 if (id.getType() == DeviceIdentity.Type.ROKU_ADVERTISING_ID) {
-                    Assert.assertEquals("aaa", id.getValue().substring(0, 3));
+                    assertEquals("aaa", id.getValue().substring(0, 3));
                 }
 
                 if (id.getType() == DeviceIdentity.Type.ROKU_PUBLISHER_ID) {
-                    Assert.assertEquals("bbb", id.getValue().substring(0, 3));
+                    assertEquals("bbb", id.getValue().substring(0, 3));
                 }
             }
 
-            Assert.assertTrue( rokuAdId && rokuPubId );
+            assertTrue( rokuAdId && rokuPubId );
         }
         catch (IOException e) {
-            Assert.fail(e.getMessage());
+            fail(e.getMessage());
         }
     }
 
@@ -319,15 +320,15 @@ public class DtoImportTest {
         MessageSerializer ser = new MessageSerializer();
         try {
             EventProcessingRequest req = ser.deserialize(firetvJson, EventProcessingRequest.class);
-            Assert.assertNotNull(req);
+            assertNotNull(req);
 
-            Assert.assertEquals(RuntimeEnvironment.Type.FIRETV, req.getRuntimeEnvironment().getType());
+            assertEquals(RuntimeEnvironment.Type.FIRETV, req.getRuntimeEnvironment().getType());
 
             Boolean email = false;
             for(UserIdentity id : req.getUserIdentities()) {
                 email |= id.getType() == UserIdentity.Type.EMAIL;
             }
-            Assert.assertTrue( email);
+            assertTrue( email);
 
             FireTVRuntimeEnvironment env =  (FireTVRuntimeEnvironment)req.getRuntimeEnvironment();
 
@@ -335,14 +336,14 @@ public class DtoImportTest {
             for (DeviceIdentity id : env.getIdentities()) {
                 fireAdId |= id.getType() == DeviceIdentity.Type.FIRE_ADVERTISING_ID;
                 if (fireAdId) {
-                    Assert.assertEquals("aaa", id.getValue().substring(0, 3));
+                    assertEquals("aaa", id.getValue().substring(0, 3));
                 }
             }
 
-            Assert.assertTrue( fireAdId);
+            assertTrue( fireAdId);
         }
         catch (IOException e) {
-            Assert.fail(e.getMessage());
+            fail(e.getMessage());
         }
     }
 
@@ -352,16 +353,16 @@ public class DtoImportTest {
         MessageSerializer ser = new MessageSerializer();
         try {
             EventProcessingRequest req = ser.deserialize(xboxJson, EventProcessingRequest.class);
-            Assert.assertNotNull(req);
+            assertNotNull(req);
 
-            Assert.assertEquals(RuntimeEnvironment.Type.XBOX, req.getRuntimeEnvironment().getType());
+            assertEquals(RuntimeEnvironment.Type.XBOX, req.getRuntimeEnvironment().getType());
 
             Boolean other = false;
             for(UserIdentity id : req.getUserIdentities()) {
                 other |= id.getType() == UserIdentity.Type.OTHER;
             }
 
-            Assert.assertTrue( other);
+            assertTrue( other);
 
             XboxRuntimeEnvironment env =  (XboxRuntimeEnvironment)req.getRuntimeEnvironment();
 
@@ -371,18 +372,18 @@ public class DtoImportTest {
                 msPubId |= id.getType() == DeviceIdentity.Type.MICROSOFT_PUBLISHER_ID;
 
                 if (id.getType() == DeviceIdentity.Type.MICROSOFT_ADVERTISING_ID) {
-                    Assert.assertEquals("aaa", id.getValue().substring(0, 3));
+                    assertEquals("aaa", id.getValue().substring(0, 3));
                 }
 
                 if (id.getType() == DeviceIdentity.Type.MICROSOFT_PUBLISHER_ID) {
-                    Assert.assertEquals("ccc", id.getValue().substring(0, 3));
+                    assertEquals("ccc", id.getValue().substring(0, 3));
                 }
             }
 
-            Assert.assertTrue( msAdId && msPubId);
+            assertTrue( msAdId && msPubId);
         }
         catch (IOException e) {
-            Assert.fail(e.getMessage());
+            fail(e.getMessage());
         }
     }
 }

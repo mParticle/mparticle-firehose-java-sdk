@@ -16,7 +16,14 @@ configurations {
 dependencies {
     deployerJars "org.kuali.maven.wagons:maven-s3-wagon:1.2.1"
     compile 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    // JUnit 5 dependencies for public test-writing API, and test engine, respectively.
+    testImplementation('org.junit.jupiter:junit-jupiter:5.5.1')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.5.1')
+}
+test {
+    // Tells the 'test' task to enable JUnit 5 support
+    useJUnitPlatform()
 }
 javadoc {
     title = 'mParticle Firehose Java SDK Reference'
