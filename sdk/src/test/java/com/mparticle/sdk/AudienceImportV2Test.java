@@ -5,16 +5,21 @@ import com.mparticle.sdk.model.audienceprocessing.Audience;
 import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeRequest;
 import com.mparticle.sdk.model.audienceprocessing.UserAttributeAudienceEvent;
 import com.mparticle.sdk.model.audienceprocessing.UserProfile;
+import com.mparticle.sdk.model.eventprocessing.PartnerIdentity;
 import com.mparticle.sdk.model.eventprocessing.UserIdentity;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
 
 public class AudienceImportV2Test {
 
-    //region Test JSON
+    private String partnerIdValue = "partnerIdValue";
+    private String partnerIdType = "somePartnerId";
 
+    //region Test JSON
     private String audienceJson = "{\n" +
             "  \"type\": \"audience_membership_change_request\",\n" +
             "  \"firehose_version\":\"9.9.0\",\n" +
@@ -36,6 +41,13 @@ public class AudienceImportV2Test {
             "          \"encoding\": \"md5\",\n" +
             "          \"value\": \"e179e95c00e7718ab4a23840f992ea63\"\n" +
             "        }\n" +
+            "      ],\n" +
+            "      \"partner_identities\":[\n" +
+            "         {\n" +
+            "          \"type\":\""+partnerIdType+"\",\n" +
+            "          \"encoding\": \"raw\",\n" +
+            "          \"value\": \"" + partnerIdValue + "\"\n" +
+            "         }\n" +
             "      ],\n" +
             "      \"device_identities\": [\n" +
             "        {\n" +
@@ -128,11 +140,17 @@ public class AudienceImportV2Test {
 
             assertEquals(1, req.getUserProfiles().size());
             for (UserProfile profile : req.getUserProfiles()) {
-                UserIdentity identity = profile.getUserIdentities().get(0);
+                // Extract out the identities
+                UserIdentity userIdentity = profile.getUserIdentities().get(0);
+                List<PartnerIdentity> partnerIdentities = profile.getPartnerIdentities();
 
-                assertEquals(UserIdentity.Type.EMAIL, identity.getType());
+                assertEquals(UserIdentity.Type.EMAIL, userIdentity.getType());
+                assertEquals(1, partnerIdentities.size());
+                PartnerIdentity partnerIdentity = partnerIdentities.iterator().next();
+                assertEquals(partnerIdType, partnerIdentity.getType());
+                assertEquals(partnerIdValue, partnerIdentity.getValue());
 
-                Boolean aud1 = false, aud2 = false, aud3 = false, aud4 = false;
+                boolean aud1 = false, aud2 = false, aud3 = false, aud4 = false;
                 // Now check the audiences.
                 for (Audience aud : profile.getAudiences()) {
 

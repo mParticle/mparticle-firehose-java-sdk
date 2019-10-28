@@ -7,8 +7,13 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
 
 public class DtoImportTest {
+
+    private String partnerIdValue = "partnerIdValue";
+    private String partnerIdType = "somePartnerId";
 
     //region Test JSON
     private String rokuJson = "\n" +
@@ -41,6 +46,13 @@ public class DtoImportTest {
             "         \"type\":\"other4\",\n" +
             "         \"encoding\":\"raw\",\n" +
             "         \"value\":\"789\"\n" +
+            "      }\n" +
+            "   ],\n" +
+            "   \"partner_identities\":[\n" +
+            "      {\n" +
+            "       \"type\":\"" + partnerIdType + "\",\n" +
+            "       \"encoding\": \"raw\",\n" +
+            "       \"value\": \"" + partnerIdValue + "\"\n" +
             "      }\n" +
             "   ],\n" +
             "   \"user_attributes\":{\n" +
@@ -140,6 +152,13 @@ public class DtoImportTest {
             "         \"value\":\"foo@bar.com\"\n" +
             "      }\n" +
             "   ],\n" +
+            "   \"partner_identities\":[\n" +
+            "      {\n" +
+            "       \"type\":\"" + partnerIdType + "\",\n" +
+            "       \"encoding\": \"raw\",\n" +
+            "       \"value\": \"" + partnerIdValue + "\"\n" +
+            "      }\n" +
+            "   ],\n" +
             "   \"user_attributes\":{\n" +
             "      \"$FirstName\":\"Mel\",\n" +
             "      \"$LastName\":\"Ben\",\n" +
@@ -215,6 +234,13 @@ public class DtoImportTest {
             "         \"value\":\"456\"\n" +
             "      }\n" +
             "   ],\n" +
+            "   \"partner_identities\":[\n" +
+            "      {\n" +
+            "       \"type\":\"" + partnerIdType + "\",\n" +
+            "       \"encoding\": \"raw\",\n" +
+            "       \"value\": \"" + partnerIdValue + "\"\n" +
+            "      }\n" +
+            "   ],\n" +
             "   \"user_attributes\":{\n" +
             "      \"$FirstName\":\"Mel\",\n" +
             "      \"$LastName\":\"Ben\",\n" +
@@ -281,9 +307,15 @@ public class DtoImportTest {
             EventProcessingRequest req = ser.deserialize(rokuJson, EventProcessingRequest.class);
             assertNotNull(req);
 
+            List<PartnerIdentity> partnerIdentities = req.getPartnerIdentities();
+            assertEquals(1, partnerIdentities.size());
+            PartnerIdentity partnerIdentity = partnerIdentities.iterator().next();
+            assertEquals(partnerIdType, partnerIdentity.getType());
+            assertEquals(partnerIdValue, partnerIdentity.getValue());
+
             assertEquals(RuntimeEnvironment.Type.ROKU, req.getRuntimeEnvironment().getType());
 
-            Boolean other2 = false, other3 = false, other4 = false;
+            boolean other2 = false, other3 = false, other4 = false;
             for(UserIdentity id : req.getUserIdentities()) {
                 other2 |= id.getType() == UserIdentity.Type.OTHER2;
                 other3 |= id.getType() == UserIdentity.Type.OTHER3;
@@ -294,7 +326,7 @@ public class DtoImportTest {
 
             RokuRuntimeEnvironment env =  (RokuRuntimeEnvironment)req.getRuntimeEnvironment();
 
-            Boolean rokuAdId = false, rokuPubId = false, rokuId = false;
+            boolean rokuAdId = false, rokuPubId = false, rokuId = false;
             for (DeviceIdentity id : env.getIdentities()) {
                 rokuAdId |= id.getType() == DeviceIdentity.Type.ROKU_ADVERTISING_ID;
                 rokuPubId |= id.getType() == DeviceIdentity.Type.ROKU_PUBLISHER_ID;
@@ -322,9 +354,15 @@ public class DtoImportTest {
             EventProcessingRequest req = ser.deserialize(firetvJson, EventProcessingRequest.class);
             assertNotNull(req);
 
+            List<PartnerIdentity> partnerIdentities = req.getPartnerIdentities();
+            assertEquals(1, partnerIdentities.size());
+            PartnerIdentity partnerIdentity = partnerIdentities.iterator().next();
+            assertEquals(partnerIdType, partnerIdentity.getType());
+            assertEquals(partnerIdValue, partnerIdentity.getValue());
+
             assertEquals(RuntimeEnvironment.Type.FIRETV, req.getRuntimeEnvironment().getType());
 
-            Boolean email = false;
+            boolean email = false;
             for(UserIdentity id : req.getUserIdentities()) {
                 email |= id.getType() == UserIdentity.Type.EMAIL;
             }
@@ -332,7 +370,7 @@ public class DtoImportTest {
 
             FireTVRuntimeEnvironment env =  (FireTVRuntimeEnvironment)req.getRuntimeEnvironment();
 
-            Boolean fireAdId = false;
+            boolean fireAdId = false;
             for (DeviceIdentity id : env.getIdentities()) {
                 fireAdId |= id.getType() == DeviceIdentity.Type.FIRE_ADVERTISING_ID;
                 if (fireAdId) {
@@ -355,9 +393,15 @@ public class DtoImportTest {
             EventProcessingRequest req = ser.deserialize(xboxJson, EventProcessingRequest.class);
             assertNotNull(req);
 
+            List<PartnerIdentity> partnerIdentities = req.getPartnerIdentities();
+            assertEquals(1, partnerIdentities.size());
+            PartnerIdentity partnerIdentity = partnerIdentities.iterator().next();
+            assertEquals(partnerIdType, partnerIdentity.getType());
+            assertEquals(partnerIdValue, partnerIdentity.getValue());
+
             assertEquals(RuntimeEnvironment.Type.XBOX, req.getRuntimeEnvironment().getType());
 
-            Boolean other = false;
+            boolean other = false;
             for(UserIdentity id : req.getUserIdentities()) {
                 other |= id.getType() == UserIdentity.Type.OTHER;
             }
@@ -366,7 +410,7 @@ public class DtoImportTest {
 
             XboxRuntimeEnvironment env =  (XboxRuntimeEnvironment)req.getRuntimeEnvironment();
 
-            Boolean msAdId = false, msPubId = false;
+            boolean msAdId = false, msPubId = false;
             for (DeviceIdentity id : env.getIdentities()) {
                 msAdId |= id.getType() == DeviceIdentity.Type.MICROSOFT_ADVERTISING_ID;
                 msPubId |= id.getType() == DeviceIdentity.Type.MICROSOFT_PUBLISHER_ID;

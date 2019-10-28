@@ -5,10 +5,12 @@ import com.mparticle.sdk.model.audienceprocessing.UserAttributeAudienceEvent;
 import com.mparticle.sdk.model.audienceprocessing.UserProfile;
 import com.mparticle.sdk.model.eventprocessing.DeviceIdentity;
 import com.mparticle.sdk.model.eventprocessing.Identity;
+import com.mparticle.sdk.model.eventprocessing.PartnerIdentity;
 import com.mparticle.sdk.model.eventprocessing.UserIdentity;
 import com.mparticle.sdk.model.registration.Account;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Sample {
@@ -36,6 +38,10 @@ public class Sample {
         profile.setUserIdentities(Arrays.asList(
                 generateUserIdentity(UserIdentity.Type.EMAIL),
                 generateUserIdentity(UserIdentity.Type.CUSTOMER)));
+
+        profile.setPartnerIdentities(Collections.singletonList(
+                new PartnerIdentity("a_partner_id", Identity.Encoding.RAW, "partnerId")
+        ));
 
         profile.setAudiences(Arrays.asList(
                 generateAddAudience(),

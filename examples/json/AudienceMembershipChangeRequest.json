@@ -1,8 +1,8 @@
 {
   "type" : "audience_membership_change_request",
-  "id" : "5ff29805-c8ea-4ff2-97ac-3b2521a9bc96",
+  "id" : "f59f172d-394b-49d7-8255-8a70a269d288",
   "timestamp_ms" : 1454693235751,
-  "firehose_version" : "2.1.0",
+  "firehose_version" : "2.1.1",
   "account" : {
     "account_id" : 123456,
     "account_settings" : {
@@ -37,6 +37,11 @@
       "type" : "android_id",
       "encoding" : "raw",
       "value" : "a0504a8cfa15ce2c"
+    } ],
+    "partner_identities" : [ {
+      "type" : "a_partner_id",
+      "encoding" : "raw",
+      "value" : "partnerId"
     } ],
     "audiences" : [ {
       "audience_id" : 456,

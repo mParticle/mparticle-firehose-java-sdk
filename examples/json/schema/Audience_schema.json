@@ -2,10 +2,6 @@
   "type" : "object",
   "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:Audience",
   "properties" : {
-    "audienceAction" : {
-      "type" : "string",
-      "enum" : [ "add", "delete", "attribute_update" ]
-    },
     "audience_id" : {
       "type" : "integer",
       "required" : true

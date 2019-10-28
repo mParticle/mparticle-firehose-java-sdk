@@ -1,6 +1,6 @@
 {
-   "type":"event_processing_response",
-   "id":"7f9eee16-4036-488c-ada1-76a92957ed31",
-   "timestamp_ms":1479311466160,
-   "mpid": "12345"
+  "type" : "event_processing_response",
+  "id" : "819e53d2-319f-4e40-8aa1-efa675817757",
+  "timestamp_ms" : 1454693235751,
+  "firehose_version" : "2.1.1"
 }

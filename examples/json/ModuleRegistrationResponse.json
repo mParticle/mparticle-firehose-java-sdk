@@ -1,9 +1,9 @@
 {
   "type" : "module_registration_response",
-  "id" : "38cad9e4-6ba7-42cc-b02a-aeff2f52f12d",
-  "timestamp_ms" : 1454693235751,
-  "firehose_version" : "2.1.0",
-  "sdk_version" : "2.1.0",
+  "id" : "e49ad772-35d2-4f30-9f21-aa95ed7ed74d",
+  "timestamp_ms" : 1571436276426,
+  "firehose_version" : "2.1.1",
+  "sdk_version" : "2.1.1",
   "name" : "Your Company Name",
   "description" : "A description of your <a href=''>company</a> and services. Inline HTML markup is permitted.",
   "version" : "1.0",
@@ -22,20 +22,26 @@
       "encoding" : "sha256",
       "required" : false
     } ],
-    "allow_consent_state" : true
+    "partner_identities" : [ {
+      "type" : "a_partner_id",
+      "encoding" : "raw",
+      "required" : false
+    } ],
+    "allow_consent_state" : true,
+    "allow_access_mpid" : true
   },
   "event_processing_registration" : {
     "account_settings" : [ {
       "type" : "text",
-      "id" : "text",
+      "id" : "apiKey",
       "name" : "API Key",
       "description" : "Secret key to use the API, provided by your account manager",
       "visible" : true,
       "required" : true,
-      "confidential" : false
+      "confidential" : true
     }, {
       "type" : "text",
-      "id" : "text",
+      "id" : "customerId",
       "name" : "Customer ID",
       "description" : "Internal customer ID, provided by your account manager",
       "visible" : true,
@@ -50,15 +56,15 @@
   "audience_processing_registration" : {
     "account_settings" : [ {
       "type" : "text",
-      "id" : "text",
+      "id" : "apiKey",
       "name" : "API Key",
       "description" : "Secret key to use the API, provided by your account manager",
       "visible" : true,
       "required" : true,
-      "confidential" : false
+      "confidential" : true
     }, {
       "type" : "text",
-      "id" : "text",
+      "id" : "customerId",
       "name" : "Customer ID",
       "description" : "Internal customer ID, provided by your account manager",
       "visible" : true,
@@ -67,7 +73,7 @@
     } ],
     "audience_subscription_settings" : [ {
       "type" : "integer",
-      "id" : "integer",
+      "id" : "val_count",
       "name" : "val_count",
       "visible" : true,
       "default_value" : 120,

@@ -87,16 +87,34 @@
               }
             }
           },
+          "partner_identities" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:PartnerIdentity",
+              "properties" : {
+                "type" : {
+                  "type" : "string",
+                  "required" : true
+                },
+                "encoding" : {
+                  "type" : "string",
+                  "required" : true,
+                  "enum" : [ "raw", "md5", "sha1", "sha256" ]
+                },
+                "value" : {
+                  "type" : "string",
+                  "required" : true
+                }
+              }
+            }
+          },
           "audiences" : {
             "type" : "array",
             "items" : {
               "type" : "object",
               "id" : "urn:jsonschema:com:mparticle:sdk:model:audienceprocessing:Audience",
               "properties" : {
-                "audienceAction" : {
-                  "type" : "string",
-                  "enum" : [ "add", "delete", "attribute_update" ]
-                },
                 "audience_id" : {
                   "type" : "integer",
                   "required" : true

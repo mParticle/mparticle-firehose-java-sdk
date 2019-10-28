@@ -3,6 +3,7 @@ package com.mparticle.sdk.model.audienceprocessing;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.eventprocessing.DeviceIdentity;
 import com.mparticle.sdk.model.eventprocessing.UserIdentity;
+import com.mparticle.sdk.model.eventprocessing.PartnerIdentity;
 
 import java.util.List;
 
@@ -13,6 +14,9 @@ public final class UserProfile {
 
     @JsonProperty("device_identities")
     private List<DeviceIdentity> deviceIdentities;
+
+    @JsonProperty("partner_identities")
+    private List<PartnerIdentity> partnerIdentities;
 
     @JsonProperty("audiences")
     private List<Audience> audiences;
@@ -54,6 +58,22 @@ public final class UserProfile {
 
     /**
      *
+     * @return partner identities
+     */
+    public List<PartnerIdentity> getPartnerIdentities() {
+        return partnerIdentities;
+    }
+
+    /**
+     *
+     * @param partnerIdentities partner identities
+     */
+    public void setPartnerIdentities(List<PartnerIdentity> partnerIdentities) {
+        this.partnerIdentities = partnerIdentities;
+    }
+
+    /**
+     *
      * @return audiences user was either added to, removed from, or contained updates within
      */
     public List<Audience> getAudiences() {
@@ -83,5 +103,4 @@ public final class UserProfile {
     public void setMpId(String mpid) {
         this.mpId = mpid;
     }
-
 }

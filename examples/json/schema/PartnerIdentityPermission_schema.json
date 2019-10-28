@@ -1,0 +1,18 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:PartnerIdentityPermission",
+  "properties" : {
+    "type" : {
+      "type" : "string",
+      "required" : true
+    },
+    "encoding" : {
+      "type" : "string",
+      "required" : true,
+      "enum" : [ "raw", "md5", "sha1", "sha256" ]
+    },
+    "required" : {
+      "type" : "boolean"
+    }
+  }
+}

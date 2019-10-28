@@ -18,10 +18,9 @@ public final class UserIdentity extends Identity {
 
     @JsonCreator
     public UserIdentity(
-
-            @JsonProperty(value="type", required=true) Type type,
-            @JsonProperty(value="encoding", required=true) Identity.Encoding encoding,
-            @JsonProperty(value="value", required=true) String value)
+        @JsonProperty(value="type", required=true) Type type,
+        @JsonProperty(value="encoding", required=true) Identity.Encoding encoding,
+        @JsonProperty(value="value", required=true) String value)
     {
         super(encoding, value);
         if (type == null) throw new IllegalArgumentException("Invalid identity type");

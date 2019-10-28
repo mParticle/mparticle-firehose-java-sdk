@@ -1,0 +1,4 @@
+{
+  "type" : "string",
+  "enum" : [ "session_start", "session_end", "custom_event", "screen_view", "error", "privacy_setting_change", "user_attribute_change", "user_identity_change", "push_subscription", "application_state_transition", "push_message_receipt", "product_action", "promotion_action", "impression", "attribution", "push_message_open" ]
+}

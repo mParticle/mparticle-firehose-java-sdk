@@ -3,8 +3,11 @@ package com.mparticle.sdk.generator;
 import com.mparticle.sdk.model.Consts;
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionRequest;
 
+import java.util.AbstractMap;
+import java.util.Map;
+
 public class AudienceSubscriptionRequestSample {
-    public static AudienceSubscriptionRequest GenerateMessage()
+    public static Map.Entry<String, AudienceSubscriptionRequest> GenerateMessage()
     {
         AudienceSubscriptionRequest req = new AudienceSubscriptionRequest();
 
@@ -18,6 +21,6 @@ public class AudienceSubscriptionRequestSample {
         req.setAudienceId(1234);
         req.setAudienceName("New Users Low Engagement");
         req.setAction(AudienceSubscriptionRequest.SubscriptionAction.ADD);
-        return req;
+        return new AbstractMap.SimpleImmutableEntry<>(req.getClass().getSimpleName(), req);
     }
 }

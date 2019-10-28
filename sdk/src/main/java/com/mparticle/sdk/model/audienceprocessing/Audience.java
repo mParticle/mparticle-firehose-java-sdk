@@ -1,5 +1,6 @@
 package com.mparticle.sdk.model.audienceprocessing;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -74,6 +75,7 @@ public final class Audience {
      *
      * @return the action taken on this audience
      */
+    @JsonIgnore
     public AudienceAction getAudienceAction() {
         return action;
     }

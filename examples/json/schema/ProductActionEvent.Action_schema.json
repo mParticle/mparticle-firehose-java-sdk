@@ -1,0 +1,4 @@
+{
+  "type" : "string",
+  "enum" : [ "add_to_wishlist", "remove_from_wish_list", "add_to_cart", "remove_from_cart", "checkout", "purchase", "refund", "checkout_option", "click", "view_detail" ]
+}

@@ -1,0 +1,4 @@
+{
+  "type" : "string",
+  "enum" : [ "unknown", "view", "click" ]
+}

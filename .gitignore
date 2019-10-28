@@ -17,3 +17,6 @@
 # Gradle
 build/
 .gradle
+
+# output
+output/

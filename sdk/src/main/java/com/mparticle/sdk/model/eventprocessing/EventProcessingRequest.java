@@ -25,6 +25,9 @@ public final class EventProcessingRequest extends Message {
     @JsonProperty(value="account", required=true)
     private Account account;
 
+    @JsonProperty("partner_identities")
+    private List<PartnerIdentity> partnerIdentities;
+
     @JsonProperty("user_identities")
     private List<UserIdentity> userIdentities;
 
@@ -61,10 +64,18 @@ public final class EventProcessingRequest extends Message {
     @JsonProperty("mpid")
     private String mpId;
 
+    /**
+     *
+     * @return source id
+     */
     public String getSourceId() {
         return sourceId;
     }
 
+    /**
+     *
+     * @param sourceId source id
+     */
     public void setSourceId(String sourceId) {
         this.sourceId = sourceId;
     }
@@ -219,27 +230,43 @@ public final class EventProcessingRequest extends Message {
         return sourceChannel;
     }
 
+    /**
+     *
+     * @param sourceChannel the originating source of the data, such as one of mParticle's native SDKs, or server APIs.
+     * @see com.mparticle.sdk.model.Consts.ChannelSourceType
+     */
     public void setSourceChannel(String sourceChannel) {
         this.sourceChannel = sourceChannel;
     }
 
+    /**
+     *
+     * @return Device Application Stamp
+     */
     public String getDeviceApplicationStamp() {
         return deviceApplicationStamp;
     }
 
+    /**
+     *
+     * @param deviceApplicationStamp Device Application Stamp
+     */
     public void setDeviceApplicationStamp(String deviceApplicationStamp) {
         this.deviceApplicationStamp = deviceApplicationStamp;
     }
 
     /**
-     * Get the Consent State of the user profile to which this request applies.
      *
-     * @return
+     * @return the Consent State of the user profile to which this request applies.
      */
     public ConsentState getConsentState() {
         return consentState;
     }
 
+    /**
+     *
+     * @param consentState the Consent State of the user profile to which this request applies.
+     */
     public void setConsentState(ConsentState consentState) {
         this.consentState = consentState;
     }
@@ -263,4 +290,20 @@ public final class EventProcessingRequest extends Message {
      * Sets the MP ID for this user.
      */
     public void setMpId(String mpid) { this.mpId = mpid; }
+
+    /**
+     *
+     * @return partner identities
+     */
+    public List<PartnerIdentity> getPartnerIdentities() {
+        return partnerIdentities;
+    }
+
+    /**
+     *
+     * @param partnerIdentities partner identities
+     */
+    public void setPartnerIdentities(List<PartnerIdentity> partnerIdentities) {
+        this.partnerIdentities = partnerIdentities;
+    }
 }

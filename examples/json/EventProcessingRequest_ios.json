@@ -1,0 +1,188 @@
+{
+  "type" : "event_processing_request",
+  "id" : "f5948d74-2f7e-496f-b38b-4c6f1c36d938",
+  "timestamp_ms" : 1571411076,
+  "firehose_version" : "2.1.1",
+  "source_id" : "f9c3195c-6806-4b89-b130-ccb885dfa9e7",
+  "account" : {
+    "account_id" : 123456,
+    "account_settings" : {
+      "Example String Setting" : "Example Setting Value",
+      "Example Boolean Setting" : "false",
+      "Example Integer Setting" : "123",
+      "apiKey" : "sample API Key"
+    }
+  },
+  "partner_identities" : [ {
+    "type" : "a_partner_id",
+    "encoding" : "raw",
+    "value" : "partnerId"
+  } ],
+  "user_identities" : [ {
+    "type" : "email",
+    "encoding" : "md5",
+    "value" : "e179e95c00e7718ab4a23840f992ea63"
+  }, {
+    "type" : "google",
+    "encoding" : "raw",
+    "value" : "1234567890"
+  }, {
+    "type" : "facebook",
+    "encoding" : "raw",
+    "value" : "1234567890"
+  }, {
+    "type" : "other",
+    "encoding" : "raw",
+    "value" : "1234567890"
+  }, {
+    "type" : "customer",
+    "encoding" : "md5",
+    "value" : "4739c5c11d833bb199c16ff95a92b267"
+  } ],
+  "user_attributes" : {
+    "$City" : "Boca Raton",
+    "$FirstName" : "Brian",
+    "$Country" : "USA",
+    "$State" : "FL",
+    "$Zip" : "33431",
+    "$Gender" : "M",
+    "$LastName" : "O'Brian"
+  },
+  "runtime_environment" : {
+    "type" : "ios",
+    "client_ip_address" : "127.0.0.1",
+    "sdk_version" : "6.12.1",
+    "http_header_user_agent" : "user-agent",
+    "identities" : [ {
+      "type" : "ios_advertising_id",
+      "encoding" : "raw",
+      "value" : "66b728c2-f9a4-4d87-82ef-ce07414fe3f7"
+    }, {
+      "type" : "ios_vendor_id",
+      "encoding" : "raw",
+      "value" : "97b826c2-ab80-4876-a184-db36cc39b1ee"
+    } ],
+    "build_id" : "BuildId",
+    "brand" : "Apple",
+    "product" : "iPad Pro",
+    "name" : "My iPad",
+    "manufacturer" : "Apple",
+    "os_version" : "10.0",
+    "model" : "iPad Pro",
+    "screen_height" : 2436,
+    "screen_width" : 1125,
+    "country" : "US",
+    "locale_language" : "en",
+    "locale_country" : "en_US",
+    "network_country" : "US",
+    "network_carrier" : "at&t",
+    "network_code" : "MobileNetworkCode",
+    "network_mobile_country_code" : "MobileCountryCode",
+    "timezone_offset" : -8,
+    "timezone_name" : "UTC-8",
+    "cpu_architecture" : "x86",
+    "is_tablet" : true,
+    "radio_access_technology" : "RadioAccessTechnology",
+    "application_name" : "App Name",
+    "application_version" : "v2",
+    "application_package" : "Package",
+    "is_sandboxed" : true,
+    "apple_search_ads_attribution" : {
+      "Version3.1" : {
+        "iad-org-name" : "org",
+        "iad-conversion-date" : "date",
+        "iad-campaign-id" : "id",
+        "iad-attribution" : "true",
+        "iad-clickdate" : "date",
+        "iad-adgroup-name" : "name",
+        "iad-campaign-name" : "name",
+        "iad-keyword" : "keyword",
+        "iad-adgroup-id" : "id"
+      }
+    }
+  },
+  "events" : [ {
+    "type" : "custom_event",
+    "id" : "e0158edb-d98b-407a-b3b5-b313ed28ea17",
+    "timestamp_ms" : 1571411076,
+    "source_id" : "0e2da58c-73a6-4731-be37-f7287d58f9f5",
+    "session_id" : 123456789,
+    "location" : {
+      "latitude" : 47.6062,
+      "longitude" : 122.3231,
+      "accuracy" : 0.0
+    },
+    "name" : "customEvent",
+    "custom_event_type" : "other",
+    "attributes" : {
+      "event_attribute" : "value"
+    }
+  }, {
+    "type" : "product_action",
+    "id" : "9be4e022-bbf8-4605-b392-6e7be33134c5",
+    "timestamp_ms" : 1571411076,
+    "source_id" : "77bdc335-102d-4bff-9549-42843decad31",
+    "session_id" : 123456789,
+    "action" : "add_to_cart",
+    "transaction_id" : "transactionId",
+    "total_amount" : 11,
+    "tax_amount" : 1,
+    "shipping_amount" : 0,
+    "currency_code" : "USD",
+    "coupon_code" : "coupon",
+    "products" : [ {
+      "id" : "id",
+      "name" : "name",
+      "brand" : "brand",
+      "category" : "category",
+      "variant" : "variant",
+      "position" : 1,
+      "price" : 10,
+      "quantity" : 1,
+      "total_amount" : 10
+    } ],
+    "attributes" : {
+      "event_attribute" : "value"
+    }
+  } ],
+  "event_connection_settings" : [ {
+    "type" : "text",
+    "id" : "userIdTypeToSend",
+    "name" : "Email",
+    "visible" : true,
+    "required" : false,
+    "confidential" : false
+  } ],
+  "source_channel" : "native",
+  "device_application_stamp" : "a9027e8a-a816-4065-b59f-1b5cb8e0c750",
+  "consent_state" : {
+    "gdpr_consent_state" : {
+      "consentPurpose" : {
+        "consented" : true,
+        "document" : "document",
+        "timestamp_unixtime_ms" : 1571411076,
+        "location" : "location",
+        "hardware_id" : "hardware id"
+      }
+    }
+  },
+  "system_notifications" : [ {
+    "type" : "gdpr_consent_state",
+    "purpose" : "consentPurpose",
+    "old_gdpr_consent_state" : {
+      "consented" : false,
+      "document" : "document",
+      "timestamp_unixtime_ms" : 1571411076,
+      "location" : "location",
+      "hardware_id" : "hardware id"
+    },
+    "new_gdpr_consent_state" : {
+      "consented" : true,
+      "document" : "document",
+      "timestamp_unixtime_ms" : 1571411076,
+      "location" : "location",
+      "hardware_id" : "hardware id"
+    }
+  } ],
+  "mpid" : "12345"
+}

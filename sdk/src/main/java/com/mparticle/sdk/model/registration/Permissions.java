@@ -15,6 +15,9 @@ public final class Permissions {
     @JsonProperty("user_identities")
     private List<UserIdentityPermission> userIdentities;
 
+    @JsonProperty("partner_identities")
+    private List<PartnerIdentityPermission> partnerIdentities;
+
     @JsonProperty("allow_access_location")
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowAccessLocation;
@@ -50,6 +53,24 @@ public final class Permissions {
     @JsonProperty("allow_access_mpid")
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowAccessMpid;
+
+    /**
+     *
+     * @return requested partner identities
+     */
+    public List<PartnerIdentityPermission> getPartnerIdentities() {
+        return partnerIdentities;
+    }
+
+    /**
+     *
+     * @param partnerIdentities requested partner identities
+     * @return this
+     */
+    public Permissions setPartnerIdentities(List<PartnerIdentityPermission> partnerIdentities) {
+        this.partnerIdentities = partnerIdentities;
+        return this;
+    }
 
     /**
      *
