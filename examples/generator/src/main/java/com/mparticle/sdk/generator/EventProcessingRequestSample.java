@@ -31,7 +31,6 @@ public class EventProcessingRequestSample {
         // Settings
         req.setAccount(Sample.generateAccount());
         req.getAccount().getAccountSettings().put("apiKey", "sample API Key");
-        req.setConnectionSettings(Collections.singletonList(new TextSetting("userIdTypeToSend", "Email")));
 
         // Consent
         req.setConsentState(new ConsentState());

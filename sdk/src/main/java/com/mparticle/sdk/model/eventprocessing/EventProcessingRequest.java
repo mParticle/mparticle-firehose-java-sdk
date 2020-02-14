@@ -46,9 +46,6 @@ public final class EventProcessingRequest extends Message {
     @JsonProperty("events")
     private List<Event> events;
 
-    @JsonProperty("event_connection_settings")
-    private List<Setting> connectionSettings;
-
     @JsonProperty("source_channel")
     private String sourceChannel;
 
@@ -196,27 +193,6 @@ public final class EventProcessingRequest extends Message {
      */
     public void setIntegrationAttributes(Map<String, String> integrationAttributes) {
         this.integrationAttributes = integrationAttributes;
-    }
-
-    /**
-     * Gets the connection-level settings registered by this integration.
-     *
-     * mParticle integrations may be configured with two different sets of settings:
-     * - Account-level settings, meant to be reused across platforms and/or apps
-     * - Connection-level settings, meant to change specific behaviors for each instance of an output/integration
-     *
-     * As a Firehose integration developer, it's up to *you* to define which settings should be account-level,
-     * and which should be configured on a per-integration-instance basis.
-     *
-     * @see #getAccount() to get the account-level settings registered for this integration
-     * @return connection settings registered by the integration
-     */
-    public List<Setting> getConnectionSettings() {
-        return connectionSettings;
-    }
-
-    public void setConnectionSettings(List<Setting> connectionSettings) {
-        this.connectionSettings = connectionSettings;
     }
 
     /**

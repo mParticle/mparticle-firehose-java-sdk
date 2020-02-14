@@ -1,9 +1,9 @@
 {
   "type" : "event_processing_request",
-  "id" : "ec8768e3-d093-465d-bd61-b57f52629319",
-  "timestamp_ms" : 1572279211,
+  "id" : "e26446ee-fb75-488e-a372-82a7c14d3be2",
+  "timestamp_ms" : 1580914828,
   "firehose_version" : "2.2.0",
-  "source_id" : "92627219-63be-4ab2-9ab7-8d92dd770e0b",
+  "source_id" : "8d41c2a9-e8a1-4f42-89da-350d95288899",
   "account" : {
     "account_id" : 123456,
     "account_settings" : {
@@ -94,9 +94,9 @@
   },
   "events" : [ {
     "type" : "custom_event",
-    "id" : "ab90eb96-8762-4643-9f7e-1d69913a6c34",
-    "timestamp_ms" : 1572279211,
-    "source_id" : "72c2756c-dc20-47f1-855f-a77f93f40c11",
+    "id" : "0ab412b1-a926-450e-8fab-7ac90ea8f41c",
+    "timestamp_ms" : 1580914828,
+    "source_id" : "ab2abc19-6e6a-4566-a3c8-640b5ed58116",
     "session_id" : 123456789,
     "location" : {
       "latitude" : 47.6062,
@@ -110,9 +110,9 @@
     }
   }, {
     "type" : "product_action",
-    "id" : "6b226d11-536b-4d61-b76f-639bde55cc3f",
-    "timestamp_ms" : 1572279211,
-    "source_id" : "8aa50763-c78a-4e2c-b3e8-fa3acf2d8945",
+    "id" : "b2c4c739-d44a-467e-a1a8-3c2fa855cd42",
+    "timestamp_ms" : 1580914828,
+    "source_id" : "ac1c52f2-e610-4578-84b1-0289bb76815e",
     "session_id" : 123456789,
     "action" : "add_to_cart",
     "transaction_id" : "transactionId",
@@ -136,22 +136,14 @@
       "event_attribute" : "value"
     }
   } ],
-  "event_connection_settings" : [ {
-    "type" : "text",
-    "id" : "userIdTypeToSend",
-    "name" : "Email",
-    "visible" : true,
-    "required" : false,
-    "confidential" : false
-  } ],
   "source_channel" : "native",
-  "device_application_stamp" : "ef4d5ad1-9fd5-4bf7-87da-6d30ee32df46",
+  "device_application_stamp" : "0a929232-acf0-429a-a3d3-6de396365e32",
   "consent_state" : {
     "gdpr_consent_state" : {
       "consentPurpose" : {
         "consented" : true,
         "document" : "document",
-        "timestamp_unixtime_ms" : 1572279211,
+        "timestamp_unixtime_ms" : 1580914828,
         "location" : "location",
         "hardware_id" : "hardware id"
       }
@@ -163,14 +155,14 @@
     "old_gdpr_consent_state" : {
       "consented" : false,
       "document" : "document",
-      "timestamp_unixtime_ms" : 1572279211,
+      "timestamp_unixtime_ms" : 1580914828,
       "location" : "location",
       "hardware_id" : "hardware id"
     },
     "new_gdpr_consent_state" : {
       "consented" : true,
       "document" : "document",
-      "timestamp_unixtime_ms" : 1572279211,
+      "timestamp_unixtime_ms" : 1580914828,
       "location" : "location",
       "hardware_id" : "hardware id"
     }
