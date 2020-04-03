@@ -2,9 +2,9 @@
 *.class
 
 # Eclipse project files
- .classpath
- .project
- .settings/
+.classpath
+.project
+.settings/
 
 # OS X files
 .DS_Store
@@ -20,3 +20,6 @@ build/
 
 # output
 output/
+
+# VS Code
+.vscode/

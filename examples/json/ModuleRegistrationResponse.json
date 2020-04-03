@@ -1,7 +1,7 @@
 {
   "type" : "module_registration_response",
-  "id" : "bea8aa20-b1b4-416a-9f43-b2654f8e0c06",
-  "timestamp_ms" : 1581707611673,
+  "id" : "0697acbe-3ba7-482a-abdc-d0d2a6118340",
+  "timestamp_ms" : 1585074453572,
   "firehose_version" : "2.3.0",
   "sdk_version" : "2.3.0",
   "name" : "Your Company Name",

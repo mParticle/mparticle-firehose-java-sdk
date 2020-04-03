@@ -269,6 +269,9 @@
       "type" : "object",
       "$ref" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Location"
     },
+    "name" : {
+      "type" : "string"
+    },
     "partner_name" : {
       "type" : "string"
     },

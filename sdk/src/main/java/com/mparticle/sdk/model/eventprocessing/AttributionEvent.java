@@ -2,7 +2,6 @@ package com.mparticle.sdk.model.eventprocessing;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
 import java.util.Map;
 
 public final class AttributionEvent extends Event {
@@ -10,6 +9,9 @@ public final class AttributionEvent extends Event {
     public AttributionEvent() {
         super(Type.ATTRIBUTION);
     }
+
+    @JsonProperty("name")
+    private String name;
 
     @JsonProperty("partner_name")
     private String partner;
@@ -22,6 +24,14 @@ public final class AttributionEvent extends Event {
 
     @JsonProperty("attributes")
     private Map<String, String> attributes;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getPartner() {
         return partner;
