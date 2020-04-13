@@ -38,7 +38,16 @@ public final class UserIdentity extends Identity {
         EMAIL,
         OTHER2,
         OTHER3,
-        OTHER4;
+        OTHER4,
+        OTHER5,
+        OTHER6,
+        OTHER7,
+        OTHER8,
+        OTHER9,
+        OTHER10,
+        MOBILE_NUMBER,
+        PHONE_NUMBER_2,
+        PHONE_NUMBER_3;
 
         @Override
         public String toString() {
