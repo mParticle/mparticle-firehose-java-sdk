@@ -1,9 +1,9 @@
 {
   "type" : "module_registration_response",
-  "id" : "0697acbe-3ba7-482a-abdc-d0d2a6118340",
-  "timestamp_ms" : 1585074453572,
-  "firehose_version" : "2.3.0",
-  "sdk_version" : "2.3.0",
+  "id" : "3c6612cc-5c62-4bc4-952f-db84c2e1551b",
+  "timestamp_ms" : 1586980879797,
+  "firehose_version" : "2.4.0",
+  "sdk_version" : "2.4.0",
   "name" : "Your Company Name",
   "description" : "A description of your <a href=''>company</a> and services. Inline HTML markup is permitted.",
   "version" : "1.0",
@@ -23,7 +23,7 @@
       "required" : false
     } ],
     "partner_identities" : [ {
-      "type" : "a_partner_id",
+      "type" : "partner_id",
       "encoding" : "raw",
       "required" : false
     } ],

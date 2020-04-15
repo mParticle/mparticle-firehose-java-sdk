@@ -1,4 +1,4 @@
 {
   "type" : "string",
-  "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email", "other2", "other3", "other4" ]
+  "enum" : [ "other", "customer", "facebook", "twitter", "google", "microsoft", "yahoo", "email", "other2", "other3", "other4", "other5", "other6", "other7", "other8", "other9", "other10", "mobile_number", "phone_number_2", "phone_number_3" ]
 }

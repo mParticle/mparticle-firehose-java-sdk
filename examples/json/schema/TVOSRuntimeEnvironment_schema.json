@@ -6,6 +6,21 @@
       "type" : "string",
       "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb", "roku", "xbox", "firetv", "alexa", "smarttv" ]
     },
+    "debug" : {
+      "type" : "boolean"
+    },
+    "is_debug" : {
+      "type" : "boolean"
+    },
+    "client_ip_address" : {
+      "type" : "string"
+    },
+    "sdk_version" : {
+      "type" : "string"
+    },
+    "http_header_user_agent" : {
+      "type" : "string"
+    },
     "identities" : {
       "type" : "array",
       "items" : {
@@ -28,21 +43,6 @@
           }
         }
       }
-    },
-    "debug" : {
-      "type" : "boolean"
-    },
-    "is_debug" : {
-      "type" : "boolean"
-    },
-    "client_ip_address" : {
-      "type" : "string"
-    },
-    "sdk_version" : {
-      "type" : "string"
-    },
-    "http_header_user_agent" : {
-      "type" : "string"
     },
     "build_id" : {
       "type" : "string"
