@@ -9,9 +9,6 @@ import java.util.List;
  */
 public final class TVOSRuntimeEnvironment extends RuntimeEnvironment {
 
-    @JsonProperty("identities")
-    private List<DeviceIdentity> Identities;
-
     @JsonProperty("build_id")
     private String buildId;
 
@@ -65,14 +62,6 @@ public final class TVOSRuntimeEnvironment extends RuntimeEnvironment {
 
     @JsonProperty("application_package")
     private String applicationPackage;
-
-    public List<DeviceIdentity> getIdentities() {
-        return Identities;
-    }
-
-    public void setIdentities(List<DeviceIdentity> identities) {
-        Identities = identities;
-    }
 
     public String getBuildId() {
         return buildId;

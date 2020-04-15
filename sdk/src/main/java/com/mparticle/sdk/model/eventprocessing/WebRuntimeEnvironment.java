@@ -9,17 +9,6 @@ import java.util.List;
  */
 public final class WebRuntimeEnvironment extends RuntimeEnvironment {
 
-    @JsonProperty("identities")
-    private List<DeviceIdentity> Identities;
-
-    public List<DeviceIdentity> getIdentities() {
-        return Identities;
-    }
-
-    public void setIdentities(List<DeviceIdentity> identities) {
-        Identities = identities;
-    }
-
     public WebRuntimeEnvironment() {
         super(Type.MOBILEWEB);
     }

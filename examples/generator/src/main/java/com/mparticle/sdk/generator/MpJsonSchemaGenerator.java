@@ -47,13 +47,13 @@ public class MpJsonSchemaGenerator {
         if (dir.mkdirs())
         {
             // Generate the registration message schemata.
-            generateSchemata(REGISTRATION_PKG, dir);
+            generateSchema(REGISTRATION_PKG, dir);
 
             // Generate the audience message schemata.
-            generateSchemata(AUDIENCE_PROCESSING_PKG, dir);
+            generateSchema(AUDIENCE_PROCESSING_PKG, dir);
 
             // Generate the event message schemata.
-            generateSchemata(EVENT_PROCESSING_PKG, dir);
+            generateSchema(EVENT_PROCESSING_PKG, dir);
 
             // Collect the data which will be used for the JSON sample files
             List<Map.Entry<String, ? extends Message>> messageClasses = Arrays.asList(
@@ -102,7 +102,7 @@ public class MpJsonSchemaGenerator {
         });
     }
 
-    private static void generateSchemata(String pkg, File dir) throws IOException {
+    private static void generateSchema(String pkg, File dir) throws IOException {
         Collection<Class> eventClasses = getClasses(pkg);
         for (Class c: eventClasses) {
             // Find file name

@@ -6,9 +6,6 @@ import java.util.List;
 
 public class XboxRuntimeEnvironment  extends RuntimeEnvironment {
 
-    @JsonProperty("identities")
-    private List<DeviceIdentity> identities;
-
     @JsonProperty("build_id")
     private String buildId;
 
@@ -62,14 +59,6 @@ public class XboxRuntimeEnvironment  extends RuntimeEnvironment {
 
     @JsonProperty("application_package")
     private String applicationPackage;
-
-    public List<DeviceIdentity> getIdentities() {
-        return this.identities;
-    }
-
-    public void setIdentities(List<DeviceIdentity> identities) {
-        this.identities = identities;
-    }
 
     public String getBuildId() {
         return buildId;

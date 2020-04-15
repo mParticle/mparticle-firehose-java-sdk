@@ -1,6 +1,5 @@
 package com.mparticle.sdk.generator;
 
-import com.mparticle.sdk.model.Consts;
 import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeRequest;
 
 import java.util.*;
@@ -11,12 +10,10 @@ public class AudienceMembershipChangeRequestSample {
     {
         AudienceMembershipChangeRequest req = new AudienceMembershipChangeRequest();
 
-        req.setFirehoseVersion(Consts.SDK_VERSION);
-        req.setTimestamp(1454693235751L);
+        req.setTimestamp(System.currentTimeMillis());
 
         req.setAccount(Sample.generateAccount());
-        req.setUserProfiles(Collections.singletonList(Sample.generateUserProfiles()));
-        req.setUserProfiles(Collections.singletonList(Sample.generateUserProfiles()));
+        req.setUserProfiles(Collections.singletonList(Sample.generateUserProfile()));
         return new AbstractMap.SimpleImmutableEntry<>(req.getClass().getSimpleName(), req);
     }
 }

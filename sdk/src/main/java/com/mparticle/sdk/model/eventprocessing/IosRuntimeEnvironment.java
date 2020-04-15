@@ -10,9 +10,6 @@ import java.util.Map;
  */
 public final class IosRuntimeEnvironment extends RuntimeEnvironment {
 
-    @JsonProperty("identities")
-    private List<DeviceIdentity> Identities;
-
     @JsonProperty("build_id")
     private String buildId;
 
@@ -90,14 +87,6 @@ public final class IosRuntimeEnvironment extends RuntimeEnvironment {
 
     @JsonProperty("apple_search_ads_attribution")
     private Map<String, Map<String, String>> appleSearchAdsAttribution;
-
-    public List<DeviceIdentity> getIdentities() {
-        return Identities;
-    }
-
-    public void setIdentities(List<DeviceIdentity> identities) {
-        Identities = identities;
-    }
 
     public String getBuildId() {
         return buildId;

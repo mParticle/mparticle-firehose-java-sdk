@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import java.util.List;
+
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(name="unknown", value=GenericRuntimeEnvironment.class),
@@ -34,6 +36,9 @@ public abstract class RuntimeEnvironment {
 
     @JsonProperty("http_header_user_agent")
     private String userAgent;
+
+    @JsonProperty("identities")
+    private List<DeviceIdentity> identities;
 
     public RuntimeEnvironment(Type type) {
         this.type = type;
@@ -95,11 +100,26 @@ public abstract class RuntimeEnvironment {
     public String getUserAgent() { return userAgent; }
 
     /**
-     * Get the user agent HTTP header that is sent by this runtime environment
+     * Set the user agent HTTP header that is sent by this runtime environment
      * @param userAgent value
      */
     public void setUserAgent(String userAgent) { this.userAgent = userAgent; }
 
+    /**
+     *
+     * @return the device identities
+     */
+    public List<DeviceIdentity> getIdentities() {
+        return this.identities;
+    }
+
+    /**
+     * Set the device identities
+     * @param identities
+     */
+    public void setIdentities(List<DeviceIdentity> identities) {
+        this.identities = identities;
+    }
 
     public enum Type {
         UNKNOWN,

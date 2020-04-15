@@ -18,7 +18,7 @@ public class Sample {
     public static Account generateAccount() {
         Account account = new Account();
         account.setAccountId(123456);
-        account.setAccountSettings(new HashMap<String, String>());
+        account.setAccountSettings(new HashMap<>());
         account.getAccountSettings().put("Example String Setting", "Example Setting Value");
         account.getAccountSettings().put("Example Boolean Setting", "false");
         account.getAccountSettings().put("Example Integer Setting", "123");
@@ -26,7 +26,7 @@ public class Sample {
         return account;
     }
 
-    public static UserProfile generateUserProfiles() {
+    public static UserProfile generateUserProfile() {
         UserProfile profile = new UserProfile();
         profile.setDeviceIdentities(Arrays.asList(
                 generateDeviceIdentity(DeviceIdentity.Type.IOS_ADVERTISING_ID),
@@ -40,7 +40,7 @@ public class Sample {
                 generateUserIdentity(UserIdentity.Type.CUSTOMER)));
 
         profile.setPartnerIdentities(Collections.singletonList(
-                new PartnerIdentity("a_partner_id", Identity.Encoding.RAW, "partnerId")
+                new PartnerIdentity("partner_id", Identity.Encoding.RAW, "partnerId")
         ));
 
         profile.setAudiences(Arrays.asList(
@@ -59,7 +59,7 @@ public class Sample {
         audience.setAudienceId(456);
         audience.setAudienceName("Example Audience Name");
         audience.setAudienceAction(Audience.AudienceAction.ADD);
-        audience.setAudienceSubscriptionSettings(new HashMap<String, String>());
+        audience.setAudienceSubscriptionSettings(new HashMap<>());
         audience.getAudienceSubscriptionSettings().put("Example Audience-specific setting", "Example Value");
 
         return audience;
@@ -71,7 +71,7 @@ public class Sample {
         audience.setAudienceId(789);
         audience.setAudienceName("Example Audience Name 2");
         audience.setAudienceAction(Audience.AudienceAction.ATTRIBUTE_UPDATE);
-        audience.setAudienceSubscriptionSettings(new HashMap<String, String>());
+        audience.setAudienceSubscriptionSettings(new HashMap<>());
         audience.getAudienceSubscriptionSettings().put("Example Audience-specific setting", "Example Value 2");
 
         UserAttributeAudienceEvent attr1 = new UserAttributeAudienceEvent();
@@ -97,7 +97,7 @@ public class Sample {
         audience.setAudienceId(654);
         audience.setAudienceName("Example Audience Name 4");
         audience.setAudienceAction(Audience.AudienceAction.DELETE);
-        audience.setAudienceSubscriptionSettings(new HashMap<String, String>());
+        audience.setAudienceSubscriptionSettings(new HashMap<>());
         audience.getAudienceSubscriptionSettings().put("Example Audience-specific setting", "Example Value 4");
 
         return audience;

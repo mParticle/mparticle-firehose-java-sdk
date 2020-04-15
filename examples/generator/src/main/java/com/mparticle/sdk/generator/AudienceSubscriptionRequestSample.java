@@ -1,6 +1,5 @@
 package com.mparticle.sdk.generator;
 
-import com.mparticle.sdk.model.Consts;
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionRequest;
 
 import java.util.AbstractMap;
@@ -11,12 +10,10 @@ public class AudienceSubscriptionRequestSample {
     {
         AudienceSubscriptionRequest req = new AudienceSubscriptionRequest();
 
-        req.setFirehoseVersion(Consts.SDK_VERSION);
-        req.setTimestamp(1454693235751L);
+        req.setTimestamp(System.currentTimeMillis());
 
         req.setAccount(Sample.generateAccount());
         req.getAccount().getAccountSettings().put("apiKey", "sample API Key");
-
 
         req.setAudienceId(1234);
         req.setAudienceName("New Users Low Engagement");

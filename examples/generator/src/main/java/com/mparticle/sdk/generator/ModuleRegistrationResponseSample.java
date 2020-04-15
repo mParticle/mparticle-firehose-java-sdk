@@ -10,6 +10,7 @@ public class ModuleRegistrationResponseSample {
     public static Map.Entry<String, ModuleRegistrationResponse> GenerateMessage() {
         ModuleRegistrationResponse response = new ModuleRegistrationResponse("Your Company Name", "1.0");
 
+        // Set-up Permissions
         Permissions permissions = new Permissions();
         permissions
             .setDeviceIdentities(Arrays.asList(
@@ -25,7 +26,7 @@ public class ModuleRegistrationResponseSample {
                     new UserIdentityPermission(UserIdentity.Type.EMAIL, Identity.Encoding.SHA256, false)
             ))
             .setPartnerIdentities(Collections.singletonList(
-                    new PartnerIdentityPermission("a_partner_id", Identity.Encoding.RAW, false)
+                    new PartnerIdentityPermission("partner_id", Identity.Encoding.RAW, false)
             ));
 
         // Set-up Event Registration

@@ -8,9 +8,6 @@ import java.util.List;
  */
 public final class AndroidRuntimeEnvironment extends RuntimeEnvironment {
 
-    @JsonProperty("identities")
-    private List<DeviceIdentity> identities;
-
     @JsonProperty("build_id")
     private String buildId;
 
@@ -100,14 +97,6 @@ public final class AndroidRuntimeEnvironment extends RuntimeEnvironment {
 
     public AndroidRuntimeEnvironment() {
         super(Type.ANDROID);
-    }
-
-    public List<DeviceIdentity> getIdentities() {
-        return identities;
-    }
-
-    public void setIdentities(List<DeviceIdentity> identities) {
-        this.identities = identities;
     }
 
     public String getBuildId() {

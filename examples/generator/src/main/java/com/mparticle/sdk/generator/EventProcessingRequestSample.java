@@ -6,23 +6,19 @@ import com.mparticle.sdk.model.eventprocessing.consent.ConsentState;
 import com.mparticle.sdk.model.eventprocessing.consent.GDPRConsent;
 import com.mparticle.sdk.model.eventprocessing.notification.GDPRConsentStateNotification;
 import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
-import com.mparticle.sdk.model.registration.TextSetting;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.*;
 
 public class EventProcessingRequestSample {
 
-    private static final long timestamp = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+    private static final long timestamp = System.currentTimeMillis();
     private static final String mpid = "12345";
 
     public static Map.Entry<String, EventProcessingRequest> GenerateMessage(RuntimeEnvironment.Type runtimeType) {
         // Basic request info
         EventProcessingRequest req = new EventProcessingRequest();
-        req.setFirehoseVersion(Consts.SDK_VERSION);
-        req.setTimestamp(timestamp);
+        req.setTimestamp(System.currentTimeMillis());
         req.setDeviceApplicationStamp(UUID.randomUUID().toString());
         req.setMpId(mpid);
         req.setSourceChannel(Consts.ChannelSourceType.NATIVE);

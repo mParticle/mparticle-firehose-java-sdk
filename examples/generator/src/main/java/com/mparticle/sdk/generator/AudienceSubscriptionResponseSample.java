@@ -1,6 +1,5 @@
 package com.mparticle.sdk.generator;
 
-import com.mparticle.sdk.model.Consts;
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionResponse;
 
 import java.util.AbstractMap;
@@ -12,8 +11,7 @@ public class AudienceSubscriptionResponseSample {
     {
         AudienceSubscriptionResponse req = new AudienceSubscriptionResponse();
 
-        req.setFirehoseVersion(Consts.SDK_VERSION);
-        req.setTimestamp(1454693235751L);
+        req.setTimestamp(System.currentTimeMillis());
 
         req.setAudienceSubscriptionSettings(new HashMap<>());
         req.getAudienceSubscriptionSettings().put("sample setting", "sample setting value");

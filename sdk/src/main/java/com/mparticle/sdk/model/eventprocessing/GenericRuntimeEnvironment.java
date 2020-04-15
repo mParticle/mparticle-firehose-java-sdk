@@ -6,9 +6,6 @@ import java.util.List;
 
 public class GenericRuntimeEnvironment extends RuntimeEnvironment {
 
-    @JsonProperty("identities")
-    private List<DeviceIdentity> identities;
-
     @JsonProperty("build_id")
     private String buildId;
 
@@ -80,14 +77,6 @@ public class GenericRuntimeEnvironment extends RuntimeEnvironment {
 
     public GenericRuntimeEnvironment() {
         super(Type.UNKNOWN);
-    }
-
-    public List<DeviceIdentity> getIdentities() {
-        return this.identities;
-    }
-
-    public void setIdentities(List<DeviceIdentity> identities) {
-        this.identities = identities;
     }
 
     public String getBuildId() {

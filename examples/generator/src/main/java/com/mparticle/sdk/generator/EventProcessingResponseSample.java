@@ -1,6 +1,5 @@
 package com.mparticle.sdk.generator;
 
-import com.mparticle.sdk.model.Consts;
 import com.mparticle.sdk.model.eventprocessing.EventProcessingResponse;
 
 import java.util.AbstractMap;
@@ -11,8 +10,7 @@ public class EventProcessingResponseSample {
     {
         EventProcessingResponse req = new EventProcessingResponse();
 
-        req.setFirehoseVersion(Consts.SDK_VERSION);
-        req.setTimestamp(1454693235751L);
+        req.setTimestamp(System.currentTimeMillis());
 
         return new AbstractMap.SimpleImmutableEntry<>(req.getClass().getSimpleName(), req);
     }
