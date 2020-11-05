@@ -83,11 +83,9 @@ public class ModuleRegistrationResponseSample {
 
     private static Setting getAudienceSetting()
     {
-        IntegerSetting set = new IntegerSetting("val_count", "val_count");
-        set.setDefaultValue(120);
-        set.setMaxValue(2000);
-        set.setMinValue(10);
-        set.setIsRequired(false);
+        BooleanSetting set = new BooleanSetting("audienceType", "Suppression Audience");
+        set.setDefaultValue(false);
+        set.setDescription("If enabled, this audience will be used for suppression.");
         set.setIsVisible(true);
         return set;
     }

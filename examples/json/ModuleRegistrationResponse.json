@@ -1,7 +1,7 @@
 {
   "type" : "module_registration_response",
-  "id" : "3c6612cc-5c62-4bc4-952f-db84c2e1551b",
-  "timestamp_ms" : 1586980879797,
+  "id" : "95618fe8-1742-40d0-a56f-aa3105beb2fd",
+  "timestamp_ms" : 1604606195483,
   "firehose_version" : "2.4.0",
   "sdk_version" : "2.4.0",
   "name" : "Your Company Name",
@@ -72,14 +72,13 @@
       "confidential" : false
     } ],
     "audience_subscription_settings" : [ {
-      "type" : "integer",
-      "id" : "val_count",
-      "name" : "val_count",
+      "type" : "boolean",
+      "id" : "audienceType",
+      "name" : "Suppression Audience",
+      "description" : "If enabled, this audience will be used for suppression.",
       "visible" : true,
-      "default_value" : 120,
-      "min_value" : 10,
-      "max_value" : 2000,
-      "required" : false
+      "default_value" : false,
+      "checked" : false
     } ]
   }
 }
