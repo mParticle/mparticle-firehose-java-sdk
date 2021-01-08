@@ -1,10 +1,10 @@
 {
   "type" : "object",
-  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:AttributionEvent",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:notification:CCPAConsentStateNotification",
   "properties" : {
     "type" : {
       "type" : "string",
-      "enum" : [ "session_start", "session_end", "custom_event", "screen_view", "error", "privacy_setting_change", "user_attribute_change", "user_identity_change", "push_subscription", "application_state_transition", "push_message_receipt", "product_action", "promotion_action", "impression", "attribution", "push_message_open" ]
+      "enum" : [ "gdpr_consent_state", "ccpa_consent_state" ]
     },
     "request" : {
       "type" : "object",
@@ -306,41 +306,16 @@
         }
       }
     },
-    "id" : {
-      "type" : "string",
-      "required" : true
-    },
-    "timestamp_ms" : {
-      "type" : "integer",
-      "required" : true
-    },
-    "source_id" : {
+    "purpose" : {
       "type" : "string"
     },
-    "session_id" : {
-      "type" : "integer"
-    },
-    "location" : {
+    "old_ccpa_consent_state" : {
       "type" : "object",
-      "$ref" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Location"
+      "$ref" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:CCPAConsent"
     },
-    "name" : {
-      "type" : "string"
-    },
-    "partner_name" : {
-      "type" : "string"
-    },
-    "publisher_name" : {
-      "type" : "string"
-    },
-    "campaign_name" : {
-      "type" : "string"
-    },
-    "attributes" : {
+    "new_ccpa_consent_state" : {
       "type" : "object",
-      "additionalProperties" : {
-        "type" : "string"
-      }
+      "$ref" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:CCPAConsent"
     }
   }
 }

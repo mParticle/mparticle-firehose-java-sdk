@@ -2,10 +2,8 @@ package com.mparticle.sdk.generator;
 
 import com.mparticle.sdk.model.Consts;
 import com.mparticle.sdk.model.eventprocessing.*;
-import com.mparticle.sdk.model.eventprocessing.consent.ConsentState;
-import com.mparticle.sdk.model.eventprocessing.consent.GDPRConsent;
-import com.mparticle.sdk.model.eventprocessing.notification.GDPRConsentStateNotification;
-import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
+import com.mparticle.sdk.model.eventprocessing.consent.*;
+import com.mparticle.sdk.model.eventprocessing.notification.*;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -29,11 +27,19 @@ public class EventProcessingRequestSample {
         req.getAccount().getAccountSettings().put("apiKey", "sample API Key");
 
         // Consent
-        req.setConsentState(new ConsentState());
-        Map<String, GDPRConsent> gdpr = new HashMap<String, GDPRConsent>();
-        gdpr.put("consentPurpose", getGdprConsent());
-        req.getConsentState().setGDPR(gdpr);
-        req.setSystemNotifications(getSystemNotifications());
+        String consentPurpose = "consentPurpose";
+        ConsentState cs = new ConsentState();
+
+        Map<String, GDPRConsent> gdpr = new HashMap<>();
+        GDPRConsent newGdprConsent = getGdprConsent(true);
+        gdpr.put(consentPurpose, newGdprConsent);
+        cs.setGDPR(gdpr);
+
+        CCPAConsent newCcpaConsent = getCcpaConsent(true);
+        cs.setCCPA(newCcpaConsent); // Purpose is optional
+
+        req.setConsentState(cs);
+        req.setSystemNotifications(getSystemNotifications(consentPurpose, newGdprConsent, newCcpaConsent));
 
         // UAs
         Map<String, String> uas = new HashMap<String, String>();
@@ -127,30 +133,40 @@ public class EventProcessingRequestSample {
         event.setSourceId(UUID.randomUUID().toString());
     }
 
-    private static List<SystemNotification> getSystemNotifications() {
-        GDPRConsentStateNotification notification = new GDPRConsentStateNotification();
+    private static List<SystemNotification> getSystemNotifications(
+            String consentPurpose,
+            GDPRConsent newGdprConsent,
+            CCPAConsent newCcpaConsent) {
+        // Set-up the 'before' and 'after' for GDPR consent
+        GDPRConsentStateNotification gdprNotification = new GDPRConsentStateNotification();
+        gdprNotification.setOldConsentState(getGdprConsent(false));
+        gdprNotification.setNewConsentState(newGdprConsent);
+        gdprNotification.setPurpose(consentPurpose);
 
-        // Get the before and after
-        GDPRConsent oldGDPR = getGdprConsent();
-        GDPRConsent newGDPR = getGdprConsent();
-        oldGDPR.setConsented(!newGDPR.isConsented());
+        // Set-up the 'before' and 'after' for CCPA consent. Purpose is optional.
+        CCPAConsentStateNotification ccpaNotification = new CCPAConsentStateNotification();
+        ccpaNotification.setOldConsentState(getCcpaConsent(false));
+        ccpaNotification.setNewConsentState(newCcpaConsent);
 
-        notification.setOldConsentState(oldGDPR);
-        notification.setNewConsentState(newGDPR);
-        notification.setPurpose("consentPurpose");
-
-        return Collections.singletonList(notification);
+        return Arrays.asList(gdprNotification, ccpaNotification);
     }
 
-    private static GDPRConsent getGdprConsent() {
-        GDPRConsent gdprConsent = new GDPRConsent();
-        gdprConsent.setConsented(true);
-        gdprConsent.setDocument("document");
-        gdprConsent.setHardwareId("hardware id");
-        gdprConsent.setLocation("location");
-        gdprConsent.setTimestamp(timestamp);
+    private static GDPRConsent getGdprConsent(boolean consented) {
+        return new GDPRConsent()
+            .setConsented(consented)
+            .setDocument("document")
+            .setHardwareId("hardware id")
+            .setLocation("location")
+            .setTimestamp(timestamp);
+    }
 
-        return gdprConsent;
+    private static CCPAConsent getCcpaConsent(boolean consented) {
+        return new CCPAConsent()
+            .setConsented(consented)
+            .setDocument("document")
+            .setHardwareId("hardware id")
+            .setLocation("location")
+            .setTimestamp(timestamp);
     }
 
     private static RuntimeEnvironment getRuntimeEnv(RuntimeEnvironment.Type type) {

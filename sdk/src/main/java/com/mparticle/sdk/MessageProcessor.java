@@ -6,8 +6,7 @@ import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeRespon
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionRequest;
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionResponse;
 import com.mparticle.sdk.model.eventprocessing.*;
-import com.mparticle.sdk.model.eventprocessing.notification.GDPRConsentStateNotification;
-import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
+import com.mparticle.sdk.model.eventprocessing.notification.*;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
 
@@ -86,6 +85,9 @@ public abstract class MessageProcessor {
                 switch (notification.getType()) {
                     case GDPR_CONSENT_STATE:
                         processGDPRConsentStateNotification((GDPRConsentStateNotification)notification);
+                        break;
+                    case CCPA_CONSENT_STATE:
+                        processCCPAConsentStateNotification((CCPAConsentStateNotification)notification);
                         break;
                 }
             }
@@ -167,6 +169,16 @@ public abstract class MessageProcessor {
      * @throws IOException
      */
     public void processGDPRConsentStateNotification(GDPRConsentStateNotification notification) throws IOException {
+
+    }
+
+    /**
+     * Handler for processing CCPA Consent State system notifications
+     *
+     * @param notification
+     * @throws IOException
+     */
+    public void processCCPAConsentStateNotification(CCPAConsentStateNotification notification) throws IOException {
 
     }
 

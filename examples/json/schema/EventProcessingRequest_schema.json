@@ -210,6 +210,31 @@
       "type" : "object",
       "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:ConsentState",
       "properties" : {
+        "ccpa" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object",
+            "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:CCPAConsent",
+            "properties" : {
+              "consented" : {
+                "type" : "boolean",
+                "required" : true
+              },
+              "document" : {
+                "type" : "string"
+              },
+              "timestamp_unixtime_ms" : {
+                "type" : "integer"
+              },
+              "location" : {
+                "type" : "string"
+              },
+              "hardware_id" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
         "gdpr" : {
           "type" : "object",
           "additionalProperties" : {
@@ -241,6 +266,13 @@
             "type" : "object",
             "$ref" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:GDPRConsent"
           }
+        },
+        "ccpa_consent_state" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object",
+            "$ref" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:CCPAConsent"
+          }
         }
       }
     },
@@ -252,7 +284,7 @@
         "properties" : {
           "type" : {
             "type" : "string",
-            "enum" : [ "gdpr_consent_state" ]
+            "enum" : [ "gdpr_consent_state", "ccpa_consent_state" ]
           },
           "request" : {
             "type" : "object",

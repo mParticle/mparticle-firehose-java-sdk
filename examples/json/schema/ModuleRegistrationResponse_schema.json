@@ -186,7 +186,7 @@
           "type" : "array",
           "items" : {
             "type" : "string",
-            "enum" : [ "gdpr_consent_state" ]
+            "enum" : [ "gdpr_consent_state", "ccpa_consent_state" ]
           }
         },
         "max_data_age_hours" : {

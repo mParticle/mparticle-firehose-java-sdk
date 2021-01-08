@@ -6,7 +6,8 @@ import com.mparticle.sdk.model.eventprocessing.EventProcessingRequest;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(name="gdpr_consent_state", value=GDPRConsentStateNotification.class)
+        @JsonSubTypes.Type(name="gdpr_consent_state", value=GDPRConsentStateNotification.class),
+        @JsonSubTypes.Type(name="ccpa_consent_state", value=CCPAConsentStateNotification.class)
 })
 /**
  * Class representing a profile or system state change within the mParticle platform.
@@ -39,7 +40,8 @@ public abstract class SystemNotification {
         /**
          * This represents when a user's Consent State has been updated.
          */
-        GDPR_CONSENT_STATE;
+        GDPR_CONSENT_STATE,
+        CCPA_CONSENT_STATE;
 
         @Override
         public String toString() {

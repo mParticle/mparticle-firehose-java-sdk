@@ -1,0 +1,22 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:GDPRConsent",
+  "properties" : {
+    "consented" : {
+      "type" : "boolean",
+      "required" : true
+    },
+    "document" : {
+      "type" : "string"
+    },
+    "timestamp_unixtime_ms" : {
+      "type" : "integer"
+    },
+    "location" : {
+      "type" : "string"
+    },
+    "hardware_id" : {
+      "type" : "string"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "type" : "string",
+  "enum" : [ "gdpr_consent_state", "ccpa_consent_state" ]
+}

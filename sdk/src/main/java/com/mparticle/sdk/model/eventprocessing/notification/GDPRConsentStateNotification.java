@@ -15,7 +15,7 @@ public final class GDPRConsentStateNotification extends SystemNotification{
     private GDPRConsent newConsentState;
 
     public GDPRConsentStateNotification() {
-        super(SystemNotification.Type.GDPR_CONSENT_STATE);
+        super(Type.GDPR_CONSENT_STATE);
     }
 
     public String getPurpose() {

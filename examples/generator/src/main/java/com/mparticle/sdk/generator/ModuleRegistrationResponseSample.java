@@ -46,8 +46,8 @@ public class ModuleRegistrationResponseSample {
         audienceRegistration
                 .setAudienceConnectionSettings(Collections.singletonList(getAudienceSetting()))
                 .setAccountSettings(Arrays.asList(
-                getApiKeySetting(),
-                getCustomerIdSetting()
+                    getApiKeySetting(),
+                    getCustomerIdSetting()
         ));
 
         response

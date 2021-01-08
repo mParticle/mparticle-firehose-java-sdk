@@ -41,7 +41,7 @@ public final class EventProcessingRequest extends Message {
     private RuntimeEnvironment runtimeEnvironment;
 
     @JsonProperty("integration_attributes")
-    private  Map<String, String> integrationAttributes;
+    private Map<String, String> integrationAttributes;
 
     @JsonProperty("events")
     private List<Event> events;

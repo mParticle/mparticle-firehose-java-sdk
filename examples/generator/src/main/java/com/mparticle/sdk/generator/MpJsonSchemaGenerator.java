@@ -31,6 +31,8 @@ public class MpJsonSchemaGenerator {
 
     private static final String REGISTRATION_PKG = "com.mparticle.sdk.model.registration";
     private static final String EVENT_PROCESSING_PKG = "com.mparticle.sdk.model.eventprocessing";
+    private static final String CONSENT_PROCESSING_PKG = "com.mparticle.sdk.model.eventprocessing.consent";
+    private static final String SYSTEM_NOTIFICATION_PROCESSING_PKG = "com.mparticle.sdk.model.eventprocessing.notification";
     private static final String AUDIENCE_PROCESSING_PKG = "com.mparticle.sdk.model.audienceprocessing";
     private static final String SCHEMA_FILE_SUFFIX = "_schema.json";
 
@@ -54,6 +56,8 @@ public class MpJsonSchemaGenerator {
 
             // Generate the event message schemata.
             generateSchema(EVENT_PROCESSING_PKG, dir);
+            generateSchema(CONSENT_PROCESSING_PKG, dir);
+            generateSchema(SYSTEM_NOTIFICATION_PROCESSING_PKG, dir);
 
             // Collect the data which will be used for the JSON sample files
             List<Map.Entry<String, ? extends Message>> messageClasses = Arrays.asList(
