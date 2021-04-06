@@ -1,0 +1,4 @@
+{
+  "type" : "string",
+  "enum" : [ "authorized", "denied", "not_determined", "restricted" ]
+}

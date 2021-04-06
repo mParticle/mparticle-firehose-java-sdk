@@ -63,6 +63,12 @@ public final class TVOSRuntimeEnvironment extends RuntimeEnvironment {
     @JsonProperty("application_package")
     private String applicationPackage;
 
+    @JsonProperty("att_authorization_status")
+    private AttAuthorizationStatus attAuthorizationStatus;
+
+    @JsonProperty("att_timestamp_unixtime_ms")
+    private long attTimestampUnixtimeMs;
+
     public String getBuildId() {
         return buildId;
     }
@@ -206,6 +212,22 @@ public final class TVOSRuntimeEnvironment extends RuntimeEnvironment {
 
     public void setApplicationPackage(String applicationPackage) {
         this.applicationPackage = applicationPackage;
+    }
+
+    public AttAuthorizationStatus getAttAuthorizationStatus() {
+        return attAuthorizationStatus;
+    }
+
+    public void setAttAuthorizationStatus(AttAuthorizationStatus attAuthorizationStatus) {
+        this.attAuthorizationStatus = attAuthorizationStatus;
+    }
+
+    public long getAttTimestampUnixtimeMs() {
+        return attTimestampUnixtimeMs;
+    }
+
+    public void setAttTimestampUnixtimeMs(long attTimestampUnixtimeMs) {
+        this.attTimestampUnixtimeMs = attTimestampUnixtimeMs;
     }
 
     public TVOSRuntimeEnvironment() {

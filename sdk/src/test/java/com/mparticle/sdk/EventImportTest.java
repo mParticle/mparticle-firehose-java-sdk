@@ -44,6 +44,23 @@ public class EventImportTest {
     }
 
     /**
+     * Helper to generate testing data for runtime environment that support authorization status
+     * @return
+     */
+    private static Stream<SimpleImmutableEntry<RuntimeEnvironment.Type, AttAuthorizationStatus>> runtimeEnvironmentsWithAuthorizationStatus() {
+        return Stream.of(
+                new SimpleImmutableEntry<>(RuntimeEnvironment.Type.IOS, AttAuthorizationStatus.AUTHORIZED),
+                new SimpleImmutableEntry<>(RuntimeEnvironment.Type.IOS, AttAuthorizationStatus.DENIED),
+                new SimpleImmutableEntry<>(RuntimeEnvironment.Type.IOS, AttAuthorizationStatus.NOT_DETERMINED),
+                new SimpleImmutableEntry<>(RuntimeEnvironment.Type.IOS, AttAuthorizationStatus.RESTRICTED),
+                new SimpleImmutableEntry<>(RuntimeEnvironment.Type.TVOS, AttAuthorizationStatus.AUTHORIZED),
+                new SimpleImmutableEntry<>(RuntimeEnvironment.Type.TVOS, AttAuthorizationStatus.DENIED),
+                new SimpleImmutableEntry<>(RuntimeEnvironment.Type.TVOS, AttAuthorizationStatus.NOT_DETERMINED),
+                new SimpleImmutableEntry<>(RuntimeEnvironment.Type.TVOS, AttAuthorizationStatus.RESTRICTED)
+        );
+    }
+
+    /**
      * Check each user identity type
      * @param userIdType
      */
@@ -129,6 +146,43 @@ public class EventImportTest {
     }
 
     /**
+     * Validates the serialization/deserialization of authorization status for
+     * iOS and TVOS runtime environments
+     * @param runtimeAuthorizationTuple
+     */
+    @ParameterizedTest
+    @MethodSource("runtimeEnvironmentsWithAuthorizationStatus")
+    public void TestAttAuthorizationStatusSerializationDeserialization(SimpleImmutableEntry<RuntimeEnvironment.Type, AttAuthorizationStatus> runtimeAuthorizationTuple) throws IOException {
+        RuntimeEnvironment.Type runtimeEnvType = runtimeAuthorizationTuple.getKey();
+        AttAuthorizationStatus authorizationStatus = runtimeAuthorizationTuple.getValue();
+
+        DeviceIdentity.Type deviceIdentityType = DeviceIdentity.Type.IOS_ADVERTISING_ID;
+
+        // Construct and serialize request
+        EventProcessingRequest req = GenerateEventProcessingRequest(runtimeEnvType, UserIdentity.Type.EMAIL, deviceIdentityType, authorizationStatus);
+        String json = serializer.serialize(req);
+
+        // Deserialize request
+        req = serializer.deserialize(json, EventProcessingRequest.class);
+        assertNotNull(req);
+
+        // Get runtime env and identity info
+        assertEquals(runtimeEnvType, req.getRuntimeEnvironment().getType());
+
+        AttAuthorizationStatus actualAuthorizationStatus = null;
+        RuntimeEnvironment reqRuntimeEnvironment = req.getRuntimeEnvironment();
+        if (reqRuntimeEnvironment.getType() == RuntimeEnvironment.Type.IOS) {
+            IosRuntimeEnvironment iosRuntime = (IosRuntimeEnvironment) reqRuntimeEnvironment;
+            actualAuthorizationStatus = iosRuntime.getAttAuthorizationStatus();
+        } else if (reqRuntimeEnvironment.getType() == RuntimeEnvironment.Type.TVOS) {
+            TVOSRuntimeEnvironment tvosRuntime = (TVOSRuntimeEnvironment) reqRuntimeEnvironment;
+            actualAuthorizationStatus = tvosRuntime.getAttAuthorizationStatus();
+        }
+
+        assertEquals(authorizationStatus, actualAuthorizationStatus);
+    }
+
+    /**
      * Helper method for checking for the given user identity type and value in the collection
      * @param identities
      * @param type
@@ -162,6 +216,33 @@ public class EventImportTest {
         // Verify only a single identity is present, and that it has the expected value
         return 1 == filteredIds.size() &&
                 idValue.equals(filteredIds.get(0).getValue());
+    }
+
+    /**
+     * Generate an event processing request with ATT authorization status for testing
+     * This only applies for iOS and TVOS
+     * @param runtimeEnvType
+     * @param userIdentityType
+     * @param deviceIdentityType
+     * @param attAuthorizationStatus
+     * @return
+     */
+    private EventProcessingRequest GenerateEventProcessingRequest(RuntimeEnvironment.Type runtimeEnvType,
+                                                                  UserIdentity.Type userIdentityType,
+                                                                  DeviceIdentity.Type deviceIdentityType,
+                                                                  AttAuthorizationStatus attAuthorizationStatus) {
+        EventProcessingRequest eventProcessingRequest = GenerateEventProcessingRequest(runtimeEnvType, userIdentityType, deviceIdentityType);
+        RuntimeEnvironment runtimeEnvironment = eventProcessingRequest.getRuntimeEnvironment();
+
+        if (runtimeEnvironment.getType() == RuntimeEnvironment.Type.IOS) {
+            IosRuntimeEnvironment iosRuntimeEnvironment = (IosRuntimeEnvironment) runtimeEnvironment;
+            iosRuntimeEnvironment.setAttAuthorizationStatus(attAuthorizationStatus);
+        } else if (runtimeEnvironment.getType() == RuntimeEnvironment.Type.TVOS) {
+            TVOSRuntimeEnvironment tvosRuntimeEnvironment = (TVOSRuntimeEnvironment) runtimeEnvironment;
+            tvosRuntimeEnvironment.setAttAuthorizationStatus(attAuthorizationStatus);
+        }
+
+        return eventProcessingRequest;
     }
 
     /**

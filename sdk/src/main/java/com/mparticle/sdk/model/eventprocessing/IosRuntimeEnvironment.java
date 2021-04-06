@@ -88,6 +88,12 @@ public final class IosRuntimeEnvironment extends RuntimeEnvironment {
     @JsonProperty("apple_search_ads_attribution")
     private Map<String, Map<String, String>> appleSearchAdsAttribution;
 
+    @JsonProperty("att_authorization_status")
+    private AttAuthorizationStatus attAuthorizationStatus;
+
+    @JsonProperty("att_timestamp_unixtime_ms")
+    private long attTimestampUnixtimeMs;
+
     public String getBuildId() {
         return buildId;
     }
@@ -298,6 +304,22 @@ public final class IosRuntimeEnvironment extends RuntimeEnvironment {
 
     public void setAppleSearchAdsAttribution(Map<String, Map<String, String>> appleSearchAdsAttribution) {
         this.appleSearchAdsAttribution = appleSearchAdsAttribution;
+    }
+
+    public AttAuthorizationStatus getAttAuthorizationStatus() {
+        return attAuthorizationStatus;
+    }
+
+    public void setAttAuthorizationStatus(AttAuthorizationStatus attAuthorizationStatus) {
+        this.attAuthorizationStatus = attAuthorizationStatus;
+    }
+
+    public long getAttTimestampUnixtimeMs() {
+        return attTimestampUnixtimeMs;
+    }
+
+    public void setAttTimestampUnixtimeMs(long attTimestampUnixtimeMs) {
+        this.attTimestampUnixtimeMs = attTimestampUnixtimeMs;
     }
 }
 

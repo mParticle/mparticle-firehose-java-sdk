@@ -1,7 +1,7 @@
 {
   "type" : "audience_membership_change_response",
-  "id" : "4613179a-4b54-4ffb-9b6e-caca0a395cfd",
-  "timestamp_ms" : 1610144912830,
+  "id" : "abfb3e82-69cf-4c85-8382-829d0183dc45",
+  "timestamp_ms" : 1617206271462,
   "firehose_version" : "2.5.0",
   "suspend_subscription" : false
 }

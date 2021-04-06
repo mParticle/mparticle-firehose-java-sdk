@@ -127,6 +127,13 @@
           "type" : "string"
         }
       }
+    },
+    "att_authorization_status" : {
+      "type" : "string",
+      "enum" : [ "authorized", "denied", "not_determined", "restricted" ]
+    },
+    "att_timestamp_unixtime_ms" : {
+      "type" : "integer"
     }
   }
 }

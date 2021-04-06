@@ -264,6 +264,8 @@ public class EventProcessingRequestSample {
         runtime.setScreenWidth(1125);
         runtime.setSdkVersion("6.12.1");
         runtime.setUserAgent("user-agent");
+        runtime.setAttAuthorizationStatus(AttAuthorizationStatus.AUTHORIZED);
+        runtime.setAttTimestampUnixtimeMs(System.currentTimeMillis());
 
         // Apple search ads attribution
         Map<String, String> map = new HashMap<String, String>();
