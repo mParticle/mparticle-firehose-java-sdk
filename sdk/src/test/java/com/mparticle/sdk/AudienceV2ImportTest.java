@@ -7,6 +7,12 @@ import com.mparticle.sdk.model.eventprocessing.Identity;
 import com.mparticle.sdk.model.eventprocessing.PartnerIdentity;
 import com.mparticle.sdk.model.eventprocessing.UserIdentity;
 import com.mparticle.sdk.model.registration.Account;
+import com.mparticle.sdk.model.registration.AudienceProcessingRegistration;
+import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
+import com.mparticle.sdk.model.registration.authentication.OAuth2Authentication;
+import com.mparticle.sdk.model.registration.authentication.OAuth2Authentication.GrantType;
+import com.mparticle.sdk.model.registration.authentication.OAuth2Authentication.AccessTokenType;
+import com.mparticle.sdk.model.registration.authentication.ScopeDetail;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -217,6 +223,75 @@ public class AudienceV2ImportTest {
                 attributeVal2,
                 attributeVal3
         );
+    }
+
+    @Test
+    public void OAuth2SettingsTest() {
+        String testAuthorizationUrl = "TEST_AUTHORIZATION_URL", testRefreshUrl = "TEST_REFRESH_URL", testTokenUrl = "TEST_TOKEN_URL", testClientId = "TEST_CLIENT_ID";
+        String testCustomHeaderName ="TEST_CUSTOMER_HEADER_NAME", testParamClientIdName = "TEST_PARAM_CLIENT_ID_NAME", testParamSecretName = "TEST_PARAM_SECRET_NAME";
+        String testScopeNamePrefix = "TEST_SCOPE_NAME_", testScopeDescriptionPrefix = "TEST_SCOPE_DESCRIPTION_";
+        Integer defaultExpiresIn = 1000;
+
+        OAuth2Authentication authentication = new OAuth2Authentication();
+        AudienceProcessingRegistration audienceProcessingRegistration = new AudienceProcessingRegistration();
+        ScopeDetail[] scopes = new ScopeDetail[2];
+
+        scopes[0] = new ScopeDetail()
+                .setName(testScopeNamePrefix + 1)
+                .setDescription(testScopeDescriptionPrefix + 1);
+        scopes[1] = new ScopeDetail()
+                .setName(testScopeNamePrefix + 2)
+                .setDescription(testScopeDescriptionPrefix + 2);
+
+        authentication
+                .setAuthorizationUrl(testAuthorizationUrl)
+                .setRefreshUrl(testRefreshUrl)
+                .setTokenUrl(testTokenUrl)
+                .setGrantType(GrantType.AUTHORIZATION_CODE)
+                .setDefaultExpiresIn(defaultExpiresIn)
+                .setClientId(testClientId)
+                .setAccessTokenType(AccessTokenType.CUSTOM_HEADER)
+                .setCustomHeaderName(testCustomHeaderName)
+                .setParamClientIdName(testParamClientIdName)
+                .setParamSecretName(testParamSecretName)
+                .setScopes(scopes);
+
+        audienceProcessingRegistration.setAuthentication(authentication);
+
+        ModuleRegistrationResponse mmr = new ModuleRegistrationResponse("OAuth Permission Test Name", "Test Version");
+        mmr.setAudienceProcessingRegistration(audienceProcessingRegistration);
+
+        try {
+            String json = serializer.serialize(mmr);
+            mmr = serializer.deserialize(json, ModuleRegistrationResponse.class);
+
+            assertNotNull(mmr);
+
+            authentication = (OAuth2Authentication) mmr.getAudienceProcessingRegistration().getAuthentication();
+            assertNotNull(authentication);
+
+            assertEquals(testAuthorizationUrl, authentication.getAuthorizationUrl());
+            assertEquals(testRefreshUrl, authentication.getRefreshUrl());
+            assertEquals(testTokenUrl, authentication.getTokenUrl());
+            assertEquals(GrantType.AUTHORIZATION_CODE, authentication.getGrantType());
+            assertEquals(defaultExpiresIn, authentication.getDefaultExpiresIn());
+            assertEquals(testClientId, authentication.getClientId());
+            assertEquals(AccessTokenType.CUSTOM_HEADER, authentication.getAccessTokenType());
+            assertEquals(testCustomHeaderName, authentication.getCustomHeaderName());
+            assertEquals(testParamClientIdName, authentication.getParamClientIdName());
+            assertEquals(testParamSecretName, authentication.getParamSecretName());
+
+            scopes = authentication.getScopes();
+            assertEquals(2, authentication.getScopes().length);
+
+            assertEquals(testScopeNamePrefix + 1, scopes[0].getName());
+            assertEquals(testScopeDescriptionPrefix + 1, scopes[0].getDescription());
+            assertEquals(testScopeNamePrefix + 2, scopes[1].getName());
+            assertEquals(testScopeDescriptionPrefix + 2, scopes[1].getDescription());
+        }
+        catch (IOException e) {
+            fail(e.getMessage());
+        }
     }
 
     /**

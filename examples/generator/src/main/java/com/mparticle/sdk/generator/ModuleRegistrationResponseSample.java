@@ -3,6 +3,8 @@ package com.mparticle.sdk.generator;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
 import com.mparticle.sdk.model.registration.*;
+import com.mparticle.sdk.model.registration.authentication.OAuth2Authentication;
+import com.mparticle.sdk.model.registration.authentication.ScopeDetail;
 
 import java.util.*;
 
@@ -43,8 +45,27 @@ public class ModuleRegistrationResponseSample {
 
         // Set up Audience Registration.
         AudienceProcessingRegistration audienceRegistration = new AudienceProcessingRegistration();
+        OAuth2Authentication authentication = new OAuth2Authentication();
+
+        authentication
+                .setAuthorizationUrl("TEST_AUTHORIZATION_URL")
+                .setRefreshUrl("TEST_REFRESH_URL")
+                .setTokenUrl("TEST_TOKEN_URL")
+                .setGrantType(OAuth2Authentication.GrantType.AUTHORIZATION_CODE)
+                .setDefaultExpiresIn(2000)
+                .setClientId("TEST_CLIENT_ID")
+                .setAccessTokenType(OAuth2Authentication.AccessTokenType.CUSTOM_HEADER)
+                .setCustomHeaderName("TEST_CUSTOMER_HEADER_NAME")
+                .setParamClientIdName("TEST_PARAM_CLIENT_ID_NAME")
+                .setParamSecretName("TEST_PARAM_SECRET_NAME")
+                .setScopes(new ScopeDetail[]{new ScopeDetail()
+                        .setName("TEST_SCOPE_NAME_1")
+                        .setDescription("TEST_SCOPE_DESCRIPTION_1")
+                });
+
         audienceRegistration
                 .setAudienceConnectionSettings(Collections.singletonList(getAudienceSetting()))
+                .setAuthentication(authentication)
                 .setAccountSettings(Arrays.asList(
                     getApiKeySetting(),
                     getCustomerIdSetting()

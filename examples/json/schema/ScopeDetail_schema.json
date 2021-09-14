@@ -1,0 +1,14 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:authentication:ScopeDetail",
+  "properties" : {
+    "name" : {
+      "type" : "string",
+      "required" : true
+    },
+    "description" : {
+      "type" : "string",
+      "required" : true
+    }
+  }
+}

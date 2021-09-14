@@ -1,0 +1,61 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:authentication:OAuth2Authentication",
+  "properties" : {
+    "type" : {
+      "type" : "string",
+      "enum" : [ "oauth2" ]
+    },
+    "authorization_url" : {
+      "type" : "string",
+      "required" : true
+    },
+    "refresh_url" : {
+      "type" : "string"
+    },
+    "token_url" : {
+      "type" : "string",
+      "required" : true
+    },
+    "grant_type" : {
+      "type" : "string",
+      "enum" : [ "authorization_code" ]
+    },
+    "default_expires_in" : {
+      "type" : "integer"
+    },
+    "client_id" : {
+      "type" : "string"
+    },
+    "access_token_type" : {
+      "type" : "string",
+      "enum" : [ "bearer", "custom_header" ]
+    },
+    "custom_header_name" : {
+      "type" : "string"
+    },
+    "param_client_id_name" : {
+      "type" : "string"
+    },
+    "param_secret_name" : {
+      "type" : "string"
+    },
+    "scopes" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:authentication:ScopeDetail",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "required" : true
+          },
+          "description" : {
+            "type" : "string",
+            "required" : true
+          }
+        }
+      }
+    }
+  }
+}

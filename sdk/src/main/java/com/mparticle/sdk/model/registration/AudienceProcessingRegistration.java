@@ -1,6 +1,7 @@
 package com.mparticle.sdk.model.registration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mparticle.sdk.model.registration.authentication.AuthenticationConfiguration;
 
 import java.util.List;
 
@@ -12,7 +13,8 @@ public final class AudienceProcessingRegistration {
     @JsonProperty("account_settings")
     private List<Setting> accountSettings;
 
-
+    @JsonProperty("authentication")
+    private AuthenticationConfiguration authentication;
 
     @JsonProperty("audience_subscription_settings")
     private List<Setting> audienceConnectionSettings;
@@ -62,5 +64,21 @@ public final class AudienceProcessingRegistration {
      */
     public List<Setting> getAudienceConnectionSettings() {
         return audienceConnectionSettings;
+    }
+
+    /**
+     *
+     * @return authentication
+     */
+    public AuthenticationConfiguration getAuthentication() { return authentication; }
+
+    /**
+     *
+     * @param authentication audience authentication settings
+     * @return this
+     */
+    public AudienceProcessingRegistration setAuthentication(AuthenticationConfiguration authentication) {
+        this.authentication = authentication;
+        return this;
     }
 }

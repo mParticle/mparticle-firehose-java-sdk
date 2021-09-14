@@ -30,6 +30,7 @@ import static javax.tools.StandardLocation.CLASS_PATH;
 public class MpJsonSchemaGenerator {
 
     private static final String REGISTRATION_PKG = "com.mparticle.sdk.model.registration";
+    private static final String AUTHENTICATION_PKG = "com.mparticle.sdk.model.registration.authentication";
     private static final String EVENT_PROCESSING_PKG = "com.mparticle.sdk.model.eventprocessing";
     private static final String CONSENT_PROCESSING_PKG = "com.mparticle.sdk.model.eventprocessing.consent";
     private static final String SYSTEM_NOTIFICATION_PROCESSING_PKG = "com.mparticle.sdk.model.eventprocessing.notification";
@@ -58,6 +59,7 @@ public class MpJsonSchemaGenerator {
             generateSchema(EVENT_PROCESSING_PKG, dir);
             generateSchema(CONSENT_PROCESSING_PKG, dir);
             generateSchema(SYSTEM_NOTIFICATION_PROCESSING_PKG, dir);
+            generateSchema(AUTHENTICATION_PKG, dir);
 
             // Collect the data which will be used for the JSON sample files
             List<Map.Entry<String, ? extends Message>> messageClasses = Arrays.asList(

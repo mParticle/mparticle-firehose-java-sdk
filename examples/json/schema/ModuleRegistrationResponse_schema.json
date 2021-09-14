@@ -208,6 +208,16 @@
             "$ref" : "urn:jsonschema:com:mparticle:sdk:model:registration:Setting"
           }
         },
+        "authentication" : {
+          "type" : "object",
+          "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:authentication:AuthenticationConfiguration",
+          "properties" : {
+            "type" : {
+              "type" : "string",
+              "enum" : [ "oauth2" ]
+            }
+          }
+        },
         "audience_subscription_settings" : {
           "type" : "array",
           "items" : {

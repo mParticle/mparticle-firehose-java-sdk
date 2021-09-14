@@ -1,7 +1,7 @@
 {
   "type" : "module_registration_response",
-  "id" : "60da6ca0-b5b4-4942-8f41-0c1224ecce48",
-  "timestamp_ms" : 1617747719167,
+  "id" : "c5ed8ebf-56f9-4548-9b5b-44882e18b19c",
+  "timestamp_ms" : 1631621810991,
   "firehose_version" : "2.6.0",
   "sdk_version" : "2.6.0",
   "name" : "Your Company Name",
@@ -71,6 +71,23 @@
       "required" : true,
       "confidential" : false
     } ],
+    "authentication" : {
+      "type" : "oauth2",
+      "authorization_url" : "TEST_AUTHORIZATION_URL",
+      "refresh_url" : "TEST_REFRESH_URL",
+      "token_url" : "TEST_TOKEN_URL",
+      "grant_type" : "authorization_code",
+      "default_expires_in" : 2000,
+      "client_id" : "TEST_CLIENT_ID",
+      "access_token_type" : "custom_header",
+      "custom_header_name" : "TEST_CUSTOMER_HEADER_NAME",
+      "param_client_id_name" : "TEST_PARAM_CLIENT_ID_NAME",
+      "param_secret_name" : "TEST_PARAM_SECRET_NAME",
+      "scopes" : [ {
+        "name" : "TEST_SCOPE_NAME_1",
+        "description" : "TEST_SCOPE_DESCRIPTION_1"
+      } ]
+    },
     "audience_subscription_settings" : [ {
       "type" : "boolean",
       "id" : "audienceType",

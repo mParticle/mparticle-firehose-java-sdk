@@ -6,10 +6,10 @@
       "type" : "string",
       "enum" : [ "text", "integer", "float", "boolean" ]
     },
-    "required" : {
+    "confidential" : {
       "type" : "boolean"
     },
-    "confidential" : {
+    "required" : {
       "type" : "boolean"
     },
     "visible" : {
