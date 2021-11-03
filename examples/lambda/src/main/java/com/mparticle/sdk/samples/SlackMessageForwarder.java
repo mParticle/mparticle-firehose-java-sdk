@@ -118,7 +118,7 @@ public final class SlackMessageForwarder extends MessageProcessor {
         SlackPayload payload = new SlackPayload();
         payload.channel = channelName;
         payload.username = "LambdaForwarder";
-        payload.icon_url = "http://static.mparticle.com/public/mp-icon.png";
+        payload.icon_url = "https://static.mparticle.com/public/mp-icon.png";
         payload.text = messageText;
 
         try(CloseableHttpClient httpClient = HttpClients.createDefault()){
