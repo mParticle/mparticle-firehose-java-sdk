@@ -141,6 +141,10 @@ public abstract class MessageProcessor {
                     processPushMessageReceiptEvent((PushMessageReceiptEvent) e);
                     break;
 
+                case PUSH_MESSAGE_OPEN:
+                    processPushMessageOpenEvent((PushMessageOpenEvent) e);
+                    break;
+
                 case PRODUCT_ACTION:
                     processProductActionEvent((ProductActionEvent) e);
                     break;
@@ -228,6 +232,16 @@ public abstract class MessageProcessor {
      * @throws IOException
      */
     public void processPushMessageReceiptEvent(PushMessageReceiptEvent event) throws IOException {
+
+    }
+
+    /**
+     * Handler for processing PushMessageOpenEvent.
+     *
+     * @param event event
+     * @throws IOException
+     */
+    public void processPushMessageOpenEvent(PushMessageOpenEvent event) throws IOException {
 
     }
 
