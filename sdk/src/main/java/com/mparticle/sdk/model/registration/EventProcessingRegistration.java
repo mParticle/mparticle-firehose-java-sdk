@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.eventprocessing.Event;
 import com.mparticle.sdk.model.eventprocessing.RuntimeEnvironment;
 import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
-
+import com.mparticle.sdk.model.registration.authentication.AuthenticationConfiguration;
 import java.util.List;
 
 /**
@@ -34,6 +34,9 @@ public final class EventProcessingRegistration {
 
     @JsonProperty("push_messaging_provider_id")
     private String pushMessagingProviderId;
+
+    @JsonProperty("authentication")
+    private AuthenticationConfiguration authentication;
 
     /**
      * Gets the account-level settings registered by this integration.
@@ -199,6 +202,22 @@ public final class EventProcessingRegistration {
      */
     public EventProcessingRegistration setPushMessagingProviderId(String pushMessagingProviderId) {
         this.pushMessagingProviderId = pushMessagingProviderId;
+        return this;
+    }
+
+    /**
+     *
+     * @return authentication
+     */
+    public AuthenticationConfiguration getAuthentication() { return authentication; }
+
+    /**
+     *
+     * @param authentication event authentication settings
+     * @return this
+     */
+    public EventProcessingRegistration setAuthentication(AuthenticationConfiguration authentication) {
+        this.authentication = authentication;
         return this;
     }
 }

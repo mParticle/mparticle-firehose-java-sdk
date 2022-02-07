@@ -29,7 +29,7 @@ import static java.util.AbstractMap.SimpleImmutableEntry;
 import static com.mparticle.sdk.model.audienceprocessing.Audience.AudienceAction;
 import static com.mparticle.sdk.model.audienceprocessing.UserAttributeAudienceEvent.AttributeAction;
 
-public class AudienceV2ImportTest {
+public class AudienceV2ImportTest extends ImportTest {
 
     private MessageSerializer serializer = new MessageSerializer();
 
@@ -268,26 +268,22 @@ public class AudienceV2ImportTest {
             assertNotNull(mmr);
 
             authentication = (OAuth2Authentication) mmr.getAudienceProcessingRegistration().getAuthentication();
-            assertNotNull(authentication);
 
-            assertEquals(testAuthorizationUrl, authentication.getAuthorizationUrl());
-            assertEquals(testRefreshUrl, authentication.getRefreshUrl());
-            assertEquals(testTokenUrl, authentication.getTokenUrl());
-            assertEquals(GrantType.AUTHORIZATION_CODE, authentication.getGrantType());
-            assertEquals(defaultExpiresIn, authentication.getDefaultExpiresIn());
-            assertEquals(testClientId, authentication.getClientId());
-            assertEquals(AccessTokenType.CUSTOM_HEADER, authentication.getAccessTokenType());
-            assertEquals(testCustomHeaderName, authentication.getCustomHeaderName());
-            assertEquals(testParamClientIdName, authentication.getParamClientIdName());
-            assertEquals(testParamSecretName, authentication.getParamSecretName());
-
-            scopes = authentication.getScopes();
-            assertEquals(2, authentication.getScopes().length);
-
-            assertEquals(testScopeNamePrefix + 1, scopes[0].getName());
-            assertEquals(testScopeDescriptionPrefix + 1, scopes[0].getDescription());
-            assertEquals(testScopeNamePrefix + 2, scopes[1].getName());
-            assertEquals(testScopeDescriptionPrefix + 2, scopes[1].getDescription());
+            checkOAuthSettings(authentication,
+                    testAuthorizationUrl,
+                    testRefreshUrl,
+                    testTokenUrl,
+                    GrantType.AUTHORIZATION_CODE,
+                    defaultExpiresIn,
+                    testClientId,
+                    AccessTokenType.CUSTOM_HEADER,
+                    testCustomHeaderName,
+                    testParamClientIdName,
+                    testParamSecretName,
+                    testScopeNamePrefix,
+                    testScopeDescriptionPrefix,
+                    Arrays.stream(scopes).count()
+            );
         }
         catch (IOException e) {
             fail(e.getMessage());

@@ -1,7 +1,7 @@
 {
   "type" : "module_registration_response",
-  "id" : "f5334cd3-256e-491d-9497-af407b7f9a57",
-  "timestamp_ms" : 1631651782688,
+  "id" : "25f21dfe-f439-43b7-985c-1131fd8fe682",
+  "timestamp_ms" : 1643638103233,
   "firehose_version" : "2.7.0",
   "sdk_version" : "2.7.0",
   "name" : "Your Company Name",
@@ -51,7 +51,24 @@
     "supported_event_types" : [ "custom_event", "session_start", "session_end" ],
     "supported_runtime_environments" : [ "ios", "android" ],
     "supported_system_notification_types" : [ "gdpr_consent_state" ],
-    "max_data_age_hours" : 24
+    "max_data_age_hours" : 24,
+    "authentication" : {
+      "type" : "oauth2",
+      "authorization_url" : "TEST_EVENT_AUTHORIZATION_URL",
+      "refresh_url" : "TEST_EVENT_REFRESH_URL",
+      "token_url" : "TEST_EVENT_TOKEN_URL",
+      "grant_type" : "authorization_code",
+      "default_expires_in" : 2000,
+      "client_id" : "TEST_EVENT_CLIENT_ID",
+      "access_token_type" : "custom_header",
+      "custom_header_name" : "TEST_EVENT_CUSTOMER_HEADER_NAME",
+      "param_client_id_name" : "TEST_EVENT_PARAM_CLIENT_ID_NAME",
+      "param_secret_name" : "TEST_EVENT_PARAM_SECRET_NAME",
+      "scopes" : [ {
+        "name" : "TEST_EVENT_SCOPE_NAME_1",
+        "description" : "TEST_EVENT_SCOPE_DESCRIPTION_1"
+      } ]
+    }
   },
   "audience_processing_registration" : {
     "account_settings" : [ {

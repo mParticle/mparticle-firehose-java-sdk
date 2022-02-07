@@ -4,6 +4,10 @@ import com.mparticle.sdk.model.Consts;
 import com.mparticle.sdk.model.MessageSerializer;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.model.registration.Account;
+import com.mparticle.sdk.model.registration.EventProcessingRegistration;
+import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
+import com.mparticle.sdk.model.registration.authentication.OAuth2Authentication;
+import com.mparticle.sdk.model.registration.authentication.ScopeDetail;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -18,7 +22,7 @@ import java.util.stream.Stream;
 
 import static java.util.AbstractMap.SimpleImmutableEntry;
 
-public class EventImportTest {
+public class EventImportTest extends ImportTest {
 
     private MessageSerializer serializer = new MessageSerializer();
 
@@ -180,6 +184,70 @@ public class EventImportTest {
         }
 
         assertEquals(authorizationStatus, actualAuthorizationStatus);
+    }
+
+    @Test
+    public void OAuth2SettingsTest() {
+        String testAuthorizationUrl = "TEST_AUTHORIZATION_URL", testRefreshUrl = "TEST_REFRESH_URL", testTokenUrl = "TEST_TOKEN_URL", testClientId = "TEST_CLIENT_ID";
+        String testCustomHeaderName ="TEST_CUSTOMER_HEADER_NAME", testParamClientIdName = "TEST_PARAM_CLIENT_ID_NAME", testParamSecretName = "TEST_PARAM_SECRET_NAME";
+        String testScopeNamePrefix = "TEST_SCOPE_NAME_", testScopeDescriptionPrefix = "TEST_SCOPE_DESCRIPTION_";
+        Integer defaultExpiresIn = 1000;
+
+        OAuth2Authentication authentication = new OAuth2Authentication();
+        EventProcessingRegistration eventProcessingRegistration = new EventProcessingRegistration();
+        ScopeDetail[] scopes = new ScopeDetail[2];
+
+        scopes[0] = new ScopeDetail()
+                .setName(testScopeNamePrefix + 1)
+                .setDescription(testScopeDescriptionPrefix + 1);
+        scopes[1] = new ScopeDetail()
+                .setName(testScopeNamePrefix + 2)
+                .setDescription(testScopeDescriptionPrefix + 2);
+
+        authentication
+                .setAuthorizationUrl(testAuthorizationUrl)
+                .setRefreshUrl(testRefreshUrl)
+                .setTokenUrl(testTokenUrl)
+                .setGrantType(OAuth2Authentication.GrantType.AUTHORIZATION_CODE)
+                .setDefaultExpiresIn(defaultExpiresIn)
+                .setClientId(testClientId)
+                .setAccessTokenType(OAuth2Authentication.AccessTokenType.CUSTOM_HEADER)
+                .setCustomHeaderName(testCustomHeaderName)
+                .setParamClientIdName(testParamClientIdName)
+                .setParamSecretName(testParamSecretName)
+                .setScopes(scopes);
+
+        eventProcessingRegistration.setAuthentication(authentication);
+
+        ModuleRegistrationResponse mmr = new ModuleRegistrationResponse("OAuth Permission Test Name", "Test Version");
+        mmr.setEventProcessingRegistration(eventProcessingRegistration);
+
+        try {
+            String json = serializer.serialize(mmr);
+            mmr = serializer.deserialize(json, ModuleRegistrationResponse.class);
+
+            assertNotNull(mmr);
+            authentication = (OAuth2Authentication) mmr.getEventProcessingRegistration().getAuthentication();
+
+            checkOAuthSettings(authentication,
+                    testAuthorizationUrl,
+                    testRefreshUrl,
+                    testTokenUrl,
+                    OAuth2Authentication.GrantType.AUTHORIZATION_CODE,
+                    defaultExpiresIn,
+                    testClientId,
+                    OAuth2Authentication.AccessTokenType.CUSTOM_HEADER,
+                    testCustomHeaderName,
+                    testParamClientIdName,
+                    testParamSecretName,
+                    testScopeNamePrefix,
+                    testScopeDescriptionPrefix,
+                    Arrays.stream(scopes).count()
+            );
+        }
+        catch (IOException e) {
+            fail(e.getMessage());
+        }
     }
 
     /**

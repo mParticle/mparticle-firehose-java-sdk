@@ -33,6 +33,23 @@ public class ModuleRegistrationResponseSample {
 
         // Set-up Event Registration
         EventProcessingRegistration eventRegistration = new EventProcessingRegistration();
+        OAuth2Authentication eventOAuthAuthentication = new OAuth2Authentication();
+
+        eventOAuthAuthentication
+                .setAuthorizationUrl("TEST_EVENT_AUTHORIZATION_URL")
+                .setRefreshUrl("TEST_EVENT_REFRESH_URL")
+                .setTokenUrl("TEST_EVENT_TOKEN_URL")
+                .setGrantType(OAuth2Authentication.GrantType.AUTHORIZATION_CODE)
+                .setDefaultExpiresIn(2000)
+                .setClientId("TEST_EVENT_CLIENT_ID")
+                .setAccessTokenType(OAuth2Authentication.AccessTokenType.CUSTOM_HEADER)
+                .setCustomHeaderName("TEST_EVENT_CUSTOMER_HEADER_NAME")
+                .setParamClientIdName("TEST_EVENT_PARAM_CLIENT_ID_NAME")
+                .setParamSecretName("TEST_EVENT_PARAM_SECRET_NAME")
+                .setScopes(new ScopeDetail[]{new ScopeDetail()
+                        .setName("TEST_EVENT_SCOPE_NAME_1")
+                        .setDescription("TEST_EVENT_SCOPE_DESCRIPTION_1")
+                });
         eventRegistration
             .setMaxDataAgeHours(24)
             .setSupportedRuntimeEnvironments(Arrays.asList(RuntimeEnvironment.Type.IOS, RuntimeEnvironment.Type.ANDROID))
@@ -41,7 +58,8 @@ public class ModuleRegistrationResponseSample {
             .setAccountSettings(Arrays.asList(
                     getApiKeySetting(),
                     getCustomerIdSetting()
-            ));
+            ))
+            .setAuthentication(eventOAuthAuthentication);
 
         // Set up Audience Registration.
         AudienceProcessingRegistration audienceRegistration = new AudienceProcessingRegistration();

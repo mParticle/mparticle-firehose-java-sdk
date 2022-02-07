@@ -194,6 +194,16 @@
         },
         "push_messaging_provider_id" : {
           "type" : "string"
+        },
+        "authentication" : {
+          "type" : "object",
+          "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:authentication:AuthenticationConfiguration",
+          "properties" : {
+            "type" : {
+              "type" : "string",
+              "enum" : [ "oauth2" ]
+            }
+          }
         }
       }
     },
@@ -210,13 +220,7 @@
         },
         "authentication" : {
           "type" : "object",
-          "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:authentication:AuthenticationConfiguration",
-          "properties" : {
-            "type" : {
-              "type" : "string",
-              "enum" : [ "oauth2" ]
-            }
-          }
+          "$ref" : "urn:jsonschema:com:mparticle:sdk:model:registration:authentication:AuthenticationConfiguration"
         },
         "audience_subscription_settings" : {
           "type" : "array",

@@ -62,6 +62,16 @@
     },
     "push_messaging_provider_id" : {
       "type" : "string"
+    },
+    "authentication" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:authentication:AuthenticationConfiguration",
+      "properties" : {
+        "type" : {
+          "type" : "string",
+          "enum" : [ "oauth2" ]
+        }
+      }
     }
   }
 }
