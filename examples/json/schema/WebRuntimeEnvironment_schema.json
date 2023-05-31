@@ -43,6 +43,75 @@
           }
         }
       }
+    },
+    "build_id" : {
+      "type" : "string"
+    },
+    "brand" : {
+      "type" : "string"
+    },
+    "product" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "device_manufacturer" : {
+      "type" : "string"
+    },
+    "os_version" : {
+      "type" : "string"
+    },
+    "device_model" : {
+      "type" : "string"
+    },
+    "screen_height" : {
+      "type" : "integer"
+    },
+    "screen_width" : {
+      "type" : "integer"
+    },
+    "screen_dpi" : {
+      "type" : "integer"
+    },
+    "device_country" : {
+      "type" : "string"
+    },
+    "locale_language" : {
+      "type" : "string"
+    },
+    "locale_country" : {
+      "type" : "string"
+    },
+    "network_country" : {
+      "type" : "string"
+    },
+    "network_carrier" : {
+      "type" : "string"
+    },
+    "network_code" : {
+      "type" : "string"
+    },
+    "network_mobile_country_code" : {
+      "type" : "string"
+    },
+    "timezone_offset" : {
+      "type" : "integer"
+    },
+    "push_token" : {
+      "type" : "string"
+    },
+    "is_tablet" : {
+      "type" : "boolean"
+    },
+    "radio_access_technology" : {
+      "type" : "string"
+    },
+    "limit_ad_tracking" : {
+      "type" : "string"
+    },
+    "is_dst" : {
+      "type" : "string"
     }
   }
 }
