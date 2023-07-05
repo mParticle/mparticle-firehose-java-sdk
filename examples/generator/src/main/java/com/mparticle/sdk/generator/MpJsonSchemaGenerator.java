@@ -70,6 +70,8 @@ public class MpJsonSchemaGenerator {
                     EventProcessingRequestSample.GenerateMessage(RuntimeEnvironment.Type.IOS),
                     EventProcessingRequestSample.GenerateMessage(RuntimeEnvironment.Type.ANDROID),
                     EventProcessingResponseSample.GenerateMessage(),
+                    DsrProcessingRequestSample.GenerateMessage(),
+                    DsrProcessingResponseSample.GenerateMessage(),
                     ModuleRegistrationRequestSample.GenerateMessage(),
                     ModuleRegistrationResponseSample.GenerateMessage()
             );

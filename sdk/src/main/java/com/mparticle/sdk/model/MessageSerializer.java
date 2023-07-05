@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,6 +30,7 @@ public final class MessageSerializer {
         // use toString() for enums
         mapper.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true);
         mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
+        mapper.registerModule(new JavaTimeModule());
     }
 
     /**

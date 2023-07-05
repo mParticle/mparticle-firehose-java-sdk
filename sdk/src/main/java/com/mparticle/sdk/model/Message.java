@@ -1,5 +1,7 @@
 package com.mparticle.sdk.model;
 
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -7,12 +9,12 @@ import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeReques
 import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeResponse;
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionRequest;
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionResponse;
+import com.mparticle.sdk.model.dsrprocessing.DsrProcessingRequest;
+import com.mparticle.sdk.model.dsrprocessing.DsrProcessingResponse;
 import com.mparticle.sdk.model.eventprocessing.EventProcessingRequest;
 import com.mparticle.sdk.model.eventprocessing.EventProcessingResponse;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
 import com.mparticle.sdk.model.registration.ModuleRegistrationResponse;
-
-import java.util.UUID;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
@@ -23,7 +25,9 @@ import java.util.UUID;
         @JsonSubTypes.Type(name="audience_subscription_request", value= AudienceSubscriptionRequest.class),
         @JsonSubTypes.Type(name="audience_subscription_response", value= AudienceSubscriptionResponse.class),
         @JsonSubTypes.Type(name="audience_membership_change_request", value= AudienceMembershipChangeRequest.class),
-        @JsonSubTypes.Type(name="audience_membership_change_response", value= AudienceMembershipChangeResponse.class)
+        @JsonSubTypes.Type(name="audience_membership_change_response", value= AudienceMembershipChangeResponse.class),
+        @JsonSubTypes.Type(name="dsr_processing_request", value=DsrProcessingRequest.class),
+        @JsonSubTypes.Type(name="dsr_processing_response", value=DsrProcessingResponse.class),
 })
 public abstract class Message {
 
@@ -109,7 +113,9 @@ public abstract class Message {
         AUDIENCE_SUBSCRIPTION_REQUEST,
         AUDIENCE_SUBSCRIPTION_RESPONSE,
         AUDIENCE_MEMBERSHIP_CHANGE_REQUEST,
-        AUDIENCE_MEMBERSHIP_CHANGE_RESPONSE;
+        AUDIENCE_MEMBERSHIP_CHANGE_RESPONSE,
+        DSR_PROCESSING_REQUEST,
+        DSR_PROCESSING_RESPONSE;
 
         @Override
         public String toString() {

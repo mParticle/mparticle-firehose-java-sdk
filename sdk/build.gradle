@@ -16,7 +16,7 @@ configurations {
 dependencies {
     deployerJars "org.kuali.maven.wagons:maven-s3-wagon:1.2.1"
     compile 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
-
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2'
     // JUnit 5 dependencies for public test-writing API, and test engine, respectively.
     testImplementation('org.junit.jupiter:junit-jupiter:5.5.1')
     testRuntime('org.junit.jupiter:junit-jupiter-engine:5.5.1')

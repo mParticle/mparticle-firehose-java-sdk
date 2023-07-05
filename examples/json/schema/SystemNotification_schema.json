@@ -12,11 +12,12 @@
       "properties" : {
         "type" : {
           "type" : "string",
-          "enum" : [ "module_registration_request", "module_registration_response", "event_processing_request", "event_processing_response", "audience_subscription_request", "audience_subscription_response", "audience_membership_change_request", "audience_membership_change_response" ]
+          "enum" : [ "module_registration_request", "module_registration_response", "event_processing_request", "event_processing_response", "audience_subscription_request", "audience_subscription_response", "audience_membership_change_request", "audience_membership_change_response", "dsr_processing_request", "dsr_processing_response" ]
         },
         "id" : {
           "type" : "string",
-          "required" : true
+          "required" : true,
+          "format" : "uuid"
         },
         "timestamp_ms" : {
           "type" : "integer",
@@ -176,7 +177,8 @@
               },
               "id" : {
                 "type" : "string",
-                "required" : true
+                "required" : true,
+                "format" : "uuid"
               },
               "timestamp_ms" : {
                 "type" : "integer",
@@ -218,11 +220,11 @@
           "type" : "object",
           "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:ConsentState",
           "properties" : {
-            "ccpa" : {
+            "gdpr" : {
               "type" : "object",
               "additionalProperties" : {
                 "type" : "object",
-                "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:CCPAConsent",
+                "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:GDPRConsent",
                 "properties" : {
                   "consented" : {
                     "type" : "boolean",
@@ -243,11 +245,11 @@
                 }
               }
             },
-            "gdpr" : {
+            "ccpa" : {
               "type" : "object",
               "additionalProperties" : {
                 "type" : "object",
-                "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:GDPRConsent",
+                "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:CCPAConsent",
                 "properties" : {
                   "consented" : {
                     "type" : "boolean",
