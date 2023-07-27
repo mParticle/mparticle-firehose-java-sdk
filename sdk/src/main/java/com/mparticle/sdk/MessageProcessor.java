@@ -5,6 +5,7 @@ import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeReques
 import com.mparticle.sdk.model.audienceprocessing.AudienceMembershipChangeResponse;
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionRequest;
 import com.mparticle.sdk.model.audienceprocessing.AudienceSubscriptionResponse;
+import com.mparticle.sdk.model.dsrprocessing.*;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.model.eventprocessing.notification.*;
 import com.mparticle.sdk.model.registration.ModuleRegistrationRequest;
@@ -39,6 +40,9 @@ public abstract class MessageProcessor {
 
             case EVENT_PROCESSING_REQUEST:
                 return processEventProcessingRequest((EventProcessingRequest) request);
+
+            case DSR_PROCESSING_REQUEST:
+                return processDsrProcessingRequest((DsrProcessingRequest) request);
 
             case AUDIENCE_SUBSCRIPTION_REQUEST:
                 return processAudienceSubscriptionRequest((AudienceSubscriptionRequest) request);
@@ -329,6 +333,17 @@ public abstract class MessageProcessor {
      */
     public void processPrivacySettingChangeEvent(PrivacySettingChangeEvent event)  throws IOException {
 
+    }
+
+    /**
+     * Handler for processing data subject requests.
+     *
+     * @param request request
+     * @return response
+     * @throws IOException
+     */
+    public DsrProcessingResponse processDsrProcessingRequest(DsrProcessingRequest request) throws IOException {
+        return new DsrProcessingResponse();
     }
 
     /**
