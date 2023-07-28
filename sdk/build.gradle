@@ -1,58 +1,42 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
 	mavenLocal()
     mavenCentral()
 }
 
-configurations {
-    deployerJars
+dependencies {
+    api 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
+    api 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2'
+    // JUnit 5 dependencies for public test-writing API, and test engine, respectively.
+    testImplementation('org.junit.jupiter:junit-jupiter:5.6.0')
+    testImplementation('org.junit.platform:junit-platform-launcher:1.5.2')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.5.1')
 }
 
-dependencies {
-    deployerJars "org.kuali.maven.wagons:maven-s3-wagon:1.2.1"
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
-    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2'
-    // JUnit 5 dependencies for public test-writing API, and test engine, respectively.
-    testImplementation('org.junit.jupiter:junit-jupiter:5.5.1')
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.5.1')
-}
 test {
     // Tells the 'test' task to enable JUnit 5 support
     useJUnitPlatform()
 }
+
 javadoc {
     title = 'mParticle Firehose Java SDK Reference'
     failOnError false
     getOptions().setNoTimestamp(true)
 }
-task javadocsJar(type: Jar, dependsOn: javadoc) {
+
+task generateJavadocsJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
 
-task sourcesJar(type: Jar) {
+task generateSourcesJar(type: Jar) {
     classifier = 'sources'
     from sourceSets.main.allJava
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocsJar
-}
-
-
-ext."signing.keyId" = System.getenv("mavenSigningKeyId")
-ext."signing.secretKeyRingFile" = System.getenv("mavenSigningKeyRingFile")
-ext."signing.password" = System.getenv("mavenSigningKeyPassword")
-
-signing {	
-    required { gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives	
 }
 
 def target_maven_repo
@@ -60,52 +44,91 @@ if (project.hasProperty('target_maven_repo')) {
     target_maven_repo = project.property('target_maven_repo')
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
+allprojects {
+    ext."signing.keyId" = System.getenv("mavenSigningKeyId")
+    ext."signing.secretKeyRingFile" = System.getenv("mavenSigningKeyRingFile")
+    ext."signing.password" = System.getenv("mavenSigningKeyPassword")
+}
 
-            if (target_maven_repo == "s3") {
-                configuration = configurations.deployerJars
-                repository(url: "s3://maven.mparticle.com")
-            } else if(target_maven_repo == 'sonatype') {
-                beforeDeployment {
-                    MavenDeployment deployment -> signing.signPom(deployment)
-                }
-                repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                    authentication(userName: System.getenv('SONATYPE_USERNAME'), password: System.getenv('SONATYPE_PASSWORD'))
-                }
-            } else{
-                repository url: 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
-            }
-
-            pom.project {
-                version = '2.9.0'
-                artifactId = 'java-sdk'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
                 groupId = 'com.mparticle'
-                description 'mParticle Java SDK used to integrate with mParticle\'s Firehose API'
-                name 'mParticle Java SDK'
-                url 'https://github.com/mparticle/mparticle-sdk-java'
+                artifactId = 'java-sdk'
+                version = '2.9.0'
+                if (project.plugins.findPlugin("com.android.library")) {
+                    from components.release
+                } else {
+                    from components.java
+                }
 
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/license/LICENSE-2.0.txt'
+                if (project.tasks.findByName('generateJavadocsJar')) {
+                    artifact project.tasks.getByName('generateJavadocsJar')
+                }
+
+                if (project.tasks.findByName('generateSourcesJar')) {
+                    artifact project.tasks.getByName('generateSourcesJar')
+                }
+
+                pom {
+                    name = 'mParticle Java SDK'
+                    description = 'mParticle Java SDK used to integrate with mParticle\'s Firehose API'
+                    url = 'https://github.com/mparticle/mparticle-sdk-java'
+                    licenses {
+                        license {
+                            name = 'The Apache Software License, Version 2.0'
+                            url = 'http://www.apache.org/license/LICENSE-2.0.txt'
+                        }
                     }
-                }
-
-                scm {
-                    url 'http://github.com/mparticle/mparticle-android-java'
-                    connection 'scm:git:http://github.com/mparticle/mparticle-android-java'
-                    developerConnection 'scm:git:git@github.com:mparticle/mparticle-android-java.git'
-                }
-                developers {
-                    developer {
-                        id 'mParticle'
-                        name 'mParticle Developers'
-                        email 'developers@mparticle.com'
+                    developers {
+                        developer {
+                            id = 'mParticle'
+                            name = 'mParticle Developers'
+                            email = 'developers@mparticle.com'
+                        }
+                    }
+                    scm {
+                        url = 'http://github.com/mparticle/mparticle-android-java'
+                        connection = 'scm:git:http://github.com/mparticle/mparticle-android-java'
+                        developerConnection = 'scm:git:git@github.com:mparticle/mparticle-android-java.git'
                     }
                 }
             }
         }
+        repositories {
+            maven {
+                if (target_maven_repo == "s3") {
+                    url = "s3://maven.mparticle.com"
+                    credentials(AwsCredentials) {
+                        accessKey = System.env.AWS_ACCESS_KEY_ID ?: findProperty('aws_access_key_id')
+                        secretKey = System.env.AWS_SECRET_ACCESS_KEY ?: findProperty('aws_secret_access_key')
+                    }
+                } else if(target_maven_repo == 'sonatype') {
+                    url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+                    credentials {
+                        username = System.getenv('SONATYPE_USERNAME')
+                        password = System.getenv('SONATYPE_PASSWORD')
+                    }
+                    authentication {
+                        basic(BasicAuthentication)
+                    }
+                } else{
+                    url = 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
+                }
+            }
+        }
     }
+
+    signing {
+        required { gradle.taskGraph.hasTask("publishReleasePublicationToMavenRepository") }
+        sign publishing.publications.release
+    }
+}
+
+//Publishing task aliases for simpler local development
+task publishReleaseLocal { dependsOn "publishReleasePublicationToMavenRepository" }
+
+tasks.withType(GenerateModuleMetadata) {
+    enabled = false
 }
