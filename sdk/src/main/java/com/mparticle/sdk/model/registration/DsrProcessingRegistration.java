@@ -6,13 +6,13 @@ import com.mparticle.sdk.model.dsrprocessing.DsrProcessingRequest;
 import java.util.List;
 
 /**
- * The DsrFederationProcessingRegistration object should be constructed by Firehose integrations that wish to function
+ * The DsrProcessingRegistration object should be constructed by Firehose integrations that wish to function
  * as DSR integrations within the mParticle platform. Upon receiving a {@link com.mparticle.sdk.model.registration.ModuleRegistrationRequest},
  * it's up to the Firehose integration to respond with a populated {@link ModuleRegistrationResponse}.
  */
-public final class DsrFederationProcessingRegistration {
+public final class DsrProcessingRegistration {
     
-    @JsonProperty("settings")
+    @JsonProperty("")
     private List<Setting> settings;
 
     @JsonProperty("supported_dsr_types")
@@ -28,10 +28,10 @@ public final class DsrFederationProcessingRegistration {
 
     /** 
      * Sets the settings registered by this integration.
-     * @param settings the list of settings, 
+     * @param settings the list of settings, settings
      * @return this object for method chaining
      */
-    public DsrFederationProcessingRegistration setSettings(List<Setting> settings) {
+    public DsrProcessingRegistration setSettings(List<Setting> settings) {
         this.settings = settings;
         return this;
     }
@@ -49,7 +49,7 @@ public final class DsrFederationProcessingRegistration {
      * @param supportedDsrTypes a list of types
      * @return this object for method chaining
      */
-    public DsrFederationProcessingRegistration setSupportedDsrTypes(List<DsrProcessingRequest.Type> supportedDsrTypes) {
+    public DsrProcessingRegistration setSupportedDsrTypes(List<DsrProcessingRequest.Type> supportedDsrTypes) {
         this.supportedDsrTypes = supportedDsrTypes;
         return this;
     }

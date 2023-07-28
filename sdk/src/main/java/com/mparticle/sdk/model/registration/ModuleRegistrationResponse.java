@@ -29,7 +29,7 @@ public final class ModuleRegistrationResponse extends Message {
     private AudienceProcessingRegistration audienceProcessingRegistration;
 
     @JsonProperty("dsr_processing_registration")
-    private DsrFederationProcessingRegistration dsrFederationProcessingRegistration;
+    private DsrProcessingRegistration dsrProcessingRegistration;
 
     /**
      *
@@ -145,17 +145,17 @@ public final class ModuleRegistrationResponse extends Message {
     /**
      * @return registration for receiving DSR
      */
-    public DsrFederationProcessingRegistration getDsrFederationProcessingRegistration() {
-        return dsrFederationProcessingRegistration;
+    public DsrProcessingRegistration getDsrProcessingRegistration() {
+        return dsrProcessingRegistration;
     }
 
     /**
-     * @param dsrFederationProcessingRegistration registration for receiving DSR
+     * @param dsrProcessingRegistration registration for receiving DSR
      * @return this object for method chaining
      */
-    public ModuleRegistrationResponse setDsrFederationProcessingRegistration(
-            DsrFederationProcessingRegistration dsrFederationProcessingRegistration) {
-        this.dsrFederationProcessingRegistration = dsrFederationProcessingRegistration;
+    public ModuleRegistrationResponse setDsrProcessingRegistration(
+            DsrProcessingRegistration dsrProcessingRegistration) {
+        this.dsrProcessingRegistration = dsrProcessingRegistration;
         return this;
     }
 

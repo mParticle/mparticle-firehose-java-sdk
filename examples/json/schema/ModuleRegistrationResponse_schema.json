@@ -234,7 +234,7 @@
     },
     "dsr_processing_registration" : {
       "type" : "object",
-      "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:DsrFederationProcessingRegistration",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:DsrProcessingRegistration",
       "properties" : {
         "settings" : {
           "type" : "array",

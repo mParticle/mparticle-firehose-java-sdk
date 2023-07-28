@@ -1,9 +1,9 @@
 {
   "type" : "module_registration_response",
-  "id" : "8caf5486-42e1-4c33-b066-7b0fa8a4db95",
-  "timestamp_ms" : 1688420571172,
-  "firehose_version" : "2.8.1",
-  "sdk_version" : "2.8.1",
+  "id" : "3c615145-5be5-4107-b968-d44f1af95c37",
+  "timestamp_ms" : 1690505722451,
+  "firehose_version" : "2.9.0",
+  "sdk_version" : "2.9.0",
   "name" : "Your Company Name",
   "description" : "A description of your <a href=''>company</a> and services. Inline HTML markup is permitted.",
   "version" : "1.0",
