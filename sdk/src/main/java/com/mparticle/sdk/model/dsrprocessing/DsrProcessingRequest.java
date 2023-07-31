@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mparticle.sdk.model.Message;
+import com.mparticle.sdk.model.registration.Account;
+
 /**
  * This message contains the information to fulfill a Data Subject Request.
  */
@@ -13,6 +15,9 @@ public final class DsrProcessingRequest extends Message{
     public DsrProcessingRequest() {
         super(Message.Type.DSR_PROCESSING_REQUEST);
     }
+
+    @JsonProperty(value="account", required=true)
+    private Account account;
 
     @JsonProperty("subject_request_id")
     private String subjectRequestId;
@@ -31,6 +36,22 @@ public final class DsrProcessingRequest extends Message{
 
     @JsonProperty("regulation")
     private RegulationType regulation;
+
+    /**
+     *
+     * @return module account
+     */
+    public Account getAccount() {
+        return account;
+    }
+
+    /**
+     *
+     * @param account module account
+     */
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     /**
      * @return the identifier for the request created by mParticle, this corresponds to a GUID internally

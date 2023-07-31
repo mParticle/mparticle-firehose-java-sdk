@@ -1,6 +1,6 @@
 {
   "type" : "event_processing_response",
-  "id" : "d1f954c8-dfaf-403a-9d5f-ce9d5d1ef466",
-  "timestamp_ms" : 1690505722448,
-  "firehose_version" : "2.9.0"
+  "id" : "09dc5c91-8240-4f25-be52-acd65aa5eab1",
+  "timestamp_ms" : 1690813974830,
+  "firehose_version" : "2.9.1"
 }

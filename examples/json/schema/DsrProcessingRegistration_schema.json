@@ -2,7 +2,7 @@
   "type" : "object",
   "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:DsrProcessingRegistration",
   "properties" : {
-    "settings" : {
+    "account_settings" : {
       "type" : "array",
       "items" : {
         "type" : "object",

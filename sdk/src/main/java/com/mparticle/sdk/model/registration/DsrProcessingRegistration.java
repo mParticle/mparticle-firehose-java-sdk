@@ -12,27 +12,27 @@ import java.util.List;
  */
 public final class DsrProcessingRegistration {
     
-    @JsonProperty("")
-    private List<Setting> settings;
+    @JsonProperty("account_settings")
+    private List<Setting> accountSettings;
 
     @JsonProperty("supported_dsr_types")
     private List<DsrProcessingRequest.Type> supportedDsrTypes;
 
     /**
-     * Gets this integration's settings.
-     * @return a list of {@link Setting}
+     *
+     * @return account settings
      */
-    public List<Setting> getSettings() {
-        return settings;
+    public List<Setting> getAccountSettings() {
+        return accountSettings;
     }
 
-    /** 
-     * Sets the settings registered by this integration.
-     * @param settings the list of settings, settings
-     * @return this object for method chaining
+    /**
+     *
+     * @param accountSettings account settings
+     * @return this
      */
-    public DsrProcessingRegistration setSettings(List<Setting> settings) {
-        this.settings = settings;
+    public DsrProcessingRegistration setAccountSettings(List<Setting> accountSettings) {
+        this.accountSettings = accountSettings;
         return this;
     }
 
