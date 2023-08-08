@@ -249,6 +249,9 @@
             "type" : "string",
             "enum" : [ "erasure" ]
           }
+        },
+        "domain" : {
+          "type" : "string"
         }
       }
     }

@@ -1,7 +1,7 @@
 {
   "type" : "audience_subscription_request",
-  "id" : "297e9ea7-f373-4429-ac37-508fad241ac6",
-  "timestamp_ms" : 1690813974825,
+  "id" : "943c5edb-ee2f-42d8-b17b-c2b54a2eff94",
+  "timestamp_ms" : 1691526571402,
   "firehose_version" : "2.9.1",
   "account" : {
     "account_id" : 123456,

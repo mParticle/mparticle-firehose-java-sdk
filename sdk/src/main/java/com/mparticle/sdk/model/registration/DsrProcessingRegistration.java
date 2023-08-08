@@ -18,6 +18,9 @@ public final class DsrProcessingRegistration {
     @JsonProperty("supported_dsr_types")
     private List<DsrProcessingRequest.Type> supportedDsrTypes;
 
+    @JsonProperty("domain")
+    private String domain;
+
     /**
      *
      * @return account settings
@@ -45,12 +48,30 @@ public final class DsrProcessingRegistration {
     }
 
     /**
-     * Sets the supported DSR types, currently only ERRASURE is valid.
+     * Sets the supported DSR types, currently only ERASURE is valid.
      * @param supportedDsrTypes a list of types
      * @return this object for method chaining
      */
     public DsrProcessingRegistration setSupportedDsrTypes(List<DsrProcessingRequest.Type> supportedDsrTypes) {
         this.supportedDsrTypes = supportedDsrTypes;
+        return this;
+    }
+
+    /**
+     *
+     * @return the domain for request callbacks
+     */
+    public String getDomain() {
+        return domain;
+    }
+
+    /**
+     *
+     * @param domain the domain for request callbacks
+     * @return this object for method chaining
+     */
+    public DsrProcessingRegistration setDomain(String domain) {
+        this.domain = domain;
         return this;
     }
 }

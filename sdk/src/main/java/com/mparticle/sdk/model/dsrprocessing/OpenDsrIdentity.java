@@ -47,19 +47,7 @@ public final class OpenDsrIdentity {
         /**
          * No encoding applied
          */
-        RAW,
-        /**
-         * Trimmed, converted to lower case, and hashed by MD5
-         */
-        MD5,
-        /**
-         * Trimmed, converted to lower case, and hashed by SHA-1
-         */
-        SHA1,
-        /**
-         * Trimmed, converted to lower case, and hashed by SHA-256
-         */
-        SHA256;
+        RAW;
 
         @Override
         public String toString() {
