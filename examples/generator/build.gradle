@@ -3,7 +3,7 @@ version '1.0'
 
 apply plugin: 'application'
 mainClassName = "com.mparticle.sdk.generator.MpJsonSchemaGenerator"
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenLocal()
