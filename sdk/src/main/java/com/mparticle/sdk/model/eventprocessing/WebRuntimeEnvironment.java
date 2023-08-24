@@ -62,9 +62,6 @@ public final class WebRuntimeEnvironment extends RuntimeEnvironment {
     @JsonProperty("timezone_offset")
     private int utcOffset;
 
-    @JsonProperty("http_header_user_agent")
-    private String httpHeaderUserAgent;
-
     @JsonProperty("push_token")
     private String pushToken;
 
@@ -228,12 +225,22 @@ public final class WebRuntimeEnvironment extends RuntimeEnvironment {
         this.utcOffset = utcOffset;
     }
 
+    /***
+     * @deprecated This method delegates to the getter of the userAgent field. Left in for backwards compatibility
+     * @return the user agent
+     */
+    @Deprecated
     public String getHttpHeaderUserAgent() {
-        return httpHeaderUserAgent;
+        return super.getUserAgent();
     }
 
+    /***
+     * @deprecated This method delegates to the setter of the userAgent field. Left in for backwards compatibility
+     * @param httpHeaderUserAgent the user agent to set
+     */
+    @Deprecated
     public void setHttpHeaderUserAgent(String httpHeaderUserAgent) {
-        this.httpHeaderUserAgent = httpHeaderUserAgent;
+        super.setUserAgent(httpHeaderUserAgent);
     }
 
     public String getPushToken() {
