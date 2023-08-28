@@ -6,6 +6,9 @@
       "type" : "string",
       "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb", "roku", "xbox", "firetv", "alexa", "smarttv" ]
     },
+    "httpHeaderUserAgent" : {
+      "type" : "string"
+    },
     "debug" : {
       "type" : "boolean"
     },

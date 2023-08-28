@@ -1,11 +1,11 @@
 {
   "type" : "dsr_processing_request",
-  "id" : "12dd07d1-2f3d-40ed-aeef-1a78c861a88f",
-  "timestamp_ms" : 1691585740589,
-  "firehose_version" : "2.9.2",
+  "id" : "c753a6fd-af1c-4aa7-b927-5a18f489a574",
+  "timestamp_ms" : 1692920879566,
+  "firehose_version" : "2.9.3",
   "subject_request_id" : "1e2c8cf4-f985-4398-b482-a520860d3bf6",
   "subject_request_type" : "erasure",
-  "submitted_time" : 1691585740.591000000,
+  "submitted_time" : 1692920879.566057000,
   "subject_identities" : {
     "email" : {
       "encoding" : "raw",
