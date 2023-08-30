@@ -1,0 +1,4 @@
+{
+  "type" : "string",
+  "enum" : [ "controller_customer_id", "android_advertising_id", "android_id", "email", "fire_advertising_id", "ios_advertising_id", "ios_vendor_id", "microsoft_advertising_id", "microsoft_publisher_id", "roku_publisher_id", "roku_advertising_id" ]
+}

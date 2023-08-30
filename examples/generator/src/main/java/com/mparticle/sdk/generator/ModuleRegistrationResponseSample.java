@@ -1,5 +1,6 @@
 package com.mparticle.sdk.generator;
 
+import com.mparticle.sdk.model.dsrprocessing.DsrProcessingRequest;
 import com.mparticle.sdk.model.eventprocessing.*;
 import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
 import com.mparticle.sdk.model.registration.*;
@@ -64,6 +65,7 @@ public class ModuleRegistrationResponseSample {
         // Set up Audience Registration.
         AudienceProcessingRegistration audienceRegistration = new AudienceProcessingRegistration();
         OAuth2Authentication authentication = new OAuth2Authentication();
+        BulkConfiguration bulkConfiguration = new BulkConfiguration();
 
         authentication
                 .setAuthorizationUrl("TEST_AUTHORIZATION_URL")
@@ -81,18 +83,32 @@ public class ModuleRegistrationResponseSample {
                         .setDescription("TEST_SCOPE_DESCRIPTION_1")
                 });
 
+        bulkConfiguration
+                .setBulkForwardWaitForMessages(4)
+                .setBulkForwardWaitInMinutes(30)
+                .setBulkForwardChunkSize(250);
+
         audienceRegistration
                 .setAudienceConnectionSettings(Collections.singletonList(getAudienceSetting()))
                 .setAuthentication(authentication)
                 .setAccountSettings(Arrays.asList(
                     getApiKeySetting(),
                     getCustomerIdSetting()
-        ));
+                ))
+                .setBulkConfiguration(bulkConfiguration);
+
+        // Set up DSR Registration.
+        DsrProcessingRegistration dsrRegistration = new DsrProcessingRegistration();
+        dsrRegistration
+                .setAccountSettings(Arrays.asList(getDsrWebhookSetting()))
+                .setDomain("TEST_DOMAIN")
+                .setSupportedDsrTypes(Arrays.asList(DsrProcessingRequest.Type.ERASURE));
 
         response
             .setDescription("A description of your <a href=''>company</a> and services. Inline HTML markup is permitted.")
             .setEventProcessingRegistration(eventRegistration)
             .setAudienceProcessingRegistration(audienceRegistration)
+            .setDsrProcessingRegistration(dsrRegistration)
             .setPermissions(permissions);
 
         return new AbstractMap.SimpleImmutableEntry<>(response.getClass().getSimpleName(), response);
@@ -100,24 +116,24 @@ public class ModuleRegistrationResponseSample {
 
     private static Setting getApiKeySetting()
     {
-        TextSetting setting1 = new TextSetting("apiKey", "key");
-        setting1.setName("API Key");
-        setting1.setDescription("Secret key to use the API, provided by your account manager");
-        setting1.setIsRequired(true);
-        setting1.setIsConfidential(true);
-        setting1.setIsVisible(true);
-        return setting1;
+        TextSetting setting = new TextSetting("apiKey", "key");
+        setting.setName("API Key");
+        setting.setDescription("Secret key to use the API, provided by your account manager");
+        setting.setIsRequired(true);
+        setting.setIsConfidential(true);
+        setting.setIsVisible(true);
+        return setting;
     }
 
     private static Setting getCustomerIdSetting()
     {
-        TextSetting setting2 = new TextSetting("customerId", "customer_id");
-        setting2.setName("Customer ID");
-        setting2.setDescription("Internal customer ID, provided by your account manager");
-        setting2.setIsRequired(true);
-        setting2.setIsConfidential(false);
-        setting2.setIsVisible(true);
-        return setting2;
+        TextSetting setting = new TextSetting("customerId", "customer_id");
+        setting.setName("Customer ID");
+        setting.setDescription("Internal customer ID, provided by your account manager");
+        setting.setIsRequired(true);
+        setting.setIsConfidential(false);
+        setting.setIsVisible(true);
+        return setting;
     }
 
     private static Setting getAudienceSetting()
@@ -127,5 +143,16 @@ public class ModuleRegistrationResponseSample {
         set.setDescription("If enabled, this audience will be used for suppression.");
         set.setIsVisible(true);
         return set;
+    }
+
+    private static Setting getDsrWebhookSetting()
+    {
+        TextSetting setting = new TextSetting("webhookUrl", "webhook_url");
+        setting.setName("Webhook URL");
+        setting.setDescription("The url of your integration.");
+        setting.setIsRequired(true);
+        setting.setIsConfidential(false);
+        setting.setIsVisible(true);
+        return setting;
     }
 }

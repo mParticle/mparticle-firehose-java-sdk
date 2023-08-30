@@ -1,0 +1,15 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:registration:BulkConfiguration",
+  "properties" : {
+    "bulk_forward_wait_for_messages" : {
+      "type" : "integer"
+    },
+    "bulk_forward_wait_in_minutes" : {
+      "type" : "integer"
+    },
+    "bulk_forward_chunk_size" : {
+      "type" : "integer"
+    }
+  }
+}

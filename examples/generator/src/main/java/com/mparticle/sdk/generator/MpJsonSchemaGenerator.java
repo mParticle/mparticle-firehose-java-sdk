@@ -35,6 +35,7 @@ public class MpJsonSchemaGenerator {
     private static final String CONSENT_PROCESSING_PKG = "com.mparticle.sdk.model.eventprocessing.consent";
     private static final String SYSTEM_NOTIFICATION_PROCESSING_PKG = "com.mparticle.sdk.model.eventprocessing.notification";
     private static final String AUDIENCE_PROCESSING_PKG = "com.mparticle.sdk.model.audienceprocessing";
+    private static final String DSR_PROCESSING_PKG = "com.mparticle.sdk.model.dsrprocessing";
     private static final String SCHEMA_FILE_SUFFIX = "_schema.json";
 
     public static void main(String[] args) throws RuntimeException, IOException
@@ -54,6 +55,9 @@ public class MpJsonSchemaGenerator {
 
             // Generate the audience message schemata.
             generateSchema(AUDIENCE_PROCESSING_PKG, dir);
+
+            // Generate the dsr message schemata.
+            generateSchema(DSR_PROCESSING_PKG, dir);
 
             // Generate the event message schemata.
             generateSchema(EVENT_PROCESSING_PKG, dir);

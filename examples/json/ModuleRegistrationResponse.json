@@ -1,7 +1,7 @@
 {
   "type" : "module_registration_response",
-  "id" : "f20fa73a-3806-4f46-b5f5-fdfffce71a78",
-  "timestamp_ms" : 1692920879566,
+  "id" : "3768a1dd-ff42-4f6b-95b3-7043f5f6d647",
+  "timestamp_ms" : 1693418323243,
   "firehose_version" : "2.9.3",
   "sdk_version" : "2.9.3",
   "name" : "Your Company Name",
@@ -105,6 +105,11 @@
         "description" : "TEST_SCOPE_DESCRIPTION_1"
       } ]
     },
+    "bulk_configuration" : {
+      "bulk_forward_wait_for_messages" : 4,
+      "bulk_forward_wait_in_minutes" : 30,
+      "bulk_forward_chunk_size" : 250
+    },
     "audience_subscription_settings" : [ {
       "type" : "boolean",
       "id" : "audienceType",
@@ -114,5 +119,18 @@
       "default_value" : false,
       "checked" : false
     } ]
+  },
+  "dsr_processing_registration" : {
+    "account_settings" : [ {
+      "type" : "text",
+      "id" : "webhookUrl",
+      "name" : "Webhook URL",
+      "description" : "The url of your integration.",
+      "visible" : true,
+      "required" : true,
+      "confidential" : false
+    } ],
+    "supported_dsr_types" : [ "erasure" ],
+    "domain" : "TEST_DOMAIN"
   }
 }

@@ -16,6 +16,9 @@ public final class AudienceProcessingRegistration {
     @JsonProperty("authentication")
     private AuthenticationConfiguration authentication;
 
+    @JsonProperty("bulk_configuration")
+    private BulkConfiguration bulkConfiguration;
+
     @JsonProperty("audience_subscription_settings")
     private List<Setting> audienceConnectionSettings;
 
@@ -79,6 +82,22 @@ public final class AudienceProcessingRegistration {
      */
     public AudienceProcessingRegistration setAuthentication(AuthenticationConfiguration authentication) {
         this.authentication = authentication;
+        return this;
+    }
+
+    /**
+     *
+     * @return bulkConfiguration
+     */
+    public BulkConfiguration getBulkConfiguration() { return bulkConfiguration; }
+
+    /**
+     *
+     * @param bulkConfiguration audience bulkConfiguration settings
+     * @return this
+     */
+    public AudienceProcessingRegistration setBulkConfiguration(BulkConfiguration bulkConfiguration) {
+        this.bulkConfiguration = bulkConfiguration;
         return this;
     }
 }
