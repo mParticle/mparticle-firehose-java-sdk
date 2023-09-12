@@ -11,9 +11,6 @@ public class BulkConfiguration {
     @JsonProperty("bulk_forward_wait_in_minutes")
     private Integer bulkForwardWaitInMinutes;
 
-    @JsonProperty("bulk_forward_chunk_size")
-    private Integer bulkForwardChunkSize;
-
     /**
      *
      * @return bulkForwardWaitForMessages
@@ -47,24 +44,6 @@ public class BulkConfiguration {
      */
     public BulkConfiguration setBulkForwardWaitInMinutes(Integer bulkForwardWaitInMinutes) {
         this.bulkForwardWaitInMinutes = bulkForwardWaitInMinutes;
-        return this;
-    }
-
-    /**
-     *
-     * @return bulkForwardChunkSize
-     */
-    public Integer getBulkForwardChunkSize() {
-        return bulkForwardChunkSize;
-    }
-
-    /**
-     *
-     * @param bulkForwardChunkSize setting name
-     * @return this
-     */
-    public BulkConfiguration setBulkForwardChunkSize(Integer bulkForwardChunkSize) {
-        this.bulkForwardChunkSize = bulkForwardChunkSize;
         return this;
     }
 }

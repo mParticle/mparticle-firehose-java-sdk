@@ -85,8 +85,7 @@ public class ModuleRegistrationResponseSample {
 
         bulkConfiguration
                 .setBulkForwardWaitForMessages(4)
-                .setBulkForwardWaitInMinutes(30)
-                .setBulkForwardChunkSize(250);
+                .setBulkForwardWaitInMinutes(30);
 
         audienceRegistration
                 .setAudienceConnectionSettings(Collections.singletonList(getAudienceSetting()))

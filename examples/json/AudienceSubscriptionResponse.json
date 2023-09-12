@@ -1,7 +1,7 @@
 {
   "type" : "audience_subscription_response",
-  "id" : "3554cefc-e307-459c-a4e1-5fa62586c9b1",
-  "timestamp_ms" : 1693418323234,
+  "id" : "dbae06c5-ebbb-4a20-b21c-50d529e7789f",
+  "timestamp_ms" : 1694102060784,
   "firehose_version" : "2.9.3",
   "audience_subscription_settings" : {
     "sample setting" : "sample setting value",

@@ -1,7 +1,7 @@
 {
   "type" : "module_registration_response",
-  "id" : "3768a1dd-ff42-4f6b-95b3-7043f5f6d647",
-  "timestamp_ms" : 1693418323243,
+  "id" : "1723fb9a-4bf1-4168-b914-7cbaf96e47f1",
+  "timestamp_ms" : 1694102060784,
   "firehose_version" : "2.9.3",
   "sdk_version" : "2.9.3",
   "name" : "Your Company Name",
@@ -107,8 +107,7 @@
     },
     "bulk_configuration" : {
       "bulk_forward_wait_for_messages" : 4,
-      "bulk_forward_wait_in_minutes" : 30,
-      "bulk_forward_chunk_size" : 250
+      "bulk_forward_wait_in_minutes" : 30
     },
     "audience_subscription_settings" : [ {
       "type" : "boolean",
