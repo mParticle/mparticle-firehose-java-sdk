@@ -15,6 +15,9 @@ public final class CustomEvent extends Event {
     @JsonProperty("attributes")
     private Map<String, String> attributes;
 
+    @JsonProperty("custom_flags")
+    private Map<String, String> customFlags;
+
     /**
      *
      * @return event name
@@ -62,6 +65,18 @@ public final class CustomEvent extends Event {
     public void setAttributes(Map<String, String> attributes) {
         this.attributes = attributes;
     }
+
+    /**
+     *
+     * @return custom flags map
+     */
+    public Map<String, String> getCustomFlags() { return customFlags; }
+
+    /**
+     *
+     * @param customFlags custom flags map
+     */
+    public void setCustomFlags(Map<String, String> customFlags) { this.customFlags = customFlags; }
 
     public CustomEvent() {
         super(Type.CUSTOM_EVENT);

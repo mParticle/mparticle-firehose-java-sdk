@@ -13,6 +13,9 @@ public final class ImpressionEvent extends Event {
     @JsonProperty("impressions")
     private List<Impression> impressions;
 
+    @JsonProperty("custom_flags")
+    private Map<String, String> customFlags;
+
     public ImpressionEvent() {
         super(Type.IMPRESSION);
     }
@@ -33,4 +36,16 @@ public final class ImpressionEvent extends Event {
         this.attributes = attributes;
         return this;
     }
+
+    /**
+     *
+     * @return custom flags map
+     */
+    public Map<String, String> getCustomFlags() { return customFlags; }
+
+    /**
+     *
+     * @param customFlags custom flags map
+     */
+    public void setCustomFlags(Map<String, String> customFlags) { this.customFlags = customFlags; }
 }

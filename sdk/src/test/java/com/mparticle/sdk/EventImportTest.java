@@ -250,6 +250,47 @@ public class EventImportTest extends ImportTest {
         }
     }
 
+    @Test
+    public void CustomFlagsTest() {
+        RuntimeEnvironment.Type runtimeEnvType = RuntimeEnvironment.Type.IOS;
+        DeviceIdentity.Type deviceIdType = DeviceIdentity.Type.IOS_ADVERTISING_ID;
+        UserIdentity.Type userIdType = UserIdentity.Type.EMAIL;
+
+        try {
+            // Construct and serialize request
+            CustomEvent event = new CustomEvent();
+            event.setName("customEvent");
+            event.setCustomType(CustomEvent.CustomType.OTHER);
+
+            event.setCustomFlags(new HashMap<String, String>() {{
+                put("flag1", "value1");
+                put("flag2", "value2");
+                put("flag3", "value3");
+            }});
+
+            EventProcessingRequest req = GenerateEventProcessingRequest(runtimeEnvType, userIdType, deviceIdType);
+
+            req.setEvents(Collections.singletonList(event));
+
+            String json = serializer.serialize(req);
+
+            // Deserialize request
+            req = serializer.deserialize(json, EventProcessingRequest.class);
+            assertNotNull(req);
+
+            // Check the custom flags
+            CustomEvent customEvent = (CustomEvent) req.getEvents().get(0);
+            Map<String, String> flags = customEvent.getCustomFlags();
+
+            assertEquals("value1", flags.get("flag1"));
+            assertEquals("value2", flags.get("flag2"));
+            assertEquals("value3", flags.get("flag3"));
+        }
+        catch (IOException e) {
+            fail(e.getMessage());
+        }
+    }
+
     /**
      * Helper method for checking for the given user identity type and value in the collection
      * @param identities

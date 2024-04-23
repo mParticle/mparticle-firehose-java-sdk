@@ -16,6 +16,9 @@ public final class PromotionActionEvent extends Event {
     @JsonProperty("promotions")
     private List<Promotion> promotions;
 
+    @JsonProperty("custom_flags")
+    private Map<String, String> customFlags;
+
     public PromotionActionEvent() {
         super(Type.PROMOTION_ACTION);
     }
@@ -46,6 +49,18 @@ public final class PromotionActionEvent extends Event {
         this.attributes = attributes;
         return this;
     }
+
+    /**
+     *
+     * @return custom flags map
+     */
+    public Map<String, String> getCustomFlags() { return customFlags; }
+
+    /**
+     *
+     * @param customFlags custom flags map
+     */
+    public void setCustomFlags(Map<String, String> customFlags) { this.customFlags = customFlags; }
 
     public enum Action {
         UNKNOWN,

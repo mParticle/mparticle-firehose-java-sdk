@@ -38,6 +38,9 @@ public final class ProductActionEvent extends Event {
     @JsonProperty("attributes")
     private Map<String, String> attributes;
 
+    @JsonProperty("custom_flags")
+    private Map<String, String> customFlags;
+
     public ProductActionEvent() {
         super(Type.PRODUCT_ACTION);
     }
@@ -132,6 +135,18 @@ public final class ProductActionEvent extends Event {
         return this;
     }
 
+    /**
+     *
+     * @return custom flags map
+     */
+    public Map<String, String> getCustomFlags() { return customFlags; }
+
+    /**
+     *
+     * @param customFlags custom flags map
+     */
+    public void setCustomFlags(Map<String, String> customFlags) { this.customFlags = customFlags; }
+
     public enum Action {
         ADD_TO_WISHLIST,
         REMOVE_FROM_WISH_LIST,
@@ -151,4 +166,3 @@ public final class ProductActionEvent extends Event {
     }
 
 }
-

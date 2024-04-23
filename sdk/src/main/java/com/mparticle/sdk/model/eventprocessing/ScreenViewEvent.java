@@ -12,6 +12,9 @@ public final class ScreenViewEvent extends Event {
     @JsonProperty("attributes")
     private Map<String, String> attributes;
 
+    @JsonProperty("custom_flags")
+    private Map<String, String> customFlags;
+
     public String getScreenName() {
         return screenName;
     }
@@ -28,8 +31,19 @@ public final class ScreenViewEvent extends Event {
         this.attributes = attributes;
     }
 
+    /**
+     *
+     * @return custom flags map
+     */
+    public Map<String, String> getCustomFlags() { return customFlags; }
+
+    /**
+     *
+     * @param customFlags custom flags map
+     */
+    public void setCustomFlags(Map<String, String> customFlags) { this.customFlags = customFlags; }
+
     public ScreenViewEvent() {
         super(Type.SCREEN_VIEW);
     }
 }
-

@@ -124,6 +124,11 @@ public class EventProcessingRequestSample {
         l.setLongitude(122.3231);
         event.setLocation(l);
 
+        Map<String, String> customFlags = new HashMap<>();
+        customFlags.put("ModuleA.flagA", "value1");
+        customFlags.put("ModuleB.flagB", "value2");
+        event.setCustomFlags(customFlags);
+
         return event;
     }
 

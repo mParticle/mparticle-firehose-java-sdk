@@ -1,9 +1,9 @@
 {
   "type" : "event_processing_request",
-  "id" : "913a90b7-e80e-483d-b213-6559fe09cd95",
-  "timestamp_ms" : 1694530910251,
+  "id" : "00d48a2f-5b74-4feb-b2a2-4139faf21711",
+  "timestamp_ms" : 1713900260017,
   "firehose_version" : "3.0.0",
-  "source_id" : "c22fabdf-a9e1-477f-8d47-74ca3e1c5a9b",
+  "source_id" : "7894cc35-26bc-4b45-b1a2-ab1143b41a6d",
   "account" : {
     "account_id" : 123456,
     "account_settings" : {
@@ -101,13 +101,13 @@
       }
     },
     "att_authorization_status" : "authorized",
-    "att_timestamp_unixtime_ms" : 1694530910251
+    "att_timestamp_unixtime_ms" : 1713900260018
   },
   "events" : [ {
     "type" : "custom_event",
-    "id" : "8067b9f6-30e3-48af-a321-9c1f8bf36758",
-    "timestamp_ms" : 1694530910251,
-    "source_id" : "938b7b96-1235-4f78-968c-7e8469b2ac8f",
+    "id" : "88e8778d-957e-40cd-bd1c-97209289ccc7",
+    "timestamp_ms" : 1713900260017,
+    "source_id" : "7f509e64-85c0-4b6b-9ed8-fbe847db4a51",
     "session_id" : 123456789,
     "location" : {
       "latitude" : 47.6062,
@@ -118,12 +118,16 @@
     "custom_event_type" : "other",
     "attributes" : {
       "event_attribute" : "value"
+    },
+    "custom_flags" : {
+      "ModuleA.flagA" : "value1",
+      "ModuleB.flagB" : "value2"
     }
   }, {
     "type" : "product_action",
-    "id" : "8ad06ee6-f38d-407e-9509-bb1335346124",
-    "timestamp_ms" : 1694530910251,
-    "source_id" : "8de02c1e-a775-47e6-b9ea-bb9697e70d93",
+    "id" : "a5483d61-4ebb-468e-a17e-d1b2343b3e4f",
+    "timestamp_ms" : 1713900260017,
+    "source_id" : "bc326d8c-0751-4b08-adb6-885ef2b00220",
     "session_id" : 123456789,
     "action" : "add_to_cart",
     "transaction_id" : "transactionId",
@@ -148,13 +152,13 @@
     }
   } ],
   "source_channel" : "native",
-  "device_application_stamp" : "21bbece7-11db-491b-aa11-4a3fb80af02e",
+  "device_application_stamp" : "2cd90c6d-c904-4313-86f8-f530574bffce",
   "consent_state" : {
     "gdpr_consent_state" : {
       "consentPurpose" : {
         "consented" : true,
         "document" : "document",
-        "timestamp_unixtime_ms" : 1694530910251,
+        "timestamp_unixtime_ms" : 1713900260017,
         "location" : "location",
         "hardware_id" : "hardware id"
       }
@@ -163,7 +167,7 @@
       "data_sale_opt_out" : {
         "consented" : true,
         "document" : "document",
-        "timestamp_unixtime_ms" : 1694530910251,
+        "timestamp_unixtime_ms" : 1713900260017,
         "location" : "location",
         "hardware_id" : "hardware id"
       }
@@ -175,14 +179,14 @@
     "old_gdpr_consent_state" : {
       "consented" : false,
       "document" : "document",
-      "timestamp_unixtime_ms" : 1694530910251,
+      "timestamp_unixtime_ms" : 1713900260017,
       "location" : "location",
       "hardware_id" : "hardware id"
     },
     "new_gdpr_consent_state" : {
       "consented" : true,
       "document" : "document",
-      "timestamp_unixtime_ms" : 1694530910251,
+      "timestamp_unixtime_ms" : 1713900260017,
       "location" : "location",
       "hardware_id" : "hardware id"
     }
@@ -192,14 +196,14 @@
     "old_ccpa_consent_state" : {
       "consented" : false,
       "document" : "document",
-      "timestamp_unixtime_ms" : 1694530910251,
+      "timestamp_unixtime_ms" : 1713900260017,
       "location" : "location",
       "hardware_id" : "hardware id"
     },
     "new_ccpa_consent_state" : {
       "consented" : true,
       "document" : "document",
-      "timestamp_unixtime_ms" : 1694530910251,
+      "timestamp_unixtime_ms" : 1713900260017,
       "location" : "location",
       "hardware_id" : "hardware id"
     }
