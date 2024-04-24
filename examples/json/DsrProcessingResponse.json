@@ -1,6 +1,6 @@
 {
   "type" : "dsr_processing_response",
-  "id" : "715792d4-b39b-426e-9a8a-10d04a02802f",
-  "timestamp_ms" : 1713900260018,
-  "firehose_version" : "3.0.0"
+  "id" : "5d158e17-8315-4a58-bdcc-05d29da7fe85",
+  "timestamp_ms" : 1713980388085,
+  "firehose_version" : "3.1.0"
 }

@@ -1,8 +1,8 @@
 {
   "type" : "audience_membership_change_request",
-  "id" : "b4364277-69e1-4048-9c4b-097fac91bb57",
-  "timestamp_ms" : 1713900260016,
-  "firehose_version" : "3.0.0",
+  "id" : "3047a62a-e5e6-4f87-bc3e-03c2b3a73642",
+  "timestamp_ms" : 1713980388082,
+  "firehose_version" : "3.1.0",
   "account" : {
     "account_id" : 123456,
     "account_settings" : {
