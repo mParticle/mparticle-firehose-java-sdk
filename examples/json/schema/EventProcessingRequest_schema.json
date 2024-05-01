@@ -297,6 +297,42 @@
     },
     "mpid" : {
       "type" : "string"
+    },
+    "platform_fields" : {
+      "type" : "object",
+      "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:PlatformFields",
+      "properties" : {
+        "mp_account_id" : {
+          "type" : "integer"
+        },
+        "mp_account_name" : {
+          "type" : "string"
+        },
+        "workspace_id" : {
+          "type" : "integer"
+        },
+        "workspace_name" : {
+          "type" : "string"
+        },
+        "input_name" : {
+          "type" : "string"
+        },
+        "app_name" : {
+          "type" : "string"
+        },
+        "app_version" : {
+          "type" : "string"
+        },
+        "dataplan_id" : {
+          "type" : "string"
+        },
+        "dataplan_name" : {
+          "type" : "string"
+        },
+        "dataplan_version" : {
+          "type" : "integer"
+        }
+      }
     }
   }
 }

@@ -5,7 +5,6 @@ import com.mparticle.sdk.model.Message;
 import com.mparticle.sdk.model.eventprocessing.consent.ConsentState;
 import com.mparticle.sdk.model.eventprocessing.notification.SystemNotification;
 import com.mparticle.sdk.model.registration.Account;
-import com.mparticle.sdk.model.registration.Setting;
 
 import java.util.List;
 import java.util.Map;
@@ -60,6 +59,9 @@ public final class EventProcessingRequest extends Message {
 
     @JsonProperty("mpid")
     private String mpId;
+
+    @JsonProperty("platform_fields")
+    private PlatformFields platformFields;
 
     /**
      *
@@ -266,6 +268,20 @@ public final class EventProcessingRequest extends Message {
      * Sets the MP ID for this user.
      */
     public void setMpId(String mpid) { this.mpId = mpid; }
+
+    /**
+     * Gets the platform fields for this request.
+     *
+     * @return platform fields
+     */
+    public PlatformFields getPlatformFields() {
+        return platformFields;
+    }
+
+    /**
+     * Sets the platform fields for this request.
+     */
+    public void setPlatformFields(PlatformFields platformFields) { this.platformFields = platformFields; }
 
     /**
      *

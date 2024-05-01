@@ -54,6 +54,14 @@ public final class Permissions {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowAccessMpid;
 
+    @JsonProperty("allow_platform_fields")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowPlatformFields;
+
+    @JsonProperty("allow_eventless_batches")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowEventlessBatches;
+
     /**
      *
      * @return requested partner identities
@@ -252,6 +260,42 @@ public final class Permissions {
      */
     public Permissions setAllowAccessMpid(boolean allowAccessMpid) {
         this.allowAccessMpid = allowAccessMpid;
+        return this;
+    }
+
+    /**
+     * Setting this will allow a partner to receive platform fields like account id and workspace name.
+     *
+     * @return allowPlatformFields
+     */
+    public boolean isAllowPlatformFields() { return allowPlatformFields; }
+
+    /**
+     * Setting this will allow a partner to receive platform fields like account id and workspace name.
+     *
+     * @param allowPlatformFields Allow platform fields boolean
+     * @return Permissions
+     */
+    public Permissions setAllowPlatformFields(boolean allowPlatformFields) {
+        this.allowPlatformFields = allowPlatformFields;
+        return this;
+    }
+
+    /**
+     * Setting this will allow a partner to receive batches that don't contain any events.
+     *
+     * @return allowEventlessBatches
+     */
+    public boolean isAllowEventlessBatches() { return allowEventlessBatches; }
+
+    /**
+     * Setting this will allow a partner to receive batches that don't contain any events.
+     *
+     * @param allowEventlessBatches Allow eventless batches boolean
+     * @return Permissions
+     */
+    public Permissions setAllowEventlessBatches(boolean allowEventlessBatches) {
+        this.allowEventlessBatches = allowEventlessBatches;
         return this;
     }
 

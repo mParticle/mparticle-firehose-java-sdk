@@ -1,19 +1,19 @@
 {
   "type" : "dsr_processing_request",
-  "id" : "e3d61b93-d929-410e-b29f-995e3f371205",
-  "timestamp_ms" : 1713980388084,
+  "id" : "c6db0f89-c274-4a51-ac8e-613946b19b47",
+  "timestamp_ms" : 1714420093963,
   "firehose_version" : "3.1.0",
   "subject_request_id" : "1e2c8cf4-f985-4398-b482-a520860d3bf6",
   "subject_request_type" : "erasure",
-  "submitted_time" : 1713980388.084973000,
+  "submitted_time" : 1714420093.963751000,
   "subject_identities" : {
-    "email" : {
-      "encoding" : "raw",
-      "value" : "jane.doe@example.com"
-    },
     "android_advertising_id" : {
       "encoding" : "raw",
       "value" : "84aae47d-d376-4a35-bde5-c0ee5a808bd3"
+    },
+    "email" : {
+      "encoding" : "raw",
+      "value" : "jane.doe@example.com"
     }
   },
   "api_version" : "3.0",

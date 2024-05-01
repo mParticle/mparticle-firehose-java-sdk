@@ -93,6 +93,12 @@
     },
     "allow_access_mpid" : {
       "type" : "boolean"
+    },
+    "allow_platform_fields" : {
+      "type" : "boolean"
+    },
+    "allow_eventless_batches" : {
+      "type" : "boolean"
     }
   }
 }

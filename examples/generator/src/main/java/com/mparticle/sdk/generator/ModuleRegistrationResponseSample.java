@@ -23,6 +23,8 @@ public class ModuleRegistrationResponseSample {
             .setAllowAccessLocation(false)
             .setAllowAccessIpAddress(false)
             .setAllowAccessMpid(true)
+            .setAllowPlatformFields(false)
+            .setAllowEventlessBatches(false)
             .setAllowAccessDeviceApplicationStamp(false)
             .setAllowConsentState(true)
             .setUserIdentities(Collections.singletonList(

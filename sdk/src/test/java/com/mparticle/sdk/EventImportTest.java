@@ -291,6 +291,68 @@ public class EventImportTest extends ImportTest {
         }
     }
 
+    @Test
+    public void PlatformFieldsTest() {
+        RuntimeEnvironment.Type runtimeEnvType = RuntimeEnvironment.Type.IOS;
+        DeviceIdentity.Type deviceIdType = DeviceIdentity.Type.IOS_ADVERTISING_ID;
+        UserIdentity.Type userIdType = UserIdentity.Type.EMAIL;
+
+        try {
+            // Construct and serialize request
+            CustomEvent event = new CustomEvent();
+            event.setName("customEvent");
+            event.setCustomType(CustomEvent.CustomType.OTHER);
+
+            EventProcessingRequest req = GenerateEventProcessingRequest(runtimeEnvType, userIdType, deviceIdType);
+            req.setPlatformFields(getPlatformFields());
+            req.setEvents(Collections.singletonList(event));
+
+            String json = serializer.serialize(req);
+
+            // Deserialize request
+            req = serializer.deserialize(json, EventProcessingRequest.class);
+            assertNotNull(req);
+
+            // Check the platform fields
+            PlatformFields fields = req.getPlatformFields();
+
+            assertEquals("BusyHiggs", fields.getAccountName());
+            assertEquals(50, fields.getAccountId());
+            assertEquals(60, fields.getWorkspaceId());
+            assertEquals("MyWorkspace", fields.getWorkspaceName());
+            assertEquals("MyInput", fields.getInputName());
+            assertEquals("MyApp", fields.getAppName());
+            assertEquals("1.0.0", fields.getAppVersion());
+            assertEquals("123", fields.getDataplanId());
+            assertEquals("MyPlan", fields.getDataplanName());
+            assertEquals(456, fields.getDataplanVersion());
+        }
+        catch (IOException e) {
+            fail(e.getMessage());
+        }
+    }
+
+    /**
+     * Helper method for getting an example PlatformFields object
+     * @return PlatformFields example object for testing
+     */
+    private static PlatformFields getPlatformFields() {
+        PlatformFields platformFields = new PlatformFields();
+
+        platformFields.setAccountName("BusyHiggs");
+        platformFields.setAccountId(50);
+        platformFields.setWorkspaceId(60);
+        platformFields.setWorkspaceName("MyWorkspace");
+        platformFields.setInputName("MyInput");
+        platformFields.setAppName("MyApp");
+        platformFields.setAppVersion("1.0.0");
+        platformFields.setDataplanId("123");
+        platformFields.setDataplanName("MyPlan");
+        platformFields.setDataplanVersion(456);
+
+        return platformFields;
+    }
+
     /**
      * Helper method for checking for the given user identity type and value in the collection
      * @param identities
