@@ -52,6 +52,15 @@ public class EventProcessingRequestSample {
         uas.put("$Zip", "33431");
         req.setUserAttributes(uas);
 
+        // User Attribute Lists
+        Map<String, List<String>> uaLists = new HashMap<String, List<String>>();
+        List<String> uaList = new ArrayList<String>();
+        uaList.add("value1");
+        uaList.add("value2");
+        uaList.add("value3");
+        uaLists.put("a_custom_list", uaList);
+        req.setUserAttributeLists(uaLists);
+
         // Identities
         req.setPartnerIdentities(Collections.singletonList(
                 new PartnerIdentity("a_partner_id", Identity.Encoding.RAW, "partnerId")
