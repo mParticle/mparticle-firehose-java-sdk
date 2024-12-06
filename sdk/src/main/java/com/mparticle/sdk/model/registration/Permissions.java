@@ -62,6 +62,10 @@ public final class Permissions {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowEventlessBatches;
 
+    @JsonProperty("allow_only_mapped_events")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowOnlyMappedEvents;
+
     /**
      *
      * @return requested partner identities
@@ -316,6 +320,26 @@ public final class Permissions {
      */
     public Permissions setAllowAccessHttpUserAgent(boolean allowAccessHttpUserAgent) {
         this.allowAccessHttpUserAgent = allowAccessHttpUserAgent;
+        return this;
+    }
+
+    /**
+     * Setting this will allow a partner to block unmapped events.
+     *
+     * @return
+     */
+    public boolean isAllowOnlyMappedEvents() {
+        return allowOnlyMappedEvents;
+    }
+
+    /**
+     * Setting this will allow a partner to block unmapped events.
+     *
+     * @param allowOnlyMappedEvents
+     * @return
+     */
+    public Permissions setAllowOnlyMappedEvents(boolean allowOnlyMappedEvents) {
+        this.allowOnlyMappedEvents = allowOnlyMappedEvents;
         return this;
     }
 }

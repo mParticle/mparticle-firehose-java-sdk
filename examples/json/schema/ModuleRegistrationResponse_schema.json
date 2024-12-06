@@ -134,6 +134,9 @@
         },
         "allow_eventless_batches" : {
           "type" : "boolean"
+        },
+        "allow_only_mapped_events" : {
+          "type" : "boolean"
         }
       }
     },

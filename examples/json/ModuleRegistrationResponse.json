@@ -28,7 +28,8 @@
       "required" : false
     } ],
     "allow_consent_state" : true,
-    "allow_access_mpid" : true
+    "allow_access_mpid" : true,
+    "allow_only_mapped_events" : false
   },
   "event_processing_registration" : {
     "account_settings" : [ {
@@ -106,7 +107,7 @@
       } ]
     },
     "bulk_configuration" : {
-      "bulk_forward_wait_for_messages" : 4,
+      "bulk_forward_wait_for_messages" : 2000,
       "bulk_forward_wait_in_minutes" : 30
     },
     "audience_subscription_settings" : [ {
