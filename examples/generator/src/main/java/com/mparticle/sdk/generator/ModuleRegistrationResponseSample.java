@@ -27,6 +27,7 @@ public class ModuleRegistrationResponseSample {
             .setAllowEventlessBatches(false)
             .setAllowAccessDeviceApplicationStamp(false)
             .setAllowConsentState(true)
+            .setAllowActiveTimeOnSite(true)
             .setUserIdentities(Collections.singletonList(
                     new UserIdentityPermission(UserIdentity.Type.EMAIL, Identity.Encoding.SHA256, false)
             ))

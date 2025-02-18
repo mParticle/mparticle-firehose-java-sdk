@@ -29,7 +29,8 @@
     } ],
     "allow_consent_state" : true,
     "allow_access_mpid" : true,
-    "allow_only_mapped_events" : false
+    "allow_only_mapped_events" : false,
+    "allow_active_time_on_site" : true
   },
   "event_processing_registration" : {
     "account_settings" : [ {

@@ -102,6 +102,9 @@
     },
     "allow_only_mapped_events" : {
       "type" : "boolean"
+    },
+    "allow_active_time_on_site" : {
+      "type" : "boolean"
     }
   }
 }

@@ -66,6 +66,10 @@ public final class Permissions {
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private boolean allowOnlyMappedEvents;
 
+    @JsonProperty("allow_active_time_on_site")
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    private boolean allowActiveTimeOnSite;
+
     /**
      *
      * @return requested partner identities
@@ -340,6 +344,26 @@ public final class Permissions {
      */
     public Permissions setAllowOnlyMappedEvents(boolean allowOnlyMappedEvents) {
         this.allowOnlyMappedEvents = allowOnlyMappedEvents;
+        return this;
+    }
+
+    /**
+     * Setting this will allow a partner to receive active time on site for events.
+     *
+     * @return
+     */
+    public boolean isAllowActiveTimeOnSite() {
+        return allowActiveTimeOnSite;
+    }
+
+    /**
+     * Setting this will allow a partner to receive active time on site for events.
+     *
+     * @param allowActiveTimeOnSite
+     * @return
+     */
+    public Permissions setAllowActiveTimeOnSite(boolean allowActiveTimeOnSite) {
+        this.allowActiveTimeOnSite = allowActiveTimeOnSite;
         return this;
     }
 }

@@ -150,6 +150,43 @@ public class EventImportTest extends ImportTest {
     }
 
     /**
+     * Check event serialization
+     */
+    @Test
+    public void TestEventSerialization() {
+        RuntimeEnvironment.Type runtimeEnvType = RuntimeEnvironment.Type.IOS;
+        DeviceIdentity.Type deviceIdType = DeviceIdentity.Type.IOS_ADVERTISING_ID;
+        UserIdentity.Type userIdType = UserIdentity.Type.EMAIL;
+
+        try {
+            // Construct and serialize request
+            CustomEvent event = new CustomEvent();
+            event.setName("customEvent");
+            event.setCustomType(CustomEvent.CustomType.OTHER);
+            event.setActiveTimeOnSiteMs(123456);
+
+            EventProcessingRequest req = GenerateEventProcessingRequest(runtimeEnvType, userIdType, deviceIdType);
+            req.setPlatformFields(getPlatformFields());
+            req.setEvents(Collections.singletonList(event));
+
+            String json = serializer.serialize(req);
+
+            // Deserialize request
+            req = serializer.deserialize(json, EventProcessingRequest.class);
+            assertNotNull(req);
+
+            // Check the deserialized request
+            CustomEvent deserializedEvent = (CustomEvent)req.getEvents().get(0);
+            assertEquals("customEvent", deserializedEvent.getName());
+            assertEquals(CustomEvent.CustomType.OTHER, deserializedEvent.getCustomType());
+            assertEquals(123456, deserializedEvent.getActiveTimeOnSiteMs());
+        }
+        catch (IOException e) {
+            fail(e.getMessage());
+        }
+    }
+
+    /**
      * Validates the serialization/deserialization of authorization status for
      * iOS and TVOS runtime environments
      * @param runtimeAuthorizationTuple

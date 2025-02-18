@@ -47,6 +47,9 @@ public abstract class Event {
     @JsonProperty("location")
     private Location location;
 
+    @JsonProperty(value="active_time_on_site_ms")
+    private long activeTimeOnSiteMs;
+
     private EventProcessingRequest request;
 
     /**
@@ -127,6 +130,22 @@ public abstract class Event {
      */
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    /**
+     *
+     * @return active time on site in milliseconds
+     */
+    public long getActiveTimeOnSiteMs() {
+        return activeTimeOnSiteMs;
+    }
+
+    /**
+     *
+     * @param active time on site in milliseconds
+     */
+    public void setActiveTimeOnSiteMs(long activeTimeOnSiteMs) {
+        this.activeTimeOnSiteMs = activeTimeOnSiteMs;
     }
 
     public Event(Type eventType) {
