@@ -206,6 +206,9 @@
                     "type" : "number"
                   }
                 }
+              },
+              "active_time_on_site_ms" : {
+                "type" : "integer"
               }
             }
           }
@@ -220,11 +223,11 @@
           "type" : "object",
           "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:ConsentState",
           "properties" : {
-            "ccpa" : {
+            "gdpr" : {
               "type" : "object",
               "additionalProperties" : {
                 "type" : "object",
-                "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:CCPAConsent",
+                "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:GDPRConsent",
                 "properties" : {
                   "consented" : {
                     "type" : "boolean",
@@ -245,11 +248,11 @@
                 }
               }
             },
-            "gdpr" : {
+            "ccpa" : {
               "type" : "object",
               "additionalProperties" : {
                 "type" : "object",
-                "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:GDPRConsent",
+                "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:consent:CCPAConsent",
                 "properties" : {
                   "consented" : {
                     "type" : "boolean",
@@ -362,6 +365,9 @@
     "location" : {
       "type" : "object",
       "$ref" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:Location"
+    },
+    "active_time_on_site_ms" : {
+      "type" : "integer"
     },
     "attributes" : {
       "type" : "object",

@@ -1,9 +1,9 @@
 {
   "type" : "module_registration_response",
-  "id" : "242e15a9-2066-47b2-84f8-0505ad2ea0f0",
-  "timestamp_ms" : 1714592744067,
-  "firehose_version" : "3.2.0",
-  "sdk_version" : "3.2.0",
+  "id" : "c137c915-c9fd-4c10-b376-691258d896be",
+  "timestamp_ms" : 1740083302891,
+  "firehose_version" : "3.3.0",
+  "sdk_version" : "3.3.0",
   "name" : "Your Company Name",
   "description" : "A description of your <a href=''>company</a> and services. Inline HTML markup is permitted.",
   "version" : "1.0",
@@ -29,7 +29,6 @@
     } ],
     "allow_consent_state" : true,
     "allow_access_mpid" : true,
-    "allow_only_mapped_events" : false,
     "allow_active_time_on_site" : true
   },
   "event_processing_registration" : {
@@ -108,7 +107,7 @@
       } ]
     },
     "bulk_configuration" : {
-      "bulk_forward_wait_for_messages" : 2000,
+      "bulk_forward_wait_for_messages" : 4,
       "bulk_forward_wait_in_minutes" : 30
     },
     "audience_subscription_settings" : [ {
