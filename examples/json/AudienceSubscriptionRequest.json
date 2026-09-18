@@ -2,7 +2,7 @@
   "type" : "audience_subscription_request",
   "id" : "7342692c-e6e6-4044-90a4-6c7984ed3110",
   "timestamp_ms" : 1740083302884,
-  "firehose_version" : "3.3.0",
+  "firehose_version" : "3.4.0",
   "account" : {
     "account_id" : 123456,
     "account_settings" : {

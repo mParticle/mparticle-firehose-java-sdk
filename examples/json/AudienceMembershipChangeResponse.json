@@ -2,6 +2,6 @@
   "type" : "audience_membership_change_response",
   "id" : "8267e58d-ad7c-4be2-8cb2-0cbbe302bd68",
   "timestamp_ms" : 1740083302884,
-  "firehose_version" : "3.3.0",
+  "firehose_version" : "3.4.0",
   "suspend_subscription" : false
 }

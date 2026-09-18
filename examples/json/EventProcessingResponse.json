@@ -2,5 +2,5 @@
   "type" : "event_processing_response",
   "id" : "8dcc7f6b-08f7-46fb-946f-bc3036b14f06",
   "timestamp_ms" : 1740083302888,
-  "firehose_version" : "3.3.0"
+  "firehose_version" : "3.4.0"
 }

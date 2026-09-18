@@ -2,5 +2,5 @@
   "type" : "module_registration_request",
   "id" : "efe79f97-c920-44e5-8a82-61f79f5e27ab",
   "timestamp_ms" : 1740083302890,
-  "firehose_version" : "3.3.0"
+  "firehose_version" : "3.4.0"
 }

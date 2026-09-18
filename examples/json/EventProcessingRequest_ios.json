@@ -2,7 +2,7 @@
   "type" : "event_processing_request",
   "id" : "e77c9d0c-4932-4ece-9ee0-171607345b23",
   "timestamp_ms" : 1740083302885,
-  "firehose_version" : "3.3.0",
+  "firehose_version" : "3.4.0",
   "source_id" : "2d48732a-811b-45e3-8496-c6d724ef96ad",
   "account" : {
     "account_id" : 123456,
