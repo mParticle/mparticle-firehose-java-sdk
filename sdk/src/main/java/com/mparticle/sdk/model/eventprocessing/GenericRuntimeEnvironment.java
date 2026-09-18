@@ -76,7 +76,11 @@ public class GenericRuntimeEnvironment extends RuntimeEnvironment {
     private String applicationPackage;
 
     public GenericRuntimeEnvironment() {
-        super(Type.UNKNOWN);
+        this(Type.UNKNOWN);
+    }
+
+    protected GenericRuntimeEnvironment(Type type) {
+        super(type);
     }
 
     public String getBuildId() {

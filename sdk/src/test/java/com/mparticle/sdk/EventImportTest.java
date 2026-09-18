@@ -32,6 +32,7 @@ public class EventImportTest extends ImportTest {
      */
     private static Stream<SimpleImmutableEntry<RuntimeEnvironment.Type, DeviceIdentity.Type>> deviceIdentityProvider() {
         return Stream.of(
+                new SimpleImmutableEntry<>(RuntimeEnvironment.Type.SAMSUNGTV, DeviceIdentity.Type.TIZEN_ADVERTISING_ID),
                 new SimpleImmutableEntry<>(RuntimeEnvironment.Type.FIRETV, DeviceIdentity.Type.FIRE_ADVERTISING_ID),
                 new SimpleImmutableEntry<>(RuntimeEnvironment.Type.XBOX, DeviceIdentity.Type.MICROSOFT_ADVERTISING_ID),
                 new SimpleImmutableEntry<>(RuntimeEnvironment.Type.XBOX, DeviceIdentity.Type.MICROSOFT_PUBLISHER_ID),
@@ -543,6 +544,8 @@ public class EventImportTest extends ImportTest {
                 return new XboxRuntimeEnvironment();
             case FIRETV:
                 return new FireTVRuntimeEnvironment();
+            case SAMSUNGTV:
+                return new SamsungTVRuntimeEnvironment();
             case MOBILEWEB:
                 return new WebRuntimeEnvironment();
 

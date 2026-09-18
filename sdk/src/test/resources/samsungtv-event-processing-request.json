@@ -1,0 +1,47 @@
+{
+  "type": "event_processing_request",
+  "id": "20f9e415-6139-4ee4-beba-62df30d46384",
+  "timestamp_ms": 1700000000000,
+  "firehose_version": "2.0.0",
+  "account": { "account_id": 12345 },
+  "runtime_environment": {
+    "type": "samsungtv",
+    "is_debug": true,
+    "client_ip_address": "192.0.2.1",
+    "sdk_version": "2.8.0",
+    "http_header_user_agent": "SamsungTV test",
+    "build_id": "test-build",
+    "brand": "Samsung",
+    "product": "TV",
+    "name": "Living room TV",
+    "manufacturer": "Samsung",
+    "os_version": "Tizen 8.0",
+    "model": "Test TV",
+    "screen_height": 1080,
+    "screen_width": 1920,
+    "screen_dpi": 96,
+    "country": "US",
+    "locale_language": "en",
+    "locale_country": "US",
+    "timezone_offset": -240,
+    "timezone_name": "America/New_York",
+    "is_tablet": false,
+    "supports_telephony": false,
+    "has_nfc": false,
+    "bluetooth_enabled": true,
+    "bluetooth_version": "5.2",
+    "application_name": "SamsungTV Test",
+    "application_version": "1.0",
+    "application_package": "com.example.samsungtv",
+    "identities": [
+      {
+        "type": "tizen_advertising_id",
+        "encoding": "raw",
+        "value": "17b8106f-4563-4b7a-8c7f-629c84691168"
+      }
+    ]
+  },
+  "events": [
+    { "type": "custom_event", "name": "samsungtv-test", "custom_type": "other" }
+  ]
+}

@@ -40,7 +40,8 @@ public final class DeviceIdentity extends Identity {
         MICROSOFT_ADVERTISING_ID,
         MICROSOFT_PUBLISHER_ID,
         FIRE_ADVERTISING_ID,
-        ROKU_PUBLISHER_ID;
+        ROKU_PUBLISHER_ID,
+        TIZEN_ADVERTISING_ID;
 
         @Override
         public String toString() {

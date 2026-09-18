@@ -1,6 +1,6 @@
 {
   "type" : "object",
-  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:IosRuntimeEnvironment",
+  "id" : "urn:jsonschema:com:mparticle:sdk:model:eventprocessing:SamsungTVRuntimeEnvironment",
   "properties" : {
     "type" : {
       "type" : "string",
@@ -71,6 +71,9 @@
     "screen_width" : {
       "type" : "integer"
     },
+    "screen_dpi" : {
+      "type" : "integer"
+    },
     "country" : {
       "type" : "string"
     },
@@ -80,31 +83,25 @@
     "locale_country" : {
       "type" : "string"
     },
-    "network_country" : {
-      "type" : "string"
-    },
-    "network_carrier" : {
-      "type" : "string"
-    },
-    "network_code" : {
-      "type" : "string"
-    },
-    "network_mobile_country_code" : {
-      "type" : "string"
-    },
     "timezone_offset" : {
       "type" : "integer"
     },
     "timezone_name" : {
       "type" : "string"
     },
-    "cpu_architecture" : {
-      "type" : "string"
-    },
     "is_tablet" : {
       "type" : "boolean"
     },
-    "radio_access_technology" : {
+    "supports_telephony" : {
+      "type" : "boolean"
+    },
+    "has_nfc" : {
+      "type" : "boolean"
+    },
+    "bluetooth_enabled" : {
+      "type" : "boolean"
+    },
+    "bluetooth_version" : {
       "type" : "string"
     },
     "application_name" : {
@@ -115,25 +112,6 @@
     },
     "application_package" : {
       "type" : "string"
-    },
-    "is_sandboxed" : {
-      "type" : "boolean"
-    },
-    "apple_search_ads_attribution" : {
-      "type" : "object",
-      "additionalProperties" : {
-        "type" : "object",
-        "additionalProperties" : {
-          "type" : "string"
-        }
-      }
-    },
-    "att_authorization_status" : {
-      "type" : "string",
-      "enum" : [ "authorized", "denied", "not_determined", "restricted" ]
-    },
-    "att_timestamp_unixtime_ms" : {
-      "type" : "integer"
     }
   }
 }

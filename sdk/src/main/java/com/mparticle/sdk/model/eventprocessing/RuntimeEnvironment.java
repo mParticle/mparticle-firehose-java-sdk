@@ -17,6 +17,7 @@ import java.util.List;
         @JsonSubTypes.Type(name="roku", value=RokuRuntimeEnvironment.class),
         @JsonSubTypes.Type(name="xbox", value=XboxRuntimeEnvironment.class),
         @JsonSubTypes.Type(name="firetv", value=FireTVRuntimeEnvironment.class),
+        @JsonSubTypes.Type(name="samsungtv", value=SamsungTVRuntimeEnvironment.class),
         @JsonSubTypes.Type(name="smarttv", value=GenericRuntimeEnvironment.class),
         @JsonSubTypes.Type(name="alexa", value=GenericRuntimeEnvironment.class)
 })
@@ -131,7 +132,8 @@ public abstract class RuntimeEnvironment {
         XBOX,
         FIRETV,
         ALEXA,
-        SMARTTV;
+        SMARTTV,
+        SAMSUNGTV;
 
         @Override
         public String toString() {

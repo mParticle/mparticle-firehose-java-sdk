@@ -1,4 +1,4 @@
 {
   "type" : "string",
-  "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb", "roku", "xbox", "firetv", "alexa", "smarttv" ]
+  "enum" : [ "unknown", "android", "ios", "tvos", "mobileweb", "roku", "xbox", "firetv", "alexa", "smarttv", "samsungtv" ]
 }
