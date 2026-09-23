@@ -1,11 +1,19 @@
-apply plugin: 'java-library'
-apply plugin: 'maven-publish'
-apply plugin: 'signing'
+import com.vanniktech.maven.publish.JavaLibrary
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SonatypeHost
 
-sourceCompatibility = JavaVersion.VERSION_1_8
+plugins {
+    id 'java-library'
+    id 'com.vanniktech.maven.publish' version '0.31.0'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
 repositories {
-	mavenLocal()
+    mavenLocal()
     mavenCentral()
 }
 
@@ -29,106 +37,44 @@ javadoc {
     getOptions().setNoTimestamp(true)
 }
 
-task generateJavadocsJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
+def releaseVersion = findProperty('VERSION')?.toString()?.trim() ?: rootProject.file('VERSION').text.trim()
+// Signing keys only exist in the release workflows; local and smoke-test publishes stay unsigned.
+def shouldSign = findProperty('signingInMemoryKey')?.toString()?.trim()
 
-task generateSourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allJava
-}
-
-def target_maven_repo
-if (project.hasProperty('target_maven_repo')) {
-    target_maven_repo = project.property('target_maven_repo')
-}
-
-allprojects {
-    ext."signing.keyId" = System.getenv("mavenSigningKeyId")
-    ext."signing.secretKeyRingFile" = System.getenv("mavenSigningKeyRingFile")
-    ext."signing.password" = System.getenv("mavenSigningKeyPassword")
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                groupId = 'com.mparticle'
-                artifactId = 'java-sdk'
-                version = '3.4.0'
-                if (project.plugins.findPlugin("com.android.library")) {
-                    from components.release
-                } else {
-                    from components.java
-                }
-
-                if (project.tasks.findByName('generateJavadocsJar')) {
-                    artifact project.tasks.getByName('generateJavadocsJar')
-                }
-
-                if (project.tasks.findByName('generateSourcesJar')) {
-                    artifact project.tasks.getByName('generateSourcesJar')
-                }
-
-                pom {
-                    name = 'mParticle Java SDK'
-                    description = 'mParticle Java SDK used to integrate with mParticle\'s Firehose API'
-                    url = 'https://github.com/mparticle/mparticle-sdk-java'
-                    licenses {
-                        license {
-                            name = 'The Apache Software License, Version 2.0'
-                            url = 'http://www.apache.org/license/LICENSE-2.0.txt'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = 'mParticle'
-                            name = 'mParticle Developers'
-                            email = 'developers@mparticle.com'
-                        }
-                    }
-                    scm {
-                        url = 'http://github.com/mparticle/mparticle-android-java'
-                        connection = 'scm:git:http://github.com/mparticle/mparticle-android-java'
-                        developerConnection = 'scm:git:git@github.com:mparticle/mparticle-android-java.git'
-                    }
-                }
-            }
-        }
-        repositories {
-            maven {
-                if (target_maven_repo == "s3") {
-                    url = "s3://maven.mparticle.com"
-                    credentials(AwsCredentials) {
-                        accessKey = System.env.AWS_ACCESS_KEY_ID ?: findProperty('aws_access_key_id')
-                        secretKey = System.env.AWS_SECRET_ACCESS_KEY ?: findProperty('aws_secret_access_key')
-                    }
-                } else if(target_maven_repo == 'sonatype') {
-                    url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-                    credentials {
-                        username = System.getenv('SONATYPE_USERNAME')
-                        password = System.getenv('SONATYPE_PASSWORD')
-                    }
-                    authentication {
-                        basic(BasicAuthentication)
-                    }
-                } else{
-                    url = 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
-                }
-            }
-        }
+mavenPublishing {
+    configure(new JavaLibrary(new JavadocJar.Javadoc(), true))
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    if (shouldSign) {
+        signAllPublications()
     }
 
-    signing {
-        required { gradle.taskGraph.hasTask("publishReleasePublicationToMavenRepository") }
-        sign publishing.publications.release
+    coordinates('com.mparticle', 'java-sdk', releaseVersion)
+
+    pom {
+        name = 'mParticle Java SDK'
+        description = 'mParticle Java SDK used to integrate with mParticle\'s Firehose API'
+        url = 'https://github.com/mParticle/mparticle-firehose-java-sdk'
+        licenses {
+            license {
+                name = 'The Apache Software License, Version 2.0'
+                url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+            }
+        }
+        developers {
+            developer {
+                id = 'mParticle'
+                name = 'mParticle Inc.'
+                email = 'developers@mparticle.com'
+            }
+        }
+        scm {
+            url = 'https://github.com/mParticle/mparticle-firehose-java-sdk'
+            connection = 'scm:git:https://github.com/mParticle/mparticle-firehose-java-sdk'
+            developerConnection = 'scm:git:git@github.com:mParticle/mparticle-firehose-java-sdk.git'
+        }
     }
 }
 
-//Publishing task aliases for simpler local development
-task publishReleaseLocal { dependsOn "publishReleasePublicationToMavenRepository" }
-
-tasks.withType(GenerateModuleMetadata) {
+tasks.withType(GenerateModuleMetadata).configureEach {
     enabled = false
 }

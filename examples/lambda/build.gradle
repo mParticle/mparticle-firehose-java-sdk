@@ -2,8 +2,8 @@ group 'com.mparticle.sdk.java'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'application'
-mainClassName = "com.mparticle.sdk.tmp.TestMain"
-sourceCompatibility = JavaVersion.VERSION_1_8
+application { mainClass = "com.mparticle.sdk.tmp.TestMain" }
+java { sourceCompatibility = JavaVersion.VERSION_1_8 }
 
 repositories {
     mavenCentral()
