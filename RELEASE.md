@@ -6,7 +6,7 @@ The SDK is published to Maven Central as `com.mparticle:java-sdk` using GitHub A
 
 ### Release – Draft
 
-Run `Release – Draft` from `master` to open a release PR. The workflow:
+Run `Release – Draft` from `main` to open a release PR. The workflow:
 
 1. Computes the next version from `bump-type` and an optional `qualifier`, and writes it to `VERSION`.
 2. Builds, tests, and publishes the SDK to Maven local as a smoke test.
@@ -15,7 +15,7 @@ Run `Release – Draft` from `master` to open a release PR. The workflow:
 
 ### Release – Publish
 
-`Release – Publish` runs when `VERSION` changes on `master`. It builds and tests the SDK, uploads the signed artifacts to the Maven Central Portal, then tags `v<version>` and creates the GitHub release.
+`Release – Publish` runs when `VERSION` changes on `main`. It builds and tests the SDK, uploads the signed artifacts to the Maven Central Portal, then tags `v<version>` and creates the GitHub release.
 
 The upload is not released automatically. Open the deployment in the [Central Portal](https://central.sonatype.com/publishing) and publish it.
 
